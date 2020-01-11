@@ -7,10 +7,10 @@ Created on Wed Dec 11 12:57:42 2019
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
-
-log=False
+# Variabili di controllo dei grafici in ordine decrescente di pesantezza
+tex=False
 tick=True
-tex=True
+log=False
 # Definizione componenti del circuito
 R_D = 326.
 dR_D = 1.3
@@ -40,20 +40,28 @@ dV1l= dV1[V1>x_min]; sdV1 = dV1l[V1l<x_max];
 V2l = V2[V1>x_min]; sV2 = V2l[V1l<x_max];
 dV2l= dV1[V1>x_min]; sdV2 = dV2l[V1l<x_max];
 # Definizione variabili generali grafico
-x = V2*Xi*1.e3
-dx = dV2*Xi*1.e3
-sx=sV2*Xi*1.e3
-sdx = sdV2*Xi*1.e3
-y = (V1*Xi*1.e3 - x)/R_D
-dy = (dV1*Xi*1.e3 + dx)/R_D
-sy = (sV1*Xi*1.e3 - sx)/R_D
+x = V2*Xi*1e3
+dx = dV2*Xi*1e3
+sx=sV2*Xi*1e3
+sdx = sdV2*Xi*1e3
+y = (V1*Xi*1e3 - x)/R_D
+dy = (dV1*Xi*1e3 + dx)/R_D
+sy = (sV1*Xi*1e3 - sx)/R_D
 dV1V2 = np.sqrt((sdV1*Xi)**2 + sdx**2)
 sdy = np.sqrt(((np.sqrt((sdV1*Xi)**2 + sdx**2))*R_D)**2 + (dR_D*sy)**2)/R_D**2
 sdy*=2
 
-# Modelli di trasferimento e lineare
+# Legge di Shockley
 def sck(V, I0, VT):
-    return I0*(np.exp(V/(VT)) -1)
+    return I0*(np.exp(V/(VT)) -1.)
+
+def chitest(y, dy, model, ddof=0):
+    res = y - model
+    resnorm = res/dy
+    ndof = len(y) - ddof
+    chisq = (resnorm**2).sum()
+    sigma = (chisq - ndof)/np.sqrt(2*ndof)
+    return chisq, ndof, sigma
 
 # Grafico preliminare dati
 if tex:
@@ -86,12 +94,9 @@ print('VT: %f +- %f' %(VT, dVT))
 # Test Chi quadro per sck
 res = sy - sck(sx, *pars)
 resnorm = res/sdy
-chisq = (resnorm**2).sum()
-ndof = len(sy) -1
-chirid = chisq/ndof
-sigma = (chisq - ndof)/np.sqrt(2*ndof)
+chisq, ndof, sigma = chitest(sy, dy, sck(sx, *pars), ddof=len(pars))
 print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisq, ndof, sigma))
-print('Chi quadro ridotto:', chirid)
+print('Chi quadro ridotto:', chisq/ndof)
 # Covarianza tra I0 e VT
 corr = covm[0][1]/(dI0*dVT)
 corm = np.zeros((2,2))
@@ -123,12 +128,10 @@ if(Compatibili):
             # Test Chi quadro
             res = sy - sck(sx, *popt)
             resnorm = res/deff
-            chisq = (resnorm**2).sum()
-            ndof = len(sy) - len(init)
-            chirid = chisq/ndof
-            sigma = (chisq - ndof)/np.sqrt(2*ndof)
+            chisq, ndof, sigma = chitest(sy, dy, sck(sx, *pars),
+                                         ddof=len(pars))
             print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisq, ndof, sigma))
-            print('Chi quadro ridotto:', chirid)
+            print('Chi quadro ridotto:', chisq/ndof)
             # Covarianza tra I0 e VT
             corr = covm[0][1]/(dI0*dVT)
             corm = np.zeros((2,2))
@@ -143,6 +146,7 @@ if(Compatibili):
 fig1,(ax1, ax2) = plt.subplots(2,1, True, gridspec_kw={'wspace':0.05,
      'hspace':0.05, 'height_ratios': [3, 1]})
 if log:
+    tick=False
     xx = np.logspace(np.log10(min(x)), np.log10(max(x)), 2000)
     ax1.set_yscale('log')
     ax1.set_xscale('log')
@@ -159,7 +163,7 @@ ax1.axhline(I0, lw=1.4, ls='--', c='k', alpha=0.7, zorder=1)
 ax1.set_ylabel('Intensità di Corrente $I$ [mA]')    
 if tick:
     ax1.yaxis.set_major_locator(plt.MultipleLocator(0.2))
-    ax1.yaxis.set_minor_locator(plt.MultipleLocator(0.05))
+    ax1.yaxis.set_minor_locator(plt.MultipleLocator(5e-2))
     # ax1.set_xlim(min(xx), max(xx))
     # ax1.set_ylim(min(sck(xx, *pars)), max(sck(xx, *pars)))
 ax1.tick_params(direction='in', length=5, width=1., top=True, right=True)
@@ -194,7 +198,7 @@ doutV=np.array([])
 j=0
 k=0
 #tengo solo i dati che si discostano dal modello per meno
-# di 4 deviazioni standard
+# di 2-3 deviazioni standard
 soglia = 2.3
 for i in range (len(sy)):
     if (np.abs(sy[i] - sck(sx, *pars)[i])< soglia*sdy[i]): 
@@ -216,17 +220,14 @@ print('Parametri del fit:\n', pars)
 print('Matrice di Covarianza:\n', covm)
 I0, VT = pars
 dI0, dVT = np.sqrt(covm.diagonal())
-print('I0: %f +- %.5f' %(I0*10**6, dI0*10**6))
+print('I0: %f +- %.5f' %(I0*1e6, dI0*1e6))
 print('VT: %.5f +- %.5f' %(VT, dVT))
 # Test Chi quadro per sck
-ndof= len(TT) - len(pars)
 normin = (VV-sck(TT, *pars))/dVV
 normout = (outV-sck(outT, *pars))/doutV
-chisqin = (normin**2).sum()
-chirid = chisqin/ndof
-sigmain = (chisqin - ndof)/np.sqrt(2*ndof)
+chisqin, ndof, sigmain = chitest(VV, dVV, sck(TT, *pars), ddof=len(pars))
+print('Chi quadro ridotto:', chisq/ndof)
 print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisqin, ndof, sigmain))
-print('Chi quadro ridotto:', chirid)
 # Covarianza tra I0 e VT
 corr = covm[0][1]/(dI0*dVT)
 corm = np.zeros((2,2))
@@ -252,7 +253,7 @@ ax1.plot(xx, sck(xx, *pars), c='gray', ls='-',
          label='fit $\chi^2 = %.f/%d$' %(chisqin, ndof), zorder=10, alpha=0.7)
 if tick:
     ax1.yaxis.set_major_locator(plt.MultipleLocator(0.2))
-    ax1.yaxis.set_minor_locator(plt.MultipleLocator(0.05))
+    ax1.yaxis.set_minor_locator(plt.MultipleLocator(5e-2))
 
 ax1.tick_params(direction='in', length=5, width=1., top=True, right=True)
 ax1.tick_params(which='minor', direction='in', width=1., top=True, right=True)
