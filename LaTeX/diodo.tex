@@ -1,48 +1,57 @@
 \documentclass{article}[a4paper, oneside ,11pt]
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,amsthm, thmtools, amsfonts}
 \usepackage{calc}
+\usepackage{amsmath,amssymb,amsthm, thmtools, amsfonts}
 \usepackage[nochapters,pdfspacing]{classicthesis}
-%\usepackage{hyperref}
+%\usepackage{hyperref}% clashes with classicthesis
 \usepackage{cleveref}
+\usepackage[siunitx]{circuitikz}
+\usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{caption}
-\usepackage[italian]{babel}
 \usepackage{geometry}
 \usepackage{float}
-\usepackage{graphicx}
-\usepackage{pgfplots}
-\usepackage{color}
-\usepackage{booktabs}
-\usepackage{listings}
+\usepackage{mdframed}
+\usepackage{xcolor}
 \usepackage{siunitx}
-\usepackage[siunitx]{circuitikz}
+\usepackage[italian]{babel}
+\usepackage{pgfplots}
 \usepackage{titling}
+\usepackage{listings}
 \usepackage{lmodern}
+\usepackage{url}
 \usepgfplotslibrary{external} 
 \tikzexternalize
 
+\pgfplotsset{compat=1.16}
 \lstset{
 basicstyle=\ttfamily,
 columns=fullflexible,
 keepspaces=true,
 }
-
+\mdfsetup{linewidth=0.6pt}
 \graphicspath{{./figs/}}
 \makeatletter
 \def\input@path{{./figs/}}
 %or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
 \makeatother
 
-\input{../../Template/math}
+\input{./math}
 
 \geometry{a4paper, left=30mm, right=30mm, top=30mm, bottom=30mm}
-\title{Diodo PN e8 2019/20}
-\author{Bernardo Tomelleri}
-\date{\today}
+\title{Modellizzazione della resistenza di diodi a giunzione PN per alte correnti di lavoro}
+\author{L. Ciucci(\thanks{Dipartimento di Fisica E. Fermi, Universit\`a di Pisa - Pisa, Italy} ) \and B. Tomelleri(\protect\footnotemark[1] ) \and S. Bruzzesi(\protect\footnotemark[1] )}
+\date{2020/11/01}
 
 \begin{document}
 \maketitle
+\begin{mdframed}
+\textbf{Riassunto:} --- Tramite la piattaforma di sviluppo Arduino\cite{arduino} studiamo campionamenti digitali, di segnali ai capi di diodi in silicio PN. Discutiamo la struttura di base e i comportamenti attesi del sistema e ne illustriamo il funzionamento con qualche esempio pratico.\\\\
+PACS 01.40.-d – Education.\\
+PACS 01.50.Pa – Laboratory experiments and apparatus.\\
+PACS 07.05.Hd – Data acquisition: hardware and software.
+\end{mdframed}
 \section{Resistenza del Diodo}
 Consideriamo il nostro multimetro digitale come un ottimo voltmetro\footnote{Nel senso di dotato di resistenza in ingresso molto alta $R_{\rm in} = 10 \; \si{\mega\ohm}$ nominali}: dunque supponiamo che, per far leva su questo, misuri indirettamente la resistenza di un componente imprimendo su di esso una corrente $I_{\rm in}$ generata (dunque nota) dallo strumento stesso, quindi misurando la caduta di tensione che si determina ai capi del carico resistivo considerato $R_{\rm L}$. Per materiali ohmici la misura di resistenza si ottiene appunto invertendo la legge di Ohm:
 \begin{equation}\label{eq:Ohm}
@@ -183,4 +192,7 @@ Ed il grafico \ref{plt:did_out}:\\
 In entrambi casi impostando $\rm{abs\_sigma} = \rm False$ in quanto l'errore non statistico è predominante sulle misure.
 \subsection{Nota sul metodo di fit}
 Per determinare i parametri ottimali e le rispettive varianze si \`e implementato un metodo di fit basato sui minimi quadrati mediante la funzione \emph{curve\_fit} di Python.
+\medskip
+\bibliographystyle{IEEEtrandoi}
+\bibliography{refs}
 \end{document}
