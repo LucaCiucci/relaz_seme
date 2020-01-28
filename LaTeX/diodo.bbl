@@ -21,10 +21,22 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{arduino}
+\bibitem{teensy}
 \BIBentryALTinterwordspacing
-I.~D.~I. Ivrea \emph{et~al.} Arduino: Open-source electronic prototyping
-  platform. Ivrea, Italy. [Online]. Available: \url{https://www.arduino.cc/}
+P.~Stoffregen. Teensy 3.2 development board. Sherwood, Oregon, USA. [Online].
+  Available: \url{https://www.pjrc.com/teensy/teensy31.html}
 \BIBentrySTDinterwordspacing
+
+\bibitem{scipy}
+P.~{Virtanen}, R.~{Gommers}, T.~E. {Oliphant}, M.~{Haberland}, T.~{Reddy},
+  D.~{Cournapeau}, E.~{Burovski}, P.~{Peterson}, W.~{Weckesser}, J.~{Bright},
+  S.~J. {van der Walt}, M.~{Brett}, J.~{Wilson}, K.~{Jarrod Millman},
+  N.~{Mayorov}, A.~R.~J. {Nelson}, E.~{Jones}, R.~{Kern}, E.~{Larson},
+  C.~{Carey}, {\.I}.~{Polat}, Y.~{Feng}, E.~W. {Moore}, J.~{Vand erPlas},
+  D.~{Laxalde}, J.~{Perktold}, R.~{Cimrman}, I.~{Henriksen}, E.~A. {Quintero},
+  C.~R. {Harris}, A.~M. {Archibald}, A.~H. {Ribeiro}, F.~{Pedregosa}, P.~{van
+  Mulbregt}, and S.~.~. {Contributors}, ``{SciPy 1.0--Fundamental Algorithms
+  for Scientific Computing in Python},'' \emph{arXiv e-prints}, p.
+  arXiv:1907.10121, Jul 2019.
 
 \end{thebibliography}
