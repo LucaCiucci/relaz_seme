@@ -1,6 +1,6 @@
-update=28/01/2020 13:31:15
+update=29/01/2020 23:10:31
 version=1
-last_client=kicad
+last_client=eeschema
 [general]
 version=1
 RootSch=
@@ -34,7 +34,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=
+PlotDirectoryName=C:/Users/berni/Downloads/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=Pcbnew

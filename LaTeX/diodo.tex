@@ -56,30 +56,55 @@ PACS 01.50.Pa – Laboratory experiments and apparatus.
 \section{Introduzione}
 Per poter modellare il comportamento di un diodo percorso da correnti alte, si propone un modello semplice in grado di spiegarne il comportamento -ohmico-, verificandone sperimentalmente la validità e i limiti.
 \section{Metodo e apparato sperimentale}
-Dovendo lavorare con correnti relativamente alte per il circuito sotto studio, al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni all'apparato, si imprimono sui componenti correnti pulsate o di durate molto brevi, limitando dunque il trasferimento di energia.
+Dovendo lavorare con correnti relativamente alte per il circuito sotto studio, al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni all'apparato, si imprimono sui componenti correnti pulsate o di durate molto brevi, limitando dunque il trasferimento di energia sui componenti.
 \subsection{Acquisizione dati}
-Perciò si è fatto uso della piattaforma di sviluppo \verb+Teensy 3.2+\cite{teensy} per il campionamento di segnali, essendo non solo più veloce e capiente in memoria rispetto ad Arduino, ma oltretutto dotato di due ADC, entrambi con risoluzione maggiore nel campionamento analogico, a 16 bit. Questo ad esempio ci permette di misurare -simultaneamente- la differenza di potenziale e intensità di corrente, dunque la curva caratteristica del diodo in esame. 
+Si è fatto uso della piattaforma di sviluppo \verb+Teensy 3.2+\cite{teensy} per il campionamento di segnali, essendo non solo più veloce e capiente in memoria rispetto ad Arduino, ma oltretutto dotato di due ADC, entrambi con risoluzione maggiore nel campionamento analogico, a 16 bit. Questo ad esempio ci permette di misurare -simultaneamente- la differenza di potenziale e intensità di corrente, dunque la curva caratteristica del diodo in esame. 
 \subsection{Schema circuitale del sistema}
 \begin{center}
 \begin{circuitikz}[american]
+\draw (2,4)
+	to[short, f>^=$\text{CH1}_{\rm osc}$] (0,4)
+	node[oscopeshape] {};		
+\draw (2,2)
+	to[short,*-, f>^=$\text{CH2}_{\rm osc}$] (0,2)
+	node[oscopeshape] {};
 \draw (0,0)
-	to[voltmeter, l=$\Delta V_{\rm mis}$] (0,4)
+	to[short] (0,4)
 	to[short] (2,4)
-	to[R=$R_{\ud}$, *-] (2,2)
-	to[Do, -*] (2,0)
-	to[short] (0,0);
-	\draw (2,0)
+	to[R=0.22 <\ohm>, *-] (2,2)
+	to[Do, l=1N4007, -*] (2,0)
+	to[short] (0,0)
+	to[short,-*] (5,0)
+	to[short] (5,-0.2)
+	node[eground]{};	
+\draw (2,0)
 	to[short] (5,0)
-	to[V] (5,6) % The current source
-	to[spst] (2,6)
-	to[C=100<\farad>] (2,4);
+	to[C, l_=100<\farad>] (5,5)
+	to[spst, l_=SW$_1$] (2,5)
+	to[short] (2,4);
 \end{circuitikz}
 \end{center}
-Infine, volendo misurare la componente resistiva del solo diodo è fondamentale conoscere la resistenza dei collegamenti del circuito ed, eventualmente stabilire sotto quali condizioni essi risultino trascurabili.
+\begin{figure}[!htb]
+	\centering 
+ 		\includegraphics[scale=2.2]{./simple.pdf}
+ 	\caption{Versione semplice del circuito \label{sch:smpl}}
+\end{figure}
+\begin{figure}[!htb]
+	\centering 
+ 		\includegraphics[scale=1.3]{./gestione.pdf}
+ 	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
+\end{figure}
+\begin{figure}[!htb]
+	\centering 
+ 		\includegraphics[scale=2.2]{./measure.pdf}
+ 	\caption{Schema circuitale del sistema di lettura (Teensy) \label{sch:rdng}}
+\end{figure}
+Come ultima cautela preliminare, per minimizzare le influenze esterne sulla misura della componente resistiva del diodo, si sono misurate le resistenze dei collegamenti del circuito. 
+%Per stabilire sotto quali condizioni essi risultino trascurabili.
 \section{Risultati e Analisi dati}
 \subsection{Nota sul metodo di fit}
 Per determinare i parametri ottimali e le rispettive varianze si \`e implementato un metodo di fit basato sui minimi quadrati in \verb+Python+ mediante la funzione \emph{curve\_fit} della libreria Scipy\cite{scipy}.
-\medskip
+\pagebreak
 \bibliographystyle{IEEEtrandoi}
 \bibliography{refs}
 \end{document}
