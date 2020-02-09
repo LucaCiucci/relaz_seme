@@ -23,28 +23,56 @@ void setup() {
 
   adc->setAveraging(1); // set number of averages
   adc->setResolution(12);
-  adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED);
-  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED);
+  //adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED);
+  //adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED);
+  adc->setConversionSpeed(ADC_CONVERSION_SPEED::LOW_SPEED);
+  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::LOW_SPEED);
 
   adc->setAveraging(1, ADC_1);
   adc->setResolution(12, ADC_1);
-  adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED, ADC_1); // change the conversion speed
-  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED, ADC_1); // change the sampling speed
+  //adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED, ADC_1); // change the conversion speed
+  //adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED, ADC_1); // change the sampling speed
+  adc->setConversionSpeed(ADC_CONVERSION_SPEED::LOW_SPEED, ADC_1); // change the conversion speed
+  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::LOW_SPEED, ADC_1); // change the sampling speed
 
   delay(3000);
-  Serial.println(adc->analogRead(readPin0P, ADC_0));
-  Serial.println(adc->analogRead(readPin0N, ADC_0));
-  Serial.println(adc->analogRead(readPin1P, ADC_1));
-  Serial.println(adc->analogRead(readPin1N, ADC_1));
-  Serial.println(ADC_ERROR_VALUE);
   Serial.println(adc->startSynchronizedContinuousDifferential(readPin0P, readPin0N, readPin1P, readPin1N));
-  adc->stopSynchronizedContinuous();
+  //adc->stopSynchronizedContinuous();
 }
+
+ADC::Sync_result result;
+
+int myClamp(int x)
+{
+  if (x > 4095)
+    return 0;
+  return x;
+}
+#define N 1000
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  while(!adc->isComplete());
+  result = adc->readSynchronizedContinuous();
+  result.result_adc0 = (uint16_t)result.result_adc0;
+  result.result_adc1 = (uint16_t)result.result_adc1;
+  //Serial.print(result.result_adc0);
+  //Serial.print("\t");
+  Serial.println(myClamp(result.result_adc1));
+
+  unsigned long long t0 = micros();
+  for (int i = 0; i < N; i++)
+  {
+    while(!adc->isComplete());
+    result = adc->readSynchronizedContinuous();
+    result.result_adc0 = (uint16_t)result.result_adc0;
+    result.result_adc1 = (uint16_t)result.result_adc1;
+  }
+  Serial.println((float)(micros()-t0) / N);
+  
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(100);
+  delay(10);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(100);
+  delay(10);
 }
