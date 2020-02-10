@@ -16,11 +16,12 @@ ADC *adc = new ADC(); // adc object
 ////////////////////////////////////////////////////////////////
 float getCapVoltage(void);
 bool chargeToVoltage(float voltage, double maxSeconds = 20);
+bool acquisizione(void);
 bool acquisizione(float capVoltage);
 void printData(void);
 
 int *ch1Data = NULL, *ch2Data = NULL;
-const int nAcq = 100;
+const int nAcq = 10;
 
 void setup() {
   // put your setup code here, to run once:
@@ -38,25 +39,12 @@ void setup() {
   
   Serial.begin(9600);
 
-  /*adc->setAveraging(1);
-  adc->setResolution(12);
-  adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED);
-  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED);
-
-  adc->setAveraging(1, ADC_1);
-  adc->setResolution(12, ADC_1);
-  adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED, ADC_1);
-  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED, ADC_1);*/
-
   adc->setAveraging(1);
   adc->setResolution(10);
   adc->setAveraging(1, ADC_1);
   adc->setResolution(10, ADC_1);
 
-  delay(3000);
-  //Serial.println(adc->startSynchronizedContinuousDifferential(readPin0P, readPin0N, readPin1P, readPin1N));
-  delay(1000);
-  //adc->stopSynchronizedContinuous();
+  delay(4000);
   
 }
 
@@ -66,70 +54,42 @@ int myClamp(int x)
     return x - 65535;
   return x;
 }
-#define N 1000
 
 void loop() {
   // put your main code here, to run repeatedly:
 
-  for (float v = 0.2; v <= 1.0; v += 0.02)
+  /*for (float v = 0.2; v <= 4.0; v += 0.01)
   {
     acquisizione(v);
     printData();
-  }
-  delay(1000);
-
-  for (int i = 0; true; i++)
+    delay(100);
+  }*/
+  for (int i = 0; i < 1000; i++)
   {
+    digitalWrite(chargePin, HIGH);
     delay(10);
-    Serial.println(getCapVoltage());
-  }
-  return;
-  
-  Serial.println(chargeToVoltage(0.5));
-  acquisizione(1.5);
-  Serial.println(chargeToVoltage(0.2));
-  Serial.println(chargeToVoltage(5));
-  return;
-
-  digitalWrite(chargePin, HIGH);
-  for (int i = 0; i < N; i++)
-  {
-    delay(10);
-    Serial.println(OUT3FACTOR * analogRead(out3Pin));
-  }
-  digitalWrite(chargePin, LOW);
-  for (int i = 0; i < N; i++)
-  {
-    delay(10);
-    Serial.println(OUT3FACTOR * analogRead(out3Pin));
+    digitalWrite(chargePin, LOW);
+    acquisizione();
   }
 
   digitalWrite(dischargePin, HIGH);
-  for (int i = 0; i < N; i++)
-  {
-    delay(10);
-    Serial.println(OUT3FACTOR * analogRead(out3Pin));
-  }
+  delay(1000);
   digitalWrite(dischargePin, LOW);
-  for (int i = 0; i < N; i++)
+
+  /*for (int i = 0; true; i++)
   {
     delay(10);
-    Serial.println(OUT3FACTOR * analogRead(out3Pin));
-  }
-  return;
+    Serial.println(getCapVoltage());
+  }*/
 
 
-
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(10);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(10);
 }
 
 ////////////////////////////////////////////////////////////////
 float getCapVoltage(void)
 {
   //return OUT3FACTOR * adc->analogRead(out3Pin, ADC_0);
+  delay(1);
   return 11.0 * 3.3 * adc->adc0->analogRead(out3Pin) / adc->adc0->getMaxValue();
 }
 
@@ -165,16 +125,8 @@ bool chargeToVoltage(float voltage, double maxSeconds)
 }
 
 ////////////////////////////////////////////////////////////////
-bool acquisizione(float capVoltage)
+bool acquisizione(void)
 {
-  ADC::Sync_result result;
-  bool flag = true;
-
-  // carica il condensatore e controlla se ha funzionato
-  flag = chargeToVoltage(capVoltage);
-  if (flag == false)
-    return flag;
-
   // inizia l'acquisizione analogica
   adc->setAveraging(1);
   adc->setResolution(12);
@@ -207,12 +159,21 @@ bool acquisizione(float capVoltage)
   
   adc->stopSynchronizedContinuous();
 
-  adc->setAveraging(1);
-  adc->setResolution(10);
-  adc->setAveraging(1, ADC_1);
-  adc->setResolution(10, ADC_1);
-
   return true;
+}
+
+////////////////////////////////////////////////////////////////
+bool acquisizione(float capVoltage)
+{
+  ADC::Sync_result result;
+  bool flag = true;
+
+  // carica il condensatore e controlla se ha funzionato
+  flag = chargeToVoltage(capVoltage);
+  if (flag == false)
+    return flag;
+
+  return acquisizione();
 }
 
 ////////////////////////////////////////////////////////////////
