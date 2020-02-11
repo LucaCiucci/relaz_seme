@@ -46,7 +46,7 @@ bool shouldRestart(void);
 // puntatori globali ai dati
 int *ch1Data = NULL, *ch2Data = NULL;
 const int nAcq = 30;// !!! DA CAMBIARE (100 ?)
-float vMin = 0.2, vMax = 7.0, vStep = 0.05;// tensioni di partenza e di arrivo del condensatore
+float vMin = 0.2, vMax = 7.0, vStep = 0.05;// tensioni di partenza e di arrivo del condensatore, CAMBIARE!!!!!
 
 ////////////////////////////////////////////////////////////////
 //                      FUNZIONI                              //
@@ -227,7 +227,7 @@ void printData(void)
   for (int i = 0; i < nAcq; i++)
   {
     Serial.print(ch1Data[i]);
-    Serial.print("\t");
+    Serial.print("    ");
     Serial.println(ch2Data[i]);
   }
 }
@@ -257,7 +257,8 @@ bool shouldEnd(bool checkData)
 ////////////////////////////////////////////////////////////////
 void terminate(void)
 {
-  Serial.println("#E programma terminato!");
+  Serial.println("#E");
+  Serial.println("# programma terminato!");
   digitalWrite(dischargePin, HIGH);
   while(!shouldRestart());
   Serial.println("#R");
