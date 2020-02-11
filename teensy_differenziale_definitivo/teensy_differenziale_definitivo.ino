@@ -1,5 +1,7 @@
 #include <ADC.h>
 
+////////////////////////////////////////////////////////////////
+// Definizione pin
 const int readPin0P = A10;
 const int readPin0N = A11;
 const int readPin1P = A12;
@@ -13,17 +15,45 @@ const int pulsePin = 13;
 ADC *adc = new ADC(); // adc object
 
 ////////////////////////////////////////////////////////////////
+// dichiarazione funzioni
+
+// leggi la tensione del condensatore
 float getCapVoltage(void);
+
+// carica il condensatore a voltage, in un tempo massimo di maxSeconds
+// restituisce false se non riesce nel tempo previsto
 bool chargeToVoltage(float voltage, double maxSeconds = 20);
+
+// attacca mosfet e acquisisce dati
 bool acquisizione(void);
+
+// carica il condensatore a capVoltage e chiama acquisizione()
 bool acquisizione(float capVoltage);
+
 void printData(void);
 
+// controlla la seriale per il segnale di arresto e
+// se per caso è stata raggiunta la tensione di lettura massima
+bool shouldEnd(bool checkData = false);
+
+// termina il programma e scarica il condensatore
+void terminate(void);
+bool shouldRestart(void);
+
+////////////////////////////////////////////////////////////////
+// variabili globali
+
+// puntatori globali ai dati
 int *ch1Data = NULL, *ch2Data = NULL;
-const int nAcq = 10;// !!! DA CAMBIARE (100 ?)
+const int nAcq = 30;// !!! DA CAMBIARE (100 ?)
+float vMin = 0.2, vMax = 7.0, vStep = 0.05;// tensioni di partenza e di arrivo del condensatore
 
+////////////////////////////////////////////////////////////////
+//                      FUNZIONI                              //
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
 void setup() {
-
   // prima con questi pinMode non funzionava bene, teensy funziona diverso da arduino
   //pinMode(readPin0P, INPUT);
   //pinMode(readPin0N, INPUT);
@@ -40,7 +70,9 @@ void setup() {
   
   Serial.begin(9600);
 
-  delay(2000);
+  delay(5000);
+
+  terminate();
 }
 
 int myClamp(int x)
@@ -51,64 +83,38 @@ int myClamp(int x)
 }
 
 void loop() {
-
-  // questa è roba di prova
-  for (float v = 0.2; v <= 3.0; v += 0.1)
+  
+  for (float v = vMin; v <= vMax + vStep; v += vStep)
   {
-    //chargeToVoltage(v);
-    acquisizione(v);
+    if (!acquisizione(v))
+    {
+      terminate();
+      return;
+    }
     printData();
-    //delay(1000);
+    if (shouldEnd(true))
+    {
+      terminate();
+      return;
+    }
   }
-  delay(60000);
+  terminate();
   return;
-
-  digitalWrite(chargePin, HIGH);
-  for (int i = 0; i < 200; i++)
-  {
-    delay(50);
-    Serial.println(getCapVoltage());
-    //Serial.println(11.0 * 3.3 * adc->adc0->analogRead(out3Pin) / adc->adc0->getMaxValue());
-    //Serial.println(11.0 * 3.3 * adc->adc0->analogRead(out3Pin) / 4096);
-  }
-  digitalWrite(chargePin, LOW);
-  digitalWrite(dischargePin, HIGH);
-  for (int i = 0; i < 400; i++)
-  {
-    delay(50);
-    Serial.println(getCapVoltage());
-    //Serial.println(11.0 * 3.3 * adc->adc0->analogRead(out3Pin) / adc->adc0->getMaxValue());
-    //Serial.println(11.0 * 3.3 * adc->adc0->analogRead(out3Pin)/4096);
-  }
-  digitalWrite(dischargePin, LOW);
-
-  digitalWrite(dischargePin, HIGH);
-  delay(1000);
-  digitalWrite(dischargePin, LOW);
-
-  /*for (int i = 0; true; i++)
-  {
-    delay(10);
-    Serial.println(getCapVoltage());
-  }*/
-
-
 }
 
 ////////////////////////////////////////////////////////////////
 float getCapVoltage(void)
 {
-  adc->setAveraging(1, ADC_0);
+  // reimposta le impostazioni di ADC
+  adc->setAveraging(16, ADC_0);
   adc->setResolution(12, ADC_0);
   adc->setReference(ADC_REFERENCE::REF_3V3, ADC_0);
   adc->setConversionSpeed(ADC_CONVERSION_SPEED::LOW_SPEED, ADC_0);
-  adc->setAveraging(1, ADC_1);
+  adc->setAveraging(16, ADC_1);
   adc->setResolution(12, ADC_1);
   adc->setReference(ADC_REFERENCE::REF_3V3, ADC_1);
   adc->setConversionSpeed(ADC_CONVERSION_SPEED::LOW_SPEED, ADC_0);
-  //return OUT3FACTOR * adc->analogRead(out3Pin, ADC_0);
-  delay(1);
-  //return 11.0 * 3.3 * adc->adc0->analogRead(out3Pin) / adc->adc0->getMaxValue();
+
   return 11.0 * 3.3 * adc->adc0->analogRead(out3Pin) / adc->adc0->getMaxValue();
 }
 
@@ -120,22 +126,36 @@ bool chargeToVoltage(float voltage, double maxSeconds)
   {
     digitalWrite(chargePin, HIGH);
     while (getCapVoltage() < voltage)
+    {
       if (millis() - t0 > maxSeconds * 1000)
       {
         digitalWrite(chargePin, LOW);
         return false;
       }
+      if (shouldEnd(false))
+      {
+        digitalWrite(chargePin, LOW);
+        return false;
+      }
+    }
     digitalWrite(chargePin, LOW);
   }
   if (getCapVoltage() > voltage)
   {
     digitalWrite(dischargePin, HIGH);
     while (getCapVoltage() > voltage)
+    {
       if (millis() - t0 > maxSeconds * 1000)
       {
         digitalWrite(dischargePin, LOW);
         return false;
       }
+      if (shouldEnd(false))
+      {
+        digitalWrite(dischargePin, LOW);
+        return false;
+      }
+    }
     digitalWrite(dischargePin, LOW);
   }
 
@@ -146,9 +166,10 @@ bool chargeToVoltage(float voltage, double maxSeconds)
 ////////////////////////////////////////////////////////////////
 bool acquisizione(void)
 {
+  // classe per il ritorno dei risultati
   ADC::Sync_result result;
-  
-  // inizia l'acquisizione analogica
+
+  // imposta i parametri per l'acquisizione differenziale continua
   adc->setAveraging(1);
   adc->setResolution(12);
   adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED);
@@ -158,26 +179,29 @@ bool acquisizione(void)
   adc->setResolution(12, ADC_1);
   adc->setConversionSpeed(ADC_CONVERSION_SPEED::VERY_HIGH_SPEED, ADC_1);
   adc->setSamplingSpeed(ADC_SAMPLING_SPEED::VERY_HIGH_SPEED, ADC_1);
-  
+
+  // inizia l'acquisizione analogica continua
   adc->startSynchronizedContinuousDifferential(readPin0P, readPin0N, readPin1P, readPin1N);
 
   // attacca il MOS-FET
   digitalWrite(pulsePin, LOW);
   delayMicroseconds(50);// TODO: vedi se va bene e mangiare un panino
 
-  unsigned long t0 = micros();
+  //unsigned long t0 = micros();
   for (int i = 0; i < nAcq; i++)
   {
+    // aspetta che sia completa una conversione
     while(!adc->isComplete());
     result = adc->readSynchronizedContinuous();
-    ch1Data[i] = (uint16_t)result.result_adc0;
-    ch2Data[i] = (uint16_t)result.result_adc1;
+    ch1Data[i] = myClamp((uint16_t)result.result_adc0);
+    ch2Data[i] = myClamp((uint16_t)result.result_adc1);
   }
   digitalWrite(pulsePin, HIGH);
   
   //Serial.print("ci ho impiegato tot us per conversione");
   //Serial.println((float)(micros()-t0) / nAcq);
-  
+
+  // ferma l'acquisizione
   adc->stopSynchronizedContinuous();
 
   return true;
@@ -204,6 +228,53 @@ void printData(void)
   {
     Serial.print(ch1Data[i]);
     Serial.print("\t");
-    Serial.println(myClamp(ch2Data[i]));
+    Serial.println(ch2Data[i]);
   }
+}
+
+////////////////////////////////////////////////////////////////
+bool shouldEnd(bool checkData)
+{
+   if (Serial.available() > 0)
+   {
+      char c = Serial.read();
+      if (c == 'e' || c == "E")
+      {
+        return true;
+      }
+   }
+
+   if (checkData)
+      for (int i = 0; i < nAcq; i++)
+        if (ch1Data[i] + ch2Data[i] >= 4095)
+        {
+          return true;
+        }
+
+   return false;
+}
+
+////////////////////////////////////////////////////////////////
+void terminate(void)
+{
+  Serial.println("#E programma terminato!");
+  digitalWrite(dischargePin, HIGH);
+  while(!shouldRestart());
+  Serial.println("#R");
+  Serial.println("# Riavvio, attendi...");
+  delay(20000);
+  digitalWrite(dischargePin, LOW);
+}
+
+////////////////////////////////////////////////////////////////
+bool shouldRestart(void)
+{
+  if (Serial.available() > 0)
+   {
+      char c = Serial.read();
+      if (c == 'r' || c == "R")
+        return true;
+   }
+
+   return false;
 }
