@@ -241,3 +241,8 @@ qed=,
     \displaystyle #4 & \text{per variabili continue}#1
   \end{cases}
 }
+\newcommand\Scaleforall[1]{\vcenter{\hbox{\scalefont{#1}$\forall$}}}
+
+\DeclareMathOperator*\forevery{%
+  \vphantom\sum
+  \mathchoice{\Scaleforall{2}}{\Scaleforall{1.4}}{\Scaleforall{1}}{\Scaleforall{0.75}}}

@@ -41,7 +41,7 @@ keepspaces=true,
 
 \geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=30mm}
 \title{Modellizzazione della resistenza di diodi a giunzione PN per alte correnti di lavoro}
-\author{L. Ciucci(\thanks{Dipartimento di Fisica E. Fermi, Universit\`a di Pisa - Pisa, Italy} ) \and S. Bruzzesi(\protect\footnotemark[1] ) \and B. Tomelleri(\protect\footnotemark[1] )}
+\author{L.~Ciucci(\thanks{Dipartimento di Fisica E.~Fermi, Universit\`a di Pisa - Pisa, Italy} )~\and S.~Bruzzesi(\protect\footnotemark[1] )~\and M.~Romagnoli(\protect\footnotemark[1] )~\and M.~Alighieri(\protect\footnotemark[1] )~\and B.~Tomelleri(\protect\footnotemark[1] )}
 \date{2020/11/01}
 
 \begin{document}
@@ -75,23 +75,23 @@ Si è fatto uso della piattaforma di sviluppo \verb+Teensy 3.2+\cite{teensy} per
 \begin{figure}[!htb]
 	\centering 
  		\includegraphics[scale=2.2]{./measure.pdf}
- 	\caption{Schema circuitale del sistema di lettura (Teensy) \label{sch:rdng}}
+ 	\caption{Schema circuitale del sistema di lettura (\texttt{Teensy})\label{sch:rdng}}
 \end{figure}
 Come ultima cautela preliminare, per minimizzare le influenze esterne sulla misura della componente resistiva del diodo, si sono misurate le resistenze dei collegamenti del circuito, in quanto i cavi reali e gli ingressi del diodo possono avere resistenze non trascurabili rispetto a quella opposta dal diodo in regime di conduzione, nell'ordine di qualche ohm.
 
 Tramite il semplice circuito con interruttore in Figura \ref{sch:smpl} riusciamo a ricostruire sperimentalmente la curva caratteristica V-$I$ del diodo: si lascia scaricare repentinamente il condensatore sulla serie diodo-resistenza chiudendo l'interruttore, dunque dai canali di un oscilloscopio si misura la curva risultante.
 
-Vista la stabilità poco attendibile del circuito con interruttore azionato manualmente si è costruito una seconda versione del circuito (Fig. \ref{sch:gest}), in cui figura un sottocircuito di switch e un condensatore di capacità maggiore di un paio di ordini di grandezza. Infine si aggiunge la maglia a destra del condensatore, impiegata per caricare (e scaricare) quest'ultimo a diverse tensioni, controllate grazie a Teensy.
+Vista la stabilità poco attendibile del circuito con interruttore azionato manualmente si è costruito una seconda versione del circuito (Fig. \ref{sch:gest}), in cui figura un sottocircuito di switch e un condensatore di capacità maggiore di un paio di ordini di grandezza. Infine si aggiunge la maglia a destra del condensatore, impiegata per caricare (e scaricare) quest'ultimo a diverse tensioni, controllate grazie a \verb+Teensy+.
 Si sviluppano due casi principali:
 
 Se lasciamo caricare gradualmente il condensatore, essendo C decisamente maggiore rispetto ai condensatori precedenti si ha un tempo di carica $\tau = RC$ abbastanza prolungato, in cui possiamo campionare contemporaneamente tensione e corrente ai capi del diodo per correnti modeste, nel regime in cui il diodo è "interdetto" ed oppone resistenza al flusso di carica.
 
-Viceversa, nel regime in cui si applichi al diodo una d.d.p. ben al disopra di $V_{\rm thr} \approx 0.6 $V, che siamo liberi di esplorare variando la tensione di carica di C con il sottocircuito destro, il diodo idealmente lascia passare tutta la corrente impressa sulla giunzione. Allora per caratterizzare la risposta del diodo senza cambiarne drasticamente le caratteristiche (ad esempio per eccessiva agitazione termica) si impiega il circuito di switch per imprimere impulsi di alta corrente e breve durata sulla giunzione PN, di cui misuriamo la curva caratteristica in risposta con i due ADC di Teensy. 
+Viceversa, nel regime in cui si applichi al diodo una d.d.p. ben al disopra di $V_{\rm thr} \approx 0.6 $V, che siamo liberi di esplorare variando la tensione di carica di C con il sottocircuito destro, il diodo idealmente lascia passare tutta la corrente impressa sulla giunzione. Allora per caratterizzare la risposta del diodo senza cambiarne drasticamente le caratteristiche (ad esempio per eccessiva agitazione termica) si impiega il circuito di switch per imprimere impulsi di alta corrente e breve durata sulla giunzione PN, di cui misuriamo la curva caratteristica in risposta con i due ADC di \verb+Teensy+. 
 
 Se effettivamente il diodo, oltre ad una certa soglia di d.d.p. inizia ad avere componente resistiva sempre più pronunciata, allora riportando le nostre previsioni in carta semilogaritmica ci si aspetterebbe di trovare una retta, entro il regime in cui è valida l'approssimazione di Shockley, ma oltre a questo, una regione in cui la curva caratteristica della giunzione ora mostra una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto" di un logaritmo.  \section{Risultati e Analisi dati}
 \subsection{Nota sul metodo di fit}
 Per determinare i parametri ottimali e le rispettive varianze si \`e implementato un metodo di fit basato sui minimi quadrati in \verb+Python+ mediante la funzione \emph{curve\_fit} della libreria Scipy\cite{scipy}.
-\pagebreak
+\medskip
 \bibliographystyle{IEEEtrandoi}
 \bibliography{refs}
 \end{document}

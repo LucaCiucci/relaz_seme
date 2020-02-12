@@ -1,7 +1,7 @@
 import pylab 
 
-Directory='' 
-FileName=(Directory+'dati.txt') 
+Directory = '../data_did'
+FileName = Directory+ 'dati_sincronizzato.txt'
 
 x,y = pylab.loadtxt(FileName,unpack='True')
 
