@@ -56,7 +56,7 @@ bool shouldRestart(void);
 int *ch1Data = NULL, *ch2Data = NULL;
 const int nAcq = 100;// !!! DA CAMBIARE (100 ?)
 float vMin = 0.1, vMax = 7.0, vStep = 0.01;// tensioni di partenza e di arrivo del condensatore, CAMBIARE!!!!!
-int acqMultiplier = 5;
+int acqMultiplier = 1;
 
 ////////////////////////////////////////////////////////////////
 //                      FUNZIONI                              //
@@ -97,19 +97,16 @@ void loop() {
   
   for (float v = vMin; v <= vMax + vStep; v += vStep)
   {
-    for (int i = 0; i < acqMultiplier; i++)
+    if (!acquisizione(v))
     {
-      if (!acquisizione(v))
-      {
-        terminate();
-        return;
-      }
-      printData();
-      if (shouldEnd(true))
-      {
-        terminate();
-        return;
-      }
+      terminate();
+      return;
+    }
+    printData();
+    if (shouldEnd(true))
+    {
+      terminate();
+      return;
     }
   }
   terminate();
@@ -244,6 +241,7 @@ void printData(void)
     Serial.print("    ");
     Serial.println(ch2Data[i]);
   }
+  Serial.println("");
 }
 
 ////////////////////////////////////////////////////////////////
