@@ -54,8 +54,9 @@ bool shouldRestart(void);
 
 // puntatori globali ai dati
 int *ch1Data = NULL, *ch2Data = NULL;
-const int nAcq = 30;// !!! DA CAMBIARE (100 ?)
-float vMin = 0.2, vMax = 7.0, vStep = 0.05;// tensioni di partenza e di arrivo del condensatore, CAMBIARE!!!!!
+const int nAcq = 100;// !!! DA CAMBIARE (100 ?)
+float vMin = 0.1, vMax = 7.0, vStep = 0.01;// tensioni di partenza e di arrivo del condensatore, CAMBIARE!!!!!
+int acqMultiplier = 5;
 
 ////////////////////////////////////////////////////////////////
 //                      FUNZIONI                              //
@@ -96,16 +97,19 @@ void loop() {
   
   for (float v = vMin; v <= vMax + vStep; v += vStep)
   {
-    if (!acquisizione(v))
+    for (int i = 0; i < acqMultiplier; i++)
     {
-      terminate();
-      return;
-    }
-    printData();
-    if (shouldEnd(true))
-    {
-      terminate();
-      return;
+      if (!acquisizione(v))
+      {
+        terminate();
+        return;
+      }
+      printData();
+      if (shouldEnd(true))
+      {
+        terminate();
+        return;
+      }
     }
   }
   terminate();
@@ -116,11 +120,11 @@ void loop() {
 float getCapVoltage(void)
 {
   // reimposta le impostazioni di ADC
-  adc->setAveraging(16, ADC_0);
+  adc->setAveraging(32, ADC_0);
   adc->setResolution(12, ADC_0);
   adc->setReference(ADC_REFERENCE::REF_3V3, ADC_0);
   adc->setConversionSpeed(ADC_CONVERSION_SPEED::LOW_SPEED, ADC_0);
-  adc->setAveraging(16, ADC_1);
+  adc->setAveraging(32, ADC_1);
   adc->setResolution(12, ADC_1);
   adc->setReference(ADC_REFERENCE::REF_3V3, ADC_1);
   adc->setConversionSpeed(ADC_CONVERSION_SPEED::LOW_SPEED, ADC_0);
