@@ -69,8 +69,8 @@ void setup() {
   //pinMode(readPin1P, INPUT);
   //pinMode(readPin1N, INPUT);
   //pinMode(out3Pin, INPUT);
-  pinMode(chargePin, OUTPUT);
-  pinMode(dischargePin, OUTPUT);
+  pinMode(chargePin, OUTPUT); digitalWrite(chargePin, LOW);
+  pinMode(dischargePin, OUTPUT); digitalWrite(dischargePin, LOW);
   pinMode(pulsePin, OUTPUT); digitalWrite(pulsePin, HIGH);
 
   // alloca spazio per i dati
@@ -91,6 +91,7 @@ int myClamp(int x)
   return x;
 }
 
+////////////////////////////////////////////////////////////////
 void loop() {
   
   for (float v = vMin; v <= vMax + vStep; v += vStep)
@@ -247,7 +248,7 @@ bool shouldEnd(bool checkData)
    if (Serial.available() > 0)
    {
       char c = Serial.read();
-      if (c == 'e' || c == "E")
+      if (c == 'e' || c == 'E')
       {
         return true;
       }
@@ -282,7 +283,7 @@ bool shouldRestart(void)
   if (Serial.available() > 0)
    {
       char c = Serial.read();
-      if (c == 'r' || c == "R")
+      if (c == 'r' || c == 'R')
         return true;
    }
 
