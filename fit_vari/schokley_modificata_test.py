@@ -1,7 +1,7 @@
 import numpy
 import pylab
 
-Nstep = 100
+Nstep = 1000
 
 
 def sck(V, I0, nVt):
@@ -23,10 +23,11 @@ def curr(V, I0, nVt, R):
 def ddp(I, nVt, I0, R):
     return nVt*pylab.log((I0+I)/I0) + R*I
 
-xx = numpy.linspace(0., 2., 100)
-yy = numpy.linspace(0., 8., 100)
+xx = numpy.linspace(0., 2., 10000)
+yy = numpy.logspace(-7, 1, 10000)
 pylab.plot(xx, curr(xx, 1./10**8, 52./1000, 0.1), color = 'red')
 pylab.plot(ddp(yy,  52./1000, 1./10**8, 0.1), yy, color = 'black')
+pylab.semilogy()
 pylab.show()
 
 # -----------------------------
