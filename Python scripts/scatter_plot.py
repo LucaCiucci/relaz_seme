@@ -56,9 +56,12 @@ def lin(x, m, q):
 
 def slp(x, s):
     return s*x
-# derivata numerica e calcolo chi quadro
+# derivata numerica e legge di Shockley
 def f_1 (x, pars):
     return derivative(lin, x, dx = 1e-6, n = 1, args = pars);
+
+def sck(V, I0, VT):
+    return I0*(np.exp(V/(VT)) -1.)
 
 def chitest(y, dy, model, ddof=0):
     res = y - model
@@ -72,7 +75,7 @@ def chitest(y, dy, model, ddof=0):
 if tex:
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
-init=(0.005, 0.02)
+init=(5e-2, 59)
 fig, ax = plt.subplots()
 xx = np.linspace(min(x), max(x), 500)
 if log:
@@ -87,7 +90,7 @@ ax.minorticks_on()
 ax.tick_params(direction='in', length=5, width=1., top=True, right=True)
 ax.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 if fit:
-    ax.plot(xx, lin(xx, *init), 'k--', lw=0.8, zorder=10, alpha =0.6,
+    ax.plot(xx, sck(xx, *init), 'k--', lw=0.8, zorder=10, alpha =0.6,
             label='initial fit')
 legend = ax.legend(loc ='best')
 plt.show()
