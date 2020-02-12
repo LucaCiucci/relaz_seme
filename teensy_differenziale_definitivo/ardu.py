@@ -2,8 +2,8 @@ import serial
 import time 
 import numpy
 
-Directory = '../data_did'
-FileName = Directory+ 'dati_sincronizzato.txt'
+Directory = '../data_did/'
+FileName = Directory+ 'dati_2.2_1.txt'
 outputFile = open(FileName, "w" ) 
 
 # apre porta seriale (occhio alla sintassi, dipende
