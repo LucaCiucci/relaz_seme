@@ -1,5 +1,14 @@
 #include <ADC.h>
 
+/*
+ * Utilizzo:
+ *   - seriale a 9600
+ *   - mandare E per uscire dall'eventuale run corrente
+ *   - Mandare R per ricominciare il nuovo run
+ *   - ogni avvio inizia con "#R" e termina con "#E"
+ *   - i dati sono inviati nella forma: "ADC_0_value  ADC_1_value"
+ */
+
 ////////////////////////////////////////////////////////////////
 // Definizione pin
 const int readPin0P = A10;
@@ -257,8 +266,8 @@ bool shouldEnd(bool checkData)
 ////////////////////////////////////////////////////////////////
 void terminate(void)
 {
-  Serial.println("#E");
   Serial.println("# programma terminato!");
+  Serial.println("#E");
   digitalWrite(dischargePin, HIGH);
   while(!shouldRestart());
   Serial.println("#R");
