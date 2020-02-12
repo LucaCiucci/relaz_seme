@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.22)  8 FEB 2020 01:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.22)  8 FEB 2020 21:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1937,7 +1937,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/9'.
 (microtype)             Ignoring protrusion settings for this character.
 [2 <./figs/./simple.pdf>] (./diodo.bbl [3 <./figs/./gestione.pdf> <./figs/./mea
-sure.pdf>] [4]) [5]
+sure.pdf>]) [4]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
  (./diodo.aux)
@@ -1948,11 +1948,11 @@ Package rerunfilecheck Info: File `diodo.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
  ) 
 Here is how much of TeX's memory you used:
- 63794 strings out of 492162
- 1519977 string characters out of 6129062
- 1877531 words of memory out of 10000000
- 67169 multiletter control sequences out of 15000+600000
- 645011 words of font info for 159 fonts, out of 8000000 for 9000
+ 63797 strings out of 492162
+ 1520025 string characters out of 6129062
+ 1878532 words of memory out of 10000000
+ 67170 multiletter control sequences out of 15000+600000
+ 645413 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,22n,127p,939b,1071s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2019/tex
@@ -1970,11 +1970,12 @@ type1/public/lm/lmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
 /type1/public/lm/lmri10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/l
 msy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/texli
 ve/2019/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><c:/texlive/2019/texmf-dist/
-fonts/type1/public/lm/lmtt10.pfb>
-Output written on diodo.pdf (5 pages, 343225 bytes).
+fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public
+/lm/lmtt9.pfb>
+Output written on diodo.pdf (4 pages, 358890 bytes).
 PDF statistics:
  158 PDF objects out of 1000 (max. 8388607)
  130 compressed objects within 2 object streams
- 17 named destinations out of 1000 (max. 500000)
- 53324 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 16 named destinations out of 1000 (max. 500000)
+ 53836 words of extra memory for PDF output out of 61914 (max. 10000000)
 
