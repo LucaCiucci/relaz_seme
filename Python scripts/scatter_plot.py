@@ -9,10 +9,10 @@ from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.misc import derivative
 import glob
-from sys import exit
 
 # Estrazione e stampa a schermo delle medie delle misure di x
 Dir= '../data_did/'
+Dir_e='../teensy_differenziale_definitivo/'
 ddpfiles = glob.glob(Dir+'e_8 data/avgdevs/*txt')
 def digitddp():
     x=[]
@@ -34,18 +34,18 @@ log = False # log-scale axis/es
 tick = False # manually choose spacing between axis ticks
 tex = True # LaTeX typesetting maths and descriptions
 # Extrazione dei vettori di dati grezzi
-V1, V2 = np.loadtxt(Dir+'dati_sincronizzato.txt', unpack=True)
+V2, dV2, V1, dV1 = np.loadtxt(Dir_e+'file.txt', unpack = True, usecols=(0,1,2,4))
 if DSO:
     V1, V2 = np.genfromtxt(Dir+'e_8 data/FAT_32.csv', float, delimiter=',',
                      skip_header = 2, usecols=(0, 1), unpack = True)
 # Trasformazione dei dati nelle grandezze da fittare
 x = V1
-dx = np.full(len(x),1.)
+dx = np.sqrt(dV1)
 y = V2
-dy = np.full(len(y),1.)
+dy = np.sqrt(dV2)
 # Estrazione di un sottointervallo di dati
 x_min = -1.
-x_max = 1.e3
+x_max = 1.e5
 x1 = x[x>x_min]; sx = x1[x1<x_max];
 y1 = y[x>x_min]; sy = y1[x1<x_max];
 dx1 = dx[x>x_min]; sdx = dx1[x1<x_max];
@@ -63,6 +63,12 @@ def f_1 (x, pars):
 def sck(V, I0, VT):
     return I0*(np.exp(V/(VT)) -1.)
 
+def conv(x):
+    central = lin(x, *popt)
+    unc = np.sqrt(pcov[0][0]*x**2 + pcov[1][1] + 2*pcov[0][1]*x)
+    print("conv(x) = %.2f +- %.2f" %(central, unc))
+    return [central, unc]
+
 def chitest(y, dy, model, ddof=0):
     res = y - model
     resnorm = res/dy
@@ -71,53 +77,28 @@ def chitest(y, dy, model, ddof=0):
     sigma = (chisq - ndof)/np.sqrt(2*ndof)
     return chisq, ndof, sigma    
 
-# Grafico preliminare dati
-if tex:
-    plt.rc('text', usetex=True)
-    plt.rc('font', family='serif')
-init=(5e-2, 59)
-fig, ax = plt.subplots()
-xx = np.linspace(min(x), max(x), 500)
-if log:
-    xx = np.logspace(np.log10(min(sx)), np.log10(max(sx)), len(xx))
-    ax.set_yscale('log')
-ax.errorbar(sx, sy, sdy, sdx, 'ko', ms=1.2, elinewidth=1, capsize= 1,
-        ls='',label='data', zorder=5)
-ax.grid(color = 'gray', ls = '--', alpha=0.7)
-ax.set_xlabel('x [digit]', x=0.9)
-ax.set_ylabel('y [digit]')
-ax.minorticks_on()
-ax.tick_params(direction='in', length=5, width=1., top=True, right=True)
-ax.tick_params(which='minor', direction='in', width=1., top=True, right=True)
-if fit:
-    ax.plot(xx, sck(xx, *init), 'k--', lw=0.8, zorder=10, alpha =0.6,
-            label='initial fit')
-legend = ax.legend(loc ='best')
-plt.show()
-
-if not fit:
-    exit()
-sx, sdx, sy, sdy = np.loadtxt(Dir+'e_8 data/volt_cal.txt', unpack=True)
+#sx, sdx, sy, sdy = np.loadtxt(Dir+'e_8 data/volt_cal.txt', unpack=True)
 # Fit lineare di y rispetto a x
-pars, covm = curve_fit(lin, sx, sy, init, sdy, absolute_sigma=True)
-print('Parametri del fit:\n', pars)
-print('Matrice di Covarianza:\n', covm)
-m, q = pars
-dm, dq = np.sqrt(covm.diagonal())
+init=(1e-2, 1e-2)
+popt, pcov = curve_fit(lin, sx, sy, init, sdy, absolute_sigma=True)
+print('Parametri del fit:\n', popt)
+print('Matrice di Covarianza:\n', pcov)
+m, q = popt
+dm, dq = np.sqrt(pcov.diagonal())
 print('Coefficiente angolare: %.5f +- %.5f' %(m, dm))
 print('Intercetta: %.5f +- %.5f' %(q, dq))
 # Test Chi quadro
-res = sy - lin(sx, *pars)
+res = sy - lin(sx, *popt)
 resnorm = res/sdy
-chisq, ndof, sigma = chitest(sy, sdy, lin(sx, *pars), ddof=len(pars))
+chisq, ndof, sigma = chitest(sy, sdy, lin(sx, *popt), ddof=len(popt))
 print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisq, ndof, sigma))
 print('Chi quadro ridotto:', chisq/ndof)
 # Covarianza tra m e q
-corr = covm[0][1]/(dm*dq)
+corr = pcov[0][1]/(dm*dq)
 corm = np.zeros((2,2))
 for i in range(2):
     for j in range (2):
-        corm[i][j] = covm[i][j]/covm[i][i]
+        corm[i][j] = pcov[i][j]/pcov[i][i]
     
 print('Covarianza normalizzata:', corr)
 print('Matrice di correlazione:\n', corm)
@@ -126,10 +107,10 @@ print('Matrice di correlazione:\n', corm)
 soglia = 4
 max_iter=100
 Compatibili = True
+deff = sdy
 if(np.mean(sdy) > soglia*(np.mean(sdx)*m)):
     Compatibili = False
 if(Compatibili):
-    deff = sdy
     for n in range(max_iter):
         popt, pcov = curve_fit(lin, sx, sy, init, deff, absolute_sigma=True)
         m, q = popt
@@ -152,11 +133,11 @@ if(Compatibili):
             print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisq, ndof, sigma))
             print('Chi quadro ridotto:', chirid)
             # Covarianza tra q e m
-            corr = covm[0][1]/(dm*dq)
+            corr = pcov[0][1]/(dm*dq)
             corm = np.zeros((2,2))
             for i in range(2):
                 for j in range (2):
-                    corm[i][j] = covm[i][j]/covm[i][i]
+                    corm[i][j] = pcov[i][j]/pcov[i][i]
     
             print('Covarianza normalizzata:', corr)
             print('Matrice di correlazione:\n', corm)
@@ -178,15 +159,15 @@ ax1.errorbar(sx, sy, deff, sdx, 'ko', ms=1.2, elinewidth=1, capsize= 1,
              ls='',label='data', zorder=5)
 ax1.plot(xx, lin(xx, *popt), c='gray', lw=0.8,
          label='fit $\chi^2 = %.1f/%d$' %(chisq, ndof), zorder=10)
-ax1.plot(xx, lin(xx, pars[0]+np.sqrt(covm[0][0]), pars[1]+np.sqrt(covm[1][1])),
+ax1.plot(xx, lin(xx, popt[0]+np.sqrt(pcov[0][0]), popt[1]+np.sqrt(pcov[1][1])),
          'r--', lw=0.8, zorder=10, alpha =0.6)
-ax1.plot(xx, lin(xx, pars[0]-np.sqrt(covm[0][0]), pars[1]-np.sqrt(covm[1][1])),
+ax1.plot(xx, lin(xx, popt[0]-np.sqrt(pcov[0][0]), popt[1]-np.sqrt(pcov[1][1])),
          'b--', lw=0.8, zorder=10, alpha =0.6)
 if tick:
     ax1.yaxis.set_major_locator(plt.MultipleLocator(0.5))
     ax1.yaxis.set_minor_locator(plt.MultipleLocator(0.1))
     # ax1.set_xlim(min(xx), max(xx))
-    # ax1.set_ylim(min(lin(xx, *pars)), max(lin(xx, *pars)))
+    # ax1.set_ylim(min(lin(xx, *popt)), max(lin(xx, *popt)))
 ax1.tick_params(direction='in', length=5, width=1., top=True, right=True)
 ax1.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 legend = ax1.legend(loc ='best')
@@ -251,3 +232,4 @@ if tick:
     ax2.yaxis.set_minor_locator(plt.MultipleLocator(0.1))
 ax2.tick_params(direction='in', length=5, width=1., top=True, right=True)
 ax2.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+plt.show()

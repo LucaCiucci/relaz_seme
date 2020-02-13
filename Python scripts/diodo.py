@@ -7,27 +7,20 @@ Created on Wed Dec 11 12:57:42 2019
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
-# Variabili di controllo dei grafici in ordine decrescente di pesantezza
-tex=False
-tick=True
-log=False
+''' Variables that control the script '''
+DSO = False # Sampling from Digital Oscilloscope
+fit = True # attempt to fit the data
+log = False # log-scale axis/es
+tick = False # manually choose spacing between axis ticks
+tex = True # LaTeX typesetting maths and descriptions
 # Definizione componenti del circuito
-R_D = 326.
-dR_D = 1.3
-R = 6.8e2
-dR = R*0.05 
-C = 220.e-6
-dC = C*0.5
-tau = R*C
-dtau = np.sqrt((R*dC)**2 + (C*dR)**2)
-fT = 1./(2*np.pi*tau)
-#dT = 1./2*np.pi*(dtau/tau**2)
-dfT = fT*0.5
-print('Frequenza Taglio = %f +- %f' %(fT, dfT))
+R_D = 22.
+dR_D = 1.
 Xi = 5.00/1023
 dXi = 0.25/1023
 
-V1, V2 = np.loadtxt('./data_did/326_100mu.txt', unpack=True)
+Dir_e='../data_elaborati/'
+V1, V2 = np.loadtxt(Dir_e+'dati_22_1el.txt', unpack=True)
 """ Extrazione delle colonne di ddp misurate in digit 
     sull'intervallo selezionato
 """
@@ -40,20 +33,23 @@ dV1l= dV1[V1>x_min]; sdV1 = dV1l[V1l<x_max];
 V2l = V2[V1>x_min]; sV2 = V2l[V1l<x_max];
 dV2l= dV1[V1>x_min]; sdV2 = dV2l[V1l<x_max];
 # Definizione variabili generali grafico
-x = V2*Xi*1e3
-dx = dV2*Xi*1e3
-sx=sV2*Xi*1e3
-sdx = sdV2*Xi*1e3
-y = (V1*Xi*1e3 - x)/R_D
-dy = (dV1*Xi*1e3 + dx)/R_D
-sy = (sV1*Xi*1e3 - sx)/R_D
-dV1V2 = np.sqrt((sdV1*Xi)**2 + sdx**2)
-sdy = np.sqrt(((np.sqrt((sdV1*Xi)**2 + sdx**2))*R_D)**2 + (dR_D*sy)**2)/R_D**2
+x = V1*Xi
+dx = dV1*Xi
+sx=sV1*Xi
+sdx = sdV1*Xi
+y = (V2*Xi)/R_D
+dy = (dV2*Xi + dx)/R_D
+sy = (sV2*Xi)/R_D
+dV1V2 = np.sqrt((sdV2*Xi)**2 + sdx**2)
+sdy = np.sqrt(((np.sqrt((sdV2*Xi)**2 + sdx**2))*R_D)**2 + (dR_D*sy)**2)/R_D**2
 sdy*=2
 
 # Legge di Shockley
 def sck(V, I0, VT):
     return I0*(np.exp(V/(VT)) -1.)
+
+def inv(I, I0, nVT, r):
+    return np.log(I/I0)*nVT + r*I
 
 def chitest(y, dy, model, ddof=0):
     res = y - model
@@ -67,21 +63,28 @@ def chitest(y, dy, model, ddof=0):
 if tex:
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
-
-init=(1.e-7, 2*25)    
-xx = np.linspace(min(x)-0.04, max(x)+0.01, 1000)
+init=(2e-9, 0.3)
 fig, ax = plt.subplots()
-ax.errorbar(x, y, dy, dx, 'ko', ms=1.2, elinewidth=1, capsize= 1,
+xx = np.linspace(min(sx), max(sx), 500)
+if log:
+    xx = np.logspace(np.log10(min(sx)), np.log10(max(sx)), len(xx))
+    ax.set_yscale('log')
+ax.errorbar(sx, sy, sdy, sdx, 'ko', ms=1.2, elinewidth=1, capsize= 1,
         ls='',label='data', zorder=5)
-ax.plot(xx, sck(xx, *init), 'k--', lw=0.8, zorder=10, alpha =0.6,
-       label='initial fit')
 ax.grid(color = 'gray', ls = '--', alpha=0.7)
-ax.set_xlabel('x [a.u.]', x=0.9)
-ax.set_ylabel('y [a.u.]')
+ax.set_xlabel('x [digit]', x=0.9)
+ax.set_ylabel('y [digit]')
 ax.minorticks_on()
 ax.tick_params(direction='in', length=5, width=1., top=True, right=True)
 ax.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+if fit:
+    ax.plot(xx, sck(xx, *init), 'k--', lw=0.8, zorder=10, alpha =0.6,
+            label='initial fit')
 legend = ax.legend(loc ='best')
+plt.show()
+
+if not fit:
+    exit()
 
 # Fit per sck di I rispetto a V
 pars, covm = curve_fit(sck, sx, sy, init, sdy, absolute_sigma=False)
@@ -94,7 +97,7 @@ print('VT: %f +- %f' %(VT, dVT))
 # Test Chi quadro per sck
 res = sy - sck(sx, *pars)
 resnorm = res/sdy
-chisq, ndof, sigma = chitest(sy, dy, sck(sx, *pars), ddof=len(pars))
+chisq, ndof, sigma = chitest(sy, sdy, sck(sx, *pars), ddof=len(pars))
 print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisq, ndof, sigma))
 print('Chi quadro ridotto:', chisq/ndof)
 # Covarianza tra I0 e VT
@@ -128,7 +131,7 @@ if(Compatibili):
             # Test Chi quadro
             res = sy - sck(sx, *popt)
             resnorm = res/deff
-            chisq, ndof, sigma = chitest(sy, dy, sck(sx, *pars),
+            chisq, ndof, sigma = chitest(sy, sdy, sck(sx, *pars),
                                          ddof=len(pars))
             print('Chi quadro/ndof = %f/%d [%+.1f]' % (chisq, ndof, sigma))
             print('Chi quadro ridotto:', chisq/ndof)
@@ -145,13 +148,13 @@ if(Compatibili):
 # Plot y vs x
 fig1,(ax1, ax2) = plt.subplots(2,1, True, gridspec_kw={'wspace':0.05,
      'hspace':0.05, 'height_ratios': [3, 1]})
+xx = np.linspace(min(sx), max(sx), 2000)
 if log:
     tick=False
     xx = np.logspace(np.log10(min(x)), np.log10(max(x)), 2000)
     ax1.set_yscale('log')
     ax1.set_xscale('log')
     ax1.minorticks_on()
-
 ax1.grid(color = 'gray', ls = '--', alpha=0.7)
 ax1.errorbar(sx, sy, sdy, sdx, 'ko', ms=1.2, elinewidth=1, capsize= 1,
              ls='',label='data', zorder=5)
@@ -159,7 +162,7 @@ ax1.plot(xx, sck(xx, *pars), c='gray', lw=0.8,
          label='fit $\chi^2 = %.f/%d$' %(chisq, ndof), zorder=10)
 ax1.plot(xx, sck(xx, I0+dI0, VT + dVT), 'r--', lw=0.8, zorder=10, alpha =0.6)
 ax1.plot(xx, sck(xx, I0-dI0,  VT-dVT), 'b--', lw=0.8, zorder=10, alpha =0.6)
-ax1.axhline(I0, lw=1.4, ls='--', c='k', alpha=0.7, zorder=1)
+# ax1.axhline(I0, lw=1.4, ls='--', c='k', alpha=0.7, zorder=1)
 ax1.set_ylabel('Intensità di Corrente $I$ [mA]')    
 if tick:
     ax1.yaxis.set_major_locator(plt.MultipleLocator(0.2))
