@@ -110,6 +110,7 @@ def V2I(V, R, dV = 0., dR = 0.):
 #================================
 #     operazioni preliminari
 #================================
+print("\npreparazione...")
 
 # operazioni con cartelle temporanee
 try:
@@ -132,10 +133,12 @@ os.mkdir(tmp_folder)
 #================================
 #        correzione dati
 #================================
+print("\nlettura file originali...")
 
 # legge i dati e mette nella cartella temporanea quelli corretti (copiato da control.py)
 for _name in data_files:
     name = data_folder + _name
+    print(name)
     data_file = open(name, 'r')
     tmp_file = open(tmp_folder + _name, 'w')
     lines = data_file.readlines()
@@ -149,6 +152,7 @@ for _name in data_files:
 #================================
 #         lettura dati
 #================================
+print("\nlettura file temporanei...")
 
 # leggi dati ADC0 e ADC1 dalla cartella temporanea
 
@@ -178,6 +182,17 @@ ADC0datas = np.array(ADC0datas)
 ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
 ADC1stds = np.array(ADC1stds)
+
+# elimina i dati senza senso
+for i in range(Nruns):
+    for j in range(len(ADC1datas[i])):
+        # se un numero è maggiore di 4095, allora elimina la coppia
+        if (ADC0datas[i][j] > 4095 or ADC0datas[i][j] < -4095 or ADC1datas[i][j] > 4095 or ADC1datas[i][j] < -4095):
+            np.delete(ADC0datas[i], j)
+            np.delete(ADC1datas[i], j)
+            np.delete(ADC0stds[i], j)
+            np.delete(ADC1stds[i], j)
+
 
 #================================
 #          conversioni
@@ -217,7 +232,7 @@ currentStds = np.array(currentStds)
 # NOTA: da qui in poi sono solo test a caso, il programma dovrà continuare...
 for i in range(Nruns):
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
-    Nskip = 100
+    Nskip = 1
     pylab.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip], currentStds[i][0::Nskip], voltageStds[i][0::Nskip], linestyle = '', marker = '.');
 pylab.semilogy()
 pylab.show()
