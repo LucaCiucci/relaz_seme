@@ -1,20 +1,21 @@
 ####CONTROLLO
 import pylab
 import numpy
+from matplotlib import pyplot as plt
 
 Directory = '../data_did/'
-FileName = Directory+ 'dati_2.2_1.txt'
+FileName = 'dati_0.22_1.txt'
 Directory2 = '../data_elaborati/'
-FileName2 = Directory2+ 'dati_2.2_1el.txt'
+FileName2 ='dati_0.22_1el.txt'
 Directory3 = '../tmp/'
-FileName3 = Directory2+ 'tmp2.2_1.txt'
+FileName3 = 'tmp0.22_1.txt'
 
 
 x = []
 y = []
 
-f = open(FileName, 'r')
-f2 = open(FileName3, 'w')
+f = open(Directory + FileName, 'r')
+f2 = open(Directory3 + FileName3, 'w')
 lines = f.readlines()
 for i in range(len(lines)):
     if len(lines[i]) <= 14:
@@ -22,9 +23,9 @@ for i in range(len(lines)):
         f2.write("\n")
 f.close()
 f2.close()
-x, y = pylab.loadtxt(FileName3, unpack = True)
-pylab.errorbar(x, y, linestyle = '', marker = '.')
-pylab.show()
+x, y = numpy.loadtxt(Directory3 + FileName3, unpack = True)
+plt.errorbar(x, y, linestyle = '', marker = '.')
+plt.show()
 
 
 t = []
@@ -37,10 +38,10 @@ for i in range(len(x)):
 x = numpy.array(t)
 y = numpy.array(v)
 
-pylab.errorbar(x, y, linestyle = '', marker = '.')
-pylab.show()
+plt.errorbar(x, y, linestyle = '', marker = '.')
+plt.show()
 
-f3 = open(FileName2, 'w')
+f3 = open(Directory2 + FileName2, 'w')
 for i in range(len(x)):
     f3.write("%f    %f\n" % (x[i], y[i]))
 

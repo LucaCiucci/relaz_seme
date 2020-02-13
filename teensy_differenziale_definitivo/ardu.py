@@ -3,13 +3,13 @@ import time
 import numpy
 
 Directory = '../data_did/'
-FileName = Directory+ 'dati_2.2_1.txt'
-outputFile = open(FileName, "w" ) 
+FileName = 'dati_0.22_1.txt'
+outputFile = open(Directory + FileName, "w" ) 
 
 # apre porta seriale (occhio alla sintassi, dipende
 # dal sistema operativo!)
 #ard = serial.Serial('/dev/ttyACM0',19200)
-ard = serial.Serial('COM3',9600)
+ard = serial.Serial('COM11',9600)
 
 print('Start Acquisition') # scrive sulla console (terminale)
 time.sleep(2)

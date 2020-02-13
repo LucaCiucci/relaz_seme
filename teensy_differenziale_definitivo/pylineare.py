@@ -21,6 +21,14 @@ def leggesumerror(x, a, b, c, d, f):
 def leggedifferror(x, a, b, c, d, f):
     return legge(x, a, b) - legge_error(x, c, d, f)
 
+def leggedifferror_model(x, a, b, c, d, f ):
+    return legge(x, a, b) - pylab.sqrt(legge_error(x, c, d, f)**2 + (legge(x, a, b)*(0.7/100))**2)
+
+
+def leggesumerror_model(x, a, b, c, d,f ):
+    return legge(x, a, b) + pylab.sqrt(legge_error(x, c, d, f)**2 + (legge(x, a, b)*(0.7/100))**2)
+
+
 
 ##ADC0
 
@@ -103,6 +111,25 @@ pylab.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][
 pylab.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'black')
 pylab.show()
 
+
+pylab.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
+pylab.plot(bucket, ordinate, color = 'red')
+pylab.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'black')
+pylab.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'black')
+pylab.plot(bucket, leggesumerror_model(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'green')
+pylab.plot(bucket, leggedifferror_model(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'green')
+pylab.show()
+
+matrixADC0 = pcov
+parADC0 = popt
+print("----------------------")
+print("matrixADC0")
+print(matrixADC0)
+print("parADC0")
+print(parADC0)
+print("----------------------")
+
+
 ###ADC1
 x = t
 dx = dt
@@ -176,3 +203,22 @@ dyvalue = pylab.sqrt(pcov[0][0] *value**2 + pcov[1][1] + 2*pcov[0][1]*value)
 
 print("yvalue = %f +- %f" %(yvalue, dyvalue))
 
+
+pylab.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
+pylab.plot(bucket, ordinate, color = 'red')
+pylab.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'black')
+pylab.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'black')
+pylab.plot(bucket, leggesumerror_model(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'green')
+pylab.plot(bucket, leggedifferror_model(bucket, *popt, pcov[0][0], pcov[1][1], pcov[0][1]), color = 'green')
+pylab.show()
+
+
+matrixADC1 = pcov
+parADC1 = popt
+
+print("----------------------")
+print("matrixADC1")
+print(matrixADC1)
+print("parADC1")
+print(parADC1)
+print("----------------------")
