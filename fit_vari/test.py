@@ -36,6 +36,8 @@ tmp_folder = "tmp/"
 # file di dati (da modificare)
 data_folder = "data/"
 data_files = [
+    "dati_220k.txt",
+    "dati_22k.txt",
     "dati_2.2k.txt",
     "dati_220.txt",
     "dati_22.txt",
@@ -46,6 +48,8 @@ Nruns = len(data_files) # numero di files (runs)
 
 # valori resistenze (da modificare)
 Rs = np.array([
+    200e3,
+    22e3,
     2.2e3,
     220.,
     22.,
@@ -53,6 +57,8 @@ Rs = np.array([
     0.22
     ])
 dRs = np.array([
+    10e3,
+    1e3,
     0.1e3,
     10.,
     1.,
