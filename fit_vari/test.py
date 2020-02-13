@@ -183,7 +183,7 @@ ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
 ADC1stds = np.array(ADC1stds)
 
-# elimina i dati senza senso
+# elimina i dati senza senso (??? non funziona)
 for i in range(Nruns):
     for j in range(len(ADC1datas[i])):
         # se un numero è maggiore di 4095, allora elimina la coppia
