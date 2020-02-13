@@ -103,7 +103,6 @@ dw = numpy.zeros(len(dy))
 for i in range(5):
     for j in range(len(dy)):
         dw[j] = pylab.sqrt(dy[j]**2 + (curr(x[j] + dx[j], *popt)- curr(x[j], *popt))**2)
-    print(dw)
     popt, pcov = curve_fit(curr, x, y, init, dw, absolute_sigma = False)
 a1, a2, a3= popt
 da1, da2, da3= pylab.sqrt(pcov.diagonal())
