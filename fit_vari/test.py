@@ -232,7 +232,7 @@ currentStds = np.array(currentStds)
 # NOTA: da qui in poi sono solo test a caso, il programma dovrà continuare...
 for i in range(Nruns):
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
-    Nskip = 1
+    Nskip = 100
     pylab.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip], currentStds[i][0::Nskip], voltageStds[i][0::Nskip], linestyle = '', marker = '.');
 pylab.semilogy()
 pylab.show()
