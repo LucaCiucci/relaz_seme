@@ -31,7 +31,7 @@ def digitddp():
 DSO = False # Sampling from Digital Oscilloscope
 fit = True # attempt to fit the data
 log = False # log-scale axis/es
-tick = False # manually choose spacing between axis ticks
+tick = True # manually choose spacing between axis ticks
 tex = True # LaTeX typesetting maths and descriptions
 # Extrazione dei vettori di dati grezzi
 V2, dV2, V1, dV1 = np.loadtxt(Dir_e+'file.txt', unpack = True, usecols=(0,1,2,4))
@@ -79,6 +79,9 @@ def chitest(y, dy, model, ddof=0):
 
 #sx, sdx, sy, sdy = np.loadtxt(Dir+'e_8 data/volt_cal.txt', unpack=True)
 # Fit lineare di y rispetto a x
+if tex:
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 init=(1e-2, 1e-2)
 popt, pcov = curve_fit(lin, sx, sy, init, sdy, absolute_sigma=True)
 print('Parametri del fit:\n', popt)
@@ -179,8 +182,8 @@ ax2.errorbar(sx, resnorm, None, None, 'ko', elinewidth=1, capsize=2, ms=2.5,
              ls='--', lw=1., zorder=0)
 ax2.grid(color ='gray', ls = '--', alpha=0.7)
 if tick:
-    ax2.xaxis.set_major_locator(plt.MultipleLocator(abs(x[0]-x[len(x)-1])/8.))
-    ax2.xaxis.set_minor_locator(plt.MultipleLocator(abs(x[0]-x[len(x)-1])/40.))
+    ax2.xaxis.set_major_locator(plt.MultipleLocator(5e2))
+    ax2.xaxis.set_minor_locator(plt.MultipleLocator(1e2))
     ax2.yaxis.set_major_locator(plt.MultipleLocator(0.5))
     ax2.yaxis.set_minor_locator(plt.MultipleLocator(0.1))
 ax2.tick_params(direction='in', length=5, width=1., top=True, right=True)
@@ -226,8 +229,8 @@ ax2.errorbar(sx, resnorm, None, None, 'ko', elinewidth=1, capsize=2, ms=2.5,
              ls='--', lw=1., zorder=0)
 ax2.grid(color ='gray', ls = '--', alpha=0.7)
 if tick:
-    ax2.xaxis.set_major_locator(plt.MultipleLocator(abs(x[0]-x[len(x)-1])/8.))
-    ax2.xaxis.set_minor_locator(plt.MultipleLocator(abs(x[0]-x[len(x)-1])/40.))
+    ax2.xaxis.set_major_locator(plt.MultipleLocator(5e2))
+    ax2.xaxis.set_minor_locator(plt.MultipleLocator(1e2))
     ax2.yaxis.set_major_locator(plt.MultipleLocator(0.5))
     ax2.yaxis.set_minor_locator(plt.MultipleLocator(0.1))
 ax2.tick_params(direction='in', length=5, width=1., top=True, right=True)

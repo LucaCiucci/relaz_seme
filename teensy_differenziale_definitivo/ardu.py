@@ -1,10 +1,9 @@
 import serial 
 import time 
-import numpy
 
-Directory = '../data_did/'
-FileName = 'dati_0.22_1.txt'
-outputFile = open(Directory + FileName, "w" ) 
+Dir = '../data_did/'
+fName = 'dati_0.22_1.txt'
+outFile = open(Dir + fName, "w" ) 
 
 # apre porta seriale (occhio alla sintassi, dipende
 # dal sistema operativo!)
@@ -17,23 +16,18 @@ ard.write(b'e')
 time.sleep(2)
 ard.write(b'r')
 time.sleep(2)
-
-while(1):
-    line = ard.readline()[:-2]
-    line = line.decode()
-    print("%s\n" % line)
-    if(line == "#R"):
-        break
-    
-while(1):
-    line = ard.readline()[:-2] # legge il dato e lo decodifica
-    line = line.decode()
-    if(line == "#E"):
-        break
-    outputFile.write(line) # scrive i dati sul file
-    outputFile.write("\n")
-    print("%s\n" % line)
+# Sintassi veloce accesso file, a fine indentazione li chiude automaticamente
+with open(Dir + fName, "w",) as outFile:
+    while(1):
+        line = ard.readline()[:-2]
+        line = line.decode()
+        print("%s\n" % line)
+        
+    while(line != "#E"):    
+        line = ard.readline()[:-2] # legge il dato e lo decodifica
+        line = line.decode()
+        outFile.write(line + '\n') # scrive i dati sul file
+        print("%s\n" % line)
 
 ard.close() # chiude la comunicazione seriale con Arduino
-outputFile.close() # chiude il file dei dati 
 print('end') # scrive sulla console che ha finito
