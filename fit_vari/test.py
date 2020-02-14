@@ -1,11 +1,11 @@
-# questo script è (una bozza di) quello che credo potrebbe essere definitivo.
-# qui dentro inseriamo i vari progressi fatti negli altri script (o eventualmente
+# questo script \`e (una bozza di) quello che credo potrebbe essere definitivo.
+# qui dentro inseriamo i vari progressi fatti negli altri script (eventualmente
 # li richiamiamo)
 
 # SCOPO:
-#   - leggere flie di dati e corregere le righe sbagliate,
+#   - leggere file di dati e corregere le righe sbagliate,
 #     i dati corretti sono messi in una cartella temporanea
-#   - convertire i dati nelle unità desiderate
+#   - convertire i dati nelle unit\`a� desiderate
 #   - analisi varie (ancora tutto da fare)
 
 
@@ -15,21 +15,23 @@
 #   - OPERAZIONI: contiene il corpo dello script!!!
 
 
-import pylab
 import numpy as np
-numpy = np # così è più facile fare copia e incolla dia vari scripts
-import math
+from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
-from statistics import *
+from scipy.stats import norm
 import os # operazioni su file
 import shutil # operazioni su file
 
 #================================================================
 #                          CONFIGURAZIONI
 #================================================================
+# Variables that control the script
+fit = True # attempt to fit the data
+log = False # log-scale axis/es
+tick = False # manually choose spacing between axis ticks
+tex = False # LaTeX typesetting maths and descriptions
 
 Nstep = 20
-
 # i dati filtrati sono messi in questa cartella temporanea
 tmp_folder = "tmp/"
 
@@ -69,29 +71,30 @@ dRs = np.array([
 
 # calibrazione ADC
 # NOTA: valori di test
-# TODO non trovo lo script di calibraizone
 
 #================================================================
 #                             FUNZIONI
 #================================================================
-# TODO non trovo lo script per le calibrazioni
+# TODO: non trovo lo script per le calibrazioni
 
-# ADC02Voltage prende le letture (in ADC) e le converte in volt
+# ADC02Voltage prende le letture (in ADC) e le converte in Volt
 # secondo la calibrazione eseguita
 # parametri:
-#   - ADCvalue è la lettura da convertire
-#   - ADCstd (opzionale) è la deviazione standard (campione) della lettura
+#   - ADCvalue \`e la lettura da convertire
+#   - ADCstd (opzionale) \`e la deviazione standard (campione) della lettura
 # return
 #   - il valore centrale (Volt)
 #   - errore (Volt)
-#TODO sostituire con la vera funzione di calibrazione
+#TODO: sostituire con la vera funzione di calibrazione
+# costante di calibrazione temporanea per non stare a cambiare i valori 4 volte
+cal_factor = 4096. * 3.3 
 def ADC02Voltage(ADCvalue, ADCstd = 0.):
-    return ADCvalue / 4096. * 3.3, pylab.sqrt(ADCstd**2 + 1) / 4096. * 3.3
+    return ADCvalue/cal_factor, np.sqrt(ADCstd**2 + 1) /cal_factor
 
 def ADC12Voltage(ADCvalue, ADCstd = 0.):
-    return ADCvalue / 4096. * 3.3, pylab.sqrt(ADCstd**2 + 1) / 4096. * 3.3
+    return ADCvalue/cal_factor, np.sqrt(ADCstd**2 + 1)/cal_factor
 
-# V2A prende le tensioni e le converte in corrente sapendo la resistenza
+# V2I prende le tensioni e le converte in corrente sapendo la resistenza
 # parametri
 #   - V tensione (Volt)
 #   - R reistenza (Ohm)
@@ -101,7 +104,7 @@ def ADC12Voltage(ADCvalue, ADCstd = 0.):
 #   - corrente (Ampere)
 #   - errore su corrente (Ampere)
 def V2I(V, R, dV = 0., dR = 0.):
-    return V / R, pylab.sqrt((dV / R)**2 + (dR * V / R**2)**2)
+    return V / R, np.sqrt((dV / R)**2 + (dR * V / R**2)**2)
 
 #================================================================
 #                            OPERAZIONI
@@ -114,7 +117,7 @@ print("\npreparazione...")
 
 # operazioni con cartelle temporanee
 try:
-    shutil.rmtree(tmp_folder) #rimuove l'evetuale cartella temporane che potrebbe essere rimasta
+    shutil.rmtree(tmp_folder)#rimuove la cartella tmp eventualmente rimasta
 except OSError as e:
     pass;#  NOP
 
@@ -123,10 +126,11 @@ try:
 except OSError as e:
     pass;#  NOP
 
-# il file gitignore serve a dire a github di non caricare online la cartella temporanea
-gitinoreF = open(".gitignore", 'w')
-gitinoreF.write(tmp_folder);
-gitinoreF.close();
+# il file gitignore serve a dire a github di non caricare online
+# la cartella temporanea
+gitignoreF = open(".gitignore", 'w')
+gitignoreF.write(tmp_folder);
+gitignoreF.close();
 
 os.mkdir(tmp_folder)
 
@@ -135,27 +139,16 @@ os.mkdir(tmp_folder)
 #================================
 print("\nlettura file originali...")
 
-# legge i dati e mette nella cartella temporanea quelli corretti (copiato da control.py)
-for _name in data_files:
-    name = data_folder + _name
+# legge i dati e mette nella cartella temporanea quelli corretti (control.py)
+for fName in data_files:
+    name = data_folder + fName
     print(name)
-    data_file = open(name, 'r')
-    tmp_file = open(tmp_folder + _name, 'w')
-    lines = data_file.readlines()
-    for i in range(len(lines)):
-        if len(lines[i]) <= 14:
-            tmp_file.write(lines[i])
-            #tmp_file.write("\n")
-    data_file.close()
-    tmp_file.close()
-
-#sostituisci con questa roba:
-#with open(Dir + fName, 'r') as f, open(Dir2 + fName2, 'w') as f2:
-#    lines = f.readlines()
-#    for ln in lines:
-#        if len(ln) <= 14:
-#            f2.write(ln)
-#            f2.write("\n")
+    with open(name, 'r') as data_file, open(tmp_folder+fName, 'w') as tmp_file:
+        lines = data_file.readlines()
+        for ln in lines:
+            if len(ln) <= 14:
+                tmp_file.write(ln)
+                #tmp_file.write('\n')
 
 #================================
 #         lettura dati
@@ -176,8 +169,6 @@ for _name in data_files:
     name = tmp_folder + _name
     print(name)
     _x, _y = np.loadtxt(name, unpack = True)
-    _x = np.array(_x)
-    _y = np.array(_y)
     ADC0datas.append(_x);
     ADC1datas.append(_y);
 
@@ -185,7 +176,7 @@ for _name in data_files:
     ADC0stds.append(_x * 0. + 4.);
     ADC1stds.append(_y * 0. + 4.);
 
-# converte le liste? in array numpy per comodità
+# converte le liste? in array numpy per comodit\`a�
 ADC0datas = np.array(ADC0datas)
 ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
@@ -196,8 +187,9 @@ k = 0
 for i in range(Nruns):
     j = 0
     while(k < len(ADC0datas[i])):
-        # se un numero è maggiore di 4095, allora elimina la coppia
-        if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
+        # se un numero \`e maggiore di 4095, allora elimina la coppia
+        if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or
+            (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
             ADC0datas[i] = np.delete(ADC0datas[i], j)
             ADC1datas[i] = np.delete(ADC1datas[i], j)
             ADC0stds[i] = np.delete(ADC0stds[i], j)
@@ -210,7 +202,7 @@ for i in range(Nruns):
 #          conversioni
 #================================
 
-# valori convertiti da ADC in volts
+# valori convertiti da ADC in Volt
 voltages0s = []
 voltages1s = []
 voltages0stds = []# errori
@@ -228,7 +220,7 @@ voltages1s = np.array(voltages1s)
 voltages0stds = np.array(voltages0stds)
 voltages1stds = np.array(voltages1stds)
 
-# valori convertiti da volts in valori utilizzabili nei dati
+# valori convertiti da Volt in valori utilizzabili nei dati
 voltages = voltages0s
 voltageStds = voltages0stds
 currents = []
@@ -241,15 +233,23 @@ for i in range(Nruns):
 currents = np.array(currents)
 currentStds = np.array(currentStds)
 
-# NOTA: da qui in poi sono solo test a caso, il programma dovrà continuare...
+# NOTA: da qui in poi sono solo test a caso, il programma dovr\`a� continuare..
+Nskip = 100
 for i in range(Nruns):
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
-    Nskip = 100
-    pylab.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip], currentStds[i][0::Nskip], voltageStds[i][0::Nskip], linestyle = '', marker = '.');
-pylab.semilogy()
-pylab.show()
+    plt.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip],
+                 currentStds[i][0::Nskip], voltageStds[i][0::Nskip],
+                 '.', ls='', elinewidth=1, capsize= 1)
+if log:
+    plt.semilogy()
+plt.grid(color ='gray', ls = '--', alpha=0.7)
+plt.tick_params(direction='in', length=5, width=1., top=True, right=True)
+plt.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+plt.minorticks_on()
+plt.show()
 
-
+# Fit con Gaussiana: restituisce mu e sigma di best fit per un insieme di dati
+mean, std = norm.fit(currents[0])
 #================================
 #             END
 #================================
