@@ -149,6 +149,14 @@ for _name in data_files:
     data_file.close()
     tmp_file.close()
 
+#sostituisci con questa roba:
+#with open(Dir + fName, 'r') as f, open(Dir2 + fName2, 'w') as f2:
+#    lines = f.readlines()
+#    for ln in lines:
+#        if len(ln) <= 14:
+#            f2.write(ln)
+#            f2.write("\n")
+
 #================================
 #         lettura dati
 #================================
@@ -183,12 +191,8 @@ ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
 ADC1stds = np.array(ADC1stds)
 
-<<<<<<< HEAD
-k = 0
-
 # elimina i dati senza senso
-=======
->>>>>>> 744009577df0ca0e5f301f1b849642e4166774bc
+k = 0
 for i in range(Nruns):
     j = 0
     while(k < len(ADC0datas[i])):
@@ -241,7 +245,6 @@ currentStds = np.array(currentStds)
 for i in range(Nruns):
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
     Nskip = 100
-    Nskip = 1
     pylab.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip], currentStds[i][0::Nskip], voltageStds[i][0::Nskip], linestyle = '', marker = '.');
 pylab.semilogy()
 pylab.show()
