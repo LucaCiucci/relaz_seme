@@ -188,7 +188,6 @@ k = 0
 
 # elimina i dati senza senso
 =======
-# elimina i dati senza senso (??? non funziona)
 >>>>>>> 744009577df0ca0e5f301f1b849642e4166774bc
 for i in range(Nruns):
     j = 0
