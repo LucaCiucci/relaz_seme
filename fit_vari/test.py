@@ -183,16 +183,21 @@ ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
 ADC1stds = np.array(ADC1stds)
 
+k = 0
+
 # elimina i dati senza senso
 for i in range(Nruns):
-    for j in range(len(ADC1datas[i])):
+    j = 0
+    while(k < len(ADC0datas[i])):
         # se un numero è maggiore di 4095, allora elimina la coppia
-        if (ADC0datas[i][j] > 4095 or ADC0datas[i][j] < -4095 or ADC1datas[i][j] > 4095 or ADC1datas[i][j] < -4095):
-            np.delete(ADC0datas[i], j)
-            np.delete(ADC1datas[i], j)
-            np.delete(ADC0stds[i], j)
-            np.delete(ADC1stds[i], j)
-
+        if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
+            ADC0datas[i] = np.delete(ADC0datas[i], j)
+            ADC1datas[i] = np.delete(ADC1datas[i], j)
+            ADC0stds[i] = np.delete(ADC0stds[i], j)
+            ADC1stds[i] = np.delete(ADC1stds[i], j)
+            j = j - 1
+        j = j +1
+        k = k + 1
 
 #================================
 #          conversioni
@@ -233,6 +238,7 @@ currentStds = np.array(currentStds)
 for i in range(Nruns):
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
     Nskip = 100
+    Nskip = 1
     pylab.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip], currentStds[i][0::Nskip], voltageStds[i][0::Nskip], linestyle = '', marker = '.');
 pylab.semilogy()
 pylab.show()
