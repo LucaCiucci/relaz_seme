@@ -69,10 +69,12 @@ def conv(x):
     print("conv(x) = %.2f +- %.2f" %(central, unc))
     return [central, unc]
 
-def chitest(y, dy, model, ddof=0):
-    res = y - model
-    resnorm = res/dy
-    ndof = len(y) - ddof
+def chitest(data, unc, model, ddof=0):
+    """ Evaluates Chi-square goodness of fit test for a function, model, to
+    a set of data """
+    res = data - model
+    resnorm = res/unc
+    ndof = len(data) - ddof
     chisq = (resnorm**2).sum()
     sigma = (chisq - ndof)/np.sqrt(2*ndof)
     return chisq, ndof, sigma    
