@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # questo script \`e (una bozza di) quello che credo potrebbe essere definitivo.
 # qui dentro inseriamo i vari progressi fatti negli altri script (eventualmente
 # li richiamiamo)
@@ -5,7 +6,7 @@
 # SCOPO:
 #   - leggere file di dati e corregere le righe sbagliate,
 #     i dati corretti sono messi in una cartella temporanea
-#   - convertire i dati nelle unit\`a  desiderate
+#   - convertire i dati nelle unit\`aÂ  desiderate
 #   - analisi varie (ancora tutto da fare)
 
 
@@ -27,7 +28,7 @@ import shutil # operazioni su file
 #================================================================
 # Variables that control the script
 fit = True # attempt to fit the data
-log = False # log-scale axis/es
+log = True # semilog-scale y axis
 tick = False # manually choose spacing between axis ticks
 tex = False # LaTeX typesetting maths and descriptions
 
@@ -76,6 +77,8 @@ dRs = np.array([
 #                             FUNZIONI
 #================================================================
 # TODO: non trovo lo script per le calibrazioni
+# In ../../sketches/teensy_definitivo/pylineare.py oppure ../scatter_plot.py
+# ricavano il fattore da fit lineari e hanno funzioni di conversione digit->V 
 
 # ADC02Voltage prende le letture (in ADC) e le converte in Volt
 # secondo la calibrazione eseguita
@@ -176,7 +179,7 @@ for _name in data_files:
     ADC0stds.append(_x * 0. + 4.);
     ADC1stds.append(_y * 0. + 4.);
 
-# converte le liste? in array numpy per comodit\`a 
+# converte le liste? in array numpy per comodit\`aÂ 
 ADC0datas = np.array(ADC0datas)
 ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
@@ -233,19 +236,39 @@ for i in range(Nruns):
 currents = np.array(currents)
 currentStds = np.array(currentStds)
 
-# NOTA: da qui in poi sono solo test a caso, il programma dovr\`a  continuare..
-Nskip = 100
+# NOTA: da qui in poi sono solo test a caso, il programma dovr\`aÂ  continuare..
+# Imposto una soglia di deviazioni std dalla media oltre cui escludo i dati
+fig, ax = plt.subplots()
+Nskip = 150
+thr = 1.1
 for i in range(Nruns):
+    mean, std = norm.fit(currents[i][0::Nskip])
+    if abs((currents[i][0::Nskip] - mean)/currentStds[i][0::Nskip]).any() < thr:
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
-    plt.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip],
-                 currentStds[i][0::Nskip], voltageStds[i][0::Nskip],
-                 '.', ls='', elinewidth=1, capsize= 1)
+        ax.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip],
+                     currentStds[i][0::Nskip], voltageStds[i][0::Nskip],
+                     '.', ls='', elinewidth=1, capsize= 1)
 if log:
-    plt.semilogy()
-plt.grid(color ='gray', ls = '--', alpha=0.7)
-plt.tick_params(direction='in', length=5, width=1., top=True, right=True)
-plt.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+    ax.semilogy()
+    tick = False
+if tex:
+    import matplotlib as mpl
+    mpl.rcParams['text.usetex'] = True
+    mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}'] #\text command
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+
+ax.grid(color ='gray', ls = '--', alpha=0.7)
+ax.tick_params(direction='in', length=5, width=1., top=True, right=True)
+ax.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+ax.set_ylabel('Intensit\`a di Corrente $I$ [A]')    
+ax.set_xlabel('Differenza di Potenziale $\Delta V$ [V]', x=0.8)
 plt.minorticks_on()
+if tick:
+    ax.yaxis.set_major_locator(plt.MultipleLocator(1e-1))
+    ax.yaxis.set_minor_locator(plt.MultipleLocator(2e-2))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(1e-2))
+    ax.xaxis.set_minor_locator(plt.MultipleLocator(2e-3))
 plt.show()
 
 # Fit con Gaussiana: restituisce mu e sigma di best fit per un insieme di dati
