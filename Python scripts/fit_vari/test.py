@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-# questo script \`e (una bozza di) quello che credo potrebbe essere definitivo.
+# questo script e' (una bozza di) quello che credo potrebbe essere definitivo.
 # qui dentro inseriamo i vari progressi fatti negli altri script (eventualmente
 # li richiamiamo)
 
 # SCOPO:
 #   - leggere file di dati e corregere le righe sbagliate,
 #     i dati corretti sono messi in una cartella temporanea
-#   - convertire i dati nelle unit\`a  desiderate
+#   - convertire i dati nelle unità  desiderate
 #   - analisi varie (ancora tutto da fare)
 
 
@@ -16,12 +16,15 @@
 #   - OPERAZIONI: contiene il corpo dello script!!!
 
 
+import pylab #PER COMPATIBILITA'!!!!
 import numpy as np
+numpy = np # così è più facile fare copia e incolla dia vari scripts #PER COMPATIBILITA'!!!!
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.stats import norm
 import os # operazioni su file
 import shutil # operazioni su file
+from statistics import * # questo penso che non serva ma da chiedere a Serena
 
 #================================================================
 #                          CONFIGURAZIONI
@@ -83,19 +86,19 @@ dRs = np.array([
 # ADC02Voltage prende le letture (in ADC) e le converte in Volt
 # secondo la calibrazione eseguita
 # parametri:
-#   - ADCvalue \`e la lettura da convertire
-#   - ADCstd (opzionale) \`e la deviazione standard (campione) della lettura
+#   - ADCvalue è la lettura da convertire
+#   - ADCstd (opzionale) è la deviazione standard (campione) della lettura
 # return
 #   - il valore centrale (Volt)
 #   - errore (Volt)
 #TODO: sostituire con la vera funzione di calibrazione
 # costante di calibrazione temporanea per non stare a cambiare i valori 4 volte
-cal_factor = 4096. * 3.3 
+cal_factor = 3.3 / 4095.# OCCHIO ALLE PRECEDENZE!!!
 def ADC02Voltage(ADCvalue, ADCstd = 0.):
-    return ADCvalue/cal_factor, np.sqrt(ADCstd**2 + 1) /cal_factor
+    return ADCvalue*cal_factor, np.sqrt(ADCstd**2 + 1) * cal_factor
 
 def ADC12Voltage(ADCvalue, ADCstd = 0.):
-    return ADCvalue/cal_factor, np.sqrt(ADCstd**2 + 1)/cal_factor
+    return ADCvalue*cal_factor, np.sqrt(ADCstd**2 + 1) * cal_factor
 
 # V2I prende le tensioni e le converte in corrente sapendo la resistenza
 # parametri
@@ -108,6 +111,50 @@ def ADC12Voltage(ADCvalue, ADCstd = 0.):
 #   - errore su corrente (Ampere)
 def V2I(V, R, dV = 0., dR = 0.):
     return V / R, np.sqrt((dV / R)**2 + (dR * V / R**2)**2)
+
+# gaussian ritorna il valore della gaussiana centrata in mx e sigma = sx
+# serve per il metodo di filtraggio dati
+# parametri
+#   - x
+#   - mx centro x
+#   - sx sigma x
+# return
+#   - valore
+def gaussian(x, mx, sx):
+    return 1. / np.sqrt(2. * np.pi * sx**2) * pylab.exp(-0.5 * (x - mx)**2 / sx**2)
+
+# esegue un fit di ordine 0 dei dati e restituisce media e varianza campione
+# in pratica fa una media pesata secondo la gaussiana, si assume che
+# var(x) * df/dx << var(y), questa ipotesi non è verificata nei nostri dati
+# ma al massimo ci introduce un fattore di scalatura
+#
+# parametri
+#   - x valore di valutazione
+#   - xx ascisse dati
+#   - yy ordinate dati
+#   - dxx sigmax dei dati
+# return
+#   - media nell'intorno
+#   - varianza campione nell'intorno
+def order0fit(x, xx, yy, dxx):
+    try:
+        my = np.zeros(len(x))
+        sy = np.zeros(len(x))
+        for i in range(len(x)):
+            my[i], sy[i] = order0fit_impl(x[i], xx, yy, dxx)
+        return my, sy
+    except:
+        return order0fit_impl(x, xx, yy, dxx)
+
+# implementazione
+def order0fit_impl(x, xx, yy, dxx):
+    w = gaussian(x, xx, dxx)
+    sum_w = sum(w)
+    w = w / sum_w
+
+    my = sum(w * yy)
+    var_y = sum((yy - my)**2 * w)
+    return my, np.sqrt(var_y)
 
 #================================================================
 #                            OPERAZIONI
@@ -179,7 +226,7 @@ for _name in data_files:
     ADC0stds.append(_x * 0. + 4.);
     ADC1stds.append(_y * 0. + 4.);
 
-# converte le liste? in array numpy per comodit\`a 
+# converte le liste? in array numpy per comodità
 ADC0datas = np.array(ADC0datas)
 ADC1datas = np.array(ADC1datas)
 ADC0stds = np.array(ADC0stds)
@@ -252,7 +299,7 @@ for i in range(Nruns):
 currents = np.array(currents)
 currentStds = np.array(currentStds)
 
-# NOTA: da qui in poi sono solo test a caso, il programma dovr\`a  continuare..
+# NOTA: da qui in poi sono solo test a caso, il programma dovrà  continuare..
 # Imposto una soglia di deviazioni std dalla media oltre cui escludo i dati
 for c in currents:
     print(len(c))
@@ -267,6 +314,11 @@ for i in range(Nruns):
         ax.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip],
                      currentStds[i][0::Nskip], voltageStds[i][0::Nskip],
                      '.', ls='', elinewidth=1, capsize= 1)
+        ls = np.linspace(min(voltages[i]), max(voltages[i]), 100)
+        py, spy = order0fit(ls, voltages[i], currents[i], voltageStds[i])
+        #ax.plot(ls, py) # test
+        #ax.plot(ls, py + spy)
+        #ax.plot(ls, py - spy)
 if log:
     ax.semilogy()
     tick = False
