@@ -1,5 +1,5 @@
 from config import *
-from calibrazione import matrixADC1, matrixADC0, parADC1, parADC0, legge, leggesumerror_model
+from calibrazione import matrixADC1, matrixADC0, parADC1, parADC0, legge, legge_giusto_error
 
 
 
@@ -15,18 +15,18 @@ from calibrazione import matrixADC1, matrixADC0, parADC1, parADC0, legge, legges
 #   - errore (Volt)
 def ADC02Voltage(ADCvalue, ADCstd):
     return legge(ADCvalue, *parADC0),\
-           pylab.sqrt((leggesumerror_model(ADCvalue, *parADC0, matrixADC0[0][0],\
-                                           matrixADC0[1][1], matrixADC0[0][1]))**2  \
-                      +(ADCstd*parADC0[0])**2)
+           pylab.sqrt((legge_giusto_error(ADCvalue, *parADC0, matrixADC0[0][0],\
+                    matrixADC0[1][1], matrixADC0[0][1]))**2  \
+                    +(ADCstd*parADC0[0])**2)
 
 
 
 
 def ADC12Voltage(ADCvalue, ADCstd):##cambiare nome?
     return legge(ADCvalue, *parADC1),\
-           pylab.sqrt((leggesumerror_model(ADCvalue, *parADC1, matrixADC1[0][0],\
-                              matrixADC1[1][1], matrixADC1[0][1]))**2\
-                      +(ADCstd*parADC0[1])**2)
+           pylab.sqrt((legge_giusto_error(ADCvalue, *parADC1, matrixADC1[0][0],\
+                    matrixADC1[1][1], matrixADC1[0][1]))**2\
+                    +(ADCstd*parADC0[1])**2)
 
 
 
@@ -98,7 +98,7 @@ def order0fit_impl(x, xx, yy, dxx):
     return my, np.sqrt(var_y)
 
 ###FUNZIONE DI FILTRAGGIO
-def filter(x, y, dx, dy, n_sigma):
+def filtro(x, y, dx, dy, n_sigma):
     i = 0
     while(i<len(x)):
         media, dev = order0fit_impl(x[i], x, y, dx)

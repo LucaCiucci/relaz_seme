@@ -9,4 +9,9 @@ from load_data import *
 #   - voltageStds
 #   - currents
 #   - currentStds
-filter()
+for i in range(Nruns):
+    pass;
+    #filtro(voltages[i], currents[i], voltageStds[i], currentStds[i], 3)
+
+pylab.errorbar(voltages[4], currents[4], currentStds[4], voltageStds[4], linestyle = '', marker = '.', color = "black")
+pylab.show()
