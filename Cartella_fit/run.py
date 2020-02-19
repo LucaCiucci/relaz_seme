@@ -3,7 +3,7 @@
 #================================================================
 
 
-from filtro import *
+from load_data import *
 
 # queste sono le variabili di dati importate:
 #   - voltages
