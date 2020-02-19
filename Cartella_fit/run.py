@@ -2,4 +2,11 @@
 #                              RUN
 #================================================================
 
-from load_data import *
+
+from filtro import *
+
+# queste sono le variabili di dati importate:
+#   - voltages
+#   - voltageStds
+#   - currents
+#   - currentStds
