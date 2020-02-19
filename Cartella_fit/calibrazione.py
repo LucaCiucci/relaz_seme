@@ -23,6 +23,8 @@ def leggedifferror_model(x, a, b, c, d, f ):
 def leggesumerror_model(x, a, b, c, d,f ):
     return legge(x, a, b) + pylab.sqrt(legge_error(x, c, d, f)**2 + (legge(x, a, b)*(0.7/100))**2)
 
+def legge_giusto_error(x, a, b, c, d,f):
+    return  pylab.sqrt(legge_error(x, c, d, f)**2 + (legge(x, a, b)*(0.7/100))**2)
 
 
 ##ADC0
