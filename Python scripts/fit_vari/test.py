@@ -186,24 +186,40 @@ ADC0stds = np.array(ADC0stds)
 ADC1stds = np.array(ADC1stds)
 
 # elimina i dati senza senso
-k = 0
+print("\nelimina dati errati...")
 for i in range(Nruns):
     j = 0
-    while(k < len(ADC0datas[i])):
-        # se un numero \`e maggiore di 4095, allora elimina la coppia
+    while(j < len(ADC0datas[i])):
         if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or
             (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
             ADC0datas[i] = np.delete(ADC0datas[i], j)
             ADC1datas[i] = np.delete(ADC1datas[i], j)
             ADC0stds[i] = np.delete(ADC0stds[i], j)
             ADC1stds[i] = np.delete(ADC1stds[i], j)
-            j = j - 1
-        j = j +1
-        k = k + 1
+        else:
+            j = j + 1;
+
+# questo è quello che c'era prima, in teoria basta un solo indice, così siamo
+# sicuri di non saltare nessun dato
+#for i in range(Nruns):
+#    j = 0
+#    k = 0
+#    while(k < len(ADC0datas[i])):
+#        # se un numero \`e maggiore di 4095, allora elimina la coppia
+#        if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or
+#            (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
+#            ADC0datas[i] = np.delete(ADC0datas[i], j)
+#            ADC1datas[i] = np.delete(ADC1datas[i], j)
+#            ADC0stds[i] = np.delete(ADC0stds[i], j)
+#            ADC1stds[i] = np.delete(ADC1stds[i], j)
+#            j = j - 1
+#        j = j +1
+#        k = k + 1
 
 #================================
 #          conversioni
 #================================
+print("\nconversioni...")
 
 # valori convertiti da ADC in Volt
 voltages0s = []
@@ -238,6 +254,9 @@ currentStds = np.array(currentStds)
 
 # NOTA: da qui in poi sono solo test a caso, il programma dovr\`a  continuare..
 # Imposto una soglia di deviazioni std dalla media oltre cui escludo i dati
+for c in currents:
+    print(len(c))
+
 fig, ax = plt.subplots()
 Nskip = 150
 thr = 1.1
