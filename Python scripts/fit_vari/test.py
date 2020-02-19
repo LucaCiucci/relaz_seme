@@ -135,7 +135,7 @@ def gaussian(x, mx, sx):
 #   - dxx sigmax dei dati
 # return
 #   - media nell'intorno
-#   - varianza campione nell'intorno
+#   - deviazione standard campione nell'intorno
 def order0fit(x, xx, yy, dxx):
     try:
         my = np.zeros(len(x))
