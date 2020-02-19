@@ -101,13 +101,14 @@ def order0fit_impl(x, xx, yy, dxx):
 def filtro(x, y, dx, dy, n_sigma):
     i = 0
     while(i<len(x)):
+        print(i)
         media, dev = order0fit_impl(x[i], x, y, dx)
-        if( abs(x[i] - media) > n_sigma*dev):
+        if( abs(y[i] - media) > n_sigma*dev):
             x = numpy.delete(x, i)
             y = numpy.delete(y, i)
             dx = numpy.delete(dx, i)
             dy = numpy.delete(dy, i)
         else:
             i = i + 1
-    return
+    return x, y, dx, dy
 
