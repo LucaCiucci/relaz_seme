@@ -1,102 +1,19 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <fstream>
-#include <vector>
-#include <array>
-#include <chrono>
-#include <thread>
-#include <random>
+#include "functions.hpp"
 
 
-using Row = std::array<double, 6>;// una riga è formata da 6 numeri e una ciambella
-using RunData = std::vector<Row>;// rappresenta un blocco di dati
-using RunSet = std::vector<RunData>;// rappresetna un insieme di run
-
-RunSet readFile(std::string fileName)
-{
-	std::ifstream file(fileName, std::ifstream::in);
-	std::string line;
-	std::istringstream sLine(line);
 
 
-	RunSet set;
-	RunData data;
-	Row row;
-	data.clear();
-	set.clear();
-
-	while (std::getline(file, line))
-	//while (file >> line)
-	{
-		// quando c'è un nuovo blocco
-		if (line.size() >= 2 && line[0] == '#' && line[1] == '=')
-		{
-			if (data.size() > 0)
-				set.push_back(data);
-
-			data.clear();
-
-			continue;
-		}
-
-		// se la riga inizia con # è un commento
-		if (line.size() <= 0 || line[0] == '#')
-			continue;
-
-		sLine = std::istringstream(line);
-		if (sLine >> row[0] >> row[1] >> row[2] >> row[3] >> row[4] >> row[5])
-		{
-			data.push_back(row);
-		}
-	}
-
-	if (data.size() > 0)
-		set.push_back(data);
-
-	return set;
-}
-
-std::ostream& operator<<(std::ostream& stream, const Row& row)
-{
-	for (auto x : row)
-	{
-		stream << x;
-		stream << ' ';
-	}
-
-	return stream;
-}
-
-std::ostream& operator<<(std::ostream& stream, const RunData& data)
-{
-	for (auto x : data)
-	{
-		stream << x;
-		stream << std::endl;
-	}
-
-	return stream;
-}
-
-std::ostream& operator<<(std::ostream& stream, const RunSet& set)
-{
-	for (auto x : set)
-	{
-		stream << x;
-		stream << "========= pippo" << std::endl;
-	}
-
-	return stream;
-}
 
 int main(void)
 {
 	std::cout << "Hello there" << std::endl;
 
-	RunSet set = readFile("test.txt");
-	std::cout << set;
+	RunSet set = readFile("file2C.txt");
+	//std::cout << set;
+	std::cout << set.size() << std::endl;
 
+
+	std::cout << gaussian(1, 0, 1) << std::endl;
 	std::cout << "Hello there" << std::endl;
 
 	return 0;

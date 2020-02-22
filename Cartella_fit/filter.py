@@ -4,7 +4,8 @@
 
 from load_data import *
 
-file2C = open('filetestoC/file2C.txt', 'w')
+os.mkdir(tmp_folder)
+file2C = open(tmp_folder + file2C, 'w')
 
 file2C.write("#V    errV    stdV    I    errI    stdI\n")
 
@@ -29,3 +30,5 @@ time.sleep(10) ##da modificare una volta che si ha il programma in C++
 voltages, voltageErrs, voltageStds, currents,\
           currentErrs, currentStds\
           = pylab.loadtxt("filetestoC/filefromC.txt", unpack = True)
+
+shutil.rmtree(tmp_folder) # rimuove la cartella temporanea

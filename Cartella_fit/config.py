@@ -9,6 +9,7 @@ Nstep = 20
 
 # i dati filtrati sono messi in questa cartella temporanea
 tmp_folder = "tmp/"
+file2C = "file2C.txt"
 
 # file di dati (da modificare)#!!
 data_folder = "data/"
