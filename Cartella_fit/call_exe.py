@@ -19,13 +19,11 @@ for i in range(len(voltages)):
     file2C.write("#================================")
 file2C.close()
 
-os.system('filetestoC/fileprova')
+#os.system('filetestoC/fileprova')
 
-time.sleep(5)
-##serve per assicurarsi che il filefromC.txt sia stato creato prima di andare
-##avanti
-while(os.path.exists("filetestoC/filefromC.txt") == False):
-    time.sleep(5)
+import subprocess
+
+subprocess.call('filetestoC/fileprova')
 
 ##serve per assicurarsi che l'eseguibile abbia finito a scrivere su file
 time.sleep(10) ##da modificare una volta che si ha il programma in C++
