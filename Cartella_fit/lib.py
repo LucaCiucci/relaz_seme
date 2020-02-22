@@ -9,3 +9,4 @@ import shutil # operazioni su file
 from statistics import *
 from matplotlib import pyplot as plt
 from scipy.stats import norm
+import time
