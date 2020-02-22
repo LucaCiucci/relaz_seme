@@ -24,7 +24,7 @@
 \usepgfplotslibrary{external} 
 \tikzexternalize
 
-\pgfplotsset{compat=1.16}
+\pgfplotsset{compat=1.15}
 \lstset{
 basicstyle=\ttfamily,
 columns=fullflexible,
@@ -60,9 +60,14 @@ PACS 01.50.Pa – Laboratory experiments and apparatus.
 \end{mdframed}
 
 \section{Introduzione}
-Per poter modellare il comportamento di un diodo percorso da correnti alte, si
-propone un modello semplice in grado di spiegarne il comportamento -ohmico-,
-verificandone sperimentalmente la validità e i limiti.
+L'alta resistività intrinseca al silicio, di cui è composta la giunzione
+bipolare, comporta la presenza di una sua componente resistiva: questa 
+risulta sempre meno trascurabile agli effetti del passaggio di corrente
+attraverso il diodo, all'aumentare della tensione ai suoi capi e della sua 
+temperatura. Per poter modellare la componente -ohmica- di un diodo
+percorso da correnti alte si propone un modello semplice di resistenza
+parassita in serie, in grado di descriverne gli effetti, verificandone 
+sperimentalmente la validità e i limiti. 
 \section{Metodo e apparato sperimentale}
 Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
 al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
@@ -72,10 +77,12 @@ brevi, limitando dunque il trasferimento di energia sui componenti.
 Si è fatto uso della piattaforma di sviluppo \verb+Teensy 3.2+\cite{teensy} per
 il campionamento di segnali, essendo non solo più veloce e capiente in memoria
 rispetto ad Arduino, ma oltretutto dotato di due ADC, entrambi con risoluzione
-maggiore nel campionamento analogico, a 16 bit. Questo ad esempio ci permette
-di misurare -simultaneamente- la differenza di potenziale e intensità di
-corrente, dunque la curva caratteristica del diodo in esame. Per prima cosa si
-sono misurati i rispettivi fattori di conversione $\xi_{\rm V}$ [V/digit] e
+maggiore nel campionamento analogico, a 12 bit (reali). In particolare, 
+\verb+Teensy+ è in grado di effettuare una lettura differenziale su due ingressi
+analogici e sincronizzata tra i due ADC. Questo ci permette di misurare
+pressoché -simultaneamente- la differenza di potenziale e intensità di corrente
+percepite dal diodo, dunque la sua curva caratteristica. Per prima cosa
+si sono misurati i rispettivi fattori di conversione $\xi_{\rm V}$ [V/digit] e
 $\xi_I$ [A/digit] tramite un fit lineare sui campionamenti di tensione e
 corrente continua generati da un trasformatore di d.d.p $V_0 \approx 4.95$ V.
 Come illustrato sotto:
@@ -107,16 +114,27 @@ in regime di conduzione, nell'ordine di qualche ohm.
 Tramite il semplice circuito con interruttore in Figura \ref{sch:smpl} riusciamo
 a ricostruire sperimentalmente la curva caratteristica V-$I$ del diodo: si
 lascia scaricare repentinamente il condensatore sulla serie diodo-resistenza
-chiudendo l'interruttore, dunque dai canali di un oscilloscopio si misura la
-curva risultante.
+chiudendo l'interruttore, dunque dai canali di un oscilloscopio si misurano le
+le cadute di tensione ai capi del diodo e della resistenza $R_P$, da cui si
+ricava l'intensità di corrente che scorre su entrambi i componenti tramite la
+legge di Ohm.\[
+I_d = \frac{\Delta V_{\mathrm{mis}}}{R_P}
+.\] 
 
-Vista la stabilità poco attendibile del circuito con interruttore azionato
+Vista la limitata attendibilità del circuito con interruttore azionato
 manualmente si è costruito una seconda versione del circuito (Fig.
-\ref{sch:gest}), in cui figura un sottocircuito di switch e un condensatore di
-capacità maggiore di un paio di ordini di grandezza. Infine si aggiunge la
-maglia a destra del condensatore, impiegata per caricare (e scaricare) quest'
-ultimo a diverse tensioni, controllate grazie a \verb+Teensy+.
-Si sviluppano due casi principali:
+\ref{sch:gest}), in cui figurano: 
+\begin{description}
+	\item [Un sottocircuito] di switch	
+	\item [Un condensatore] di capacità maggiore di un paio di ordini di 
+	grandezza.
+	\item [Teensy] La piattaforma di sviluppo impiegata per caricare
+	(e scaricare) il condensatore a diverse tensioni e per la misura delle
+	tensioni ai capi del diodo e della resistenza.
+\end{description}
+
+Si sviluppano due casi principali, dipendenti sostanzialmente dal valore della
+resistenza $R_P$ posta in serie al diodo:\\
 
 Se lasciamo caricare gradualmente il condensatore, essendo $C$ decisamente
 maggiore rispetto ai condensatori precedenti si ha un tempo di carica
@@ -131,7 +149,7 @@ tutta la corrente impressa sulla giunzione. Allora per caratterizzare la
 risposta del diodo senza cambiarne drasticamente le caratteristiche (ad esempio
 per eccessiva agitazione termica) si impiega il circuito di switch per
 imprimere impulsi di alta corrente e breve durata sulla giunzione PN, di cui
-misuriamo la curva caratteristica in risposta con i due ADC di \verb+Teensy+. 
+misuriamo la curva caratteristica in risposta con i due ADC di \verb+Teensy+.
 
 Se effettivamente il diodo, oltre ad una certa soglia di d.d.p. inizia ad avere
 componente resistiva sempre più pronunciata, allora riportando le nostre
@@ -140,7 +158,8 @@ entro il regime in cui è valida l'approssimazione di Shockley, ma oltre a
 questo, una regione in cui la curva caratteristica della giunzione ora mostra
 una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente
 dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto"
-di un logaritmo.  \section{Risultati e Analisi dati}
+di un logaritmo.  
+\section{Risultati e Analisi dati}
 \subsection{Nota sul metodo di fit}
 Per determinare i parametri ottimali e le rispettive varianze si \`e
 implementato un metodo di fit basato sui minimi quadrati in \verb+Python+

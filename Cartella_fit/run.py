@@ -22,10 +22,13 @@ dc = currentStds[4] = currentStds[4][0::Nskip]
 
 v, c, dv, dc = filtro(voltages[4], currents[4], voltageStds[4], currentStds[4], 2)
 
-pylab.errorbar(v, c, dc, dv, linestyle = '', marker = '.', color = "black")
+plt.errorbar(v, c, dc, dv, linestyle = '', marker = '.', color = "black")
 ls = np.linspace(min(v), max(v), 1000)
 py, spy = order0fit(ls, v, c, dv)
-pylab.plot(ls, py) # test
-pylab.plot(ls, py + spy)
-pylab.plot(ls, py - spy)
-pylab.show()
+plt.plot(ls, py) # test
+plt.plot(ls, py + spy)
+plt.plot(ls, py - spy)
+plt.minorticks_on()
+plt.tick_params(direction='in', length=5, width=1., top=True, right=True)
+plt.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+plt.show()

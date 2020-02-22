@@ -2,93 +2,76 @@ from config import *
 from calibrazione import matrixADC1, matrixADC0, parADC1, parADC0, legge, legge_giusto_error
 
 
-
-
-
-# ADC02Voltage prende le letture (in ADC) e le converte in Volt
-# secondo la calibrazione eseguita
-# parametri:
-#   - ADCvalue è la lettura da convertire
-#   - ADCstd (opzionale) è la deviazione standard (campione) della lettura
-# return
-#   - il valore centrale (Volt)
-#   - errore (Volt)
 def ADC02Voltage(ADCvalue, ADCstd):
+    """ ADC02Voltage prende le letture (in ADC) e le converte in Volt
+        secondo la calibrazione eseguita
+        parametri:
+          - ADCvalue è la lettura da convertire
+          - ADCstd (opzionale) è la deviazione standard (campione) della lettura
+        return:
+          - il valore centrale (Volt)
+          - errore (Volt) """
     return legge(ADCvalue, *parADC0),\
-           pylab.sqrt((legge_giusto_error(ADCvalue, *parADC0, matrixADC0[0][0],\
+           np.sqrt((legge_giusto_error(ADCvalue, *parADC0, matrixADC0[0][0],\
                     matrixADC0[1][1], matrixADC0[0][1]))**2  \
                     +(ADCstd*parADC0[0])**2)
 
-
-
-
 def ADC12Voltage(ADCvalue, ADCstd):##cambiare nome?
+    """ Analogo di ADC02Voltage per il secondo ADC (1) """
     return legge(ADCvalue, *parADC1),\
-           pylab.sqrt((legge_giusto_error(ADCvalue, *parADC1, matrixADC1[0][0],\
+           np.sqrt((legge_giusto_error(ADCvalue, *parADC1, matrixADC1[0][0],\
                     matrixADC1[1][1], matrixADC1[0][1]))**2\
                     +(ADCstd*parADC0[1])**2)
 
-
-
-
-# V2I prende le tensioni e le converte in corrente sapendo la resistenza
-# parametri
-#   - V tensione (Volt)
-#   - R reistenza (Ohm)
-#   - dV errore su V (Volt)
-#   - dR errore su R (Ohm)
-# return
-#   - corrente (Ampere)
-#   - errore su corrente (Ampere)
 def V2I(V, R, dV, dR):
-    return V / R, pylab.sqrt((dV / R)**2 + (dR * V / R**2)**2)
+    """
+    V2I prende le tensioni e le converte in corrente sapendo la resistenza
+    parametri:
+     - V tensione (Volt)
+     - R reistenza (Ohm)
+     - dV errore su V (Volt)
+     - dR errore su R (Ohm)
+    return:
+     - corrente (Ampere)
+     - errore su corrente (Ampere) """
+    return V / R, np.sqrt((dV / R)**2 + (dR * V / R**2)**2)
 
-
-
-
-# gaussian ritorna il valore della gaussiana centrata in mx e sigma = sx
-# serve per il metodo di filtraggio dati
-# parametri
-#   - x
-#   - mx centro x
-#   - sx sigma x
-# return
-#   - valore
 def gaussian(x, mx, sx):
-    return 1. / np.sqrt(2. * np.pi * sx**2) * pylab.exp(-0.5 * (x - mx)**2 / sx**2)
+    """ gaussian ritorna il valore della gaussiana centrata in mx e sigma = sx
+        serve per il metodo di filtraggio dati
+        parametri:
+          - x
+          - mx centro x
+          - sx sigma x
+        return:
+            - valore """
+    return 1. / np.sqrt(2. * np.pi * sx**2) * np.exp(-0.5 * (x - mx)**2 / sx**2)
 
 
-
-
-# esegue un fit di ordine 0 dei dati e restituisce media e varianza campione
-# in pratica fa una media pesata secondo la gaussiana, si assume che
-# var(x) * df/dx << var(y), questa ipotesi non è verificata nei nostri dati
-# ma al massimo ci introduce un fattore di scalatura
-#
-# parametri
-#   - x valore di valutazione
-#   - xx ascisse dati
-#   - yy ordinate dati
-#   - dxx sigmax dei dati
-# return
-#   - media nell'intorno
-#   - varianza campione nell'intorno
 def order0fit(x, xx, yy, dxx):
+    """ esegue un fit di ordine 0 dei dati e restituisce media e varianza
+        campione. In pratica fa una media pesata secondo la gaussiana, si
+        assume che var(x) * df/dx << var(y): questa ipotesi non è verificata
+        nei nostri dati, ma al massimo introduce un errore di scala.
+        parametri:
+          - x valore di valutazione
+          - xx ascisse dati
+          - yy ordinate dati
+          - dxx sigmax dei dati
+        return:
+          - media nell'intorno
+          - varianza campione nell'intorno """
     try:
         my = np.zeros(len(x))
-        sy = np.zeros(len(x))
+        sy = np.zeros_like(my)
         for i in range(len(x)):
             my[i], sy[i] = order0fit_impl(x[i], xx, yy, dxx)
         return my, sy
     except:
         return order0fit_impl(x, xx, yy, dxx)
 
-
-
-
-
-# implementazione
 def order0fit_impl(x, xx, yy, dxx):
+    """ Implementazione del fit descritto in order0fit """
     w = gaussian(x, xx, dxx)
     sum_w = sum(w)
     w = w / sum_w
@@ -97,8 +80,15 @@ def order0fit_impl(x, xx, yy, dxx):
     var_y = sum((yy - my)**2 * w)
     return my, np.sqrt(var_y)
 
-###FUNZIONE DI FILTRAGGIO
 def filtro(x, y, dx, dy, n_sigma):
+    """ Funzione di filtraggio dati. Se un punto dista più di n_sigma
+        deviazioni standard dalla media (fittate da order0fit) viene
+        eliminato dagli array di dati, questi vengono restituiti accorciati.
+        parametri:
+          - x, y, dx, dy: array di dati grezzi e loro incertezze associate
+          - n_sigma soglia arbitraria oltre cui un y viene eliminato
+        return:
+          -x, y, dx, dy array di dati filtrati e loro incertezze associate """
     i = 0
     while(i<len(x)):
         print(i)
@@ -111,4 +101,3 @@ def filtro(x, y, dx, dy, n_sigma):
         else:
             i = i + 1
     return x, y, dx, dy
-
