@@ -92,32 +92,42 @@ print("\nconversioni...")
 # valori convertiti da ADC in Volt
 voltages0s = []
 voltages1s = []
-voltages0stds = []# errori
+voltages0errs = []# errori
+voltages1errs = []
+voltages0stds = []# dev standard
 voltages1stds = []
 for i in range(Nruns):
-    _vs, _stds = ADC02Voltage(ADC0datas[i], ADC0stds[i])
+    _vs, _errs, _stds = ADC02Voltage(ADC0datas[i], ADC0stds[i])
     voltages0s.append(_vs)
+    voltages0errs.append(_errs)
     voltages0stds.append(_stds)
-    _vs, _stds = ADC12Voltage(ADC1datas[i], ADC1stds[i])
+    _vs, _errs, _stds = ADC12Voltage(ADC1datas[i], ADC1stds[i])
     voltages1s.append(_vs)
+    voltages1errs.append(_errs)
     voltages1stds.append(_stds)
 
 voltages0s = np.array(voltages0s)
 voltages1s = np.array(voltages1s)
+voltages0errs = np.array(voltages0errs)
+voltages1errs = np.array(voltages1errs)
 voltages0stds = np.array(voltages0stds)
 voltages1stds = np.array(voltages1stds)
 
 # valori convertiti da Volt in valori utilizzabili nei dati
 voltages = voltages0s
+voltageErrs = voltages0errs
 voltageStds = voltages0stds
 currents = []
+currentErrs = []
 currentStds = []
 for i in range(Nruns):
-    _I, _dI = V2I(voltages1s[i], Rs[i], voltages1stds[i], dRs[i])
+    _I, _dI, _stdI = V2I(voltages1s[i], Rs[i], voltages1errs[i], voltages1stds[i], dRs[i])
     currents.append(_I)
-    currentStds.append(_dI)
+    currentErrs.append(_dI)
+    currentStds.append(_stdI)
     
 currents = np.array(currents)
+currentErrs = np.array(currentErrs)
 currentStds = np.array(currentStds)
 
 shutil.rmtree(tmp_folder) # rimuove la cartella temporanea

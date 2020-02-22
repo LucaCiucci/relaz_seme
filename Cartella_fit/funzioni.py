@@ -10,31 +10,36 @@ def ADC02Voltage(ADCvalue, ADCstd):
           - ADCstd (opzionale) è la deviazione standard (campione) della lettura
         return:
           - il valore centrale (Volt)
-          - errore (Volt) """
+          - errore (Volt)
+          - deviazione standard """
     return legge(ADCvalue, *parADC0),\
            np.sqrt((legge_giusto_error(ADCvalue, *parADC0, matrixADC0[0][0],\
                     matrixADC0[1][1], matrixADC0[0][1]))**2  \
-                    +(ADCstd*parADC0[0])**2)
+                    +(ADCstd*parADC0[0])**2),\
+                    ADCstd * parADC0[0]
 
 def ADC12Voltage(ADCvalue, ADCstd):##cambiare nome?
     """ Analogo di ADC02Voltage per il secondo ADC (1) """
     return legge(ADCvalue, *parADC1),\
            np.sqrt((legge_giusto_error(ADCvalue, *parADC1, matrixADC1[0][0],\
                     matrixADC1[1][1], matrixADC1[0][1]))**2\
-                    +(ADCstd*parADC0[1])**2)
+                    +(ADCstd*parADC1[1])**2),\
+                    ADCstd * parADC1[0]
 
-def V2I(V, R, dV, dR):
+def V2I(V, R, dV, stdV, dR):
     """
     V2I prende le tensioni e le converte in corrente sapendo la resistenza
     parametri:
      - V tensione (Volt)
      - R reistenza (Ohm)
      - dV errore su V (Volt)
+     - stdV deviazione standard su V
      - dR errore su R (Ohm)
     return:
      - corrente (Ampere)
-     - errore su corrente (Ampere) """
-    return V / R, np.sqrt((dV / R)**2 + (dR * V / R**2)**2)
+     - errore su corrente (Ampere)
+     - deviazione standard su corrente """
+    return V / R, np.sqrt((dV / R)**2 + (dR * V / R**2)**2), stdV / R
 
 def gaussian(x, mx, sx):
     """ gaussian ritorna il valore della gaussiana centrata in mx e sigma = sx
