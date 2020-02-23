@@ -27,8 +27,11 @@ time.sleep(10) ##da modificare una volta che si ha il programma in C++
 
 #il file di testo finale sarà coi numeri giusti una volta che si è scritto il
 #file in C++. Questo è di prova
-voltages, voltageErrs, voltageStds, currents,\
-          currentErrs, currentStds\
-          = pylab.loadtxt("filetestoC/filefromC.txt", unpack = True)
+
+
+#istruzione da rimettere quando si ha il file giusto
+#voltages, voltageErrs, voltageStds, currents,\
+#          currentErrs, currentStds\
+#          = pylab.loadtxt("filetestoC/filefromC.txt", unpack = True)
 
 shutil.rmtree(tmp_folder) # rimuove la cartella temporanea

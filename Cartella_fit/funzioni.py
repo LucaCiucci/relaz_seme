@@ -106,3 +106,35 @@ def filtro(x, y, dx, dy, n_sigma):
         else:
             i = i + 1
     return x, y, dx, dy
+
+
+
+#================================================================
+#                       FUNZIONI PER IL FIT
+#================================================================
+
+def sck(V, I0, nVt):
+    return I0*(pylab.exp(V/nVt) - 1)
+
+
+
+def errFun(V, V0, I0, nVt, R):
+    return sck(V, I0, nVt) + (V - V0)/R
+
+
+
+def deriv_errFun(V, I0, nVt, R):
+    return I0 / nVt * pylab.exp(V/nVt) + 1./R;
+
+
+    
+def curr(V, I0, nVt, R):
+    v = V;
+    for i in range(Nstep):
+        a = deriv_errFun(v, I0, nVt, R)
+        v = v - errFun(v, V, I0, nVt, R) /a 
+    return (V - v)/R;
+
+
+def ddp(I, nVt, I0, R):
+    return nVt*pylab.log((I0+I)/I0) + R*I
