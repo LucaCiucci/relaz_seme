@@ -1,26 +1,35 @@
 #include "functions.hpp"
 
 double m_2pi = 2.0 * acos((double)-1);
+double m_pi = acos((double)-1);
 double normFactor = 1.0 / sqrt(m_2pi);
+double sqrt_3 = sqrt(3.0);
+double m_2sqrt_3 = sqrt(3.0) * 2.0;
+double sqrt_2 = sqrt(2.0);
+constexpr double maxSigma = 20.0;
 
 ////////////////////////////////////////////////////////////////
 RunSet readFile(std::string fileName)
 {
+	// file di lettura
 	std::ifstream file(fileName, std::ifstream::in);
+
 	std::string line;
 	std::istringstream sLine(line);
 
-
+	// crea oggeti per contenere i dati
 	RunSet set;
-	RunData data;
-	Row row;
+	RunData data;// run corrente
+	Row row;// riga corrente
 	data.clear();
 	set.clear();
 
+	// finchè posso leggere una riga
 	while (std::getline(file, line))
 		//while (file >> line)
 	{
-		// quando c'è un nuovo blocco
+		// controlla se c'è un nuovo blocco che inizia con "#="
+		// in tal caso inserisci i dati finora ottenuti in run e pulisi data
 		if (line.size() >= 2 && line[0] == '#' && line[1] == '=')
 		{
 			if (data.size() > 0)
@@ -38,6 +47,7 @@ RunSet readFile(std::string fileName)
 		sLine = std::istringstream(line);
 		if (sLine >> row.V >> row.errV >> row.stdV >> row.I >> row.errI >> row.stdI)
 		{
+			row.stdV *= 2;//!!!!!!!!!!!!!!!!!!!!!!11
 			data.push_back(row);
 		}
 	}
@@ -53,12 +63,6 @@ RunSet readFile(std::string fileName)
 std::ostream& operator<<(std::ostream& stream, const Row& row)
 {
 	stream << row.V << "    " << row.errV << "    " << row.stdV << "    " << row.I << "    " << row.errI << "    " << row.stdI;
-	/*for (auto x : row)
-	{
-		stream << x;
-		stream << ' ';
-	}*/
-
 	return stream;
 }
 
@@ -80,22 +84,28 @@ std::ostream& operator<<(std::ostream& stream, const RunSet& set)
 	for (auto x : set)
 	{
 		stream << x;
-		stream << "========= pippo" << std::endl;
+		stream << "#================================================================" << std::endl;
 	}
 
 	return stream;
 }
 
 ////////////////////////////////////////////////////////////////
-std::tuple<double, double> meanSigma(double x, const RunData& runData)
+std::tuple<double, double, double> meanSigma(double x, const RunData& runData)
 {
 	std::vector<double> w(runData.size());
 	for (int i = 0; i < runData.size(); i++)
-		w[i] = gaussian(x, runData[i].V, runData[i].stdV);
+		if (abs(runData[i].V - x) <= runData[i].stdV * maxSigma)
+			w[i] = gaussian(runData[i].V - x, runData[i].stdV);
+		else
+			w[i] = 0;
 	
 	double sum_w = 0;
 	for (auto _w : w)
 		sum_w += _w;
+
+	if (sum_w <= 0)
+		return { 0.0, 0.0, 0.0 };
 
 	double my = 0;
 	for (int i = 0; i < runData.size(); i++)
@@ -106,34 +116,27 @@ std::tuple<double, double> meanSigma(double x, const RunData& runData)
 
 	double var_y = 0;
 	for (int i = 0; i < runData.size(); i++)
+	{
 		var_y += sqr(runData[i].I - my) * w[i];
+	}
 
 	double var_my = 0;
 	for (int i = 0; i < runData.size(); i++)
 	{
 		const auto& row = runData[i];
-		var_my += sqr(w[i]) * var_y + sqr(row.I / sum_w) * ((exp(-sqr(x - row.V) / (3.0 * sqr(row.stdV)) / )))
+
+		if (abs(x - row.V) > row.stdV * maxSigma)
+			continue;
+
+		double y2 = sqr(x - row.V);
+		double s2 = sqr(row.stdV);
+		double y2_s2 = y2 / s2;
+
+		var_my += sqr(w[i]) * var_y // pezzo della varianza sulle y
+			+ sqr(row.I / sum_w) * (// pezzo varianza x
+			exp(-y2_s2*(1.0/3.0)) + sqrt_3 * (exp(-y2_s2) - sqrt_2 * exp(-(3.0/4.0) * y2_s2))// TODO ottimizza
+			// (e^(-y^2/(3*s^2))+sqrt(3)*(e^(-y^2/s^2)-sqrt(2)*e^(-(3*y^2)/(4*s^2))))/(2*sqrt(3)*pi*s^2)
+			) / (m_2sqrt_3 * s2 * m_pi);
 	}
-
-	/*
-	for j = 1:numel(xx)
-		w(j) = f(x, xx(j), dxx(j));
-	end
-	sum_w = sum(w);
-	w = w / sum_w;
-
-	my = sum(yy .* w);
-	var_y = sum(sum((yy - my).^2 .* w));
-	%var_my = sum(w.^2 * var_y);
-	var_my = 0;
-	for j = 1:numel(xx)
-		var_my = var_my + w(j)^2 * var_y + (yy(j) / sum_w)^2 * ((exp(-(x - xx(j))^2/...
-			(3*dxx(j)^2))/(sqrt(2)*sqrt(3)*sqrt(pi)*dxx(j))-exp(-(3*...
-			(x - xx(j))^2)/(4*dxx(j)^2))/(sqrt(pi)*dxx(j))+exp(-...
-			(x - xx(j))^2/dxx(j)^2)/(sqrt(2)*sqrt(pi)*dxx(j)))/...
-			(sqrt(2)*sqrt(pi)*dxx(j)));
-		% NOTA: sarebbbe meglio la versione semplificata
-	end
-	*/
-	return std::tuple<double, double>(my, 0);
+	return {my, sqrt(var_y), sqrt(var_my)};
 }
