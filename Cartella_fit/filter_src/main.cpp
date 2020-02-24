@@ -79,7 +79,7 @@ int main(int argc, char** argv)
 		std::ofstream f("b.txt", std::ifstream::out);
 		for (double x = 0.2; x < 1.5; x += 0.001)
 		{
-			auto [my, sy, smy] = meanSigma(x, set[4]);
+			auto [my, sy, smy] = meanSigma(x, set[6]);
 			f << x << "    " << my << "    " << sy << "    " << smy << std::endl;
 		}
 	}*/
