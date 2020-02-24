@@ -66,6 +66,24 @@ int main(int argc, char** argv)
 
 	std::cout << "FINE" << std::endl;
 
+	/*{
+		std::ofstream f("a.txt", std::ifstream::out);
+		for (double x = 0.2; x < 1.5; x += 0.001)
+		{
+			auto [my, sy, smy] = meanSigma(x, set[3]);
+			f << x << "    " << my << "    " << sy << "    " << smy << std::endl;
+		}
+	}
+
+	{
+		std::ofstream f("b.txt", std::ifstream::out);
+		for (double x = 0.2; x < 1.5; x += 0.001)
+		{
+			auto [my, sy, smy] = meanSigma(x, set[4]);
+			f << x << "    " << my << "    " << sy << "    " << smy << std::endl;
+		}
+	}*/
+
 	return 0;
 }
 
