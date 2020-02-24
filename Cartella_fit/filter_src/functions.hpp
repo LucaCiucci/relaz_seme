@@ -11,9 +11,19 @@
 #include <thread>
 #include <random>
 #include <tuple>
+#include <limits>
 
 extern double m_2pi;
 extern double normFactor;
+
+
+#define DEFAULT_INPUT_FILE_NAME "file2C.txt"
+#define DEFAULT_OUTPUT_FILE_NAME "file2Py.txt"
+#define DEFAULT_MAX_RATIO 3.0
+#define DEFAULT_MIN_V 0.2
+
+#define BAR_PRINT_EVERY 100
+
 
 
 // ================================
@@ -27,8 +37,32 @@ public:
 	double V = 0, errV = 0, stdV = 0, I = 0, errI = 0, stdI = 0;
 };
 
+class RunData :
+	public std::vector<Row>
+{
+public:
+
+	void update(void)
+	{
+		m_min = std::numeric_limits<double>::max();
+		m_max = std::numeric_limits<double>::min();
+
+		for (auto r : *this)
+		{
+			m_min = fmin(m_min, r.V);
+			m_max = fmax(m_max, r.V);
+		}
+	}
+
+	double min(void) const { return m_min; }
+	double max(void) const { return m_max; }
+
+private:
+	double m_min = 0, m_max = 0;
+};
+
 //using Row = std::array<double, 6>;// una riga è formata da 6 numeri e una ciambella
-using RunData = std::vector<Row>;// rappresenta un blocco di dati (1 run)
+//using RunData = std::vector<Row>;// rappresenta un blocco di dati (1 run)
 using RunSet = std::vector<RunData>;// rappresetna un insieme di run
 
 RunSet readFile(std::string fileName);
@@ -46,6 +80,41 @@ std::ostream& operator<<(std::ostream& stream, const RunSet& set);
 //            FUNZIONI
 // ================================
 
+class ProgressBar
+{
+public:
+	ProgressBar(int size = 50) : m_size(size) { drawLine(); }
+	~ProgressBar() { this->operator()(1); std::cout << std::endl; }
+
+	void operator()(float progress)
+	{
+		m_progress = progress;
+		carriageReturn();
+		drawLine();
+	}
+private:
+	float m_progress = 0;
+	const int m_size;
+
+	void drawLine()
+	{
+		std::cout << "[";
+		for (int i = 0; i < m_size; i++)
+		{
+			if (i <= (int)(m_size * m_progress))
+				std::cout << '=';
+			else
+				std::cout << ' ';
+		}
+		printf("] %.2f %%", m_progress * 100);
+	}
+
+	void carriageReturn(void)
+	{
+		std::cout << "\r";
+	}
+};
+
 // quadrato di un DOUBLE (non mettere in template!)
 inline double sqr(double x) { return x * x; }
 
@@ -58,5 +127,10 @@ inline double gaussian(double x, double sx)
 // ritorna media, varianza y, marianza su media
 std::tuple<double, double, double> meanSigma(double x, const RunData& runData);
 
+// ritorna vero se la varianza della media dei dati "from" all'indice "index" e < di quella di "to"*maxRatio
+bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio);
+
+// seleziona i dati
+std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio = DEFAULT_MAX_RATIO, double minV = DEFAULT_MIN_V);
 
 #endif // !FUNCTIONS_H

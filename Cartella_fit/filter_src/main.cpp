@@ -1,61 +1,58 @@
 #include "functions.hpp"
 
 
-#define DEFAULT_INPUT_FILE_NAME "file2C.txt"
-#define DEFAULT_OUTPUT_FILE_NAME "file2Py.txt"
-
-
 /*
 
 esecuzione programma:
-"nome_programma.exe file_input.txt file_output.txt"
+"filtro.exe --in file_in.txt --out file_out.txt --maxRatio 3 --minV 0.2"
 
 */
 
 int main(int argc, char** argv)
 {
-	std::cout << "Hello there" << std::endl;
+	std::cout << "Hello there!" << std::endl;
 
-	std::string fileNameIn, fileNameOut;
+	std::string fileNameIn = DEFAULT_INPUT_FILE_NAME;
+	std::string fileNameOut = DEFAULT_OUTPUT_FILE_NAME;
+	double maxRatio = DEFAULT_MAX_RATIO;
+	double minV = DEFAULT_MIN_V;
 
-
-	// se non ci sono parametri, usa i nomi di default
-	if (argc == 1)
+	// parsing parametri
+	for (int i = 1; i < argc; ++i)
 	{
-		fileNameIn = DEFAULT_INPUT_FILE_NAME;
-		fileNameOut = DEFAULT_OUTPUT_FILE_NAME;
-	}
-	else
-	{
-		if (argc != 3)
-			return EXIT_FAILURE;
-		fileNameIn = argv[1];
-		fileNameOut = argv[2];
+		if (std::string(argv[i]) == "-in")
+			if (i + 1 < argc) // Make sure we aren't at the end of argv!
+				fileNameIn = argv[++i]; // Increment 'i' so we don't get the argument as the next argv[i].
+
+		if (std::string(argv[i]) == "-out")
+			if (i + 1 < argc)
+				fileNameOut = argv[++i];
+
+		if (std::string(argv[i]) == "-maxRatio")
+			if (i + 1 < argc)
+				maxRatio = std::stod(argv[++i]);
+
+		if (std::string(argv[i]) == "-minV")
+			if (i + 1 < argc)
+				minV = std::stod(argv[++i]);
 	}
 
+
+	// legge file di dati da analizzare
+	std::cout << "Lettura file: " << fileNameIn << std::endl;
 	RunSet set = readFile(fileNameIn);
 
+	// esegue la selezione dei dati
+	std::cout << "Selezione dati... " << std::endl;
+	auto [out, out_bad] = selectData(set, maxRatio, minV);
 
-	//std::cout << set;
-	std::cout << set[6].size() << std::endl;
-	double tmp=0;
-	for (auto& data : set)
-		std::cout << "size : " << data.size() << std::endl;
-
-	for (int i = 0; i < 10; i++)
-	{
-		auto [my, sy, smy] = meanSigma(1.15 + i / 100.0, set[6]);
-		std::cout << my << " " << sy << " " << smy << std::endl;
-	}
-	for (int i = 0; i < 1000*0 + set[6].size(); i++)
-	{
-		auto [my, sy, smy] = meanSigma(1.3 + i / 10000.0, set[6]);
-		//std::cout << my << " " << sy << " " << smy << std::endl;
-		tmp += sy;
-		if (i % 100 == 0)
-			std::cout << (double)i/set[6].size()*100 << std::endl;
-	}
-	std::cout << "Hello there" << tmp << std::endl;
+	// salva su file
+	std::cout << "Salva file: " << fileNameOut << std::endl;
+	std::ofstream outFile(fileNameOut, std::ifstream::out);
+	outFile << out << std::endl;
+	std::cout << "Salva file: " << fileNameOut+".bad" << std::endl;
+	std::ofstream outFile_bad(fileNameOut + ".bad", std::ifstream::out);
+	outFile_bad << out_bad << std::endl;
 
 	return 0;
 }

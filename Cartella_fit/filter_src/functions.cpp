@@ -6,7 +6,7 @@ double normFactor = 1.0 / sqrt(m_2pi);
 double sqrt_3 = sqrt(3.0);
 double m_2sqrt_3 = sqrt(3.0) * 2.0;
 double sqrt_2 = sqrt(2.0);
-constexpr double maxSigma = 20.0;
+constexpr double maxSigma = 10.0;
 
 ////////////////////////////////////////////////////////////////
 RunSet readFile(std::string fileName)
@@ -33,7 +33,10 @@ RunSet readFile(std::string fileName)
 		if (line.size() >= 2 && line[0] == '#' && line[1] == '=')
 		{
 			if (data.size() > 0)
+			{
+				data.update();
 				set.push_back(data);
+			}
 
 			data.clear();
 
@@ -47,7 +50,6 @@ RunSet readFile(std::string fileName)
 		sLine = std::istringstream(line);
 		if (sLine >> row.V >> row.errV >> row.stdV >> row.I >> row.errI >> row.stdI)
 		{
-			row.stdV *= 2;//!!!!!!!!!!!!!!!!!!!!!!11
 			data.push_back(row);
 		}
 	}
@@ -93,6 +95,9 @@ std::ostream& operator<<(std::ostream& stream, const RunSet& set)
 ////////////////////////////////////////////////////////////////
 std::tuple<double, double, double> meanSigma(double x, const RunData& runData)
 {
+	if (x < runData.min() || x > runData.max())
+		return { 0.0, std::numeric_limits<double>::infinity(), std::numeric_limits<double>::infinity() };
+
 	std::vector<double> w(runData.size());
 	for (int i = 0; i < runData.size(); i++)
 		if (abs(runData[i].V - x) <= runData[i].stdV * maxSigma)
@@ -139,4 +144,66 @@ std::tuple<double, double, double> meanSigma(double x, const RunData& runData)
 			) / (m_2sqrt_3 * s2 * m_pi);
 	}
 	return {my, sqrt(var_y), sqrt(var_my)};
+}
+
+////////////////////////////////////////////////////////////////
+bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio)
+{
+	auto row = from[index];
+	auto [my1, sy1, smy1] = meanSigma(row.V, from);
+	auto [my2, sy2, smy2] = meanSigma(row.V, to);
+
+	if (smy2 == std::numeric_limits<double>::infinity() || smy1 < smy2 * maxRatio)
+		return true;
+
+	return false;
+}
+
+////////////////////////////////////////////////////////////////
+std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, double minV)
+{
+	RunData goodOutData, badOutData;
+
+	int totSize = 0;
+	for (const auto& data : set)
+		totSize += data.size();
+	goodOutData.reserve(totSize);
+	badOutData.reserve(totSize);
+
+	/*for (int currRunIndex = set.size() - 1; currRunIndex >= 1; currRunIndex--)
+		for (int i = 0; i < set[currRunIndex].size(); i++)
+		{
+			if (i %1000 == 0)
+				std::cout << currRunIndex << " " << (float)i/set[currRunIndex].size() * 100 << std::endl;
+			
+			if (isPointSignificant(i, set[currRunIndex], set[currRunIndex - 1], maxRatio))
+				outData.push_back(set[currRunIndex][i]);
+		}*/
+	
+	for (int currRunIndex = set.size() - 1; currRunIndex >= 0; currRunIndex--)
+	{
+		std::cout << "RUN " << currRunIndex << ":" << std::endl;
+		ProgressBar progressBar;
+		for (int i = 0; i < set[currRunIndex].size(); i+=100/*i++*/)// TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		{
+			if (i % BAR_PRINT_EVERY == 0)
+				progressBar((float)i / set[currRunIndex].size());
+
+			bool is_good = true;
+			if (set[currRunIndex][i].V >= minV)
+				for (int compareRunIndex = currRunIndex - 1; compareRunIndex >= 0; compareRunIndex--)
+					is_good = is_good && isPointSignificant(i, set[currRunIndex], set[compareRunIndex], maxRatio);
+			else
+				is_good = false;
+
+			if (is_good)
+				goodOutData.push_back(set[currRunIndex][i]);
+			else
+				badOutData.push_back(set[currRunIndex][i]);
+		}
+	}
+
+	goodOutData.shrink_to_fit();
+	badOutData.shrink_to_fit();
+	return { goodOutData, badOutData };
 }
