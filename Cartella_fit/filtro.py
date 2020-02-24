@@ -20,18 +20,13 @@ file2C.close()
 
 import subprocess
 
-subprocess.call('test_per_Serena')
+subprocess.call('filtro.exe -in tmp/file2C.txt -out file2P.txt -maxRatio 3 -minV 0.2')
 
-##serve per assicurarsi che l'eseguibile abbia finito a scrivere su file
-time.sleep(10) ##da modificare una volta che si ha il programma in C++
+##per sicurezza, anche se non è strettamente necessario
+time.sleep(5)
 
-#il file di testo finale sarà coi numeri giusti una volta che si è scritto il
-#file in C++. Questo è di prova
-
-
-#istruzione da rimettere quando si ha il file giusto
-#voltages, voltageErrs, voltageStds, currents,\
-#          currentErrs, currentStds\
-#          = pylab.loadtxt("filetestoC/filefromC.txt", unpack = True)
+voltages, voltageErrs, voltageStds, currents,\
+          currentErrs, currentStds\
+          = pylab.loadtxt("file2P.txt", unpack = True)
 
 shutil.rmtree(tmp_folder) # rimuove la cartella temporanea

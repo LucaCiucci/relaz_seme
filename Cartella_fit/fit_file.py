@@ -2,13 +2,7 @@
 #                       PROCEDE COL FIT
 #================================================================
 
-#funziona anche se adesso ci ho messo dei dati a caso
-
 from filtro import *
-
-#istruzione da togliere quando si ha il file C giusto... vedi filtro
-voltages, voltageErrs, voltageStd, currents, currentErrs, currentStds\
-          = pylab.loadtxt("file_prova.txt", unpack = True)#momentaneo
 
 ##FIT
 print("\n GRAFICO:")
@@ -41,14 +35,14 @@ ordinate = curr(bucket, *popt)
 g1.plot(bucket, ordinate, color = 'red')
 
 g1.minorticks_on()
-g1.set_title("Grafico")#da cambiare
+g1.set_title("Corrente vs tensione")
 g1.set_xlabel("ddp [V]")#vedi se devi cambiare ordine di grandezza
 g1.set_ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
 g1.grid(color = "gray")
 g1.grid(b=True, which='major', color='#666666', linestyle='-')
 g1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-currXlim = [min(voltages)-0.01, max(voltages)+0.01]
-#g1.set_xlim(currXlim[0], currXlim[1])
+currXlim = [0.2, max(voltages)+0.01]
+g1.set_xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents), max(currents)]
 #g1.set_ylim(currYlim[0], currYlim[1])
 
@@ -89,8 +83,8 @@ pylab.ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
 pylab.grid(color = "gray")
 pylab.grid(b=True, which='major', color='#666666', linestyle='-')
 pylab.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-currXlim = [min(voltages)-0.01, max(voltages)+0.01]
-#pylab.xlim(currXlim[0], currXlim[1])
+currXlim = [0.2, max(voltages)+0.01]
+pylab.xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents)-0.1, max(currents)+0.1]
 #pylab.ylim(currYlim[0], currYlim[1])
 
