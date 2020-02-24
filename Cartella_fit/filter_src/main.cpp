@@ -3,8 +3,18 @@
 
 /*
 
+questo programma legge tutte le serie dal file di input ed esegue la selezione
+scrivendo poi sul file di output i dati scelti e poi quelli scartati li mette
+nel file "*.bad"
+
 esecuzione programma:
-"filtro.exe --in file_in.txt --out file_out.txt --maxRatio 3 --minV 0.2"
+"filtro.exe -in file_input.txt -out file_output.txt -maxRatio 3 -minV 0.2"
+
+parametri:
+    -in [file input]      nome/percorso del file di input (default = DEFAULT_INPUT_FILE_NAME)
+	-out [file output]    nome/percorso del file di output (default = DEFAULT_OUTPUT_FILE_NAME)
+	-maxRatio [val]       valore (numerico) per la soglia di scarto dei punti (default = DEFAULT_MAX_RATIO)
+	-minV [val]           i punti con le x minori di questo valore vengono scartati (default = DEFAULT_MIN_V)
 
 */
 
@@ -21,8 +31,8 @@ int main(int argc, char** argv)
 	for (int i = 1; i < argc; ++i)
 	{
 		if (std::string(argv[i]) == "-in")
-			if (i + 1 < argc) // Make sure we aren't at the end of argv!
-				fileNameIn = argv[++i]; // Increment 'i' so we don't get the argument as the next argv[i].
+			if (i + 1 < argc)
+				fileNameIn = argv[++i];
 
 		if (std::string(argv[i]) == "-out")
 			if (i + 1 < argc)
@@ -40,7 +50,7 @@ int main(int argc, char** argv)
 
 	// legge file di dati da analizzare
 	std::cout << "Lettura file: " << fileNameIn << std::endl;
-	RunSet set = readFile(fileNameIn);
+	RunSet set = readFile(fileNameIn);// set contiene tutti i dati
 
 	// esegue la selezione dei dati
 	std::cout << "Selezione dati... " << std::endl;
@@ -53,6 +63,8 @@ int main(int argc, char** argv)
 	std::cout << "Salva file: " << fileNameOut+".bad" << std::endl;
 	std::ofstream outFile_bad(fileNameOut + ".bad", std::ifstream::out);
 	outFile_bad << out_bad << std::endl;
+
+	std::cout << "FINE" << std::endl;
 
 	return 0;
 }

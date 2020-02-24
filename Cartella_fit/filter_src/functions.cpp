@@ -55,7 +55,10 @@ RunSet readFile(std::string fileName)
 	}
 
 	if (data.size() > 0)
+	{
+		data.update();
 		set.push_back(data);
+	}
 
 	return set;
 }
@@ -153,7 +156,7 @@ bool isPointSignificant(int index, const RunData& from, const RunData& to, doubl
 	auto [my1, sy1, smy1] = meanSigma(row.V, from);
 	auto [my2, sy2, smy2] = meanSigma(row.V, to);
 
-	if (smy2 == std::numeric_limits<double>::infinity() || smy1 < smy2 * maxRatio)
+	if (smy2 == std::numeric_limits<double>::infinity() || smy2 == 0 || smy1 < smy2 * maxRatio)
 		return true;
 
 	return false;
@@ -182,16 +185,18 @@ std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, doub
 	
 	for (int currRunIndex = set.size() - 1; currRunIndex >= 0; currRunIndex--)
 	{
-		std::cout << "RUN " << currRunIndex << ":" << std::endl;
+		std::cout << "\nRUN " << currRunIndex << ":" << std::endl;
 		ProgressBar progressBar;
+
 		for (int i = 0; i < set[currRunIndex].size(); i+=100/*i++*/)// TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		{
+			// ogni tot disegna la barra di progresso
 			if (i % BAR_PRINT_EVERY == 0)
 				progressBar((float)i / set[currRunIndex].size());
 
 			bool is_good = true;
 			if (set[currRunIndex][i].V >= minV)
-				for (int compareRunIndex = currRunIndex - 1; compareRunIndex >= 0; compareRunIndex--)
+				for (int compareRunIndex = currRunIndex - 1; compareRunIndex >= 0; compareRunIndex--)// confronta con tutte le altre serie
 					is_good = is_good && isPointSignificant(i, set[currRunIndex], set[compareRunIndex], maxRatio);
 			else
 				is_good = false;
@@ -203,7 +208,9 @@ std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, doub
 		}
 	}
 
+	// riduci lo spazio allocato
 	goodOutData.shrink_to_fit();
 	badOutData.shrink_to_fit();
+
 	return { goodOutData, badOutData };
 }

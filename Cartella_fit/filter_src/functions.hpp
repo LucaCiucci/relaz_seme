@@ -37,11 +37,14 @@ public:
 	double V = 0, errV = 0, stdV = 0, I = 0, errI = 0, stdI = 0;
 };
 
+// rappresenta una serie di dati,
+// in pratica è solo un std::vector<Row> a cui ho aggiunto le funzioni max e min
 class RunData :
 	public std::vector<Row>
 {
 public:
 
+	// aggiorna max e min
 	void update(void)
 	{
 		m_min = std::numeric_limits<double>::max();
@@ -80,11 +83,12 @@ std::ostream& operator<<(std::ostream& stream, const RunSet& set);
 //            FUNZIONI
 // ================================
 
+// serve per disegnare una barra di avanzamento su console
 class ProgressBar
 {
 public:
-	ProgressBar(int size = 50) : m_size(size) { drawLine(); }
-	~ProgressBar() { this->operator()(1); std::cout << std::endl; }
+	ProgressBar(int size = 50) : m_size(size) { drawLine(); }// inizia la barra
+	~ProgressBar() { this->operator()(1); std::cout << std::endl; }// termina la barra
 
 	void operator()(float progress)
 	{
@@ -127,7 +131,7 @@ inline double gaussian(double x, double sx)
 // ritorna media, varianza y, marianza su media
 std::tuple<double, double, double> meanSigma(double x, const RunData& runData);
 
-// ritorna vero se la varianza della media dei dati "from" all'indice "index" e < di quella di "to"*maxRatio
+// ritorna vero se la varianza della media dei dati "from" all'indice "index" e < di quella di "to" * maxRatio
 bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio);
 
 // seleziona i dati
