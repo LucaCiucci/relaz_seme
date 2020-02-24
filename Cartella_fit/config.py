@@ -9,7 +9,12 @@ Nstep = 20
 
 # i dati filtrati sono messi in questa cartella temporanea
 tmp_folder = "tmp/"
-file2C = "file2C.txt"
+
+# se non vi piace odificate questi nomi
+file2CName = "file2C.txt"
+file2PyName = "file2Py.txt"
+maxRatio = 3.0
+minV = 0.2
 
 # file di dati (da modificare)#!!
 data_folder = "data/"

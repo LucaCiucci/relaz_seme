@@ -64,7 +64,7 @@ int main(int argc, char** argv)
 	std::ofstream outFile_bad(fileNameOut + ".bad", std::ifstream::out);
 	outFile_bad << out_bad << std::endl;
 
-	std::cout << "FINE" << std::endl;
+	std::cout << "FINE!" << std::endl;
 
 	/*{
 		std::ofstream f("a.txt", std::ifstream::out);

@@ -5,7 +5,7 @@
 from load_data import *
 
 os.mkdir(tmp_folder)
-file2C = open(tmp_folder + file2C, 'w')
+file2C = open(tmp_folder + file2CName, 'w')
 
 file2C.write("#V    errV    stdV    I    errI    stdI\n")
 
@@ -20,13 +20,19 @@ file2C.close()
 
 import subprocess
 
-subprocess.call('filtro.exe -in tmp/file2C.txt -out file2P.txt -maxRatio 3 -minV 0.2')
+subprocess.call("filtro.exe"\
+                + " -in " + tmp_folder + file2CName\
+                + " -out " + tmp_folder + file2PyName\
+                + " -maxRatio " + str(maxRatio)\
+                + " -minV " + str(minV))
+
+#subprocess.call('filtro.exe -in tmp/file2C.txt -out file2P.txt -maxRatio 3 -minV 0.2')
 
 ##per sicurezza, anche se non è strettamente necessario
 time.sleep(5)
 
 voltages, voltageErrs, voltageStds, currents,\
           currentErrs, currentStds\
-          = pylab.loadtxt("file2P.txt", unpack = True)
+          = pylab.loadtxt(tmp_folder + file2PyName, unpack = True)
 
 shutil.rmtree(tmp_folder) # rimuove la cartella temporanea
