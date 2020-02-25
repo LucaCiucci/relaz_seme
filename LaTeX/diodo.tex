@@ -2,7 +2,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{calc}
-\usepackage{amsmath,amssymb,amsthm, thmtools, amsfonts}
+\usepackage{amsmath, amssymb, amsthm, thmtools, amsfonts}
+\usepackage{mathtools}
 \usepackage[nochapters,pdfspacing]{classicthesis}
 %\usepackage{hyperref}% clashes with classicthesis
 \usepackage{cleveref}
@@ -160,7 +161,115 @@ una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente
 dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto"
 di un logaritmo.  
 \section{Risultati e Analisi dati}
-\subsection{Nota sul metodo di fit}
+\section{Appendice A: Filtraggio Dati}
+Il sistema di filtraggio di dati implementato nell'eseguibile si compone di 2
+fasi: la prima è l’eliminazione di outliers, la seconda consiste
+nell'eliminazione di dati non significativi.
+\subsection{Introduzione}
+In generale possiamo immaginare che ad ogni misura sia associata una forma
+quadratica rappresentata dalla matrice di covarianza della stessa, cioè che
+durante la misura si commetta un errore statistico normale noto. Possiamo poi
+immaginare che il misurando abbia un’altra matrice di covarianza. Nel
+procedimento proposto questo potrebbe essere teoricamente trattato per esteso,
+tuttavia non si troverebbe una forma chiusa generale per il problema in
+questione. Supponiamo allora che gli errori su $x$ e $y$ siano indipendenti
+e che $\sigma_x ^2 \coloneqq \var{x}$ sia nota a priori e che abbia 
+distribuzione gaussiana per ogni misura. Questo non è in generale vero, ma 
+questa ipotesi può essere trascurata quando la correlazione tra le varianze
+delle misure su $x$ e $y$ sono indipendenti dai valori assunti dalle $x$ e $y$
+stesse e vi sono “molti” dati entro una deviazione lungo $x$. In questo caso,
+infatti, la correlazione viene inclusa nella varianza lungo $y$ e, dal
+teorema del limite centrale si vede che la non-normalità delle distribuzioni
+è trascurabile.
+In ogni modo, nei nostri dati x e y risultano ragionevolmente indipendenti,
+quindi l'assunzione dovrebbe essere lecita.
+\subsection{Procedimento}
+Supponiamo, per ogni punto, che la distribuzione sia gaussiana secondo una
+matrice di covarianza diagonale nella base $\{x, y\}$ : allora la densità di
+probabilità che un punto che abbia misurato $x$ si trovi a tale ascissa $x_i$
+si ricava banalmente integrando lungo $y$ a $x$ fissata:
+\[
+	\ud P = \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
+	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}} \ud x
+.\] 
+Dunque, ripetendo più volte la stessa misura, la probabilità
+\[
+	P\left( \mid x - x_i \mid  \leq \eps  \right) = \eps G_{x_i} 
+.\]
+dove \[
+	G_{x_i} \coloneqq \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
+	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}}
+.\] 
+e $\eps > 0$ è piccolo a piacere. Scegliendo allora solo quelle misure x per
+cui vale $\mid x - x_i \mid \leq \eps$, queste saranno in numero intorno a:
+\[
+	N_i \coloneqq N_{\text{tot}} \frac{G_{x_i}}{\sum_j G_{x_j}} =
+		N_{\text{tot}} w_i
+.\] 
+che definisce implicitamente i pesi $w_i$ con cui si mediano le distribuzioni
+di probabilità gaussiane $G_{x_i}$.
+Allora, detto:
+\[
+	G_{y_i} \coloneqq \frac{1}{\sigma_{y_i} \sqrt{2\pi}}
+	e^{-\frac{1}{2}{\frac{(\mu_y - y_i)^2}{\sigma_{y_i}^2}}}
+.\] 
+Per il principio di massima verosimiglianza siamo quindi interessati a
+massimizzare la quantità:
+\[
+	\like = \prod_{i=1}^{n} \prod_{j=1}^{N_i} G_{y_i} = 
+	\prod_{i=1}^{n} G_{y_i}^{N_i}
+.\] 
+Per la monotonia del logaritmo il problema equivale a massimizzare la quantità:
+\[
+	\ln{\like} = \sum_{i=1}^{n}\ln{G_{y_i}}^{N_{\text{tot}}w_i} = 
+	\frac{N_{\text{tot}}} {\sum_{j=1}^{n} G_{x_j}} 
+	\sum_{i=1}^{n} G_{x_i} \ln{G_{y_i}}
+.\] 
+Per cui, a meno di costanti risulta:
+\begin{equation}\label{eq: likeconst}
+	\ln{\like} - \text{const.} \propto \sum_{i=1}^{n} -G_{x_i} \ln{\sigma_y}
+	- \frac{1}{2} G_{x_i} \left( \frac{y_i - \mu_y}{\sigma_y} \right)^2
+\end{equation}
+Imponendo la condizione di stazionarietà rispetto a $\mu_y$ si ottiene dunque:
+\begin{equation}\label{eq: muy}
+	\mu_y = \sum_{i=1}^{n} y_i w_i 
+\end{equation} 
+Una volta sostituito in \eqref{eq: likeconst} quanto appena trovato per $\mu_y$
+e imponendo la stessa condizione di stazionarietà rispetto a $\sigma_y$ si ha:
+\begin{equation}\label{eq: sigmay}
+	\sigma_y = \sum_{i=1}^{n} (y_i - \mu_y)^2 w_i .
+\end{equation}
+Infine è possibile ricavare la varianza di $\mu_y$ dalla definizione di valore
+di aspettazione, riconducendola più volte a integrali di gaussiane di altezze
+e ampiezze diverse:
+\begin{align}
+	\var{\mu_y} &= \sum_{i=1}^{n} \left[w_i^2 \sigma_y^2 + 
+	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
+	\frac{e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}}} {\sigma_x \sqrt{6 \pi} } +
+	\frac{e^{-3\frac{(x-x_i)^2}{4 \sigma_x^2}}} {\sigma_x \sqrt{\pi} } +
+	\frac{e^{-\frac{(x-x_i)^2}{\sigma_x^2}}} {\sigma_x \sqrt{2 \pi}}
+	} {\sqrt{2 \pi}} \right] =\\
+        &= \sum_{i=1}^{n} \left[w_i^2 \sigma_y^2 + 
+	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
+	e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}} +  
+	\sqrt{3}\left( e^{-\frac{(x-x_i)^2}{\sigma_x^2}} -
+	\sqrt{2} e^{-3 \frac{(x-x_i)^2}{4 \sigma_x^2}} \right)
+	} {2 \sqrt{3}\pi \sigma_x^2} \right]
+\end{align}
+Riassumendo:\\
+Nella \eqref{eq: muy} prendiamo una media dei campionamenti intorno ad un'
+ascissa $x$ in esame, pesata sulla distanza che gli $x_i$ hanno da questa. 
+Effettivamente quello che stiamo facendo è un stima di densità di kernel,
+per cui consideriamo i punti come -sfocati- da un \emph{blur gaussiano};
+dove però nel nostro caso riscaliamo la stima in base al valore assunto da $y$.
+Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
+dei dati la variare di y, pesata sulla distanza dai valori studiati. Dunque
+$\mu_y \pm \sigma_y$ ci dà una stima della distribuzione dei nostri dati.
+\subsection{$Var(\mu)$}
+Mentre $\sigma_y$ rappresenta la distribuzione dei dati, $\var{\mu_y}$ ci dà un' 
+idea dell’incertezza che attribuiamo alla nostra stima centrale. Questo ci è
+utile per determinare la convergenza della stima in funzione dei dati acquisiti.
+\section{Appendice B: Metodo di Fit}
 Per determinare i parametri ottimali e le rispettive varianze si \`e
 implementato un metodo di fit basato sui minimi quadrati in \verb+Python+
 mediante la funzione \emph{curve\_fit} della libreria Scipy\cite{scipy}.
