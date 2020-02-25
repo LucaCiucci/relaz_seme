@@ -3,6 +3,7 @@ import numpy as np
 numpy = np
 import math
 from scipy.optimize import curve_fit
+import scipy
 from statistics import *
 import os # operazioni su file
 import shutil # operazioni su file

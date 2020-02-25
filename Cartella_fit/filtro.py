@@ -36,4 +36,8 @@ voltages, voltageErrs, voltageStds, currents,\
           currentErrs, currentStds\
           = pylab.loadtxt(tmp_folder + file2PyName, unpack = True)
 
+voltages_bad, voltageErrs_bad, voltageStds_bad, currents_bad,\
+          currentErrs_bad, currentStds_bad\
+          = pylab.loadtxt(tmp_folder + file2PyName + ".bad", unpack = True)
+
 shutil.rmtree(tmp_folder) # rimuove la cartella temporanea
