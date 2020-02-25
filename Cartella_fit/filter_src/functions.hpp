@@ -21,6 +21,7 @@ extern double normFactor;
 #define DEFAULT_OUTPUT_FILE_NAME "file2Py.txt"
 #define DEFAULT_MAX_RATIO 3.0
 #define DEFAULT_MIN_V 0.2
+#define DEFAULT_NSKIP 1000
 
 #define BAR_PRINT_EVERY 100
 
@@ -135,6 +136,6 @@ std::tuple<double, double, double> meanSigma(double x, const RunData& runData);
 bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio);
 
 // seleziona i dati
-std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio = DEFAULT_MAX_RATIO, double minV = DEFAULT_MIN_V);
+std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio = DEFAULT_MAX_RATIO, double minV = DEFAULT_MIN_V, int Nskip = DEFAULT_NSKIP);
 
 #endif // !FUNCTIONS_H

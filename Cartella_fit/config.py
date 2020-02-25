@@ -10,11 +10,19 @@ Nstep = 20
 # i dati filtrati sono messi in questa cartella temporanea
 tmp_folder = "tmp/"
 
+# parametri per il filtro
 # se non vi piace odificate questi nomi
 file2CName = "file2C.txt"
 file2PyName = "file2Py.txt"
 maxRatio = 3.0
 minV = 0.2
+filter_Nskip = 1000#per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
+
+# abilita l'offset sulla funzione di fit
+offset_fit = True
+
+# abilita le barre di errore sui grafici
+plot_errors = False
 
 # file di dati (da modificare)#!!
 data_folder = "data/"

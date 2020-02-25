@@ -11,6 +11,7 @@ esecuzione programma:
 "filtro.exe -in file_input.txt -out file_output.txt -maxRatio 3 -minV 0.2"
 
 parametri:
+	-Nskip                osa solo un dato ogni Nskip, e' usato per  fare prove veloci (default = DEFAULT_NSKIP)
     -in [file input]      nome/percorso del file di input (default = DEFAULT_INPUT_FILE_NAME)
 	-out [file output]    nome/percorso del file di output (default = DEFAULT_OUTPUT_FILE_NAME)
 	-maxRatio [val]       valore (numerico) per la soglia di scarto dei punti (default = DEFAULT_MAX_RATIO)
@@ -26,6 +27,7 @@ int main(int argc, char** argv)
 	std::string fileNameOut = DEFAULT_OUTPUT_FILE_NAME;
 	double maxRatio = DEFAULT_MAX_RATIO;
 	double minV = DEFAULT_MIN_V;
+	int Nskip = DEFAULT_NSKIP;
 
 	// parsing parametri
 	for (int i = 1; i < argc; ++i)
@@ -45,6 +47,10 @@ int main(int argc, char** argv)
 		if (std::string(argv[i]) == "-minV")
 			if (i + 1 < argc)
 				minV = std::stod(argv[++i]);
+
+		if (std::string(argv[i]) == "-Nskip")
+			if (i + 1 < argc)
+				Nskip = std::stoi(argv[++i]);
 	}
 
 
@@ -54,7 +60,7 @@ int main(int argc, char** argv)
 
 	// esegue la selezione dei dati
 	std::cout << "Selezione dati... " << std::endl;
-	auto [out, out_bad] = selectData(set, maxRatio, minV);
+	auto [out, out_bad] = selectData(set, maxRatio, minV, Nskip);
 
 	// salva su file
 	std::cout << "Salva file: " << fileNameOut << std::endl;

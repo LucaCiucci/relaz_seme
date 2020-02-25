@@ -163,8 +163,10 @@ bool isPointSignificant(int index, const RunData& from, const RunData& to, doubl
 }
 
 ////////////////////////////////////////////////////////////////
-std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, double minV)
+std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, double minV, int Nskip)
 {
+	Nskip = std::max(Nskip, 1);
+
 	RunData goodOutData, badOutData;
 
 	int totSize = 0;
@@ -188,7 +190,7 @@ std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, doub
 		std::cout << "\nRUN " << currRunIndex << ":" << std::endl;
 		ProgressBar progressBar;
 
-		for (int i = 0; i < set[currRunIndex].size(); i+=100/*i++*/)// TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		for (int i = 0; i < set[currRunIndex].size(); i+=Nskip)
 		{
 			// ogni tot disegna la barra di progresso
 			if (i % BAR_PRINT_EVERY == 0)

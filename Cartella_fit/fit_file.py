@@ -6,29 +6,42 @@ from filtro import *
 
 ##FIT
 print("\n GRAFICO:")
-print(voltages)
-print(currentErrs)
 gridsize = (3, 1)
 grafico1 = g1 = pylab.subplot2grid(gridsize,(0,0),colspan = 1, rowspan = 2)
 grafico2 = g2 = pylab.subplot2grid(gridsize,(2,0), colspan = 2)
-g1.errorbar(voltages, currents, linestyle = '', color = 'black', marker = '.')
-init = [1./10**7, 52/10**3, 0.1]
+
+if plot_errors:
+    g1.errorbar(voltages, currents, currentErrs, voltageErrs, linestyle = '', color = 'black', marker = '.')
+else:
+    g1.errorbar(voltages, currents, linestyle = '', color = 'black', marker = '.')
+
+if offset_fit:
+    init = [4.3/10**9, 47.5/10**3, 0.046, 0.0]
+else:
+    init = [1./10**7, 52/10**3, 0.1]
+    
 popt, pcov = curve_fit(curr, voltages, currents, init, currentErrs, absolute_sigma = False)
-a1, a2, a3= popt
-da1, da2, da3= pylab.sqrt(pcov.diagonal())
-print("I0 = %.11f +- %.11f" %(a1, da1))
-print("nVt = %f +- %f" %(a2, da2))
-print("Rd = %f +- %f" %(a3, da3))
+a = popt
+da = pylab.sqrt(pcov.diagonal())
+print("I0 = %g +- %g" %(a[0], da[0]))
+print("nVt = %g +- %g" %(a[1], da[1]))
+print("Rd = %f +- %f" %(a[2], da[2]))
+if offset_fit:
+    print("offset = %g +- %g" %(a[3], da[3]))
+
 dw = numpy.zeros(len(currentErrs))
 for i in range(5):
     for j in range(len(currentErrs)):
         dw[j] = pylab.sqrt(currentErrs[j]**2 + (curr(voltages[j] + voltageErrs[j], *popt)- curr(voltages[j], *popt))**2)
     popt, pcov = curve_fit(curr, voltages, currents, init, dw, absolute_sigma = False)
-a1, a2, a3= popt
-da1, da2, da3= pylab.sqrt(pcov.diagonal())
-print("I0 = %.11f +- %.11f" %(a1, da1))
-print("nVt = %f +- %f" %(a2, da2))
-print("Rd = %f +- %f" %(a3, da3))
+
+a = popt
+da = pylab.sqrt(pcov.diagonal())
+print("I0 = %g +- %g" %(a[0], da[0]))
+print("nVt = %g +- %g" %(a[1], da[1]))
+print("Rd = %f +- %f" %(a[2], da[2]))
+if offset_fit:
+    print("offset = %g +- %g" %(a[3], da[3]))
 
 bucket = numpy.linspace(1./1000000, max(voltages)+0.01, 1000)
 ordinate = curr(bucket, *popt)
@@ -52,8 +65,11 @@ for i in range(len(voltages)):
     residui[i] = currents[i] - curr(voltages[i], *popt)
 
 g2.minorticks_on()
-g2.plot(bucket, bucket*0., color = 'black')
-g2.errorbar(voltages, residui, color = 'black', marker = '.', linestyle = '')
+g2.plot(bucket, bucket*0., color = 'red')
+if plot_errors:
+    g2.errorbar(voltages, residui, dw, color = 'black', marker = '.', linestyle = '')
+else:
+    g2.errorbar(voltages, residui, color = 'black', marker = '.', linestyle = '')
 g2.set_xlabel("ddp [V]")
 g2.set_ylabel("Residui [A]")
 g2.grid(color = "gray")
@@ -70,11 +86,17 @@ pylab.show()
 print("\n GRAFICO in carta semilogaritmica:")
 
 gridsize = (3, 1)
-pylab.errorbar(voltages, currents, linestyle = '', color = 'black', marker = '.')
 
-bucket = numpy.linspace(0.5, max(voltages)+0.0001, 1000)
+bucket = numpy.linspace(0.2, max(voltages)+0.0001, 1000)
 ordinate = curr(bucket, *popt)
-pylab.plot(bucket, ordinate, color = 'red')
+
+if offset_fit:
+    pylab.errorbar(voltages, currents - a[3], currentErrs, voltageErrs, linestyle = '', color = 'black', marker = '.')
+    pylab.plot(bucket, ordinate - a[3], color = 'red')
+else:
+    pylab.errorbar(voltages, currents, currentErrs, voltageErrs, linestyle = '', color = 'black', marker = '.')
+    pylab.plot(bucket, ordinate, color = 'red')
+    
 
 pylab.minorticks_on()
 pylab.title("Grafico in scala semilogaritmica")#da cambiare

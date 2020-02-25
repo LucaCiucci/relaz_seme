@@ -127,13 +127,20 @@ def deriv_errFun(V, I0, nVt, R):
     return I0 / nVt * pylab.exp(V/nVt) + 1./R;
 
 
-    
-def curr(V, I0, nVt, R):
-    v = V;
-    for i in range(Nstep):
-        a = deriv_errFun(v, I0, nVt, R)
-        v = v - errFun(v, V, I0, nVt, R) /a 
-    return (V - v)/R;
+if offset_fit:
+    def curr(V, I0, nVt, R, offset):
+        v = V;
+        for i in range(Nstep):
+            a = deriv_errFun(v, I0, nVt, R)
+            v = v - errFun(v, V, I0, nVt, R) /a 
+        return (V - v)/R + offset;
+else:
+    def curr(V, I0, nVt, R):
+        v = V;
+        for i in range(Nstep):
+            a = deriv_errFun(v, I0, nVt, R)
+            v = v - errFun(v, V, I0, nVt, R) /a 
+        return (V - v)/R;
 
 
 def ddp(I, nVt, I0, R):

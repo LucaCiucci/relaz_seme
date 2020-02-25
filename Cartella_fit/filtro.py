@@ -24,7 +24,8 @@ subprocess.call("filtro.exe"\
                 + " -in " + tmp_folder + file2CName\
                 + " -out " + tmp_folder + file2PyName\
                 + " -maxRatio " + str(maxRatio)\
-                + " -minV " + str(minV))
+                + " -minV " + str(minV)\
+                + " -Nskip " + str(filter_Nskip))
 
 #subprocess.call('filtro.exe -in tmp/file2C.txt -out file2P.txt -maxRatio 3 -minV 0.2')
 
