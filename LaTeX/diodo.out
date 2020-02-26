@@ -2,11 +2,13 @@
 \BOOKMARK [1][-]{section.2}{Metodo e apparato sperimentale}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Acquisizione dati}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Schema circuitale del sistema}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Risultati e Analisi dati}{}% 5
-\BOOKMARK [1][-]{section.4}{Appendice A: Filtraggio Dati}{}% 6
-\BOOKMARK [2][-]{subsection.4.1}{Introduzione}{section.4}% 7
-\BOOKMARK [2][-]{subsection.4.2}{Procedimento}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.3}{Var\(y\)}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.4}{Filtro outliers}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.5}{Filtro dati non significativi}{section.4}% 11
-\BOOKMARK [1][-]{section.5}{Appendice B: Metodo di Fit}{}% 12
+\BOOKMARK [2][-]{subsection.2.3}{Cenni Teorici}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Risultati e Analisi dati}{}% 6
+\BOOKMARK [1][-]{section.4}{Conclusioni}{}% 7
+\BOOKMARK [1][-]{section.5}{Appendice A: Filtraggio Dati}{}% 8
+\BOOKMARK [2][-]{subsection.5.1}{Introduzione}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.2}{Procedimento}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.3}{Var\(y\)}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.4}{Filtro outliers}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.5}{Filtro dati non significativi}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Appendice B: Metodo di Fit}{}% 14

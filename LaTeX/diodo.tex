@@ -161,19 +161,89 @@ questo, una regione in cui la curva caratteristica della giunzione ora mostra
 una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente
 dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto"
 di un logaritmo.  
+
+\subsection{Cenni Teorici}
+Il diodo e la resistenza $R_1$ costituiscono, nel loro insieme, un partitore
+di tensione, pertanto la corrente che scorre all'interno dei due è la stessa.
+Un diodo reale può essere a sua volta schematizzato come un ramo, costituito
+da un resistore ohmico ed un diodo ideale in serie. Dunque ci aspettiamo che
+la relazione che lega la corrente e la tensione ai capi del diodo possa essere
+descritta da una legge del tipo:
+\begin{equation}\label{eq: model}
+	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} =
+	\eta V_T  \ln{\left(\frac{I+I_0}{I_0}\right)} + RI
+\end{equation}
+
 \section{Risultati e Analisi dati}
+Il nostro intento è verificare che i dati raccolti siano in accordo con la
+legge \eqref{eq: model}. Tramite la legge di Ohm è possibile ricavare la
+corrente nel diodo, dividendo la caduta di tensione misurate dalla boccola
+\verb'ADC0' per la resistenza $R$. Si è quindi effettuato un filtraggio volto
+all'eliminazione degli offset e dei punti meno significativi, assumendoli quali
+variabili indipendenti e di natura gaussiana. Per una discussione dettagliata
+del sistema di filtraggio dati si rimanda alla sezione A delle Appendici.
+
+Successivamente, è stato effettuato un fit sulla base dei dati selezionati.
+Ingenuamente, avremo dunque potuto pensare di adottare la legge 
+\eqref{eq: model} direttamente. Tuttavia ciò comporterebbe il fallimento
+repentino del fit a causa dei valori negativi o nulli che debitamente si
+riscontrerebbero entro il logaritmo. \`E stata quindi adottata una legge
+alternativa basata sul metodo delle tangenti (o di Newton). Per una trattazione
+approfondita del modello di fit, si rimanda alla sezione B delle Appendici.
+
+I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
+del grafico 1.
+%[inserire grafico 1]
+I parametri stimati dal fit risultano essere:
+\begin{align*}
+	R_{diodo} &= 47.5 \pm 0.2 \; \rm m\Omega \\
+	\eta V_T &= 46.40 \pm 0.06 \; \rm mV \\
+	I_0 &= (3.18 \pm 0.05) \; \rm nA \\
+	\sigma_{R, \eta V_T} &= ? \\   
+	\sigma_{R, I_0} &= ? \\
+	\sigma_{I_0, \eta V_T} &= ? \\
+	\chi^2/\text{ndof} &= 4483/2760 \\
+	\text{abs\_sigma} &= \rm False
+\end{align*}
+Il $\chi^2$ risulta essere pari a 4483 contro un aspettato di 2760.
+%(i dati vanno cambiati con quelli del fit fatto bene)
+Successivamente, i dati e la funzione sono stati posti all'interno di un
+grafico in scala semilogaritmica (grafico 2).
+%[inserire grafico 2]
+
+\section{Conclusioni}
+L'andamento dei dati sperimentali non risulta essere ben descritto dalla legge
+\eqref{eq: model}. Ciò può essere spiegato sulla base della non linearità dei
+convertitori analogici digitali all'interno di Teensy 3.2, che ha comportato
+degli errori difficilmente stimabili e presumibilmente correlati. Tuttavia, si
+riscontrano delle analogie tra la funzione di fit ed i dati ottenuti. In
+particolare, dal grafico in scala lineare, si osserva che a correnti alte
+l'andamento risulta essere pressoch\`e lineare in accordo con l'ipotesi sulla
+resistenza interna. Dal grafico in scala semilogaritmica, inoltre, osserviamo
+che i dati risultano possedere un andamento simile a quello caratteristico 
+della curva di Shockley per poi appiattirsi a partire da un particolare valore
+della tensione, esattamente come ci aspetteremo da un andamento lineare.
+Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi.
+
 \section{Appendice A: Filtraggio Dati}
+Durante l’esperienza è stato raccolto un grande numero di dati, raccolti in
+run diversi in base alla resistenza scelta, dunque a zone differenti della
+curva. Sì è posto il problema di eliminare degli outliers in modo
+indipendente dal modello scelto. Inoltre le varie serie di dati si
+sovrappongono, dunque è necessario eliminare quei dati che, non aggiungendo
+informazioni utili, vanno a “sporcare” il grafico.
 Il sistema di filtraggio di dati implementato nell'eseguibile si compone di 2
 fasi: la prima è l’eliminazione di outliers, la seconda consiste
 nell'eliminazione di dati non significativi.
 \subsection{Introduzione}
-In generale possiamo immaginare che ad ogni misura sia associata una forma
-quadratica rappresentata dalla matrice di covarianza della stessa, cioè che
-durante la misura si commetta un errore statistico normale noto. Possiamo poi
-immaginare che il misurando abbia un’altra matrice di covarianza. Nel
-procedimento proposto questo potrebbe essere teoricamente trattato per esteso,
-tuttavia non si troverebbe una forma chiusa generale per il problema in
-questione. Supponiamo allora che gli errori su $x$ e $y$ siano indipendenti
+%In generale possiamo immaginare che ad ogni misura sia associata una forma
+%quadratica rappresentata dalla matrice di covarianza della stessa, cioè che
+%durante la misura si commetta un errore statistico normale noto. Possiamo poi
+%immaginare che il misurando abbia un’altra matrice di covarianza. Nel
+%procedimento proposto questo potrebbe essere teoricamente trattato per esteso,
+%tuttavia non si troverebbe una forma chiusa generale per il problema in
+%questione.
+Supponiamo che gli errori su $x$ e $y$ siano indipendenti
 e che $\sigma_x ^2 \coloneqq \var{x}$ sia nota a priori e che abbia 
 distribuzione gaussiana per ogni misura. Questo non è in generale vero, ma 
 questa ipotesi può essere trascurata quando la correlazione tra le varianze
@@ -284,7 +354,7 @@ precisione il valore di $\mu_y$.
 \subsection{Filtro outliers}
 La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
 punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
-standard dalla media $\sigma_x$, ovvero quegli $y_i$ per cui,
+standard dalla media $\sigma_y$, ovvero quegli $y_i$ per cui,
 indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
 \subsection{Filtro dati non significativi}
 Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo con
@@ -326,7 +396,7 @@ Tuttavia una tale operazione non è affatto banale, a causa dei valori
 negativi/nulli che debitamente si riscontreranno all’interno del logaritmo
 nella legge \eqref{eq: invsck}, che possono facilmente portare al fallimento
 dell'algoritmo di fit.
-\'E per questo che si è dovuto definire il modello "inverso" nella forma di
+\`E per questo che si è dovuto definire il modello "inverso" nella forma di
 una legge di natura approssimata per ricorsione, grazie al metodo di Newton. 
 Al livello di implementazione si è quindi dichiarata una funzione:
 \begin{lstlisting}[label={lst: curr}]
@@ -339,33 +409,32 @@ def curr(V, I0, nVt, R):
 \end{lstlisting}
 
 Questa verrà in seguito usata come modello per la corrente in funzione della
-tensione ai capi del diodo reale nella routine di fit per minimi quadrati:
-implementato in \verb+Python+ mediante la funzione \emph{curve\_fit} dal
-modulo \verb+optimize+ interno alla libreria \texttt{Scipy}\cite{scipy}.
-In pratica questa funzione cerca di -linearizzare- la relazione tra $I$ e $V$
-nell'intorno di un determinato $V$. Come sappiamo infatti dal metodo di Newton,
-detta $f(x)$ una funzione tale che $f(x) = 0$ e, dato un valore iniziale,
-tale che $f(x[0]) = \alpha$ generico, se procediamo con un numero di iterazioni
-sufficienti, sappiamo che la relazione di ricorsione che segue ci fornirà un
-risultato soddisfacente per la nostra $x$:
-\begin{align}\label{aln: newton}
-	x[0] = \alpha \\
+tensione ai capi del diodo reale nella routine di fit per minimi quadrati.
+La funzione \verb'curr' cerca di -linearizzare- la relazione tra $I$ e $V$
+nell'intorno di un determinato $V$. Come sappiamo infatti dal metodo di Newton:
+detta $f(x)$ una funzione tale che $f(x) = 0$ e, dato un valore iniziale
+tale che $f(x[0]) = \alpha$ generico, sappiamo che la relazione di ricorsione
+\begin{align}
+	x[0] = \alpha \\ \label{aln: newton}
 	x[N+1] = x[N] - \frac{f(x[N])}{f'(x[N])}
 \end{align}
-dove $N$ indica il livello di ricorsione raggiunto nell'approssimazione di $x$.
+converge ad un valore approssimato per la nostra $x$, commettendo un errore 
+sempre più piccolo al crescere di $N$, indice del livello di ricorsione
+raggiunto. 
 Nel nostro caso $x$ sarà quella tensione $v$ per cui vale l'identità:
 \begin{equation}\label{eq: sck}
-	I(V) \coloneqq I_0^{\frac{\Delta V}{\eta V_T}} = \frac{v - V}{R}	
+	I(V) \coloneqq I_0^{\frac{\Delta V}{\eta V_T}} = \frac{V - v}{R}	
 \end{equation}
-che identifica un tratto lineare caratterizzato da una retta con coefficiente
-angolare negativo pari a $-\frac{1}{R}$ ed un intercetta di $I = v/R$ 
-sull’asse delle $y$, che come è facile dedurre, altro non è che la retta
-di carico del diodo. Facendo così stiamo quindi cercando il punto di lavoro
-$v$ per cui la corrente può essere scritta come $\frac{v - V}{R}$
-(corrente di lavoro), come si evince dal return nella funzione di fit
+che identifica il tratto lineare descritto da una retta con coefficiente
+angolare negativo pari a $-\frac{1}{R}$ ed intercetta $I = v/R$ 
+sull’asse delle ordinate; si tratta proprio della retta di carico del diodo.
+L'equazione ricorsiva \eqref{aln: newton} ci permette quindi di determinare
+il punto di lavoro $v$ per cui la corrente (di lavoro) si può scrivere come
+$\frac{V - v}{R}$, come si vede dal return nella funzione di fit
 \verb'curr(V, parametri liberi)'.
-Sulla base di ciò è facile dedurre che le altre due funzioni che vengono
-richiamate dentro \verb'curr' possono essere scritte nella forma:
+A questo punto si può già intuire quali siano le altre due funzioni di
+appoggio richiamate dentro \verb'curr', di cui riportiamo le definizioni
+per completezza:
 \begin{lstlisting}[label={lst: errFun}]
 def sck(V, I0, nVt):
     return I0*(pylab.exp(V/nVt) - 1)
@@ -376,13 +445,25 @@ def errFun(V, V0, I0, nVt, R):
 def deriv_errFun(V, I0, nVt, R):
     return I0 / nVt * pylab.exp(V/nVt) + 1./R
 \end{lstlisting}
-dove \verb'errFun' e \verb'deriv_errFun' sono, rispettivamente, la relazione 
-da minimizzare specificata dalla legge \eqref{eq: sck} e la propria derivata.
-Quindi il fit è stato effettuato secondo le consuete modalità, adottando in
-primo luogo \verb'curr' come funzione di fit e \verb'currentErrs' come errori
-sui punti (gli errori sulle $y$). In seguito, sono stati propagati anche gli
-errori \verb'voltageErrs' relativi alle $x$ sulle $y$ secondo la consueta 
-modalità.
+Infatti \verb'errFun' e \verb'deriv_errFun' sono, rispettivamente, la relazione 
+da minimizzare specificata dalla legge \eqref{eq: sck} e la sua derivata
+rispetto a $V$.
+In conclusione, si è effettuato un fit dei minimi quadrati implementato in
+\verb+Python+ mediante la funzione \emph{curve\_fit} dal modulo \verb+optimize+
+interno alla libreria \texttt{Scipy}\cite{scipy} adottando come modello
+\verb'curr' e lasciando liberi tutti i suoi parametri.
+In particolare si è tenuto conto dell'incertezza sulla variabile indipendente
+con il metodo "dell'errore efficace": ovvero propagando gli errori 
+\verb'voltageErrs' sulle $V$, tramite le stime dei parametri ottenute da un fit
+preliminare, in cui prendiamo \verb'currentErrs' come sole incertezze sulla
+variabile dipendente $I$. Lo stesso algoritmo di fit viene iterato più volte,
+però assumendo come incertezza sulle misure una sorta di errore efficace 
+dato dalla somma in quadratura dei due contributi all'incertezza: 
+\begin{equation}\label{eq: seff}
+	\Delta_{\text{eff}_i} \coloneqq \sqrt{\left|\frac{\ud \, curr}{\ud V}
+	\right|_{V = V_i} \Delta_{V_i}^2 + \Delta_{I_i}^2}.
+\end{equation}
+fin a che non converge ai valori ottimali dei parametri.
 \medskip
 \bibliographystyle{IEEEtrandoi}
 \bibliography{refs}
