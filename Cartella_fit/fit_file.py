@@ -66,7 +66,7 @@ g1.set_ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
 g1.grid(color = "gray")
 g1.grid(b=True, which='major', color='#666666', linestyle='-')
 g1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-currXlim = [0.2, max(voltages)+0.01]
+currXlim = [min(voltages), max(voltages)+0.01]
 g1.set_xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents), max(currents)]
 #g1.set_ylim(currYlim[0], currYlim[1])
@@ -84,7 +84,7 @@ if plot_points:
     else:
         g2.errorbar(voltages, residui, color = 'black', marker = '.', linestyle = '', alpha=scatterAlpha)
 if plot_sigma_zone:
-    xx = pylab.linspace(min(voltages), max(voltages), 1000)
+    xx = pylab.linspace(min([min(voltages), min(voltages_bad)]), max(voltages), 1000)
     yy, syy = order0fit(xx, voltages, currents, voltageStds)
     g2.fill_between(xx, yy + 2.0*syy - curr(xx, *popt), yy - 2.0*syy - curr(xx, *popt), color = 'b', alpha = sigma_zone_alpha)
     g2.fill_between(xx, yy + syy - curr(xx, *popt), yy - syy - curr(xx, *popt), color = 'b', alpha = sigma_zone_alpha)
@@ -141,7 +141,7 @@ pylab.ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
 pylab.grid(color = "gray")
 pylab.grid(b=True, which='major', color='#666666', linestyle='-')
 pylab.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-currXlim = [0.2, max(voltages)+0.01]
+currXlim = [min([min(voltages), min(voltages_bad)]), max(voltages)+0.01]
 pylab.xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents)-0.1, max(currents)+0.1]
 #pylab.ylim(currYlim[0], currYlim[1])
