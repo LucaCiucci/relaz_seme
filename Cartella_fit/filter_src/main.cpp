@@ -16,6 +16,7 @@ parametri:
 	-out [file output]    nome/percorso del file di output (default = DEFAULT_OUTPUT_FILE_NAME)
 	-maxRatio [val]       valore (numerico) per la soglia di scarto dei punti (default = DEFAULT_MAX_RATIO)
 	-minV [val]           i punti con le x minori di questo valore vengono scartati (default = DEFAULT_MIN_V)
+	-outSigma [val]       parametro per gli outliers (default = DEFAULT_OUTLIERS_SIGMA)
 
 */
 
@@ -26,6 +27,7 @@ int main(int argc, char** argv)
 	std::string fileNameIn = DEFAULT_INPUT_FILE_NAME;
 	std::string fileNameOut = DEFAULT_OUTPUT_FILE_NAME;
 	double maxRatio = DEFAULT_MAX_RATIO;
+	double outSigma = DEFAULT_OUTLIERS_SIGMA;
 	double minV = DEFAULT_MIN_V;
 	int Nskip = DEFAULT_NSKIP;
 
@@ -51,6 +53,10 @@ int main(int argc, char** argv)
 		if (std::string(argv[i]) == "-Nskip")
 			if (i + 1 < argc)
 				Nskip = std::stoi(argv[++i]);
+
+		if (std::string(argv[i]) == "-outSigma")
+			if (i + 1 < argc)
+				outSigma = std::stoi(argv[++i]);
 	}
 
 
@@ -60,7 +66,7 @@ int main(int argc, char** argv)
 
 	// esegue la selezione dei dati
 	std::cout << "Selezione dati... " << std::endl;
-	auto [out, out_bad] = selectData(set, maxRatio, minV, Nskip);
+	auto [out, out_bad] = selectData(set, maxRatio, minV, outSigma, Nskip);
 
 	// salva su file
 	std::cout << "Salva file: " << fileNameOut << std::endl;

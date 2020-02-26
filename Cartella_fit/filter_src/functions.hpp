@@ -20,6 +20,7 @@ extern double normFactor;
 #define DEFAULT_INPUT_FILE_NAME "file2C.txt"
 #define DEFAULT_OUTPUT_FILE_NAME "file2Py.txt"
 #define DEFAULT_MAX_RATIO 3.0
+#define DEFAULT_OUTLIERS_SIGMA 3.0
 #define DEFAULT_MIN_V 0.2
 #define DEFAULT_NSKIP 1000
 
@@ -133,9 +134,9 @@ inline double gaussian(double x, double sx)
 std::tuple<double, double, double> meanSigma(double x, const RunData& runData);
 
 // ritorna vero se la varianza della media dei dati "from" all'indice "index" e < di quella di "to" * maxRatio
-bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio);
+bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio, double outSigma);
 
 // seleziona i dati
-std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio = DEFAULT_MAX_RATIO, double minV = DEFAULT_MIN_V, int Nskip = DEFAULT_NSKIP);
+std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio = DEFAULT_MAX_RATIO, double minV = DEFAULT_MIN_V, double outSigma = DEFAULT_OUTLIERS_SIGMA, int Nskip = DEFAULT_NSKIP);
 
 #endif // !FUNCTIONS_H

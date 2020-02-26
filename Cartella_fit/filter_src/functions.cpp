@@ -150,20 +150,20 @@ std::tuple<double, double, double> meanSigma(double x, const RunData& runData)
 }
 
 ////////////////////////////////////////////////////////////////
-bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio)
+bool isPointSignificant(int index, const RunData& from, const RunData& to, double maxRatio, double outSigma)
 {
 	auto row = from[index];
 	auto [my1, sy1, smy1] = meanSigma(row.V, from);
 	auto [my2, sy2, smy2] = meanSigma(row.V, to);
 
-	if (smy2 == std::numeric_limits<double>::infinity() || smy2 == 0 || smy1 < smy2 * maxRatio)
+	if ((smy2 == std::numeric_limits<double>::infinity() || smy2 == 0 || smy1 < smy2 * maxRatio) && abs(row.I - my1) <= outSigma * sy1)
 		return true;
 
 	return false;
 }
 
 ////////////////////////////////////////////////////////////////
-std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, double minV, int Nskip)
+std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, double minV, double outSigma, int Nskip)
 {
 	Nskip = std::max(Nskip, 1);
 
@@ -199,7 +199,7 @@ std::tuple<RunData, RunData> selectData(const RunSet& set, double maxRatio, doub
 			bool is_good = true;
 			if (set[currRunIndex][i].V >= minV)
 				for (int compareRunIndex = currRunIndex - 1; compareRunIndex >= 0; compareRunIndex--)// confronta con tutte le altre serie
-					is_good = is_good && isPointSignificant(i, set[currRunIndex], set[compareRunIndex], maxRatio);
+					is_good = is_good && isPointSignificant(i, set[currRunIndex], set[compareRunIndex], maxRatio, outSigma);
 			else
 				is_good = false;
 
