@@ -17,6 +17,7 @@ file2PyName = "file2Py.txt"
 maxRatio = 3.0
 minV = 0.2
 filter_Nskip = 100#per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
+outSigma = 3 #numero di sigma per eliminare gli outliers
 
 # abilita il disegno dei punti
 plot_points = True
