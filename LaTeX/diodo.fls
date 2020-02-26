@@ -404,8 +404,14 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplots
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/atveryend.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_tikzexternalshared.code.tex
 OUTPUT diodo.auxlock
+INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT ./math.tex
 INPUT ./math.tex
+INPUT /usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/t1xbtt.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/t1xtt.tfm
 INPUT diodo.aux
 INPUT diodo.aux
 OUTPUT diodo.aux
@@ -573,6 +579,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/mathpazo/zplmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtk10.tfm
 INPUT diodo.bbl
 INPUT diodo.bbl
 INPUT diodo.aux
@@ -603,5 +610,6 @@ INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb

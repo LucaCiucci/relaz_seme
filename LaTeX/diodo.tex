@@ -27,6 +27,7 @@
 
 \pgfplotsset{compat=1.15}
 \lstset{
+language=Python,
 basicstyle=\ttfamily,
 columns=fullflexible,
 keepspaces=true,
@@ -304,9 +305,84 @@ di set per eliminare i dati non significativi, che rendono meno
 immediata l'interpretazione il grafico.
 
 \section{Appendice B: Metodo di Fit}
-Per determinare i parametri ottimali e le rispettive varianze si \`e
-implementato un metodo di fit basato sui minimi quadrati in \verb+Python+
-mediante la funzione \emph{curve\_fit} della libreria Scipy\cite{scipy}.
+Partiamo dall'osservazione che la tensione ai capi del diodo può essere
+scomposta in $\Delta V_r$ e $\Delta V_d$ come illustrato in figura:
+
+dove il resistore a sinistra indica proprio la resistenza di un diodo reale,
+mentre il diodo alla sua destra rappresenta una giunzione bipolare PN, ossia
+il diodo ideale descritto dall’equazione di Shockley.
+Dunque ci aspettiamo che la tensione $V$ campionata con \verb+Teensy+ ai capi
+del diodo rispetti la legge:
+\begin{equation}\label{eq: invsck}
+V = \Delta V = \Delta V_d + \Delta V_r = \eta V_T = \ln{\frac{I+I_0}{I_0}} + RI
+\end{equation}
+All’interno dello script \verb'fit_file.py', voltages rappresenta il vettore
+delle ascisse dei punti campionati, mentre currents rappresenta l'analogo per
+le ordinate. Le incertezze associate a questi due all'interno dello script
+prendono i nomi \verb'voltageErrs' e \verb'currentErrs'.
+Ingenuamente potremmo essere tentati di effettuare una sorta di fit “inverso”
+(delle x in funzione delle y).
+Tuttavia una tale operazione non è affatto banale, a causa dei valori 
+negativi/nulli che debitamente si riscontreranno all’interno del logaritmo
+nella legge \eqref{eq: invsck}, che possono facilmente portare al fallimento
+dell'algoritmo di fit.
+\'E per questo che si è dovuto definire il modello "inverso" nella forma di
+una legge di natura approssimata per ricorsione, grazie al metodo di Newton. 
+Al livello di implementazione si è quindi dichiarata una funzione:
+\begin{lstlisting}[label={lst: curr}]
+def curr(V, I0, nVt, R):
+    v = V
+    for i in range(Nstep):
+	a = deriv_errFun(v, I0, nVt, R)
+	v = v - errFun(v, V, I0, nVt, R) /a
+    return (V - v)/R
+\end{lstlisting}
+
+Questa verrà in seguito usata come modello per la corrente in funzione della
+tensione ai capi del diodo reale nella routine di fit per minimi quadrati:
+implementato in \verb+Python+ mediante la funzione \emph{curve\_fit} dal
+modulo \verb+optimize+ interno alla libreria \texttt{Scipy}\cite{scipy}.
+In pratica questa funzione cerca di -linearizzare- la relazione tra $I$ e $V$
+nell'intorno di un determinato $V$. Come sappiamo infatti dal metodo di Newton,
+detta $f(x)$ una funzione tale che $f(x) = 0$ e, dato un valore iniziale,
+tale che $f(x[0]) = \alpha$ generico, se procediamo con un numero di iterazioni
+sufficienti, sappiamo che la relazione di ricorsione che segue ci fornirà un
+risultato soddisfacente per la nostra $x$:
+\begin{align}\label{aln: newton}
+	x[0] = \alpha \\
+	x[N+1] = x[N] - \frac{f(x[N])}{f'(x[N])}
+\end{align}
+dove $N$ indica il livello di ricorsione raggiunto nell'approssimazione di $x$.
+Nel nostro caso $x$ sarà quella tensione $v$ per cui vale l'identità:
+\begin{equation}\label{eq: sck}
+	I(V) \coloneqq I_0^{\frac{\Delta V}{\eta V_T}} = \frac{v - V}{R}	
+\end{equation}
+che identifica un tratto lineare caratterizzato da una retta con coefficiente
+angolare negativo pari a $-\frac{1}{R}$ ed un intercetta di $I = v/R$ 
+sull’asse delle $y$, che come è facile dedurre, altro non è che la retta
+di carico del diodo. Facendo così stiamo quindi cercando il punto di lavoro
+$v$ per cui la corrente può essere scritta come $\frac{v - V}{R}$
+(corrente di lavoro), come si evince dal return nella funzione di fit
+\verb'curr(V, parametri liberi)'.
+Sulla base di ciò è facile dedurre che le altre due funzioni che vengono
+richiamate dentro \verb'curr' possono essere scritte nella forma:
+\begin{lstlisting}[label={lst: errFun}]
+def sck(V, I0, nVt):
+    return I0*(pylab.exp(V/nVt) - 1)
+
+def errFun(V, V0, I0, nVt, R):
+    return sck(V, I0, nVt) + (V - V0)/R
+
+def deriv_errFun(V, I0, nVt, R):
+    return I0 / nVt * pylab.exp(V/nVt) + 1./R
+\end{lstlisting}
+dove \verb'errFun' e \verb'deriv_errFun' sono, rispettivamente, la relazione 
+da minimizzare specificata dalla legge \eqref{eq: sck} e la propria derivata.
+Quindi il fit è stato effettuato secondo le consuete modalità, adottando in
+primo luogo \verb'curr' come funzione di fit e \verb'currentErrs' come errori
+sui punti (gli errori sulle $y$). In seguito, sono stati propagati anche gli
+errori \verb'voltageErrs' relativi alle $x$ sulle $y$ secondo la consueta 
+modalità.
 \medskip
 \bibliographystyle{IEEEtrandoi}
 \bibliography{refs}
