@@ -237,7 +237,7 @@ Imponendo la condizione di stazionarietà rispetto a $\mu_y$ si ottiene dunque:
 Una volta sostituito in \eqref{eq: likeconst} quanto appena trovato per $\mu_y$
 e imponendo la stessa condizione di stazionarietà rispetto a $\sigma_y$ si ha:
 \begin{equation}\label{eq: sigmay}
-	\sigma_y = \sum_{i=1}^{n} (y_i - \mu_y)^2 w_i .
+	\sigma_y^2 = \sum_{i=1}^{n} (y_i - \mu_y)^2 w_i .
 \end{equation}
 Infine è possibile ricavare la varianza di $\mu_y$ dalla definizione di valore
 di aspettazione, riconducendola più volte a integrali di gaussiane di altezze
@@ -248,7 +248,7 @@ e ampiezze diverse:
 	\frac{e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}}} {\sigma_x \sqrt{6 \pi} } +
 	\frac{e^{-3\frac{(x-x_i)^2}{4 \sigma_x^2}}} {\sigma_x \sqrt{\pi} } +
 	\frac{e^{-\frac{(x-x_i)^2}{\sigma_x^2}}} {\sigma_x \sqrt{2 \pi}}
-	} {\sqrt{2 \pi}} \right] =\\
+	} {\sqrt{2 \pi}} \right] =\\ \label{aln: varmuy}
         &= \sum_{i=1}^{n} \left[w_i^2 \sigma_y^2 + 
 	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
 	e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}} +  
@@ -265,10 +265,44 @@ dove però nel nostro caso riscaliamo la stima in base al valore assunto da $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di y, pesata sulla distanza dai valori studiati. Dunque
 $\mu_y \pm \sigma_y$ ci dà una stima della distribuzione dei nostri dati.
-\subsection{$Var(\mu)$}
-Mentre $\sigma_y$ rappresenta la distribuzione dei dati, $\var{\mu_y}$ ci dà un' 
-idea dell’incertezza che attribuiamo alla nostra stima centrale. Questo ci è
-utile per determinare la convergenza della stima in funzione dei dati acquisiti.
+\subsection{$\var{\mu_y}$}
+Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio 
+$\mu_y$, $\var{\mu_y}$ ci dà un'idea dell’incertezza che attribuiamo alla
+miglior stima di y. Questo ci è utile per determinare la convergenza della
+stima in funzione dei dati acquisiti.
+Infatti: più la densità dei dati è grande rispetto alla deviazione standard
+$\sigma_x$, più la stima del valore centrale risulta precisa. Graficamente
+la banda di confidenza è più ristretta dove si concentrano i dati, viceversa
+tende ad allargarsi dove i dati sono sparsi, a distanze paragonabili a
+$\sigma_x$. Dalla seconda somma nell'espressione \eqref{aln: varmuy} segue
+allora che la stima del valore centrale è statisticamente significativa solo
+quando si media su un intervallo campionato con almeno qualche punto ogni
+deviazione $\sigma_x$, altrimenti $\var{\mu_y}$ tende a $+\infty$ come 
+$\sim e^{x^2}$in assenza di dati, dove non è possibile stabilire con
+precisione il valore di $\mu_y$.
+\subsection{Filtro outliers}
+La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
+punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
+standard dalla media $\sigma_x$, ovvero quegli $y_i$ per cui,
+indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
+\subsection{Filtro dati non significativi}
+Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo con
+una resistenza bassa, il secondo con una alta: Il primo set esplorerà
+la regione ad alta corrente, mentre il secondo la regione di basse correnti.
+Però il primo insieme conterrà, in generale, anche campionamenti delle zone
+basse, ma su queste fornirà dei valori meno significativi: Esponiamo dunque
+il criterio sviluppato per ridurre l'influenza di questi punti meno
+significativi sulla ricerca dei parametri di best-fit e sulla rappresentazione 
+finale dei dati.\\
+Per capire se in un certo punto i dati di $A$ sono significativi, calcoliamo
+la misura di significatività che abbiamo sviluppato in \eqref{aln: varmuy}$:
+\var{\mu_y}$ di $A$ e di $B$. Perciò se $\var{\mu_y}$ di $A$ è maggiore di 
+$q\var{\mu_y}$ di $B$, con $q$ arbitrario, questo indica che i dati di $A$
+ci stanno dando meno informazioni rispetto a quelli di $B$. A questo punto
+è sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
+di set per eliminare i dati non significativi, che rendono meno
+immediata l'interpretazione il grafico.
+
 \section{Appendice B: Metodo di Fit}
 Per determinare i parametri ottimali e le rispettive varianze si \`e
 implementato un metodo di fit basato sui minimi quadrati in \verb+Python+
