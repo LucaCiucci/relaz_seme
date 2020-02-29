@@ -192,8 +192,13 @@ alternativa basata sul metodo delle tangenti (o di Newton). Per una trattazione
 approfondita del modello di fit, si rimanda alla sezione B delle Appendici.
 
 I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
-del grafico 1.
-%[inserire grafico 1]
+del grafico \ref{fig: sck_lin}.
+\begin{figure}[!htb]
+	\centering 
+% 		\includegraphics[scale=1.3]{./gestione.pdf}
+	\caption{La curva caratteristica del diodo ricostruita dai nostri
+	dati, con sovrapposto il modello di best-fit \label{fig: sck_lin}}
+\end{figure}
 I parametri stimati dal fit risultano essere:
 \begin{align*}
 	R_{diodo} &= 47.5 \pm 0.2 \; \rm m\Omega \\
@@ -208,8 +213,13 @@ I parametri stimati dal fit risultano essere:
 Il $\chi^2$ risulta essere pari a 4483 contro un aspettato di 2760.
 %(i dati vanno cambiati con quelli del fit fatto bene)
 Successivamente, i dati e la funzione sono stati posti all'interno di un
-grafico in scala semilogaritmica (grafico 2).
-%[inserire grafico 2]
+grafico in scala semilogaritmica (grafico \ref{fig: sck_lin}).
+\begin{figure}[!htb]
+	\centering 
+% 		\includegraphics[scale=1.3]{./gestione.pdf}
+	\caption{La stessa curva $V-I$ del diodo in scala semilogaritmica,
+	con sovrapposto il modello di best-fit \label{fig: sck_log}}
+\end{figure}
 
 \section{Conclusioni}
 L'andamento dei dati sperimentali non risulta essere ben descritto dalla legge
@@ -349,6 +359,13 @@ qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
 indicando assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
 $\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
+\begin{figure}[!htb]
+	\centering 
+ 		%\includegraphics[scale=1.3]{./gestione.pdf}
+ 	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
+	l'area in rosso indica il valore di $\var{\mu_y}$ al variare dei
+	dati (in blu) lungo $x$. \label{fig: varmuy}}
+\end{figure}
 Nel caso opposto, in cui i dati sono "densi" (in confronto alle $\sigma_x$)
 la seconda somma, per quanto computazionalmente intensiva, numericamente
 sembrerebbe piccola in confronto alla prima: in realtà non lo è, ma
@@ -396,10 +413,29 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 E’ infine mostrato il confronto dei grafici delle $\var(\mu_y)$
 tra due set successivi.
 
+\begin{figure}[!htb]
+	\centering 
+ 		%\includegraphics[scale=1.3]{./gestione.pdf}
+	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
+	si evidenziano in rosso i dati da scartare, in nero quello tenuti.
+	\label{fig: nofilter}}
+\end{figure}
+\begin{figure}[!htb]
+	\centering 
+ 		%\includegraphics[scale=1.3]{./gestione.pdf}
+ 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.
+	\label{fig: filtered}}
+\end{figure}
+\begin{figure}[!htb]
+	\centering 
+ 		%\includegraphics[scale=1.3]{./gestione.pdf}
+ 	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
+	dati consecutivi. \label{fig: comparison}}
+\end{figure}
 \section{Appendice B: Metodo di Fit}
 Partiamo dall'osservazione che la tensione ai capi del diodo può essere
 scomposta in $\Delta V_r$ e $\Delta V_d$ come illustrato in figura:
-
+%\input{./figs/divider.tex}
 dove il resistore a sinistra indica proprio la resistenza di un diodo reale,
 mentre il diodo alla sua destra rappresenta una giunzione bipolare PN, ossia
 il diodo ideale descritto dall’equazione di Shockley.

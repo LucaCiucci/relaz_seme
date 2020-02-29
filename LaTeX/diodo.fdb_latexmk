@@ -1,13 +1,12 @@
 # Fdb version 3
-["bibtex diodo"] 1582938598 "diodo.aux" "diodo.bbl" "diodo" 1582938601
+["bibtex diodo"] 1582975238 "diodo.aux" "diodo.bbl" "diodo" 1582975241
   "./IEEEtrandoi.bst" 1577387200 60815 f4ed9ef17005d390213cd57d581f7b76 ""
-  "diodo.aux" 1582938600 4672 7ab9c6d9cecb221c0e8f4fbf98603985 ""
+  "diodo.aux" 1582975241 7310 494b76895e39272ede2aba10a1c0a124 ""
   "diodo.bcf" 0 -1 0 ""
   "refs.bib" 1580251276 1808 123e6d627252110e17e50b976ee9a00c ""
   (generated)
   "diodo.bbl"
-  "diodo.blg"
-["pdflatex"] 1582938598 "diodo.tex" "diodo.pdf" "diodo" 1582938601
+["pdflatex"] 1582975239 "diodo.tex" "diodo.pdf" "diodo" 1582975241
   "/etc/texmf/web2c/texmf.cnf" 1582144663 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -356,10 +355,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1582145087 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1582145123 4127590 ac0f214e9fc2dbf049abb784824b2965 ""
-  "diodo.aux" 1582938600 4672 7ab9c6d9cecb221c0e8f4fbf98603985 ""
-  "diodo.bbl" 1582938600 1809 2a4e312a6215d24ac43a83a2e0fef1b5 "bibtex diodo"
-  "diodo.out" 1582938600 873 9b20e6ca61a2540dee49823e8f2bd5d3 ""
-  "diodo.tex" 1582938588 25349 5f6263bd7b131ec2f2cb2289cb1ac5e8 ""
+  "diodo.aux" 1582975241 7310 494b76895e39272ede2aba10a1c0a124 ""
+  "diodo.bbl" 1582975239 1809 2a4e312a6215d24ac43a83a2e0fef1b5 "bibtex diodo"
+  "diodo.out" 1582975241 873 9b20e6ca61a2540dee49823e8f2bd5d3 ""
+  "diodo.tex" 1582975235 26751 4b0b28f3ab36a700714707594b3c09ab ""
   "figs/./gestione.pdf" 1580339242 32290 281aea8a8685f96dc53951323617b994 ""
   "figs/./measure.pdf" 1580340363 32291 43d09ecd71716db8c83d087947ae21e1 ""
   "figs/./simple.pdf" 1580340137 32291 ababe826226c64c413c2823ac0081caa ""
@@ -368,6 +367,6 @@
   (generated)
   "diodo.pdf"
   "diodo.auxlock"
+  "diodo.aux"
   "diodo.out"
   "diodo.log"
-  "diodo.aux"
