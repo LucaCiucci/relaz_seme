@@ -226,53 +226,48 @@ della tensione, esattamente come ci aspetteremo da un andamento lineare.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi.
 
 \section{Appendice A: Filtraggio Dati}
-Durante l’esperienza è stato raccolto un grande numero di dati, raccolti in
+\subsection{Introduzione}
+Durante l’esperienza si è raccolto un grande numero di dati, acquisiti in
 run diversi in base alla resistenza scelta, dunque a zone differenti della
 curva. Sì è posto il problema di eliminare degli outliers in modo
 indipendente dal modello scelto. Inoltre le varie serie di dati si
 sovrappongono, dunque è necessario eliminare quei dati che, non aggiungendo
 informazioni utili, vanno a “sporcare” il grafico.
+
 Il sistema di filtraggio di dati implementato nell'eseguibile si compone di 2
 fasi: la prima è l’eliminazione di outliers, la seconda consiste
 nell'eliminazione di dati non significativi.
-\subsection{Introduzione}
-%In generale possiamo immaginare che ad ogni misura sia associata una forma
-%quadratica rappresentata dalla matrice di covarianza della stessa, cioè che
-%durante la misura si commetta un errore statistico normale noto. Possiamo poi
-%immaginare che il misurando abbia un’altra matrice di covarianza. Nel
-%procedimento proposto questo potrebbe essere teoricamente trattato per esteso,
-%tuttavia non si troverebbe una forma chiusa generale per il problema in
-%questione.
-Supponiamo che gli errori su $x$ e $y$ siano indipendenti
-e che $\sigma_x ^2 \coloneqq \var{x}$ sia nota a priori e che abbia 
-distribuzione gaussiana per ogni misura. Questo non è in generale vero, ma 
-questa ipotesi può essere trascurata quando la correlazione tra le varianze
-delle misure su $x$ e $y$ sono indipendenti dai valori assunti dalle $x$ e $y$
-stesse e vi sono “molti” dati entro una deviazione lungo $x$. In questo caso,
-infatti, la correlazione viene inclusa nella varianza lungo $y$ e, dal
-teorema del limite centrale si vede che la non-normalità delle distribuzioni
-è trascurabile.
-In ogni modo, nei nostri dati x e y risultano ragionevolmente indipendenti,
-quindi l'assunzione dovrebbe essere lecita.
 \subsection{Procedimento}
-Supponiamo, per ogni punto, che la distribuzione sia gaussiana secondo una
-matrice di covarianza diagonale nella base $\{x, y\}$ : allora la densità di
-probabilità che un punto che abbia misurato $x$ si trovi a tale ascissa $x_i$
-si ricava banalmente integrando lungo $y$ a $x$ fissata:
+Supponiamo di avere una serie di dati $(x, y)$ e assumiamo che siano
+indipendenti tra loro. Questo non sarà in generale vero, però quest'ipotesi
+è tanto più lecita quanto più la correlazione tra le varianze delle misure su
+$x$ e $y$ è indipendente dai valori assunti dalle $x$ e $y$ stesse e, più
+sono numerosi i dati racchiusi entro una deviazione lungo $x$: in questo caso,
+infatti, la correlazione viene inclusa nella varianza lungo $y$.
+Supponiamo inoltre che siano note a priori le $\sigma_x ^2 \coloneqq \var{x}$
+e che la loro distribuzione di probabilità sia normale (le distribuzioni
+delle componenti sono approssimativamente gaussiane per il convertitore
+di Teensy, perlomeno utilizzando la risoluzione a 12 bit) secondo una matrice
+di covarianza diagonale nella base $\left\{x, y\right\}$.
+In ogni modo, i nostri dati $x$ e $y$ risultano indipendenti e
+approssimativamente normali, dunque le assunzioni risultano giustificate. 
+Allora la densità di probabilità che un punto che abbia misurato $x$ si trovi a tale ascissa
+$x_i$ si ricava banalmente integrando lungo $y$ a $x$ fissata:
 \[
 	\ud P = \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}} \ud x
 .\] 
 Dunque, ripetendo più volte la stessa misura, la probabilità
 \[
-	P\left( \mid x - x_i \mid  \leq \eps  \right) = \eps G_{x_i} 
+	P\left(\mid x - x_i \mid \leq \frac{\eps}{2} \right) = \eps G_{x_i} 
 .\]
 dove \[
 	G_{x_i} \coloneqq \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}}
 .\] 
-e $\eps > 0$ è piccolo a piacere. Scegliendo allora solo quelle misure x per
-cui vale $\mid x - x_i \mid \leq \eps$, queste saranno in numero intorno a:
+e $\eps > 0$ è piccolo a piacere. Scegliendo allora solo quelle misure $x$ per
+cui vale $\mid x - x_i \mid \leq \frac{\eps}{2}$, queste saranno in numero
+intorno a:
 \[
 	N_i \coloneqq N_{\text{tot}} \frac{G_{x_i}}{\sum_j G_{x_j}} =
 		N_{\text{tot}} w_i
@@ -308,31 +303,33 @@ Imponendo la condizione di stazionarietà rispetto a $\mu_y$ si ottiene dunque:
 Una volta sostituito in \eqref{eq: likeconst} quanto appena trovato per $\mu_y$
 e imponendo la stessa condizione di stazionarietà rispetto a $\sigma_y$ si ha:
 \begin{equation}\label{eq: sigmay}
-	\sigma_y^2 = \sum_{i=1}^{n} (y_i - \mu_y)^2 w_i .
+	\sigma_y^2 = \sum_{i=1}^{n} (y_i - \mu_y)^2 w_i
 \end{equation}
 Infine è possibile ricavare la varianza di $\mu_y$ dalla definizione di valore
 di aspettazione, riconducendola più volte a integrali di gaussiane di altezze
 e ampiezze diverse:
-\begin{align}
-	\var{\mu_y} &= \sum_{i=1}^{n} \left[w_i^2 \sigma_y^2 + 
-	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
-	\frac{e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}}} {\sigma_x \sqrt{6 \pi} } +
-	\frac{e^{-3\frac{(x-x_i)^2}{4 \sigma_x^2}}} {\sigma_x \sqrt{\pi} } +
-	\frac{e^{-\frac{(x-x_i)^2}{\sigma_x^2}}} {\sigma_x \sqrt{2 \pi}}
-	} {\sqrt{2 \pi}} \right] =\\ \label{aln: varmuy}
-        &= \sum_{i=1}^{n} \left[w_i^2 \sigma_y^2 + 
-	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
+\begin{align} \label{aln: varmuy}
+%	\var{\mu_y} &= \sum_{i=1}^{n} w_i^2 \sigma_y^2 + 
+%	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
+%	\frac{e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}}} {\sigma_x \sqrt{6 \pi} } +
+%	\frac{e^{-3\frac{(x-x_i)^2}{4 \sigma_x^2}}} {\sigma_x \sqrt{\pi} } +
+%	\frac{e^{-\frac{(x-x_i)^2}{\sigma_x^2}}} {\sigma_x \sqrt{2 \pi}}
+%	} {\sqrt{2 \pi}} =\\ 
+	\var{\mu_y} &= \sum_{i=1}^{n} w_i^2 \sigma_y^2 + 
+	\left(\frac{y_i}{\sum_{j=1}^{n} w_j} \right)^2 \frac{
 	e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}} +  
-	\sqrt{3}\left( e^{-\frac{(x-x_i)^2}{\sigma_x^2}} -
+	\sqrt{3} \left( e^{-\frac{(x-x_i)^2}{\sigma_x^2}} -
 	\sqrt{2} e^{-3 \frac{(x-x_i)^2}{4 \sigma_x^2}} \right)
-	} {2 \sqrt{3}\pi \sigma_x^2} \right]
+	} {2 \sqrt{3}\pi \sigma_x^2} 
 \end{align}
 Riassumendo:\\
 Nella \eqref{eq: muy} prendiamo una media dei campionamenti intorno ad un'
-ascissa $x$ in esame, pesata sulla distanza che gli $x_i$ hanno da questa. 
-Effettivamente quello che stiamo facendo è un stima di densità di kernel,
-per cui consideriamo i punti come -sfocati- da un \emph{blur gaussiano};
-dove però nel nostro caso riscaliamo la stima in base al valore assunto da $y$.
+ascissa $x$ in esame, pesata sulla distanza che gli $x_i$ hanno da questa; 
+intuitivamente lo interpretiamo come se stessimo applicando un 
+\emph{blur a kernel gaussiano} ai punti acquisiti.
+Effettivamente quello che stiamo facendo non è molto diverso da un stima
+di densità di kernel monovariante, dove però nel nostro caso
+riscaliamo la stima in base al valore assunto da $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di y, pesata sulla distanza dai valori studiati. Dunque
 $\mu_y \pm \sigma_y$ ci dà una stima della distribuzione dei nostri dati.
@@ -345,34 +342,59 @@ Infatti: più la densità dei dati è grande rispetto alla deviazione standard
 $\sigma_x$, più la stima del valore centrale risulta precisa. Graficamente
 la banda di confidenza è più ristretta dove si concentrano i dati, viceversa
 tende ad allargarsi dove i dati sono sparsi, a distanze paragonabili a
-$\sigma_x$. Dalla seconda somma nell'espressione \eqref{aln: varmuy} segue
-allora che la stima del valore centrale è statisticamente significativa solo
-quando si media su un intervallo campionato con almeno qualche punto ogni
-deviazione $\sigma_x$, altrimenti $\var{\mu_y}$ tende a $+\infty$ come 
-$\sim e^{x^2}$in assenza di dati, dove non è possibile stabilire con
-precisione il valore di $\mu_y$.
+$\sigma_x$. Numericamente, si vede dalla seconda somma nell'espressione
+\eqref{aln: varmuy} che la stima del valore centrale è statisticamente
+significativa solo quando si media su un intervallo campionato con almeno
+qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
+indicando assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
+$\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
+con precisione significativa il valore di $\mu_y$.
+Nel caso opposto, in cui i dati sono "densi" (in confronto alle $\sigma_x$)
+la seconda somma, per quanto computazionalmente intensiva, numericamente
+sembrerebbe piccola in confronto alla prima: in realtà non lo è, ma
+soprattutto questa non può essere trascurata, poiché è proprio la quantità
+che descrive la dipendenza dalla densità stessa, dunque la caratteristica
+convergenza/divergenza della precisione sulla stima centrale fornita.
 \subsection{Filtro outliers}
 La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
 punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
-standard dalla media $\sigma_y$, ovvero quegli $y_i$ per cui,
-indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
+standard $\sigma_y$ (nel nostro caso è stato scelto k = 2, non critico,
+trovato dopo una serie di prove). A differenza del classico metodo basato
+sulla distanza della curva modello di best fit, non siamo influenzati da
+quest’ultimo. Questo risulta particolarmente utile in simili situazioni di
+verifica del modello in quanto una selezione basata su un preliminare fit
+risulterebbe influenzata dalla scelta della funzione in questione e
+eliminerebbe tutti i dati che non risultano compatibili con essa.
+%indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
 \subsection{Filtro dati non significativi}
-Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo con
-una resistenza bassa, il secondo con una alta: Il primo set esplorerà
+Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo $(A)$
+con una resistenza bassa, il secondo $(B)$ con una alta: Il primo set esplorerà
 la regione ad alta corrente, mentre il secondo la regione di basse correnti.
-Però il primo insieme conterrà, in generale, anche campionamenti delle zone
-basse, ma su queste fornirà dei valori meno significativi: Esponiamo dunque
-il criterio sviluppato per ridurre l'influenza di questi punti meno
-significativi sulla ricerca dei parametri di best-fit e sulla rappresentazione 
-finale dei dati.\\
+In generale i dati del primo si sovrapporranno anche nelle zone basse esplorate
+dal secondo, però senza aggiungere sostanziali informazioni rispetto a quanto
+farebbe il secondo.
+%Il nostro obiettivo è dunque eliminare questi dati meno significativi.
+Esponiamo dunque il criterio sviluppato per ridurre l'influenza di questi
+punti meno significativi sulla ricerca dei parametri di best-fit e sulla
+rappresentazione finale dei dati.\\
 Per capire se in un certo punto i dati di $A$ sono significativi, calcoliamo
 la misura di significatività che abbiamo sviluppato in \eqref{aln: varmuy}$:
 \var{\mu_y}$ di $A$ e di $B$. Perciò se $\var{\mu_y}$ di $A$ è maggiore di 
-$q\var{\mu_y}$ di $B$, con $q$ arbitrario, questo indica che i dati di $A$
+$q\var{\mu_y}$ di $B$, con $q$ arbitrario (nell’esperienza è stato scelto
+q = 3), questo indica che i dati di $A$
 ci stanno dando meno informazioni rispetto a quelli di $B$. A questo punto
 è sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
 di set per eliminare i dati non significativi, che rendono meno
-immediata l'interpretazione il grafico.
+immediata l'interpretazione il grafico. Questo è ben visibile in scala
+logaritmica sulle y dove i punti con grandi incertezze o varianze tendono
+a disperdersi rapidamente.
+L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
+della memoria per evitare bolle di allocazione, dunque è stato implementato
+in C++ per praticità e richiamato all’interno degli script.
+Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
+(in nero) ed i dati scartati (in rosso). 
+E’ infine mostrato il confronto dei grafici delle $\var(\mu_y)$
+tra due set successivi.
 
 \section{Appendice B: Metodo di Fit}
 Partiamo dall'osservazione che la tensione ai capi del diodo può essere
