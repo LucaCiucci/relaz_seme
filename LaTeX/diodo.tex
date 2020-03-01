@@ -91,7 +91,8 @@ dunque la relazione che lega la corrente e la tensione ai capi del diodo può es
 \begin{equation}
 \Delta V = \Delta V_d + \Delta V_r = \eta V_T  \ln{\frac{I+I_0}{I_0}} + RI
 \end{equation}
-(inserire una figura per far capire cosa sono I e $\Delta V$)
+(inserire una figura per far capire cosa sono I e $\Delta V$)\newline
+(inserire dei grafici di confronto)
 
 
 %================================================================
@@ -142,7 +143,6 @@ I due convertitori ADC della MCU sono stati calibrati.
 Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati automatizzata secondo una routine programmata in Teensy: il condensatore viene caricato ad una tensione prefissata, una volta raggiunto il valore prestabilito viene inviato il segnale su T1, si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la tensione su OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non danneggiare Teensy, altrimenti si ricomincia caricando il condensatore ad una tensione più alta.
 
 ============================= OLD\newline
-
 Vista la limitata attendibilità del circuito con interruttore azionato
 manualmente si è costruito una seconda versione del circuito (Fig.
 \ref{sch:gest}), in cui figurano: 
@@ -182,6 +182,9 @@ una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente
 dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto"
 di un logaritmo.  
 
+%================================================================
+%                   Analisi dati e Risultati
+%================================================================
 \section{Analisi dati e Risultati}
 Il nostro intento è verificare che i dati raccolti siano in accordo con la
 legge \eqref{eq: model}. Tramite la legge di Ohm è possibile ricavare la
