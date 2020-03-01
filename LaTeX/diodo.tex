@@ -11,6 +11,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{geometry}
 \usepackage{float}
 \usepackage{mdframed}
@@ -389,7 +390,7 @@ qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
 indicando assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
 $\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering 
  		\includegraphics[scale=0.32]{./varmuy.pdf}
  	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
@@ -451,20 +452,24 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 E’ infine mostrato il confronto dei grafici delle $\var(\mu_y)$
 tra due set successivi.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
 	\centering 
- 		\includegraphics[scale=0.9]{./nofilter.png}
-	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
-	si evidenziano in rosso i dati da scartare, in nero quello tenuti.
-	\label{fig: nofilter}}
-\end{figure}
-\begin{figure}[!htb]
+ 		\includegraphics[scale=0.5]{./nofilter.png}
+%	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
+%	si evidenziano in rosso i dati da scartare, in nero quello tenuti.}
+	\label{fig: nofilter}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
 	\centering 
- 		\includegraphics[scale=0.9]{./filtered.png}
- 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.
-	\label{fig: filtered}}
+ 		\includegraphics[scale=0.5]{./filtered.png}
+% 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.}
+	\label{fig: filtered}
+\end{subfigure}
+	\caption{Grafici in scala semilogaritmica dei prima (sinistra) e dopo (destra) del filtraggio dati. I dati eliminati sono stati evidenziati in rosso.}
 \end{figure}
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering 
  		\includegraphics[scale=0.32]{./comparison.png}
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
