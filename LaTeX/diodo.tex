@@ -42,8 +42,13 @@ keepspaces=true,
 \input{./math}
 
 \geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=30mm}
-\title{Modellizzazione della resistenza di diodi a giunzione PN per alte correnti di lavoro}
-\author{L.~Ciucci(\thanks{Dipartimento di Fisica E.~Fermi, Universit\`a di Pisa - Pisa, Italy} )~\and S.~Bruzzesi(\protect\footnotemark[1] )~\and M.~Romagnoli(\protect\footnotemark[1] )~\and M.~Alighieri(\protect\footnotemark[1] )~\and B.~Tomelleri(\protect\footnotemark[1] )}
+\title{Modellizzazione della resistenza di diodi a giunzione PN per alte 
+correnti di lavoro}
+\author{L.~Ciucci(\thanks{Dipartimento di Fisica E.~Fermi, Universit\`a di Pisa 
+- Pisa, Italy} )~\and S.~Bruzzesi(\protect\footnotemark[1] )~\and 
+M.~Romagnoli(\protect\footnotemark[1] )~\and 
+M.~Alighieri(\protect\footnotemark[1] )~\and 
+B.~Tomelleri(\protect\footnotemark[1] )}
 \date{2020/11/01}
 
 \begin{document}
@@ -83,15 +88,19 @@ sperimentalmente la validità.
 %                         Cenni teorici
 %================================================================
 \section{Cenni Teorici}
-Secondo le ipotesi, un diodo reale può essere schematizzato quale un resistore ohmico ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che attraversa tali elementi sia la medesima:
+Secondo le ipotesi, un diodo reale può essere schematizzato quale un resistore 
+ohmico ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che 
+attraversa tali elementi sia la medesima:
 \begin{equation}
-I = \frac{\Delta V_{resistore}}{R} = I_0 ( e^{\frac{\Delta V_{diodo}}{\eta V_t}} - 1)
+I = \frac{\Delta V_{resistore}}{R} = I_0 ( e^{\frac{\Delta V_{diodo}}{\eta 
+V_t}} - 1)
 \end{equation}
-dunque la relazione che lega la corrente e la tensione ai capi del diodo può essere espressa secondo la legge:
+dunque la relazione che lega la corrente e la tensione ai capi del diodo può 
+essere espressa secondo la legge:
 \begin{equation}\label{eq: model}
 \Delta V = \Delta V_d + \Delta V_r = \eta V_T  \ln{\frac{I+I_0}{I_0}} + RI
 \end{equation}
-(inserire una figura per far capire cosa sono I e $\Delta V$)\newline
+(inserire una figura per far capire cosa sono $I$ e $\Delta V$)\newline
 (inserire dei grafici di confronto)
 
 
@@ -99,8 +108,12 @@ dunque la relazione che lega la corrente e la tensione ai capi del diodo può es
 %                Metodo e apparato sperimentale
 %================================================================
 \section{Metodo e apparato sperimentale}
-Il circuito sotto studio lavora con correnti relativamente alte, per evitare sostanziali aumenti di temperatura nei componenti ed eventuali danni agli stessi si imprimono correnti impulsate.
-La durata degli impulsi è di circa 150 $\mu$s (da misurare meglio) che corrisponde ad un'energia impressa inferiore a 1 mJ dunque ad un aumento della temperatura del semiconduttore inferiore a 0.5 K.
+Il circuito sotto studio lavora con correnti relativamente alte, per evitare 
+sostanziali aumenti di temperatura nei componenti ed eventuali danni agli 
+stessi si imprimono correnti impulsate.
+La durata degli impulsi è di circa 150 $\mu$s (da misurare meglio) che 
+corrisponde ad un'energia impressa inferiore a 1 mJ dunque ad un aumento della 
+temperatura del semiconduttore inferiore a 0.5 K.
 %Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
 %al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
 %all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
@@ -110,12 +123,32 @@ La durata degli impulsi è di circa 150 $\mu$s (da misurare meglio) che corrispo
 %           Apparato
 %================================
 \subsection{Apparato}
-L'apparato sperimantale è costituito da un circuito, realizzato su basetta sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo D1 e la resistenza R1. La misura della differenza di tensione ai capi di questa permette stima della corrente che attraversa il diodo, per esplorare ampie zone di lavoro del diodo è stata cambiata opportunamente scegliendo tra le seguenti resistenze:\newline
+L'apparato sperimantale è costituito da un circuito, realizzato su basetta 
+sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo 
+D1 e la resistenza R1. La misura della differenza di tensione ai capi di questa 
+permette stima della corrente che attraversa il diodo, per esplorare ampie zone 
+di lavoro del diodo è stata cambiata opportunamente scegliendo tra le seguenti 
+resistenze:\newline
 TABELLA\newline
-Nel circuito può essere individuata una parte che si ocupa della carica e scarica controllata del condensatore C1, il cui scopo è quello di fornire una tensione che possa essere facilmente regolata e sufficientemente stabile durante un impulso. Un'altra parte del circuito si occupa di collegare a comando il condensatore alla serie R1-D1 attraverso un MOS-FET.\newline
-Il circuito è alimentato da 2 tensioni fornite da un alimentatore stabilizzato switching e da un Buck Boost Converter, un segnale fornito su T2 provoca la carica del condensatore mentre su T3 la sua scarica. Un segnale (invertito) su T1 innesca l'impulso di corrente sul diodo.\newline
-La tensione di C1 è misurata attraverso un partitore di tensione collegato ad OUT3 ed alla scheda di controllo mentre la tenisone ai punti OUT1 e OUT2 è letta direttamente.\newline
-Come MCU per la gestione dell'apparato è stata scelta la scheda \verb+Teensy 3.2+\cite{teensy}, questa si occupa del controllo dei segnali e delle letture analogiche. In particolare Teensy permette la lettura analogica sincronizzata differenziale veloce, essendo dotato di due ADC, entrambi con una risoluzione reale di 12 bit. La lettura differenziale è fondamentale per acquisire coppie di dati per le tensioni ai capi del diodo e della resistenza.\newline
+Nel circuito può essere individuata una parte che si ocupa della carica e 
+scarica controllata del condensatore C1, il cui scopo è quello di fornire una 
+tensione che possa essere facilmente regolata e sufficientemente stabile 
+durante un impulso. Un'altra parte del circuito si occupa di collegare a 
+comando il condensatore alla serie R1-D1 attraverso un MOS-FET.\newline
+Il circuito è alimentato da 2 tensioni fornite da un alimentatore stabilizzato 
+switching e da un Buck Boost Converter, un segnale fornito su T2 provoca la 
+carica del condensatore mentre su T3 la sua scarica. Un segnale (invertito) su 
+T1 innesca l'impulso di corrente sul diodo.\newline
+La tensione di C1 è misurata attraverso un partitore di tensione collegato ad 
+OUT3 ed alla scheda di controllo mentre la tenisone ai punti OUT1 e OUT2 è 
+letta direttamente.\newline
+Come MCU per la gestione dell'apparato è stata scelta la scheda \verb+Teensy 
+3.2+\cite{teensy}, questa si occupa del controllo dei segnali e delle letture 
+analogiche. In particolare \verb+Teensy+  permette la lettura analogica 
+sincronizzata differenziale veloce, essendo dotato di due ADC, entrambi con una 
+risoluzione reale di 12 bit. La lettura differenziale è fondamentale per 
+acquisire coppie di dati per le tensioni ai capi del diodo e della 
+resistenza.\newline
 
 \begin{figure}[!htb]
 	\centering 
@@ -140,7 +173,19 @@ I due convertitori ADC della MCU sono stati calibrati.
 %       Acquisizione dati
 %================================
 \subsection{Acquisizione dati}
-Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati automatizzata secondo una routine programmata in Teensy: il condensatore viene caricato ad una tensione prefissata, una volta raggiunto il valore prestabilito viene inviato il segnale su T1, si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la tensione su OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non danneggiare Teensy, altrimenti si ricomincia caricando il condensatore ad una tensione più alta.
+Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati 
+automatizzata secondo una routine programmata in \verb+Teensy+: il condensatore 
+viene caricato ad una tensione prefissata, una volta raggiunto il valore 
+prestabilito viene inviato il segnale su T1, si avvia l'acquisizione 
+sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di 
+entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile 
+ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo 
+punto si inizia a memorizzare una serie da 100 coppie di letture 
+-sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di 
+nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la 
+tensione su OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non 
+danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il condensatore 
+ad una tensione più alta.
 
 ============================= OLD\newline
 Vista la limitata attendibilità del circuito con interruttore azionato
@@ -190,17 +235,17 @@ Il nostro intento è verificare che i dati raccolti siano in accordo con la
 legge \eqref{eq: model}. Tramite la legge di Ohm è possibile ricavare la
 corrente nel diodo, dividendo la caduta di tensione misurate dalla boccola
 \verb'ADC0' per la resistenza $R$. Si è quindi effettuato un filtraggio volto
-all'eliminazione degli outliers e dei punti meno significativi, assumendoli quali
-variabili indipendenti e di natura gaussiana. Per una discussione dettagliata
-del sistema di filtraggio dati si rimanda alla sezione A delle Appendici.
+all'eliminazione degli outliers e dei punti meno significativi, assumendoli
+quali variabili indipendenti e di natura gaussiana. Per una discussione
+dettagliata del sistema di filtraggio dati si rimanda all' \nameref{app: A}.
 
 Successivamente, è stato effettuato un fit sulla base dei dati selezionati.
 Ingenuamente, avremo dunque potuto pensare di adottare la legge 
 \eqref{eq: model} direttamente. Tuttavia ciò comporterebbe il fallimento
 repentino del fit a causa dei valori negativi o nulli che debitamente si
 riscontrerebbero entro il logaritmo. \`E stata quindi adottata una legge
-alternativa basata sul metodo delle tangenti (o di Newton). Per una trattazione
-approfondita del modello di fit, si rimanda alla sezione B delle Appendici.
+alternativa basata sul metodo delle tangenti (o di Newton). Per una
+trattazione approfondita del modello di fit, si rimanda all' \nameref{app: B}.
 
 I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
 del grafico \ref{fig: sck_lin}.
@@ -235,7 +280,8 @@ grafico in scala semilogaritmica (grafico \ref{fig: sck_lin}).
 \section{Conclusioni}
 L'andamento dei dati sperimentali non risulta essere ben descritto dalla legge
 \eqref{eq: model}. Ciò può essere spiegato sulla base della non linearità dei
-convertitori analogici digitali all'interno di Teensy 3.2, che ha comportato
+convertitori analogici digitali all'interno di \verb+Teensy 3.2+, che ha 
+comportato
 degli errori difficilmente stimabili e presumibilmente correlati. Tuttavia, si
 riscontrano delle analogie tra la funzione di fit ed i dati ottenuti. In
 particolare, dal grafico in scala lineare, si osserva che a correnti alte
@@ -246,7 +292,7 @@ della curva di Shockley per poi appiattirsi a partire da un particolare valore
 della tensione, esattamente come ci aspetteremo da un andamento lineare.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi.
 
-\section{Appendice A: Filtraggio Dati}
+\section{Appendice A: Filtraggio Dati}\label{app: A}
 \subsection{Introduzione}
 Durante l’esperienza si è raccolto un grande numero di dati, acquisiti in
 run diversi in base alla resistenza scelta, dunque a zone differenti della
@@ -268,12 +314,13 @@ infatti, la correlazione viene inclusa nella varianza lungo $y$.
 Supponiamo inoltre che siano note a priori le $\sigma_x ^2 \coloneqq \var{x}$
 e che la loro distribuzione di probabilità sia normale (le distribuzioni
 delle componenti sono approssimativamente gaussiane per il convertitore
-di Teensy, perlomeno utilizzando la risoluzione a 12 bit) secondo una matrice
+di \verb+Teensy+, perlomeno utilizzando la risoluzione a 12 bit) secondo una 
+matrice
 di covarianza diagonale nella base $\left\{x, y\right\}$.
 In ogni modo, i nostri dati $x$ e $y$ risultano indipendenti e
 approssimativamente normali, dunque le assunzioni risultano giustificate. 
-Allora la densità di probabilità che un punto che abbia misurato $x$ si trovi a tale ascissa
-$x_i$ si ricava banalmente integrando lungo $y$ a $x$ fissata:
+Allora la densità di probabilità che un punto che abbia misurato $x$ si trovi
+a tale ascissa $x_i$ si ricava banalmente integrando lungo $y$ a $x$ fissata:
 \[
 	\ud P = \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}} \ud x
@@ -443,7 +490,7 @@ tra due set successivi.
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
 	dati consecutivi. \label{fig: comparison}}
 \end{figure}
-\section{Appendice B: Metodo di Fit}
+\section{Appendice B: Metodo di Fit}\label{app: B}
 Partiamo dall'osservazione che la tensione ai capi del diodo può essere
 scomposta in $\Delta V_r$ e $\Delta V_d$ come illustrato in figura:
 \input{./figs/divider.tex}
@@ -459,7 +506,8 @@ All’interno dello script \verb'fit_file.py', voltages rappresenta il vettore
 delle ascisse dei punti campionati, mentre currents rappresenta l'analogo per
 le ordinate. Le incertezze associate a questi due all'interno dello script
 prendono i nomi \verb'voltageErrs' e \verb'currentErrs'.
-Ingenuamente potremmo essere tentati di effettuare una sorta di fit “inverso”
+Ingenuamente potremmo essere tentati di effettuare una sorta di fit 
+“inverso”
 (delle x in funzione delle y).
 Tuttavia una tale operazione non è affatto banale, a causa dei valori 
 negativi/nulli che debitamente si riscontreranno all’interno del logaritmo
