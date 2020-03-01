@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  29 FEB 2020 12:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  1 MAR 2020 15:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2032,10 +2032,31 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 346.
 
-[6] [7]
+<./figs/./varmuy.pdf, id=142, 1387.584pt x 710.4141pt>
+File: ./figs/./varmuy.pdf Graphic file (type pdf)
+<use ./figs/./varmuy.pdf>
+Package pdftex.def Info: ./figs/./varmuy.pdf  used on input line 364.
+(pdftex.def)             Requested size: 444.03595pt x 227.33714pt.
+[6]
+<./figs/./nofilter.pdf, id=154, 462.528pt x 346.896pt>
+File: ./figs/./nofilter.pdf Graphic file (type pdf)
+<use ./figs/./nofilter.pdf>
+Package pdftex.def Info: ./figs/./nofilter.pdf  used on input line 418.
+(pdftex.def)             Requested size: 416.27133pt x 312.2035pt.
+<./figs/./filtered.pdf, id=155, 462.528pt x 346.896pt>
+File: ./figs/./filtered.pdf Graphic file (type pdf)
+<use ./figs/./filtered.pdf>
+Package pdftex.def Info: ./figs/./filtered.pdf  used on input line 425.
+(pdftex.def)             Requested size: 416.27133pt x 312.2035pt.
+<./figs/./comparison.pdf, id=156, 1387.584pt x 710.4141pt>
+File: ./figs/./comparison.pdf Graphic file (type pdf)
+<use ./figs/./comparison.pdf>
+Package pdftex.def Info: ./figs/./comparison.pdf  used on input line 431.
+(pdftex.def)             Requested size: 444.03595pt x 227.33714pt.
+ (./figs/divider.tex [7 <./figs/./varmuy.pdf>]) [8 <./figs/./nofilter.pdf>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 461.
- [8] (./diodo.bbl) [9]
+ [9 <./figs/./filtered.pdf> <./figs/./comparison.pdf>] (./diodo.bbl [10]) [11]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 528.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 528.
  (./diodo.aux)
@@ -2046,20 +2067,20 @@ Package rerunfilecheck Info: File `diodo.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 528.
  ) 
 Here is how much of TeX's memory you used:
- 58091 strings out of 492982
- 1365274 string characters out of 6134896
- 1660312 words of memory out of 5000000
- 60750 multiletter control sequences out of 15000+600000
+ 58212 strings out of 492982
+ 1368304 string characters out of 6134896
+ 1661312 words of memory out of 5000000
+ 60862 multiletter control sequences out of 15000+600000
  657565 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,23n,119p,10381b,1229s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,23n,119p,10381b,2360s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (9 pages, 456455 bytes).
+Output written on diodo.pdf (11 pages, 636358 bytes).
 PDF statistics:
- 293 PDF objects out of 1000 (max. 8388607)
- 254 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
- 26252 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 310 PDF objects out of 1000 (max. 8388607)
+ 261 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 26272 words of extra memory for PDF output out of 29859 (max. 10000000)
 
