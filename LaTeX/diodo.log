@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  1 MAR 2020 19:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  2 MAR 2020 00:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1368,11 +1368,15 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 )
 \c@ContinuedFloat=\count317
 Package caption Info: hyperref package is loaded.
+) (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+\c@subfigure=\count318
+\c@subtable=\count319
 ) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count318
-\Gm@cntv=\count319
-\c@Gm@tempcnt=\count320
+\Gm@cnth=\count320
+\Gm@cntv=\count321
+\c@Gm@tempcnt=\count322
 \Gm@bindingoffset=\dimen312
 \Gm@wd@mp=\dimen313
 \Gm@odd@mp=\dimen314
@@ -1384,7 +1388,7 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@dimlist=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count321
+\c@float@type=\count323
 \float@exts=\toks48
 \float@box=\box63
 \@float@everytoks=\toks49
@@ -1393,23 +1397,23 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: mdframed 2013/07/01 1.9b: mdframed
  (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count322
+\etb@tempcnta=\count324
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 Package: zref-abspage 2016/05/21 v2.26 Module abspage for zref (HO)
- (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
 Package: zref-base 2016/05/21 v2.26 Module base for zref (HO)
 Package zref Info: New property list: main on input line 759.
 Package zref Info: New property: default on input line 760.
 Package zref Info: New property: page on input line 761.
 )
-\c@abspage=\count323
+\c@abspage=\count325
 Package zref Info: New property: abspage on input line 62.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
 \mdf@templength=\skip110
-\c@mdf@globalstyle@cnt=\count324
+\c@mdf@globalstyle@cnt=\count326
 \mdf@skipabove@length=\skip111
 \mdf@skipbelow@length=\skip112
 \mdf@leftmargin@length=\skip113
@@ -1484,7 +1488,7 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \mdf@horizontalspaceofbox=\skip174
 \mdfsubtitleheight=\skip175
 \mdfsubsubtitleheight=\skip176
-\c@mdfcountframes=\count325
+\c@mdfcountframes=\count327
 
 ****** mdframed patching \endmdf@trivlist
 
@@ -1500,10 +1504,10 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 . 
 . Defining command \mdtheorem with sig. ' O{} m o m o ' on line 701.
 .................................................
-\mdf@envdepth=\count326
-\c@mdf@env@i=\count327
-\c@mdf@env@ii=\count328
-\c@mdf@zref@counter=\count329
+\mdf@envdepth=\count328
+\c@mdf@env@i=\count329
+\c@mdf@env@ii=\count330
+\c@mdf@zref@counter=\count331
 Package zref Info: New property: mdf@pagevalue on input line 895.
 ) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
@@ -1513,14 +1517,14 @@ File: switch.def 2018/02/14 3.18 Babel switching mechanism
 Language: italian 2015/03/26 v1.3n Italian support from the babel system
  (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count330
+\babel@savecnt=\count332
 \U@D=\dimen320
  (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count331
+\bbl@dirlevel=\count333
 )
-\it@lettering=\count332
-\it@doublequoteactive=\count333
-\it@ISOcompliance=\count334
+\it@lettering=\count334
+\it@doublequoteactive=\count335
+\it@ISOcompliance=\count336
 )) (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2017/06/05 v1.15 Data Visualization (1.15)
  (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
@@ -1528,19 +1532,19 @@ Package: pgfplots 2017/06/05 v1.15 Data Visualization (1.15)
 \t@pgfplots@tokb=\toks51
 \t@pgfplots@tokc=\toks52
 \pgfplots@tmpa=\dimen321
-\c@pgfplots@coordindex=\count335
-\c@pgfplots@scanlineindex=\count336
+\c@pgfplots@coordindex=\count337
+\c@pgfplots@scanlineindex=\count338
  (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary arithmetics for your pgf version...
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgflibraryfpu.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count337
+\c@pgfmathroundto@lastzeros=\count339
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count338
+\c@pgfplotsarray@tmp=\count340
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count339
+\c@pgfplotstable@counta=\count341
 \t@pgfplotstable@a=\toks53
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count340
+\c@pgfplotslibrarysurf@no=\count342
  (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
 \pgfdecoratedcompleteddistance=\dimen322
@@ -1548,13 +1552,13 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 \pgfdecoratedinputsegmentcompleteddistance=\dimen324
 \pgfdecoratedinputsegmentremainingdistance=\dimen325
 \pgf@decorate@distancetomove=\dimen326
-\pgf@decorate@repeatstate=\count341
+\pgf@decorate@repeatstate=\count343
 \pgfdecorationsegmentamplitude=\dimen327
 \pgfdecorationsegmentlength=\dimen328
 )
 \tikz@lib@dec@box=\box70
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count342
+\pgfplots@numplots=\count344
 \pgfplots@xmin@reg=\dimen329
 \pgfplots@xmax@reg=\dimen330
 \pgfplots@ymin@reg=\dimen331
@@ -1571,22 +1575,22 @@ Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmargin=\skip178
 \droptitle=\skip179
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count343
+\lst@mode=\count345
 \lst@gtempboxa=\box71
 \lst@token=\toks54
-\lst@length=\count344
+\lst@length=\count346
 \lst@currlwidth=\dimen335
-\lst@column=\count345
-\lst@pos=\count346
+\lst@column=\count347
+\lst@pos=\count348
 \lst@lostspace=\dimen336
 \lst@width=\dimen337
-\lst@newlines=\count347
-\lst@lineno=\count348
+\lst@newlines=\count349
+\lst@lineno=\count350
 \lst@maxwidth=\dimen338
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count349
-\lst@skipnumbers=\count350
+\c@lstnumber=\count351
+\lst@skipnumbers=\count352
 \lst@framebox=\box72
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -1649,59 +1653,59 @@ Package thmtools Info: Key `qed' (with value `')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=axiom_style' on input line 84.
-\c@theorem=\count351
+\c@theorem=\count353
 LaTeX Font Info:    Try loading font information for T1+txtt on input line 251.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )) (./diodo.aux)
 \openout1 = `diodo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 55.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 54.
+Package hyperref Info: Link coloring OFF on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count352
+\c@section@level=\count354
 )
-LaTeX Info: Redefining \ref on input line 54.
-LaTeX Info: Redefining \pageref on input line 54.
-LaTeX Info: Redefining \nameref on input line 54.
+LaTeX Info: Redefining \ref on input line 55.
+LaTeX Info: Redefining \pageref on input line 55.
+LaTeX Info: Redefining \nameref on input line 55.
  (./diodo.out) (./diodo.out)
 \@outlinefile=\write5
 \openout5 = `diodo.out'.
 
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count353
+\scratchcounter=\count355
 \scratchdimen=\dimen339
 \scratchbox=\box75
-\nofMPsegments=\count354
-\nofMParguments=\count355
+\nofMPsegments=\count356
+\nofMParguments=\count357
 \everyMPshowfont=\toks55
-\MPscratchCnt=\count356
+\MPscratchCnt=\count358
 \MPscratchDim=\dimen340
-\MPnumerator=\count357
-\makeMPintoPDFobject=\count358
+\MPnumerator=\count359
+\makeMPintoPDFobject=\count360
 \everyMPtoPDFconversion=\toks56
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1715,7 +1719,7 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \microtypecontext on input line 54.
+LaTeX Info: Redefining \microtypecontext on input line 55.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1843,53 +1847,53 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \it@ocap on input line 54.
-LaTeX Info: Redefining \it@ccap on input line 54.
+LaTeX Info: Redefining \it@ocap on input line 55.
+LaTeX Info: Redefining \it@ccap on input line 55.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.15}).
 
-\c@lstlisting=\count359
-\c__siunitx_mathsf_int=\count360
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 54.
+\c@lstlisting=\count361
+\c__siunitx_mathsf_int=\count362
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 55.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 54.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 55.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 54.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 55.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 54.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 55.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 54.
+(Font)              <10> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.6> on input line 54.
+(Font)              <7.6> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 54.
+(Font)              <6> on input line 55.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 54.
+(Font)              scaled to size 10.42007pt on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 54.
+(Font)              scaled to size 7.91925pt on input line 55.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 54.
+(Font)              scaled to size 6.25204pt on input line 55.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 54.
+(Font)              scaled to size 10.42007pt on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 54.
+(Font)              scaled to size 7.91925pt on input line 55.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 54.
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 54.
+(Font)              scaled to size 6.25204pt on input line 55.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 55.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -1897,7 +1901,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zplm' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 54.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 55.
  (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1905,8 +1909,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\c__siunitx_mathtt_int=\count361
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 54.
+\c__siunitx_mathtt_int=\count363
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 55.
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1915,56 +1919,59 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 55.
+(Font)              <12> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 55.
+(Font)              <9> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 55.
+(Font)              <7> on input line 56.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 55.
+(Font)              scaled to size 12.50409pt on input line 56.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 55.
+(Font)              scaled to size 9.37807pt on input line 56.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 55.
+(Font)              scaled to size 7.29405pt on input line 56.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 55.
+(Font)              scaled to size 12.50409pt on input line 56.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 55.
+(Font)              scaled to size 9.37807pt on input line 56.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 55.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 55.
+(Font)              scaled to size 7.29405pt on input line 56.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 56.
  (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 55.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 55.
+(Font)              <8> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 55.
+(Font)              <5> on input line 56.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 55.
+(Font)              scaled to size 8.33606pt on input line 56.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 55.
+(Font)              scaled to size 5.21004pt on input line 56.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 55.
+(Font)              scaled to size 8.33606pt on input line 56.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 55.
+(Font)              scaled to size 5.21004pt on input line 56.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 55.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 56.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 61.
+(mdframed)              on input line 62.
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--70
+Underfull \hbox (badness 10000) in paragraph at lines 62--71
 
  []
 
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 145.
-(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 166.
+ (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1973,124 +1980,114 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-./diodo.tex:145: LaTeX Error: \verb ended by end of line.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.145 ...to è stata scelta la scheda \verb+Teensy
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--152
-
- []
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
 pdfTeX warning: pdflatex (file ./figs/./gestione.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./figs/./gestione.pdf, id=93, 362.56364pt x 172.3434pt>
+<./figs/./gestione.pdf, id=95, 362.56364pt x 172.3434pt>
 File: ./figs/./gestione.pdf Graphic file (type pdf)
 <use ./figs/./gestione.pdf>
-Package pdftex.def Info: ./figs/./gestione.pdf  used on input line 155.
+Package pdftex.def Info: ./figs/./gestione.pdf  used on input line 178.
 (pdftex.def)             Requested size: 471.33267pt x 224.04636pt.
 
-Overfull \hbox (16.08856pt too wide) in paragraph at lines 155--156
+Overfull \hbox (16.08856pt too wide) in paragraph at lines 178--179
  [][] 
  []
 
 
 
 pdfTeX warning: pdflatex (file ./figs/./measure.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./figs/./measure.pdf, id=94, 149.10327pt x 85.0028pt>
+<./figs/./measure.pdf, id=96, 149.10327pt x 85.0028pt>
 File: ./figs/./measure.pdf Graphic file (type pdf)
 <use ./figs/./measure.pdf>
-Package pdftex.def Info: ./figs/./measure.pdf  used on input line 160.
+Package pdftex.def Info: ./figs/./measure.pdf  used on input line 183.
 (pdftex.def)             Requested size: 328.0259pt x 187.00543pt.
-[2 <./figs/./gestione.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 203--205
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 226--228
 
  []
 
-[3 <./figs/./measure.pdf>] [4] [5]
+[3 <./figs/./gestione.pdf> <./figs/./measure.pdf>] [4] [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 404.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 404.
+(hyperref)                removing `math shift' on input line 445.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 404.
+(hyperref)                removing `\left' on input line 445.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 404.
+(hyperref)                removing `\mu' on input line 445.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 404.
+(hyperref)                removing `subscript' on input line 445.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 404.
+(hyperref)                removing `\right' on input line 445.
 
-<./figs/./varmuy.pdf, id=143, 1387.584pt x 710.4141pt>
-File: ./figs/./varmuy.pdf Graphic file (type pdf)
-<use ./figs/./varmuy.pdf>
-Package pdftex.def Info: ./figs/./varmuy.pdf  used on input line 422.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 445.
+
+<./figs/./varmuy.png, id=144, 1387.584pt x 710.4141pt>
+File: ./figs/./varmuy.png Graphic file (type png)
+<use ./figs/./varmuy.png>
+Package pdftex.def Info: ./figs/./varmuy.png  used on input line 463.
 (pdftex.def)             Requested size: 444.03595pt x 227.33714pt.
-[6]
-<./figs/./nofilter.pdf, id=154, 462.528pt x 346.896pt>
-File: ./figs/./nofilter.pdf Graphic file (type pdf)
-<use ./figs/./nofilter.pdf>
-Package pdftex.def Info: ./figs/./nofilter.pdf  used on input line 476.
-(pdftex.def)             Requested size: 416.27133pt x 312.2035pt.
-<./figs/./filtered.pdf, id=155, 462.528pt x 346.896pt>
-File: ./figs/./filtered.pdf Graphic file (type pdf)
-<use ./figs/./filtered.pdf>
-Package pdftex.def Info: ./figs/./filtered.pdf  used on input line 483.
-(pdftex.def)             Requested size: 416.27133pt x 312.2035pt.
-<./figs/./comparison.pdf, id=156, 1387.584pt x 710.4141pt>
-File: ./figs/./comparison.pdf Graphic file (type pdf)
-<use ./figs/./comparison.pdf>
-Package pdftex.def Info: ./figs/./comparison.pdf  used on input line 489.
+[6] [7 <./figs/./varmuy.png>]
+<./figs/./nofilter.png, id=163, 462.528pt x 346.896pt>
+File: ./figs/./nofilter.png Graphic file (type png)
+<use ./figs/./nofilter.png>
+Package pdftex.def Info: ./figs/./nofilter.png  used on input line 527.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 527--531
+ [][] 
+ []
+
+<./figs/./filtered.png, id=164, 462.528pt x 346.896pt>
+File: ./figs/./filtered.png Graphic file (type png)
+<use ./figs/./filtered.png>
+Package pdftex.def Info: ./figs/./filtered.png  used on input line 534.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 534--537
+ [][] 
+ []
+
+<./figs/./comparison.png, id=165, 1387.584pt x 710.4141pt>
+File: ./figs/./comparison.png Graphic file (type png)
+<use ./figs/./comparison.png>
+Package pdftex.def Info: ./figs/./comparison.png  used on input line 542.
 (pdftex.def)             Requested size: 444.03595pt x 227.33714pt.
- (./figs/divider.tex [7 <./figs/./varmuy.pdf>])
+(./figs/divider.tex [8 <./figs/./nofilter.png> <./figs/./filtered.png> <./figs/./comparison.png>])
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 520.
- [8 <./figs/./nofilter.pdf>] [9 <./figs/./filtered.pdf> <./figs/./comparison.pdf>] (./diodo.bbl [10]) [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 587.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 587.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 577.
+ [9] (./diodo.bbl) [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 644.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 644.
  (./diodo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 587.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 587.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 644.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 644.
 Package rerunfilecheck Info: File `diodo.out' has not changed.
 (rerunfilecheck)             Checksum: 822C8FF8F5C8A10A751FFA81DF630737;900.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 587.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 644.
  ) 
 Here is how much of TeX's memory you used:
- 57965 strings out of 492982
- 1362417 string characters out of 6134896
- 1659312 words of memory out of 5000000
- 60621 multiletter control sequences out of 15000+600000
+ 58029 strings out of 492982
+ 1363451 string characters out of 6134896
+ 1664585 words of memory out of 5000000
+ 60683 multiletter control sequences out of 15000+600000
  653357 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,23n,119p,10381b,2360s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,23n,119p,10381b,2240s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (11 pages, 606940 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on diodo.pdf (10 pages, 609514 bytes).
 PDF statistics:
- 310 PDF objects out of 1000 (max. 8388607)
- 262 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 306 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
  25763 words of extra memory for PDF output out of 29859 (max. 10000000)
 

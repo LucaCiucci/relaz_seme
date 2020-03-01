@@ -11,6 +11,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{geometry}
 \usepackage{float}
 \usepackage{mdframed}
@@ -92,13 +93,14 @@ Secondo le ipotesi, un diodo reale può essere schematizzato quale un resistore
 ohmico ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che 
 attraversa tali elementi sia la medesima:
 \begin{equation}
-I = \frac{\Delta V_{resistore}}{R} = I_0 ( e^{\frac{\Delta V_{diodo}}{\eta 
-V_t}} - 1)
+	I = \frac{\Delta V_{\text{resistore}}}{R} =
+	I_0 \left( e^{\frac{\Delta V_{\text{diodo}}}{\eta V_t}} - 1\right)
 \end{equation}
 dunque la relazione che lega la corrente e la tensione ai capi del diodo può 
 essere espressa secondo la legge:
 \begin{equation}\label{eq: model}
-\Delta V = \Delta V_d + \Delta V_r = \eta V_T  \ln{\frac{I+I_0}{I_0}} + RI
+	\Delta V = \Delta V_d + \Delta V_r = \eta V_T \ln{\left(\frac{
+	I+I_0}{I_0}\right)} + RI
 \end{equation}
 (inserire una figura per far capire cosa sono $I$ e $\Delta V$)\newline
 (inserire dei grafici di confronto)
@@ -123,32 +125,53 @@ temperatura del semiconduttore inferiore a 0.5 K.
 %           Apparato
 %================================
 \subsection{Apparato}
-L'apparato sperimantale è costituito da un circuito, realizzato su basetta 
+L'apparato sperimentale è costituito da un circuito, realizzato su basetta 
 sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo 
-D1 e la resistenza R1. La misura della differenza di tensione ai capi di questa 
+$D1$ e la resistenza $R1$. La misura della differenza di tensione ai capi di questa 
 permette stima della corrente che attraversa il diodo, per esplorare ampie zone 
 di lavoro del diodo è stata cambiata opportunamente scegliendo tra le seguenti 
-resistenze:\newline
-TABELLA\newline
-Nel circuito può essere individuata una parte che si ocupa della carica e 
-scarica controllata del condensatore C1, il cui scopo è quello di fornire una 
+resistenze:\\
+\begin{table}[!htb]
+    \begin{center}
+	\begin{tabular}{lll}
+	    \toprule
+	    $R1$ nom. [$\Omega$] & $R1$ alt. [$\Omega$] & $R1$ mult. [$\Omega$] \\ 
+	    \midrule
+	    \midrule
+	    $0.22 \pm 3 \% $         & $0.22 \pm 0.01$          & $0.226 \pm 0.008$ \\
+	    $2.2 \pm 5 \% $          & $2.19 \pm 0.03$          & $2.212 \pm 0.008$ \\
+	    $22 \pm 5 \% $           & $21.6 \pm 0.2$           & $21.86 \pm 0.010$ \\ 
+	    $220 \pm 5 \% $          & $210.6 \pm 0.8$          & $216.22 \pm 0.07$ \\
+	    $2.2 k \pm 5 \% $        & $2140 \pm 23$        & $2202.1 \pm 0.4$ \\
+	    $22 k \pm 5 \% $         & ?                        & ?      \\     
+	    \bottomrule
+	\end{tabular}
+	\caption{I valori delle resistenze poste in serie al diodo, riportate in
+		valore nominale, misurate indirettamente dalla propria caduta di
+		tensione e misurate con un multimetro digitale con il metodo a
+		'4 fili'. \label{tab: res}}
+    \end{center}
+\end{table}
+
+Nel circuito può essere individuata una parte che si occupa della carica e 
+scarica controllata del condensatore $C1$, il cui scopo è quello di fornire una 
 tensione che possa essere facilmente regolata e sufficientemente stabile 
 durante un impulso. Un'altra parte del circuito si occupa di collegare a 
-comando il condensatore alla serie R1-D1 attraverso un MOS-FET.\newline
+comando il condensatore alla serie $R1-D1$ attraverso un MOS-FET.\\
 Il circuito è alimentato da 2 tensioni fornite da un alimentatore stabilizzato 
-switching e da un Buck Boost Converter, un segnale fornito su T2 provoca la 
-carica del condensatore mentre su T3 la sua scarica. Un segnale (invertito) su 
-T1 innesca l'impulso di corrente sul diodo.\newline
-La tensione di C1 è misurata attraverso un partitore di tensione collegato ad 
-OUT3 ed alla scheda di controllo mentre la tenisone ai punti OUT1 e OUT2 è 
-letta direttamente.\newline
-Come MCU per la gestione dell'apparato è stata scelta la scheda \verb+Teensy 
-3.2+\cite{teensy}, questa si occupa del controllo dei segnali e delle letture 
+switching e da un Buck Boost Converter, un segnale fornito su $T2$ provoca la 
+carica del condensatore mentre su $T3$ la sua scarica. Un segnale (invertito) su 
+$T1$ innesca l'impulso di corrente sul diodo.\\
+La tensione di C$1$ è misurata attraverso un partitore di tensione collegato ad 
+\verb+OUT3+ ed alla scheda di controllo mentre la tensione ai punti \verb+OUT1+ e
+\verb+OUT2+ è letta direttamente.\\
+Come MCU per la gestione dell'apparato è stata scelta la scheda 
+\verb+Teensy 3.2+\cite{teensy}, questa si occupa del controllo dei segnali e delle letture 
 analogiche. In particolare \verb+Teensy+  permette la lettura analogica 
 sincronizzata differenziale veloce, essendo dotato di due ADC, entrambi con una 
 risoluzione reale di 12 bit. La lettura differenziale è fondamentale per 
 acquisire coppie di dati per le tensioni ai capi del diodo e della 
-resistenza.\newline
+resistenza.
 
 \begin{figure}[!htb]
 	\centering 
@@ -173,19 +196,19 @@ I due convertitori ADC della MCU sono stati calibrati.
 %       Acquisizione dati
 %================================
 \subsection{Acquisizione dati}
-Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati 
+Per ogni valore scelto della resistenza $R1$ è stata eseguita una presa dati 
 automatizzata secondo una routine programmata in \verb+Teensy+: il condensatore 
 viene caricato ad una tensione prefissata, una volta raggiunto il valore 
-prestabilito viene inviato il segnale su T1, si avvia l'acquisizione 
+prestabilito viene inviato il segnale su $T1$, si avvia l'acquisizione 
 sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di 
-entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile 
+entrare in conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile 
 ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo 
 punto si inizia a memorizzare una serie da 100 coppie di letture 
 -sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di 
 nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la 
-tensione su OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non 
-danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il condensatore 
-ad una tensione più alta.
+tensione al punto \verb+OUT2+ è stata maggiore di 3.3V si ferma l'acquisizione
+per non danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il
+condensatore ad una tensione più alta.
 
 ============================= OLD\newline
 Vista la limitata attendibilità del circuito con interruttore azionato
@@ -277,6 +300,9 @@ grafico in scala semilogaritmica (grafico \ref{fig: sck_lin}).
 	con sovrapposto il modello di best-fit \label{fig: sck_log}}
 \end{figure}
 
+%================================================================
+%                          Conclusioni
+%================================================================
 \section{Conclusioni}
 L'andamento dei dati sperimentali non risulta essere ben descritto dalla legge
 \eqref{eq: model}. Ciò può essere spiegato sulla base della non linearità dei
@@ -292,7 +318,14 @@ della curva di Shockley per poi appiattirsi a partire da un particolare valore
 della tensione, esattamente come ci aspetteremo da un andamento lineare.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi.
 
+%================================================================
+%                        Appendice A
+%================================================================
 \section{Appendice A: Filtraggio Dati}\label{app: A}
+
+%================================
+%         Introduzione
+%================================
 \subsection{Introduzione}
 Durante l’esperienza si è raccolto un grande numero di dati, acquisiti in
 run diversi in base alla resistenza scelta, dunque a zone differenti della
@@ -304,6 +337,10 @@ informazioni utili, vanno a “sporcare” il grafico.
 Il sistema di filtraggio di dati implementato nell'eseguibile si compone di 2
 fasi: la prima è l’eliminazione di outliers, la seconda consiste
 nell'eliminazione di dati non significativi.
+
+%================================
+%         Procedimento
+%================================
 \subsection{Procedimento}
 Supponiamo di avere una serie di dati $(x, y)$ e assumiamo che siano
 indipendenti tra loro. Questo non sarà in generale vero, però quest'ipotesi
@@ -385,10 +422,10 @@ e ampiezze diverse:
 %	} {\sqrt{2 \pi}} =\\ 
 	\var{\mu_y} &= \sum_{i=1}^{n} w_i^2 \sigma_y^2 + 
 	\left(\frac{y_i}{\sum_{j=1}^{n} w_j} \right)^2 \frac{
-	e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}} +  
-	\sqrt{3} \left( e^{-\frac{(x-x_i)^2}{\sigma_x^2}} -
-	\sqrt{2} e^{-3 \frac{(x-x_i)^2}{4 \sigma_x^2}} \right)
-	} {2 \sqrt{3}\pi \sigma_x^2} 
+	e^{-\frac{(x-x_i)^2}{3 \sigma_{x_i}^2}} +  
+	\sqrt{3} \left( e^{-\frac{(x-x_i)^2}{\sigma_{x_i}^2}} -
+	\sqrt{2} e^{-3 \frac{(x-x_i)^2}{4 \sigma_{x_i}^2}} \right)
+	} {2 \sqrt{3}\pi \sigma_{x_i}^2} 
 \end{align}
 Riassumendo:\\
 Nella \eqref{eq: muy} prendiamo una media dei campionamenti intorno ad un'
@@ -401,6 +438,10 @@ riscaliamo la stima in base al valore assunto da $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di y, pesata sulla distanza dai valori studiati. Dunque
 $\mu_y \pm \sigma_y$ ci dà una stima della distribuzione dei nostri dati.
+
+%================================
+%           Var(muy)
+%================================
 \subsection{$\var{\mu_y}$}
 Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio 
 $\mu_y$, $\var{\mu_y}$ ci dà un'idea dell’incertezza che attribuiamo alla
@@ -417,9 +458,9 @@ qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
 indicando assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
 $\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=0.32]{./varmuy.pdf}
+ 		\includegraphics[scale=0.32]{./varmuy.png}
  	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
 	l'area in rosso indica il valore di $\var{\mu_y}$ al variare dei
 	dati (in blu) lungo $x$. \label{fig: varmuy}}
@@ -430,6 +471,10 @@ sembrerebbe piccola in confronto alla prima: in realtà non lo è, ma
 soprattutto questa non può essere trascurata, poiché è proprio la quantità
 che descrive la dipendenza dalla densità stessa, dunque la caratteristica
 convergenza/divergenza della precisione sulla stima centrale fornita.
+
+%================================
+%        Filtro outliers
+%================================
 \subsection{Filtro outliers}
 La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
 punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
@@ -441,6 +486,10 @@ verifica del modello in quanto una selezione basata su un preliminare fit
 risulterebbe influenzata dalla scelta della funzione in questione e
 eliminerebbe tutti i dati che non risultano compatibili con essa.
 %indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
+
+%================================
+%  Filtro dati non significativi
+%================================
 \subsection{Filtro dati non significativi}
 Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo $(A)$
 con una resistenza bassa, il secondo $(B)$ con una alta: Il primo set esplorerà
@@ -471,25 +520,33 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 E’ infine mostrato il confronto dei grafici delle $\var(\mu_y)$
 tra due set successivi.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
 	\centering 
- 		\includegraphics[scale=0.9]{./nofilter.pdf}
-	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
-	si evidenziano in rosso i dati da scartare, in nero quello tenuti.
-	\label{fig: nofilter}}
+ 		\includegraphics[scale=0.5]{./nofilter.png}
+%	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
+%	si evidenziano in rosso i dati da scartare, in nero quello tenuti.}
+	\label{fig: nofilter}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+	\centering 
+ 		\includegraphics[scale=0.5]{./filtered.png}
+% 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.}
+	\label{fig: filtered}
+\end{subfigure}
+	\caption{Grafici in scala semilogaritmica dei prima (sinistra) e dopo (destra) del filtraggio dati. I dati scartati sono stati evidenziati in rosso. Per praticità è stato rappresentato un centesiomo dei dati raccolti}
 \end{figure}
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=0.9]{./filtered.pdf}
- 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.
-	\label{fig: filtered}}
-\end{figure}
-\begin{figure}[!htb]
-	\centering 
- 		\includegraphics[scale=0.32]{./comparison.pdf}
+ 		\includegraphics[scale=0.32]{./comparison.png}
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
 	dati consecutivi. \label{fig: comparison}}
 \end{figure}
+
+%================================================================
+%                        Appendice B
+%================================================================
 \section{Appendice B: Metodo di Fit}\label{app: B}
 Partiamo dall'osservazione che la tensione ai capi del diodo può essere
 scomposta in $\Delta V_r$ e $\Delta V_d$ come illustrato in figura:
