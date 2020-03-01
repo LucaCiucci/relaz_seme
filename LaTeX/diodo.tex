@@ -141,7 +141,7 @@ I due convertitori ADC della MCU sono stati calibrati.
 %       Acquisizione dati
 %================================
 \subsection{Acquisizione dati}
-Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati automatizzata secondo una routine programmata in Teensy: il condensatore viene caricato ad una tensione prefissata, una volta raggiunto il valore prestabilito viene inviato il segnale su T1, si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la tensione su OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non danneggiare Teensy, altrimenti si ricomincia caricando il condensatore ad una tensione più alta.
+Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati automatizzata secondo una routine programmata in Teensy: il condensatore viene caricato ad una tensione prefissata, una volta raggiunto il valore prestabilito viene inviato il segnale su T1, si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la tensione al punto OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non danneggiare Teensy, altrimenti si ricomincia caricando il condensatore ad una tensione più alta.
 
 ============================= OLD\newline
 Vista la limitata attendibilità del circuito con interruttore azionato
@@ -392,7 +392,7 @@ $\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
 \begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=0.32]{./varmuy.pdf}
+ 		\includegraphics[scale=0.32]{./varmuy.png}
  	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
 	l'area in rosso indica il valore di $\var{\mu_y}$ al variare dei
 	dati (in blu) lungo $x$. \label{fig: varmuy}}
@@ -467,7 +467,7 @@ tra due set successivi.
 % 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.}
 	\label{fig: filtered}
 \end{subfigure}
-	\caption{Grafici in scala semilogaritmica dei prima (sinistra) e dopo (destra) del filtraggio dati. I dati eliminati sono stati evidenziati in rosso.}
+	\caption{Grafici in scala semilogaritmica dei prima (sinistra) e dopo (destra) del filtraggio dati. I dati scartati sono stati evidenziati in rosso. Per praticità è stato rappresentato un centesiomo dei dati raccolti}
 \end{figure}
 \begin{figure}[H]
 	\centering 
@@ -477,7 +477,7 @@ tra due set successivi.
 \end{figure}
 
 %================================================================
-%                        Appendice b
+%                        Appendice B
 %================================================================
 \section{Appendice B: Metodo di Fit}
 Partiamo dall'osservazione che la tensione ai capi del diodo può essere
