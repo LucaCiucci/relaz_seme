@@ -49,6 +49,9 @@ keepspaces=true,
 \begin{document}
 \maketitle
 
+%================================================================
+%                            Riassunto
+%================================================================
 \begin{mdframed}
 \textbf{Riassunto:} --- Studiamo il comportamento di diodi in silicio PN,
 esplorando la propria curva caratteristica $V - I$ al di fuori dei regimi di
@@ -61,6 +64,10 @@ PACS 01.40.-d – Education.\\
 PACS 01.50.Pa – Laboratory experiments and apparatus.
 \end{mdframed}
 
+
+%================================================================
+%                         Introduzione
+%================================================================
 \section{Introduzione}
 L'alta resistività intrinseca al silicio, di cui è composta la giunzione
 bipolare, comporta la presenza di una sua componente resistiva: questa 
@@ -69,33 +76,46 @@ attraverso il diodo, all'aumentare della tensione ai suoi capi e della sua
 temperatura. Per poter modellare la componente -ohmica- di un diodo
 percorso da correnti alte si propone un modello semplice di resistenza
 parassita in serie, in grado di descriverne gli effetti, verificandone 
-sperimentalmente la validità e i limiti. 
+sperimentalmente la validità.
+
+
+%================================================================
+%                         Cenni teorici
+%================================================================
+\section{Cenni Teorici}
+Secondo le ipotesi, un diodo reale può essere schematizzato quale un resistore ohmico ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che attraversa tali elementi sia la medesima:
+\begin{equation}
+I = \frac{\Delta V_{resistore}}{R} = I_0 ( e^{\frac{\Delta V_{diodo}}{\eta V_t}} - 1)
+\end{equation}
+dunque la relazione che lega la corrente e la tensione ai capi del diodo può essere espressa secondo la legge:
+\begin{equation}
+\Delta V = \Delta V_d + \Delta V_r = \eta V_T  \ln{\frac{I+I_0}{I_0}} + RI
+\end{equation}
+(inserire una figura per far capire cosa sono I e $\Delta V$)
+
+
+%================================================================
+%                Metodo e apparato sperimentale
+%================================================================
 \section{Metodo e apparato sperimentale}
-Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
-al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
-all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
-brevi, limitando dunque il trasferimento di energia sui componenti.
-\subsection{Acquisizione dati}
-Si è fatto uso della piattaforma di sviluppo \verb+Teensy 3.2+\cite{teensy} per
-il campionamento di segnali, essendo non solo più veloce e capiente in memoria
-rispetto ad Arduino, ma oltretutto dotato di due ADC, entrambi con risoluzione
-maggiore nel campionamento analogico, a 12 bit (reali). In particolare, 
-\verb+Teensy+ è in grado di effettuare una lettura differenziale su due ingressi
-analogici e sincronizzata tra i due ADC. Questo ci permette di misurare
-pressoché -simultaneamente- la differenza di potenziale e intensità di corrente
-percepite dal diodo, dunque la sua curva caratteristica. Per prima cosa
-si sono misurati i rispettivi fattori di conversione $\xi_{\rm V}$ [V/digit] e
-$\xi_I$ [A/digit] tramite un fit lineare sui campionamenti di tensione e
-corrente continua generati da un trasformatore di d.d.p $V_0 \approx 4.95$ V.
-Come illustrato sotto:
-\input{./figs/thev.tex}
-\subsection{Schema circuitale del sistema}
-%\input{simpletikz.tex}
-\begin{figure}[!htb]
-	\centering 
- 		\includegraphics[scale=2.2]{./simple.pdf}
- 	\caption{Versione semplice del circuito \label{sch:smpl}}
-\end{figure}
+Il circuito sotto studio lavora con correnti relativamente alte, per evitare sostanziali aumenti di temperatura nei componenti ed eventuali danni agli stessi si imprimono correnti impulsate.
+La durata degli impulsi è di circa 150 $\mu$s (da misurare meglio) che corrisponde ad un'energia impressa inferiore a 1 mJ dunque ad un aumento della temperatura del semiconduttore inferiore a 0.5 K.
+%Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
+%al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
+%all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
+%brevi, limitando dunque il trasferimento di energia sui componenti.
+
+%================================
+%           Apparato
+%================================
+\subsection{Apparato}
+L'apparato sperimantale è costituito da un circuito, realizzato su basetta sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo D1 e la resistenza R1. La misura della differenza di tensione ai capi di questa permette stima della corrente che attraversa il diodo, per esplorare ampie zone di lavoro del diodo è stata cambiata opportunamente scegliendo tra le seguenti resistenze:\newline
+TABELLA\newline
+Nel circuito può essere individuata una parte che si ocupa della carica e scarica controllata del condensatore C1, il cui scopo è quello di fornire una tensione che possa essere facilmente regolata e sufficientemente stabile durante un impulso. Un'altra parte del circuito si occupa di collegare a comando il condensatore alla serie R1-D1 attraverso un MOS-FET.\newline
+Il circuito è alimentato da 2 tensioni fornite da un alimentatore stabilizzato switching e da un Buck Boost Converter, un segnale fornito su T2 provoca la carica del condensatore mentre su T3 la sua scarica. Un segnale (invertito) su T1 innesca l'impulso di corrente sul diodo.\newline
+La tensione di C1 è misurata attraverso un partitore di tensione collegato ad OUT3 ed alla scheda di controllo mentre la tenisone ai punti OUT1 e OUT2 è letta direttamente.\newline
+Come MCU per la gestione dell'apparato è stata scelta la scheda \verb+Teensy 3.2+\cite{teensy}, questa si occupa del controllo dei segnali e delle letture analogiche. In particolare Teensy permette la lettura analogica sincronizzata differenziale veloce, essendo dotato di due ADC, entrambi con una risoluzione reale di 12 bit. La lettura differenziale è fondamentale per acquisire coppie di dati per le tensioni ai capi del diodo e della resistenza.\newline
+
 \begin{figure}[!htb]
 	\centering 
  		\includegraphics[scale=1.3]{./gestione.pdf}
@@ -107,21 +127,21 @@ Come illustrato sotto:
  	\caption{Schema circuitale del sistema di lettura (\texttt{Teensy})
 	\label{sch:rdng}}
 \end{figure}
-Come ultima cautela preliminare, per minimizzare le influenze esterne sulla
-misura della componente resistiva del diodo, si sono misurate le resistenze dei
-collegamenti del circuito, in quanto i cavi reali e gli ingressi del diodo
-possono avere resistenze non trascurabili rispetto a quella opposta dal diodo
-in regime di conduzione, nell'ordine di qualche ohm.
 
-Tramite il semplice circuito con interruttore in Figura \ref{sch:smpl} riusciamo
-a ricostruire sperimentalmente la curva caratteristica V-$I$ del diodo: si
-lascia scaricare repentinamente il condensatore sulla serie diodo-resistenza
-chiudendo l'interruttore, dunque dai canali di un oscilloscopio si misurano le
-le cadute di tensione ai capi del diodo e della resistenza $R_P$, da cui si
-ricava l'intensità di corrente che scorre su entrambi i componenti tramite la
-legge di Ohm.\[
-I_d = \frac{\Delta V_{\mathrm{mis}}}{R_P}
-.\] 
+%================================
+%         Calibrazione
+%================================
+\subsection{Calibrazione}
+I due convertitori ADC della MCU sono stati calibrati.
+% continua
+
+%================================
+%       Acquisizione dati
+%================================
+\subsection{Acquisizione dati}
+Per ogni valore scelto della resistenza R1 è stata eseguita una presa dati automatizzata secondo una routine programmata in Teensy: il condensatore viene caricato ad una tensione prefissata, una volta raggiunto il valore prestabilito viene inviato il segnale su T1, si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in conduzione (R2 è stata scelta di 1k, dunque c'è un apprezzabile ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la tensione su OUT2 è stata maggiore di 3.3V si ferma l'acquisizione per non danneggiare Teensy, altrimenti si ricomincia caricando il condensatore ad una tensione più alta.
+
+============================= OLD\newline
 
 Vista la limitata attendibilità del circuito con interruttore azionato
 manualmente si è costruito una seconda versione del circuito (Fig.
@@ -162,19 +182,7 @@ una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente
 dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto"
 di un logaritmo.  
 
-\subsection{Cenni Teorici}
-Il diodo e la resistenza $R_1$ costituiscono, nel loro insieme, un partitore
-di tensione, pertanto la corrente che scorre all'interno dei due è la stessa.
-Un diodo reale può essere a sua volta schematizzato come un ramo, costituito
-da un resistore ohmico ed un diodo ideale in serie. Dunque ci aspettiamo che
-la relazione che lega la corrente e la tensione ai capi del diodo possa essere
-descritta da una legge del tipo:
-\begin{equation}\label{eq: model}
-	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} =
-	\eta V_T  \ln{\left(\frac{I+I_0}{I_0}\right)} + RI
-\end{equation}
-
-\section{Risultati e Analisi dati}
+\section{Analisi dati e Risultati}
 Il nostro intento è verificare che i dati raccolti siano in accordo con la
 legge \eqref{eq: model}. Tramite la legge di Ohm è possibile ricavare la
 corrente nel diodo, dividendo la caduta di tensione misurate dalla boccola
