@@ -254,6 +254,10 @@ Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi.
 %                        Appendice A
 %================================================================
 \section{Appendice A: Filtraggio Dati}
+
+%================================
+%         Introduzione
+%================================
 \subsection{Introduzione}
 Durante l’esperienza si è raccolto un grande numero di dati, acquisiti in
 run diversi in base alla resistenza scelta, dunque a zone differenti della
@@ -265,6 +269,10 @@ informazioni utili, vanno a “sporcare” il grafico.
 Il sistema di filtraggio di dati implementato nell'eseguibile si compone di 2
 fasi: la prima è l’eliminazione di outliers, la seconda consiste
 nell'eliminazione di dati non significativi.
+
+%================================
+%         Procedimento
+%================================
 \subsection{Procedimento}
 Supponiamo di avere una serie di dati $(x, y)$ e assumiamo che siano
 indipendenti tra loro. Questo non sarà in generale vero, però quest'ipotesi
@@ -361,6 +369,10 @@ riscaliamo la stima in base al valore assunto da $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di y, pesata sulla distanza dai valori studiati. Dunque
 $\mu_y \pm \sigma_y$ ci dà una stima della distribuzione dei nostri dati.
+
+%================================
+%           Var(muy)
+%================================
 \subsection{$\var{\mu_y}$}
 Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio 
 $\mu_y$, $\var{\mu_y}$ ci dà un'idea dell’incertezza che attribuiamo alla
@@ -390,6 +402,10 @@ sembrerebbe piccola in confronto alla prima: in realtà non lo è, ma
 soprattutto questa non può essere trascurata, poiché è proprio la quantità
 che descrive la dipendenza dalla densità stessa, dunque la caratteristica
 convergenza/divergenza della precisione sulla stima centrale fornita.
+
+%================================
+%        Filtro outliers
+%================================
 \subsection{Filtro outliers}
 La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
 punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
@@ -401,6 +417,10 @@ verifica del modello in quanto una selezione basata su un preliminare fit
 risulterebbe influenzata dalla scelta della funzione in questione e
 eliminerebbe tutti i dati che non risultano compatibili con essa.
 %indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
+
+%================================
+%  Filtro dati non significativi
+%================================
 \subsection{Filtro dati non significativi}
 Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo $(A)$
 con una resistenza bassa, il secondo $(B)$ con una alta: Il primo set esplorerà
@@ -433,20 +453,20 @@ tra due set successivi.
 
 \begin{figure}[!htb]
 	\centering 
- 		\includegraphics[scale=0.9]{./nofilter.pdf}
+ 		\includegraphics[scale=0.9]{./nofilter.png}
 	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
 	si evidenziano in rosso i dati da scartare, in nero quello tenuti.
 	\label{fig: nofilter}}
 \end{figure}
 \begin{figure}[!htb]
 	\centering 
- 		\includegraphics[scale=0.9]{./filtered.pdf}
+ 		\includegraphics[scale=0.9]{./filtered.png}
  	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.
 	\label{fig: filtered}}
 \end{figure}
 \begin{figure}[!htb]
 	\centering 
- 		\includegraphics[scale=0.32]{./comparison.pdf}
+ 		\includegraphics[scale=0.32]{./comparison.png}
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
 	dati consecutivi. \label{fig: comparison}}
 \end{figure}
