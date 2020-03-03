@@ -58,17 +58,17 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 %================================================================
 %                            Riassunto
 %================================================================
-\begin{mdframed}
-\textbf{Riassunto:} --- Studiamo il comportamento di diodi in silicio PN,
-esplorando la propria curva caratteristica $V - I$ al di fuori dei regimi di
-lavoro ordinari, tramite campionamenti digitali dei segnali ai capi del
-componente. Discutiamo la presenza di una componente resistiva del diodo e ne
-misuriamo l'entità, al fine di arrivare ad un modello teorico in grado
-giustificare eventuali deviazioni dal modello di Shockley, verso una risposta
--ohmica- dovuta alla resistenza della giunzione PN al passaggio di correnti.\\\\
-PACS 01.40.-d – Education.\\
-PACS 01.50.Pa – Laboratory experiments and apparatus.
-\end{mdframed}
+%\begin{mdframed}
+%\textbf{Riassunto:} --- Studiamo il comportamento di diodi in silicio PN,
+%esplorando la propria curva caratteristica $V - I$ al di fuori dei regimi di
+%lavoro ordinari, tramite campionamenti digitali dei segnali ai capi del
+%componente. Discutiamo la presenza di una componente resistiva del diodo e ne
+%misuriamo l'entità, al fine di arrivare ad un modello teorico in grado
+%giustificare eventuali deviazioni dal modello di Shockley, verso una risposta
+%-ohmica- dovuta alla resistenza della giunzione PN al passaggio di correnti.\\\\
+%PACS 01.40.-d – Education.\\
+%PACS 01.50.Pa – Laboratory experiments and apparatus.
+%\end{mdframed}
 
 
 %================================================================
@@ -102,7 +102,6 @@ essere espressa secondo la legge:
 	\Delta V = \Delta V_d + \Delta V_r = \eta V_T \ln{\left(\frac{
 	I+I_0}{I_0}\right)} + RI
 \end{equation}
-(inserire una figura per far capire cosa sono $I$ e $\Delta V$)\newline
 (inserire dei grafici di confronto)
 
 
@@ -131,28 +130,26 @@ $D1$ e la resistenza $R1$. La misura della differenza di tensione ai capi di que
 permette stima della corrente che attraversa il diodo, per esplorare ampie zone 
 di lavoro del diodo è stata cambiata opportunamente scegliendo tra le seguenti 
 resistenze:\\
-\begin{table}[!htb]
+\begin{table}[H]
     \begin{center}
 	\begin{tabular}{lll}
 	    \toprule
-	    $R1$ nom. [$\Omega$] & $R1$ alt. [$\Omega$] & $R1$ mult. [$\Omega$] \\ 
+	    $R1$ nom. [$\Omega$] & $R1$ mult. [$\Omega$] \\ 
 	    \midrule
 	    \midrule
-	    $0.22 \pm 3 \% $         & $0.22 \pm 0.01$          & $0.226 \pm 0.008$ \\
-	    $2.2 \pm 5 \% $          & $2.19 \pm 0.03$          & $2.212 \pm 0.008$ \\
-	    $22 \pm 5 \% $           & $21.6 \pm 0.2$           & $21.86 \pm 0.010$ \\ 
-	    $220 \pm 5 \% $          & $210.6 \pm 0.8$          & $216.22 \pm 0.07$ \\
-	    $2.2 k \pm 5 \% $        & $2140 \pm 23$        & $2202.1 \pm 0.4$ \\
-	    $22 k \pm 5 \% $         & ?                        & ?      \\     
+	    $0.22 \pm 3 \% $         & $0.226 \pm 0.008$ \\
+	    $2.2 \pm 5 \% $          & $2.212 \pm 0.008$ \\
+	    $22 \pm 5 \% $           & $21.86 \pm 0.010$ \\ 
+	    $220 \pm 5 \% $          & $216.22 \pm 0.07$ \\
+	    $2.2 k \pm 5 \% $        & $2202.1 \pm 0.4$ \\
+	    $22 k \pm 5 \% $         & ($21.7 \pm 0.3)10^3$ \\
+	    $0.22 M \pm 5 \% $        & ($217 \pm 3)10^3$ \\
 	    \bottomrule
 	\end{tabular}
 	\caption{I valori delle resistenze poste in serie al diodo, riportate in
-		valore nominale, misurate indirettamente dalla propria caduta di
-		tensione e misurate con un multimetro digitale con il metodo a
-		'4 fili'. \label{tab: res}}
+		valore nominale e misurate con multimetri digitali. \label{tab: res}}
     \end{center}
 \end{table}
-
 Nel circuito può essere individuata una parte che si occupa della carica e 
 scarica controllata del condensatore $C1$, il cui scopo è quello di fornire una 
 tensione che possa essere facilmente regolata e sufficientemente stabile 
@@ -173,15 +170,15 @@ risoluzione reale di 12 bit. La lettura differenziale è fondamentale per
 acquisire coppie di dati per le tensioni ai capi del diodo e della 
 resistenza.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=1.3]{./gestione.pdf}
+ 		\includegraphics[scale=0.5]{./gestione.png}
  	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
 \end{figure}
-\begin{figure}[!htb]
+\begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=2.2]{./measure.pdf}
- 	\caption{Schema circuitale del sistema di lettura (\texttt{Teensy})
+ 		\includegraphics[scale=0.5]{./measure.png}
+ 	\caption{Schema circuitale del sistema di lettura (verso \texttt{Teensy})
 	\label{sch:rdng}}
 \end{figure}
 
@@ -209,46 +206,6 @@ nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la
 tensione al punto \verb+OUT2+ è stata maggiore di 3.3V si ferma l'acquisizione
 per non danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il
 condensatore ad una tensione più alta.
-
-============================= OLD\newline
-Vista la limitata attendibilità del circuito con interruttore azionato
-manualmente si è costruito una seconda versione del circuito (Fig.
-\ref{sch:gest}), in cui figurano: 
-\begin{description}
-	\item [Un sottocircuito] di switch	
-	\item [Un condensatore] di capacità maggiore di un paio di ordini di 
-	grandezza.
-	\item [Teensy] La piattaforma di sviluppo impiegata per caricare
-	(e scaricare) il condensatore a diverse tensioni e per la misura delle
-	tensioni ai capi del diodo e della resistenza.
-\end{description}
-
-Si sviluppano due casi principali, dipendenti sostanzialmente dal valore della
-resistenza $R_P$ posta in serie al diodo:\\
-
-Se lasciamo caricare gradualmente il condensatore, essendo $C$ decisamente
-maggiore rispetto ai condensatori precedenti si ha un tempo di carica
-$\tau = RC$ abbastanza prolungato, in cui possiamo campionare contemporaneamente
-tensione e corrente ai capi del diodo per correnti modeste, nel regime in cui
-il diodo è "interdetto" ed oppone resistenza al flusso di carica.
-
-Viceversa, nel regime in cui si applichi al diodo una d.d.p. ben al disopra di
-$V_{\rm thr} \approx 0.6 $V, che siamo liberi di esplorare variando la tensione
-di carica di C con il sottocircuito destro, il diodo idealmente lascia passare
-tutta la corrente impressa sulla giunzione. Allora per caratterizzare la
-risposta del diodo senza cambiarne drasticamente le caratteristiche (ad esempio
-per eccessiva agitazione termica) si impiega il circuito di switch per
-imprimere impulsi di alta corrente e breve durata sulla giunzione PN, di cui
-misuriamo la curva caratteristica in risposta con i due ADC di \verb+Teensy+.
-
-Se effettivamente il diodo, oltre ad una certa soglia di d.d.p. inizia ad avere
-componente resistiva sempre più pronunciata, allora riportando le nostre
-previsioni in carta semilogaritmica ci si aspetterebbe di trovare una retta,
-entro il regime in cui è valida l'approssimazione di Shockley, ma oltre a
-questo, una regione in cui la curva caratteristica della giunzione ora mostra
-una dipendenza apprezzabilmente più lineare/ohmica dell'intensità di corrente
-dalla $\Delta$V rispetto a prima, a cui corrisponderebbe il grafico "piatto"
-di un logaritmo.  
 
 %================================================================
 %                   Analisi dati e Risultati
@@ -312,11 +269,11 @@ degli errori difficilmente stimabili e presumibilmente correlati. Tuttavia, si
 riscontrano delle analogie tra la funzione di fit ed i dati ottenuti. In
 particolare, dal grafico in scala lineare, si osserva che a correnti alte
 l'andamento risulta essere pressoch\`e lineare in accordo con l'ipotesi sulla
-resistenza interna. Dal grafico in scala semilogaritmica, inoltre, osserviamo
+componente resistiva interna. Dal grafico in scala semilogaritmica, inoltre, osserviamo
 che i dati risultano possedere un andamento simile a quello caratteristico 
-della curva di Shockley per poi appiattirsi a partire da un particolare valore
+della curva di Shockley, ovvero approssimativamente rettilineo, per poi appiattirsi come un logaritmo al crescere
 della tensione, esattamente come ci aspetteremo da un andamento lineare.
-Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi.
+Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi e che la modellizzazione proposta sia una buona approssimazione del diodo reale nelle condizioni di lavoro considerate.
 
 %================================================================
 %                        Appendice A
