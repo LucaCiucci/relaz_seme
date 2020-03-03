@@ -508,98 +508,69 @@ tra due set successivi.
 %================================================================
 %                        Appendice B
 %================================================================
-\section{Appendice B: Metodo di Fit}\label{app: B}
-Partiamo dall'osservazione che la tensione ai capi del diodo può essere
-scomposta in $\Delta V_r$ e $\Delta V_d$ come illustrato in figura:
-\input{./figs/divider.tex}
-dove il resistore a sinistra indica proprio la resistenza di un diodo reale,
-mentre il diodo alla sua destra rappresenta una giunzione bipolare PN, ossia
-il diodo ideale descritto dall’equazione di Shockley.
-Dunque ci aspettiamo che la tensione $V$ campionata con \verb+Teensy+ ai capi
-del diodo rispetti la legge:
+Metodo di fit per il diodo:
+La differenza di potenziale $\Delta$V in funzione della corrente I che scorre all’interno del diodo può essere espressa attraverso la legge 2. Potremo, dunque, essere tentati ad adottare tale formula ai fini di un fit numerico. Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. E’ stato dunque necessario adottare un algoritmo alternativo, basato sul metodo di Newton. Esso ci consentirà di ricostruire numericamente la funzione inversa della legge 2.
+Illustriamo in breve il metodo di Newton. Sia data una funzione f(x) continua e derivabile entro un intervallo di definizione connesso (con f’(x) limitata e diversa da 0 per ciascuna x appartenente al dominio) ed una v tale che f(v) = 0. Sviluppando al prim’ordine f in un intorno di v, otterremo:
+\begin{equation}
+f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f'{''}(X)} \cdot  {( x – v)^2} = 0
+\end{equation}
+ove X è un numero reale compreso fra v ed x. Nel caso in cui il $(x-v)^2 $risultasse prossimo a zero:
 \begin{equation}\label{eq: invsck}
-V = \Delta V = \Delta V_d + \Delta V_r = \eta V_T = \ln{\frac{I+I_0}{I_0}} + RI
+x \simeq v   -  {\frac {f(v)}{f’(v)}}
 \end{equation}
-All’interno dello script \verb'fit_file.py', voltages rappresenta il vettore
-delle ascisse dei punti campionati, mentre currents rappresenta l'analogo per
-le ordinate. Le incertezze associate a questi due all'interno dello script
-prendono i nomi \verb'voltageErrs' e \verb'currentErrs'.
-Ingenuamente potremmo essere tentati di effettuare una sorta di fit 
-“inverso”
-(delle x in funzione delle y).
-Tuttavia una tale operazione non è affatto banale, a causa dei valori 
-negativi/nulli che debitamente si riscontreranno all’interno del logaritmo
-nella legge \eqref{eq: invsck}, che possono facilmente portare al fallimento
-dell'algoritmo di fit.
-\`E per questo che si è dovuto definire il modello "inverso" nella forma di
-una legge di natura approssimata per ricorsione, grazie al metodo di Newton. 
-Al livello di implementazione si è quindi dichiarata una funzione:
-\begin{lstlisting}[label={lst: curr}]
-def curr(V, I0, nVt, R):
-    v = V
-    for i in range(Nstep):
-	a = deriv_errFun(v, I0, nVt, R)
-	v = v - errFun(v, V, I0, nVt, R) /a
-    return (V - v)/R
-\end{lstlisting}
-
-Questa verrà in seguito usata come modello per la corrente in funzione della
-tensione ai capi del diodo reale nella routine di fit per minimi quadrati.
-La funzione \verb'curr' cerca di -linearizzare- la relazione tra $I$ e $V$
-nell'intorno di un determinato $V$. Come sappiamo infatti dal metodo di Newton:
-detta $f(x)$ una funzione tale che $f(x) = 0$ e, dato un valore iniziale
-tale che $f(x[0]) = \alpha$ generico, sappiamo che la relazione di ricorsione
-\begin{align}
-	x[0] = \alpha \\ \label{aln: newton}
-	x[N+1] = x[N] - \frac{f(x[N])}{f'(x[N])}
-\end{align}
-converge ad un valore approssimato per la nostra $x$, commettendo un errore 
-sempre più piccolo al crescere di $N$, indice del livello di ricorsione
-raggiunto. 
-Nel nostro caso $x$ sarà quella tensione $v$ per cui vale l'identità:
-\begin{equation}\label{eq: sck}
-	I(V) \coloneqq I_0^{\frac{\Delta V}{\eta V_T}} = \frac{V - v}{R}	
+L’unica limitazione nell’adottare tale scrittura è che necessitiamo di v molto vicino a x incognito. Tuttavia, nel caso in cui la funzione f risultasse sufficientemente maneggevole, potremo partire da un valore generico del dominio e riscontrare con buona approssimazione la radice in un tempo finito relativamente breve. Per effettuare ciò, è necessaria la serie ricorsiva:
+\begin{equation}
+\begin{cases}
+x[0] = a \\ x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
+\end{cases}
 \end{equation}
-che identifica il tratto lineare descritto da una retta con coefficiente
-angolare negativo pari a $-\frac{1}{R}$ ed intercetta $I = v/R$ 
-sull’asse delle ordinate; si tratta proprio della retta di carico del diodo.
-L'equazione ricorsiva \eqref{aln: newton} ci permette quindi di determinare
-il punto di lavoro $v$ per cui la corrente (di lavoro) si può scrivere come
-$\frac{V - v}{R}$, come si vede dal return nella funzione di fit
-\verb'curr(V, parametri liberi)'.
-A questo punto si può già intuire quali siano le altre due funzioni di
-appoggio richiamate dentro \verb'curr', di cui riportiamo le definizioni
-per completezza:
-\begin{lstlisting}[label={lst: errFun}]
-def sck(V, I0, nVt):
-    return I0*(pylab.exp(V/nVt) - 1)
-
-def errFun(V, V0, I0, nVt, R):
-    return sck(V, I0, nVt) + (V - V0)/R
-
-def deriv_errFun(V, I0, nVt, R):
-    return I0 / nVt * pylab.exp(V/nVt) + 1./R
-\end{lstlisting}
-Infatti \verb'errFun' e \verb'deriv_errFun' sono, rispettivamente, la relazione 
-da minimizzare specificata dalla legge \eqref{eq: sck} e la sua derivata
-rispetto a $V$.
-In conclusione, si è effettuato un fit dei minimi quadrati implementato in
-\verb+Python+ mediante la funzione \emph{curve\_fit} dal modulo \verb+optimize+
-interno alla libreria \texttt{Scipy}\cite{scipy} adottando come modello
-\verb'curr' e lasciando liberi tutti i suoi parametri.
-In particolare si è tenuto conto dell'incertezza sulla variabile indipendente
-con il metodo "dell'errore efficace": ovvero propagando gli errori 
-\verb'voltageErrs' sulle $V$, tramite le stime dei parametri ottenute da un fit
-preliminare, in cui prendiamo \verb'currentErrs' come sole incertezze sulla
-variabile dipendente $I$. Lo stesso algoritmo di fit viene iterato più volte,
-però assumendo come incertezza sulle misure una sorta di errore efficace 
-dato dalla somma in quadratura dei due contributi all'incertezza: 
-\begin{equation}\label{eq: seff}
-	\Delta_{\text{eff}_i} \coloneqq \sqrt{\left|\frac{\ud \, curr}{\ud V}
-	\right|_{V = V_i} \Delta_{V_i}^2 + \Delta_{I_i}^2}.
+ove a è un generico valore appartenente al dominio di definizione. In pratica, per ogni iterazione tale serie valuta f(x[i]) e cerca la retta tangente in tale punto alla funzione:
+\begin{equation}\label{eq: invsck}
+y = f(x[i]) + f’(x[i]) \cdot (x-x[i])
 \end{equation}
-fin a che non converge ai valori ottimali dei parametri.
-\medskip
-\bibliographystyle{IEEEtrandoi}
-\bibliography{refs}
+ Dopodiché cerca il punto x per il quale y = 0:
+\begin{equation}\label{eq: invsck}
+x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
+\end{equation}
+E viene conseguentemente valutato il valore f(x[i+1]) ed il procedimento viene ripetuto per un dato numero di iterazioni. 
+\begin{figure}[H]
+	\centering 
+ 		\includegraphics[scale=0.75]{./Figura1_appendiceB.png}
+	\caption{Visualizzazione grafica di cosa implica un’iterazione della serie ricorsiva (f(x) = $x^3$ in questo esempio)}
+\end{figure}
+Se la funzione è monotona e la serie converge ad un valore, tale sarà v, essendo l’unico punto fisso della serie:
+\begin{equation}\label{eq: invsck}
+ {a = a -  {\frac{f(a)}{f{’}(a)}}}\to{{f(a) = 0}\land{v = a}}
+\end{equation}
+essendo v l’unico punto in cui si annulla la funzione per definizione.
+Ritornando al diodo, esso può essere interpretato quale un diodo ideale ed una resistenza in serie, collegati ad un generatore di differenza di potenziale. Quindi, per la legge delle maglie:
+\begin{equation}
+\Delta V_{\text{ingresso}} = \Delta V_{\text{diodo}} + \Delta V_{\text{resistenza}} = \Delta V_{\text{diodo}} + R \cdot I
+\end{equation}
+ove I è la corrente che scorre all’interno del diodo in quel determinato istante. Notoriamente, tale scrittura si può porre nella seguente forma ai fini di definire la retta di carico del diodo:
+\begin{equation}
+\Delta V_{\text{diodo}} = \Delta V_{\text{ingresso}} - R \cdot I
+\end{equation}
+Il punto di intersezione di tale retta con l’equazione di Shockley per il diodo rappresenta il punto di lavoro (v, i) del diodo:
+\begin{equation}
+i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} – R \cdot I}{\eta V_T} } - 1) = I_0 \cdot e^({\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} – v}{R}
+\end{equation}
+Tale i dovrà necessariamente corrispondere alla corrente di lavoro in virtù dell’equazione di Shockley. Dunque definendo la funzione g(x) come segue:
+\begin{equation}\label{eq: invsck}
+g(x) = I_0 \cdot ( e^{\frac{x}{\eta V_T}} - 1)  - \frac {\Delta V_{\text{ingresso}} - x}{R}
+\end{equation}
+è possibile adottare il metodo di Newton al fine di riscontrare la radice v ed individuare così la corrente di lavoro. 
+Dunque s potrà effettuare un fit della corrente in funzione della tensione ai capi del diodo reale attraverso una legge che per un determinato valore della tensione (dV ingresso) ed un dato numero di iterazioni (ne sono sufficienti poche nel nostro caso ai fini di ottenere un’approssimazione adeguata), riesce ad individuare la radice v  nelle modalità previamente descritte. Attraverso la stessa, sarà quindi possibile individuare la corrente di lavoro del diodo per la suddetta V. 
+E’ immediato comprendere che fare un fit con questa legge risulta essere equivalente a fare un fit con la legge 2, con minori complicazioni computazionali. Verifichiamo graficamente che per dei generici valori della corrente  i due metodi danno risultati sostanzialmente equivalenti (adottiamo i parametri stimati dal fit). I grafici relativi alla convergenza di v e di I anche a seguito di sole 20 iterazioni:
+\begin{figure}[H]
+	\centering 
+ 		\includegraphics[scale=0.75]{./Figura2_appendiceB.png}
+\end{figure}
+\begin{figure}[H]
+	\centering 
+ 		\includegraphics[scale=0.75]{./Figura3_appendiceB.png}
+\end{figure}
+
+Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il fit risulta essere l’inversa numerica della legge 2. La serie, inoltre, risulta convergere molto rapidamente ai valori attesi e quindi sono effettivamente sufficienti solo 20 iterazioni per una buona precisione.
+All’interno della funzione di fit, è stato infine introdotto un offset quale parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC in Teensy 3.2.
 \end{document}
