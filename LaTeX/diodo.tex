@@ -575,10 +575,10 @@ tra due set successivi.
 La differenza di potenziale $\Delta$V in funzione della corrente I che scorre all’interno del diodo può essere espressa attraverso la legge 2. Potremo, dunque, essere tentati ad adottare tale formula ai fini di un fit numerico. Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. E’ stato dunque necessario adottare un algoritmo alternativo, basato sul metodo di Newton. Esso ci consentirà di ricostruire numericamente la funzione inversa della legge 2.
 Illustriamo in breve il metodo di Newton. Sia data una funzione f(x) continua e derivabile entro un intervallo di definizione connesso (con f’(x) limitata e diversa da 0 per ciascuna x appartenente al dominio) ed una v tale che f(v) = 0. Sviluppando al prim’ordine f in un intorno di v, otterremo:
 \begin{equation}
-f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f'{''}(X)} \cdot  {( x – v)^2} = 0
+f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f'{''}(X)} \cdot  {( x - v)^2} = 0
 \end{equation}
 ove X è un numero reale compreso fra v ed x. Nel caso in cui il $(x-v)^2 $risultasse prossimo a zero:
-\begin{equation}\label{eq: invsck}
+\begin{equation}
 x \simeq v   -  {\frac {f(v)}{f’(v)}}
 \end{equation}
 L’unica limitazione nell’adottare tale scrittura è che necessitiamo di v molto vicino a x incognito. Tuttavia, nel caso in cui la funzione f risultasse sufficientemente maneggevole, potremo partire da un valore generico del dominio e riscontrare con buona approssimazione la radice in un tempo finito relativamente breve. Per effettuare ciò, è necessaria la serie ricorsiva:
@@ -588,11 +588,11 @@ x[0] = a \\ x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
 \end{cases}
 \end{equation}
 ove a è un generico valore appartenente al dominio di definizione. In pratica, per ogni iterazione tale serie valuta f(x[i]) e cerca la retta tangente in tale punto alla funzione:
-\begin{equation}\label{eq: invsck}
+\begin{equation}
 y = f(x[i]) + f’(x[i]) \cdot (x-x[i])
 \end{equation}
  Dopodiché cerca il punto x per il quale y = 0:
-\begin{equation}\label{eq: invsck}
+\begin{equation}
 x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
 \end{equation}
 E viene conseguentemente valutato il valore f(x[i+1]) ed il procedimento viene ripetuto per un dato numero di iterazioni. 
@@ -602,7 +602,7 @@ E viene conseguentemente valutato il valore f(x[i+1]) ed il procedimento viene r
 	\caption{Visualizzazione grafica di cosa implica un’iterazione della serie ricorsiva (f(x) = $x^3$ in questo esempio)}
 \end{figure}
 Se la funzione è monotona e la serie converge ad un valore, tale sarà v, essendo l’unico punto fisso della serie:
-\begin{equation}\label{eq: invsck}
+\begin{equation}
  {a = a -  {\frac{f(a)}{f{’}(a)}}}\to{{f(a) = 0}\land{v = a}}
 \end{equation}
 essendo v l’unico punto in cui si annulla la funzione per definizione.
@@ -616,7 +616,7 @@ ove I è la corrente che scorre all’interno del diodo in quel determinato ista
 \end{equation}
 Il punto di intersezione di tale retta con l’equazione di Shockley per il diodo rappresenta il punto di lavoro (v, i) del diodo:
 \begin{equation}
-i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} – R \cdot I}{\eta V_T} } - 1) = I_0 \cdot e^({\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} – v}{R}
+i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} – R \cdot I}{\eta V_T} } - 1) = I_0 \cdot (e^{\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} – v}{R}
 \end{equation}
 Tale i dovrà necessariamente corrispondere alla corrente di lavoro in virtù dell’equazione di Shockley. Dunque definendo la funzione g(x) come segue:
 \begin{equation}\label{eq: invsck}
