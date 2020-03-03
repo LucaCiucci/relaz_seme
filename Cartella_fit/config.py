@@ -23,7 +23,7 @@ outSigma = 2.0 #numero di sigma per eliminare gli outliers
 plot_points = True
 
 # disegna i punti scartati in rosso
-plot_bad_points = True
+plot_bad_points = False
 
 # abilita l'offset sulla funzione di fit
 offset_fit = True
@@ -32,7 +32,7 @@ offset_fit = True
 plot_errors = True
 
 # alpha per scatterplot (opacità)
-scatterAlpha = 0.2;
+scatterAlpha = 0.1;
 
 # abilita bande dei dati
 plot_sigma_zone = False

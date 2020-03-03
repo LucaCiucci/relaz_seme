@@ -141,7 +141,10 @@ pylab.ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
 pylab.grid(color = "gray")
 pylab.grid(b=True, which='major', color='#666666', linestyle='-')
 pylab.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-currXlim = [min([min(voltages), min(voltages_bad)]), max(voltages)+0.01]
+if plot_bad_points:
+    currXlim = [min([min(voltages), min(voltages_bad)]), max(voltages)+0.01]
+else:
+    currXlim = [0.2, max(voltages)+0.01]
 pylab.xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents)-0.1, max(currents)+0.1]
 #pylab.ylim(currYlim[0], currYlim[1])
