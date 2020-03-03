@@ -56,8 +56,8 @@ for i in range(50):
     popt, pcov = curve_fit(legge, x, y, init, dw, absolute_sigma = False)
     a1, a2 = popt
     da1, da2 = np.sqrt(pcov.diagonal())
-print("m = %f +- %f" %(a1, da1))
-print("intercetta = %f +- %f" %(a2, da2))
+print("m = %.10f +- %.10f" %(a1, da1))
+print("intercetta = %.10f +- %.10f" %(a2, da2))
 
 bucket = numpy.linspace(0.01, max(x)+0.01, 1000)
 ordinate = legge(bucket, *popt)
@@ -66,9 +66,9 @@ if(grafici_calibrazione):
 
 if(grafici_calibrazione):
     g1.minorticks_on()
-    g1.set_title("Digit vs Volt")
-    g1.set_xlabel("digitized reading [digit]")
-    g1.set_ylabel("Voltage [V]")
+    g1.set_title("Digit vs Volt (ADC0)")
+    #g1.set_xlabel("Letture digitali [digit]")
+    g1.set_ylabel("Tensione [V]")
     g1.grid(color = "gray")
     g1.grid(b=True, which='major', color='#666666', linestyle='-')
     g1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
@@ -86,8 +86,8 @@ if(grafici_calibrazione):
     g2.minorticks_on()
     g2.plot(bucket, bucket*0., color = 'black')
     g2.errorbar(x, residui, dw, color = 'black', marker = '.', linestyle = '')
-    g2.set_xlabel("??")
-    g2.set_ylabel("??")
+    g2.set_xlabel("Letture MCU [digit]")
+    g2.set_ylabel("Residui [V]")
     g2.grid(color = "gray")
     g2.grid(b=True, which='major', color='#666666', linestyle='-')
     g2.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
@@ -167,8 +167,8 @@ for i in range(50):
     popt, pcov = curve_fit(legge, x, y, init, dw, absolute_sigma = False)
     a1, a2 = popt
     da1, da2 = np.sqrt(pcov.diagonal())
-print("m = %f +- %f" %(a1, da1))
-print("intercetta = %f +- %f" %(a2, da2))
+print("m = %.10f +- %.10f" %(a1, da1))
+print("intercetta = %.10f +- %.10f" %(a2, da2))
 
 bucket = numpy.linspace(0.01, max(x)+0.01, 1000)
 ordinate = legge(bucket, *popt)
@@ -177,8 +177,8 @@ if(grafici_calibrazione):
 
     g1.minorticks_on()
     g1.set_title("Digit vs Volt")
-    g1.set_xlabel("digitized reading [digit]")
-    g1.set_ylabel("Voltage [V]")
+    #g1.set_xlabel("digitized reading [digit]")
+    g1.set_ylabel("Tensione [V]")
     g1.grid(color = "gray")
     g1.grid(b=True, which='major', color='#666666', linestyle='-')
     g1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
@@ -196,8 +196,8 @@ if(grafici_calibrazione):
     g2.minorticks_on()
     g2.plot(bucket, bucket*0., color = 'black')
     g2.errorbar(x, residui, dw, color = 'black', marker = '.', linestyle = '')
-    g2.set_xlabel("??")
-    g2.set_ylabel("??")
+    g2.set_xlabel("Letture MCU [digit]")
+    g2.set_ylabel("Residui [V]")
     g2.grid(color = "gray")
     g2.grid(b=True, which='major', color='#666666', linestyle='-')
     g2.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
