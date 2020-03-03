@@ -3,7 +3,7 @@
 #import librerie #non capisco perchè non funziona senza
 from lib import *
 
-grafici_calibrazione = False
+grafici_calibrazione = True
 
 Nstep = 20
 
