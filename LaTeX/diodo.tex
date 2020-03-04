@@ -254,24 +254,12 @@ condensatore ad una tensione più alta.
 %                   Analisi dati e Risultati
 %================================================================
 \section{Analisi dati e Risultati}
-Il nostro intento è verificare che i dati raccolti siano in accordo con la
-legge \eqref{eq: model}. Tramite la legge di Ohm è possibile ricavare la
-corrente nel diodo, dividendo la caduta di tensione misurate dalla boccola
-\verb'ADC0' per la resistenza $R$. Si è quindi effettuato un filtraggio volto
-all'eliminazione degli outliers e dei punti meno significativi, assumendoli
-quali variabili indipendenti e di natura gaussiana. Per una discussione
-dettagliata del sistema di filtraggio dati si rimanda all' \nameref{app: A}.
+L’intento della presente analisi è quello di verificare che i dati raccolti siano in accordo con la legge \eqref{eq: model}. A tale riguardo, come operazione preliminare è stato necessario convertire le letture analogiche nelle opportune coppie corrente-tensione relative al diodo. Dunque i dati sono stati convertiti in tensione secondo le calibrazioni dei relativi canali (ADC0 e ADC1). Tale operazione è stata effettuata considerando opportunamente gli errori come descritto nel paragrafo Calibrazione. Successivamente, le tensioni relative ai capi della resistenza $R$ hanno permesso di stimare la rispettiva corrente di lavoro attraverso la legge di Ohm. 
+Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e dei punti meno significativi, assumendoli quali variabili indipendenti e di natura gaussiana. Per una discussione dettagliata si rimanda all' \nameref{app: A}. E’ necessario sottolineare che, all’interno della stessa appendice, $\sigma_x$ rappresenta la varianza delle letture e non gli errori associati ad esse.
+Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici. Dunque avremo potuto pensare di adottare la legge \eqref{eq: model} direttamente. Tuttavia ciò comporterebbe il fallimento del fit a causa dei valori negativi o nulli che si riscontrerebbero nell’argomento del logaritmo. \`E stata quindi utilizzata la funzione inversa come modello di fit, la quale è stata ricavata numericamente secondo il metodo delle tangenti (o di Newton). Per una trattazione approfondita, si rimanda all' \nameref{app: B}.
 
-Successivamente, è stato effettuato un fit sulla base dei dati selezionati.
-Ingenuamente, avremo dunque potuto pensare di adottare la legge 
-\eqref{eq: model} direttamente. Tuttavia ciò comporterebbe il fallimento
-repentino del fit a causa dei valori negativi o nulli che debitamente si
-riscontrerebbero entro il logaritmo. \`E stata quindi adottata una legge
-alternativa basata sul metodo delle tangenti (o di Newton). Per una
-trattazione approfondita del modello di fit, si rimanda all' \nameref{app: B}.
 
-I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
-del grafico \ref{fig: sck_lin}.
+I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno del grafico \ref{fig: sck_lin}.
 I parametri stimati dal fit risultano essere:
 \begin{align*}
 	R_{diodo} &= 47.549 \pm 0.018 \; \rm m\Omega \\
@@ -284,12 +272,10 @@ I parametri stimati dal fit risultano essere:
 
 \begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=0.6]{./Figure_4_1_Nskip_100.png}
+ 		\includegraphics[scale=0.5]{./Figure_4_1_Nskip_100.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model}. E' stato rappresentato un punto ogni 100 per comodità di visualizzazione.}
 \end{figure}
 
-Successivamente, i dati e la funzione sono stati posti all'interno di un
-grafico in scala semilogaritmica (grafico \ref{fig: sck_lin}).
 
 \begin{figure}[H]
 	\centering 
