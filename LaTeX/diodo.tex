@@ -50,7 +50,7 @@ correnti di lavoro}
 M.~Romagnoli(\protect\footnotemark[1] )~\and 
 M.~Alighieri(\protect\footnotemark[1] )~\and 
 B.~Tomelleri(\protect\footnotemark[1] )}
-\date{2020/11/01}
+%\date{2020/11/01}
 
 \begin{document}
 \maketitle
@@ -96,10 +96,10 @@ attraversa tali elementi sia la medesima:
 	I = \frac{\Delta V_{\text{resistore}}}{R} =
 	I_0 \left( e^{\frac{\Delta V_{\text{diodo}}}{\eta V_t}} - 1\right)
 \end{equation}
-dunque la relazione che lega la corrente e la tensione ai capi del diodo può 
+Dunque la relazione che lega la corrente e la tensione ai capi del diodo può 
 essere espressa secondo la legge:
 \begin{equation}\label{eq: model}
-	\Delta V = \Delta V_d + \Delta V_r = \eta V_T \ln{\left(\frac{
+	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} = \eta V_T \ln{\left(\frac{
 	I+I_0}{I_0}\right)} + RI
 \end{equation}
 \begin{figure}[H]
@@ -113,12 +113,12 @@ essere espressa secondo la legge:
 %                Metodo e apparato sperimentale
 %================================================================
 \section{Metodo e apparato sperimentale}
-Il circuito sotto studio lavora con correnti relativamente alte, per evitare 
+Il circuito sotto studio lavora con correnti relativamente alte. Onde evitare 
 sostanziali aumenti di temperatura nei componenti ed eventuali danni agli 
 stessi si imprimono correnti impulsate.
-La durata degli impulsi è di circa 150 $\mu$s (da misurare meglio) che 
-corrisponde ad un'energia impressa inferiore a 1 mJ dunque ad un aumento della 
-temperatura del semiconduttore inferiore a 0.5 K.
+La durata degli impulsi è di circa 150 $\mu$s, che 
+corrisponde ad un'energia impressa inferiore a 1 mJ (dunque ad un aumento della 
+temperatura del semiconduttore inferiore a 0.5 K).
 %Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
 %al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
 %all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
@@ -130,9 +130,9 @@ temperatura del semiconduttore inferiore a 0.5 K.
 \subsection{Apparato}
 L'apparato sperimentale è costituito da un circuito, realizzato su basetta 
 sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo 
-$D1$ e la resistenza $R1$. La misura della differenza di tensione ai capi di questa 
-permette stima della corrente che attraversa il diodo, per esplorare ampie zone 
-di lavoro del diodo è stata cambiata opportunamente scegliendo tra le seguenti 
+$D1$ e la resistenza $R1$. La misura della differenza di tensione ai capi di quest'ultima
+permette stima della corrente che attraversa il diodo. Ai fini di esplorare ampie zone 
+di lavoro del diodo, la resistenza è stata cambiata opportunamente scegliendo tra le seguenti 
 resistenze:\\
 \begin{table}[H]
     \begin{center}
