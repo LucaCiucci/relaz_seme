@@ -130,10 +130,9 @@ temperatura del semiconduttore inferiore a 0.5 K).
 \subsection{Apparato}
 L'apparato sperimentale è costituito da un circuito, realizzato su basetta 
 sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo 
-$D1$ e la resistenza $R1$. La misura della differenza di tensione ai capi di quest'ultima
-permette stima della corrente che attraversa il diodo. Ai fini di esplorare ampie zone 
-di lavoro del diodo, la resistenza è stata cambiata opportunamente scegliendo tra le seguenti 
-resistenze:\\
+$D1$ e la resistenza $R1$. La misura della differenza di potenziale ai capi di quest'ultima
+permette la stima della corrente che attraversa il diodo. Ai fini di esplorare ampie zone 
+di lavoro del diodo, la resistenza è stata cambiata opportunamente scegliendo tra le seguenti:
 \begin{table}[H]
     \begin{center}
 	\begin{tabular}{lll}
@@ -160,14 +159,14 @@ tensione che possa essere facilmente regolata e sufficientemente stabile
 durante un impulso. Un'altra parte del circuito si occupa di collegare a 
 comando il condensatore alla serie $R1-D1$ attraverso un MOS-FET.\\
 Il circuito è alimentato da 2 tensioni fornite da un alimentatore stabilizzato 
-switching e da un Buck Boost Converter, un segnale fornito su $T2$ provoca la 
+switching e da un Buck Boost Converter. Un segnale fornito su $T2$ provoca la 
 carica del condensatore mentre su $T3$ la sua scarica. Un segnale (invertito) su 
 $T1$ innesca l'impulso di corrente sul diodo.\\
 La tensione di C$1$ è misurata attraverso un partitore di tensione collegato ad 
-\verb+OUT3+ ed alla scheda di controllo mentre la tensione ai punti \verb+OUT1+ e
+\verb+OUT3+ ed alla scheda di controllo, mentre la tensione ai punti \verb+OUT1+ e
 \verb+OUT2+ è letta direttamente.\\
 Come MCU per la gestione dell'apparato è stata scelta la scheda 
-\verb+Teensy 3.2+\cite{teensy}, questa si occupa del controllo dei segnali e delle letture 
+\verb+Teensy 3.2+\cite{teensy}. Questa si occupa del controllo dei segnali e delle letture 
 analogiche. In particolare \verb+Teensy+  permette la lettura analogica 
 sincronizzata differenziale veloce, essendo dotato di due ADC, entrambi con una 
 risoluzione reale di 12 bit. La lettura differenziale è fondamentale per 
@@ -191,11 +190,11 @@ resistenza.
 %================================
 \subsection{Calibrazione}
 
-La calibrazione dei canali ADC0 e ADC1 è stata effettuata sulla base della lettura differenziale rispettivamente fra le boccole A10 e A11 e fra A12 e A13. E’ stata calibrata la lettura di ciascuna delle due coppie separatamente.
+La calibrazione dei canali ADC0 e ADC1 è stata effettuata sulla base della lettura differenziale rispettivamente fra i pin A10 e A11 e fra A12 e A13. E’ stata calibrata la lettura di ciascuna delle due coppie separatamente.
 
-La boccola volta alla lettura della tensione maggiore è stata collegata al centrale di un potenziometro, a sua volta collegato ad un generatore di potenziale con tensione in ingresso pari a 3.3. V. L’altra boccola è stata invece collegata a massa.
+I pin volti alla lettura della tensione maggiore sono stati collegati al centrale di un potenziometro, a sua volta collegato ad un generatore di potenziale con tensione in ingresso pari a 3.3. V. Gli altri due pin sono stati invece collegati a massa.
 
-Variando la resistenza e conseguentemente la differenza di potenziale in ingresso, è stato possibile calcolare la media, la deviazione standard campione e la deviazione standard dalla media  relative a ciascuna tensione per un gruppo di 10000 misure effettuate con Teensy. Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un multimetro digitale, così da avere il rispettivo valore in volt per ciascuna tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli errori a queste ultime misure  tenendo presente le specifiche del multimetro.
+Variando la resistenza e conseguentemente la differenza di potenziale in ingresso, è stato possibile calcolare la media, la deviazione standard campione e la deviazione standard dalla media relative a ciascuna tensione per un gruppo di 10000 misure effettuate con Teensy. Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un multimetro digitale, così da avere il rispettivo valore in volt per ciascuna tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli errori a queste ultime misure  tenendo presente le specifiche del multimetro.
 
 Dopodichè le misure relative a ciascuna coppia di boccole sono state poste all’interno di un grafico con i dati raccolti da Teensy in ordinate e i valori misurati col multimetro in ascisse. Dunque è stato effettuato un fit lineare attraverso la legge:
 
@@ -236,17 +235,17 @@ Per maggiori informazioni riguardo alle stime delle incertezze nelle conversioni
 %       Acquisizione dati
 %================================
 \subsection{Acquisizione dati}
-Per ogni valore scelto della resistenza $R1$ è stata eseguita una presa dati 
+Per ciascun valore scelto della resistenza $R1$ è stata eseguita una presa dati 
 automatizzata secondo una routine programmata in \verb+Teensy+: il condensatore 
-viene caricato ad una tensione prefissata, una volta raggiunto il valore 
+viene caricato ad una tensione prefissata; una volta raggiunto il valore 
 prestabilito viene inviato il segnale su $T1$, si avvia l'acquisizione 
 sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di 
 entrare in conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile 
 ritardo tra segnale e impulso) e scartare eventuali segnali spuri; a questo 
 punto si inizia a memorizzare una serie da 100 coppie di letture 
--sincronizzate- ((in nota) a meno di sfasamenti nell'ordine delle centinaia di 
-nanosecondi?), si ferma l'impulso e si trasmettono i dati al computer; se la 
-tensione al punto \verb+OUT2+ è stata maggiore di 3.3V si ferma l'acquisizione
+-sincronizzate- (a meno di sfasamenti nell'ordine delle centinaia di 
+nanosecondi); si ferma l'impulso e si trasmettono i dati al computer; se la 
+tensione al punto \verb+OUT2+ ha raggiunto valori maggiori di 3.3V l'acquisizione si ferma
 per non danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il
 condensatore ad una tensione più alta.
 
@@ -289,16 +288,15 @@ I parametri stimati dal fit risultano essere:
 \section{Conclusioni}
 L'andamento dei dati sperimentali non risulta essere ben descritto dalla legge
 \eqref{eq: model}. Ciò può essere spiegato sulla base della non linearità dei
-convertitori analogici digitali all'interno di \verb+Teensy 3.2+, che ha 
-comportato
-degli errori difficilmente stimabili e presumibilmente correlati. Tuttavia, si
+convertitori analogici digitali all'interno di \verb+Teensy 3.2+. Tale condizione ha omportato
+degli errori difficilmente stimabili e presumibilmente correlati. Tuttavia si
 riscontrano delle analogie tra la funzione di fit ed i dati ottenuti. In
 particolare, dal grafico in scala lineare, si osserva che a correnti alte
-l'andamento risulta essere pressoch\`e lineare in accordo con l'ipotesi sulla
+l'andamento risulta essere pressoch\`e lineare, in accordo con l'ipotesi sulla
 componente resistiva interna. Dal grafico in scala semilogaritmica, inoltre, osserviamo
 che i dati risultano possedere un andamento simile a quello caratteristico 
 della curva di Shockley, ovvero approssimativamente rettilineo, per poi appiattirsi come un logaritmo al crescere
-della tensione, esattamente come ci aspetteremo da un andamento lineare.
+della tensione.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi e che la modellizzazione proposta sia una buona approssimazione del diodo reale nelle condizioni di lavoro considerate.
 
 %================================================================
@@ -531,10 +529,10 @@ tra due set successivi.
 %                        Appendice B
 %================================================================
 \section{Appendice B: Metodo di fit}\label{app: B}
-La differenza di potenziale $\Delta$V in funzione della corrente I che scorre all’interno del diodo può essere espressa attraverso la legge 2. Potremo, dunque, essere tentati ad adottare tale formula ai fini di un fit numerico. Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. E’ stato dunque necessario adottare un algoritmo alternativo, basato sul metodo di Newton. Esso ci consentirà di ricostruire numericamente la funzione inversa della legge 2.
+La differenza di potenziale $\Delta$V in funzione della corrente I che scorre all’interno del diodo può essere espressa attraverso la legge 2. Potremo, dunque, essere tentati ad adottare tale formula ai fini di un fit numerico. Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. E’ stato dunque necessario adottare un algoritmo alternativo, basato sul metodo di Newton\cite{tesi}. Esso ci consentirà di ricostruire numericamente la funzione inversa della legge 2.
 Illustriamo in breve il metodo di Newton. Sia data una funzione f(x) continua e derivabile entro un intervallo di definizione connesso (con f’(x) limitata e diversa da 0 per ciascuna x appartenente al dominio) ed una v tale che f(v) = 0. Sviluppando al prim’ordine f in un intorno di v, otterremo:
 \begin{equation}
-f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f'{''}(X)} \cdot  {( x - v)^2} = 0
+f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f{''}(X)} \cdot  {( x - v)^2} = 0
 \end{equation}
 ove X è un numero reale compreso fra v ed x. Nel caso in cui il $(x-v)^2 $risultasse prossimo a zero:
 \begin{equation}
@@ -575,14 +573,14 @@ ove I è la corrente che scorre all’interno del diodo in quel determinato ista
 \end{equation}
 Il punto di intersezione di tale retta con l’equazione di Shockley per il diodo rappresenta il punto di lavoro (v, i) del diodo:
 \begin{equation}
-i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} – R \cdot I}{\eta V_T} } - 1) = I_0 \cdot (e^{\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} – v}{R}
+i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } - 1) = I_0 \cdot (e^{\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} - v}{R}
 \end{equation}
 Tale i dovrà necessariamente corrispondere alla corrente di lavoro in virtù dell’equazione di Shockley. Dunque definendo la funzione g(x) come segue:
 \begin{equation}\label{eq: invsck}
 g(x) = I_0 \cdot ( e^{\frac{x}{\eta V_T}} - 1)  - \frac {\Delta V_{\text{ingresso}} - x}{R}
 \end{equation}
 è possibile adottare il metodo di Newton al fine di riscontrare la radice v ed individuare così la corrente di lavoro. 
-Dunque s potrà effettuare un fit della corrente in funzione della tensione ai capi del diodo reale attraverso una legge che per un determinato valore della tensione (dV ingresso) ed un dato numero di iterazioni (ne sono sufficienti poche nel nostro caso ai fini di ottenere un’approssimazione adeguata), riesce ad individuare la radice v  nelle modalità previamente descritte. Attraverso la stessa, sarà quindi possibile individuare la corrente di lavoro del diodo per la suddetta V. 
+Dunque s potrà effettuare un fit della corrente in funzione della tensione ai capi del diodo reale attraverso una legge che per un determinato valore della tensione ($\Delta V_{\text{ingresso}}$) ed un dato numero di iterazioni (ne sono sufficienti poche nel nostro caso ai fini di ottenere un’approssimazione adeguata), riesce ad individuare la radice v  nelle modalità previamente descritte. Attraverso la stessa, sarà quindi possibile individuare la corrente di lavoro del diodo per la suddetta $\Delta V_{\text{ingresso}}$. 
 E’ immediato comprendere che fare un fit con questa legge risulta essere equivalente a fare un fit con la legge 2, con minori complicazioni computazionali. Verifichiamo graficamente che per dei generici valori della corrente  i due metodi danno risultati sostanzialmente equivalenti (adottiamo i parametri stimati dal fit). I grafici relativi alla convergenza di v e di I anche a seguito di sole 20 iterazioni:
 \begin{figure}[H]
 	\centering 
@@ -595,4 +593,11 @@ E’ immediato comprendere che fare un fit con questa legge risulta essere equiv
 
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il fit risulta essere l’inversa numerica della legge 2. La serie, inoltre, risulta convergere molto rapidamente ai valori attesi e quindi sono effettivamente sufficienti solo 20 iterazioni per una buona precisione.
 All’interno della funzione di fit, è stato infine introdotto un offset quale parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC in Teensy 3.2.
+
+%================================================================
+%                            END
+%================================================================
+\medskip
+\bibliographystyle{IEEEtrandoi}
+\bibliography{refs}
 \end{document}
