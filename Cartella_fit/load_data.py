@@ -121,7 +121,8 @@ currents = []
 currentErrs = []
 currentStds = []
 for i in range(Nruns):
-    _I, _dI, _stdI = V2I(voltages1s[i], Rs[i], voltages1errs[i], voltages1stds[i], dRs[i])
+    _I, _dI, _stdI = V2I(voltages1s[i], Rs[i], voltages1errs[i],
+                         voltages1stds[i], dRs[i])
     currents.append(_I)
     currentErrs.append(_dI)
     currentStds.append(_stdI)

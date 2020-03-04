@@ -114,7 +114,7 @@ def filtro(x, y, dx, dy, n_sigma):
 #================================================================
 
 def sck(V, I0, nVt):
-    return I0*(pylab.exp(V/nVt) - 1)
+    return I0*(np.exp(V/nVt) - 1)
 
 
 
@@ -124,7 +124,7 @@ def errFun(V, V0, I0, nVt, R):
 
 
 def deriv_errFun(V, I0, nVt, R):
-    return I0 / nVt * pylab.exp(V/nVt) + 1./R;
+    return I0 / nVt * np.exp(V/nVt) + 1./R;
 
 
 if offset_fit:
@@ -144,4 +144,4 @@ else:
 
 
 def ddp(I, nVt, I0, R):
-    return nVt*pylab.log((I0+I)/I0) + R*I
+    return nVt*np.log((I0+I)/I0) + R*I

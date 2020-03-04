@@ -3,7 +3,7 @@
 #================================
 print("\nlettura file originali...")
 
-# legge i dati e mette nella cartella temporanea quelli corretti (copiato da control.py)
+# legge i dati e mette nella cartella temporanea quelli corretti (da control.py)
 for _name in data_files:
     name = data_folder + _name
     print(name)
@@ -61,7 +61,8 @@ for i in range(Nruns):
     j = 0
     while(k < len(ADC0datas[i])):
         # se un numero è maggiore di 4095, allora elimina la coppia
-        if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
+        if ((ADC0datas[i][j] > 4095) or (ADC0datas[i][j] < -4095) or
+            (ADC1datas[i][j] > 4095) or (ADC1datas[i][j] < -4095)):
             ADC0datas[i] = np.delete(ADC0datas[i], j)
             ADC1datas[i] = np.delete(ADC1datas[i], j)
             ADC0stds[i] = np.delete(ADC0stds[i], j)
@@ -110,6 +111,8 @@ for i in range(Nruns):
     #disegna un punto ogni Nskip, solo per vedere come sono fatti i dati
     Nskip = 100
     Nskip = 1
-    pylab.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip], currentStds[i][0::Nskip], voltageStds[i][0::Nskip], linestyle = '', marker = '.');
-pylab.semilogy()
-pylab.show()
+    plt.errorbar(voltages[i][0::Nskip], currents[i][0::Nskip],
+                 currentStds[i][0::Nskip], voltageStds[i][0::Nskip],
+                 ls = '', marker = '.');
+plt.semilogy()
+plt.show()
