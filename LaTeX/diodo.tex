@@ -194,7 +194,7 @@ La calibrazione dei canali ADC0 e ADC1 è stata effettuata sulla base della lett
 
 I pin volti alla lettura della tensione maggiore sono stati collegati al centrale di un potenziometro, a sua volta collegato ad un generatore di potenziale con tensione in ingresso pari a 3.3. V. Gli altri due pin sono stati invece collegati a massa.
 
-Variando la resistenza e conseguentemente la differenza di potenziale in ingresso, è stato possibile calcolare la media, la deviazione standard campione e la deviazione standard dalla media relative a ciascuna tensione per un gruppo di 10000 misure effettuate con Teensy. Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un multimetro digitale, così da avere il rispettivo valore in volt per ciascuna tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli errori a queste ultime misure  tenendo presente le specifiche del multimetro.
+Variando la resistenza e conseguentemente la differenza di potenziale in ingresso, è stato possibile calcolare la media, la deviazione standard campione e la deviazione standard dalla media relative a ciascuna tensione per un gruppo di 10000 misure effettuate con Teensy (vedi \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo programma}). Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un multimetro digitale, così da avere il rispettivo valore in volt per ciascuna tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli errori a queste ultime misure  tenendo presente le specifiche del multimetro.
 
 Dopodichè le misure relative a ciascuna coppia di boccole sono state poste all’interno di un grafico con i dati raccolti da Teensy in ordinate e i valori misurati col multimetro in ascisse. Dunque è stato effettuato un fit lineare attraverso la legge:
 
@@ -236,7 +236,7 @@ Per maggiori informazioni riguardo alle stime delle incertezze nelle conversioni
 %================================
 \subsection{Acquisizione dati}
 Per ciascun valore scelto della resistenza $R1$ è stata eseguita una presa dati 
-automatizzata secondo una routine programmata in \verb+Teensy+: il condensatore 
+automatizzata secondo una \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}{routine} programmata in \verb+Teensy+: il condensatore 
 viene caricato ad una tensione prefissata; una volta raggiunto il valore 
 prestabilito viene inviato il segnale su $T1$, si avvia l'acquisizione 
 sincronizzata e si attende un tempo 50 $\mu$s per permettere al MOS-FET di 
@@ -281,6 +281,8 @@ I parametri stimati dal fit risultano essere:
  		\includegraphics[scale=0.6]{./Figure_3_1_Nskip_10.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in scala semilogaritmica. E' stato rappresentato un punto ogni 10 per comodità di visualizzazione.}
 \end{figure}
+
+Per gli script si rimanda alla \href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}{cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+ definisce i parametri fondamentali.
 
 %================================================================
 %                          Conclusioni
@@ -495,7 +497,7 @@ logaritmica sulle y dove i punti con grandi incertezze o varianze tendono
 a disperdersi rapidamente.
 L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
 della memoria per evitare bolle di allocazione, dunque è stato implementato
-in C++ per praticità e richiamato all’interno degli script.
+in C++ per praticità e richiamato all’interno degli script, per dettagli si rimanda ai \href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}.
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 (in nero) ed i dati scartati (in rosso). 
 E’ infine mostrato il confronto dei grafici delle $\var(\mu_y)$
