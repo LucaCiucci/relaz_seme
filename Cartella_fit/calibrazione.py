@@ -36,7 +36,7 @@ if(grafici_calibrazione):
     plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
     plt.show()
 
-print("\n GRAFICO con coefficiente angolare libero:")
+print("\n GRAFICO ADC0:")
 
 if(grafici_calibrazione):
     gridsize = (3, 1)
@@ -147,7 +147,7 @@ if(grafici_calibrazione):
     plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
     plt.show()
 
-print("\n GRAFICO con coefficiente angolare libero:")
+print("\n GRAFICO ADC1:")
 
 if(grafici_calibrazione):
     gridsize = (3, 1)
@@ -176,7 +176,7 @@ if(grafici_calibrazione):
     g1.plot(bucket, ordinate, color = 'red')
 
     g1.minorticks_on()
-    g1.set_title("Digit vs Volt")
+    g1.set_title("Digit vs Volt (ADC1)")
     #g1.set_xlabel("digitized reading [digit]")
     g1.set_ylabel("Tensione [V]")
     g1.grid(color = "gray")
