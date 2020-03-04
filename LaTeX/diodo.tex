@@ -105,7 +105,7 @@ essere espressa secondo la legge:
 \begin{figure}[H]
 	\centering 
  		\includegraphics[scale=0.25]{./confronto_curve.png}
- 	\caption{confronto fra curva si Shokley (in rosso) e la legge \eqref{eq: model} (in viola)}
+ 	\caption{confronto degli andamenti: la curva si Shokley (in rosso) e la legge \eqref{eq: model} (in viola)}
 \end{figure}
 
 
@@ -203,58 +203,34 @@ Dopodichè le misure relative a ciascuna coppia di boccole sono state poste all�
 y(x, m, q)  = m \cdot x + q
 \end{equation}
 
-ove a e b sono i parametri liberi. Come errori associati alle letture digitali sono state utilizzate le deviazioni standard dalla media. Il fit relativo ad ADC0 ha conseguito i seguenti risultati:
-
+ove a e b sono i parametri liberi. Come errori associati alle letture digitali sono state utilizzate le deviazioni standard dalla media. I fit relativi ad ADC0 ed ADC1 hanno conseguito i seguenti risultati:
 \begin{align*}
-	m_0 &= 0.0007968 \pm  0.0000033   \; V/digit \\
-	q_0 &= - 0.00018 \pm 0.00034  \; V \\
-	Var(m_0)  &= 1.1 \cdot 10^{-11}  \; V^2 /digit^2 \\
-	Var(q_0) &=1.2 \cdot 10^{-7} \; V^2 \\
-	Cov(m_0, q_0) &= - 1.6 cdot 10^{-10} \; V^2  /digit \\
-	{\chi}^2/\text{ ndof} &= {145 }/{15}\\ 
-	\text{abs\_sigma} &= \rm False
-\end{align*}
-
-
-\begin{figure}[H]
-
-    \centering
-
-        \includegraphics[scale=0.75]{digitvsvolt_ADC0_1.png}
-
-\end{figure}
-
-
-Per ADC1 si ha invece:
-
-
-\begin{align*}
-	m_1 &= 0.0007954 \pm 0.0000026  \; V/digit \\
-	q_1 &= 0.00384  \pm 0.00026  \; V \\
-	Var(m_1) &= 7.0 \cdot 10^{-12}  \; V^2 /digit^2 \\
-	Var(q_1) &= 6.8 \cdot 10^{-8} \; V^2 \\
-	Cov(m_1, q_1) &= - 6.1 \cdot 10^{-11} \; V^2  /digit \\
-	{\chi}^2/\text{ ndof} &= {96}/{15}\\ 
-	\text{abs\_sigma} &= \rm False
+	&ADC0	&&ADC1\\
+	m_0 &= 0.7968 \pm  0.0033   \; mV/digit	& m_1 &= 0.7954 \pm 0.0026  \; mV/digit \\
+	q_0 &= - 0.18 \pm 0.34  \; mV 	&q_1 &= 3.84  \pm 0.26  \; mV \\
+	Var(m_0)  &= 1.1 \cdot 10^{-11}  \; V^2 /digit^2	&Var(m_1) &= 7.0 \cdot 10^{-12}  \; V^2 /digit^2 \\
+	Var(q_0) &=1.2 \cdot 10^{-7} \; V^2 	&Var(q_1) &= 6.8 \cdot 10^{-8} \; V^2 \\
+	Cov(m_0, q_0) &= - 1.6 \cdot 10^{-10} \; V^2  /digit	&Cov(m_1, q_1) &= - 6.1 \cdot 10^{-11} \; V^2  /digit \\
+	{\chi}^2/\text{ ndof} &= {145 }/{15}	&{\chi}^2/\text{ ndof} &= {96}/{15}\\ 
+	\text{abs\_sigma} &= \rm False	&\text{abs\_sigma} &= \rm False
 \end{align*}
 
 \begin{figure}[H]
-
-    \centering
-
-        \includegraphics[scale=0.75]{digitvsvolt_ADC1_1.png}
-
+\centering
+\begin{subfigure}{.5\textwidth}
+	\centering 
+ 		\includegraphics[scale=0.5]{./digitvsvolt_ADC0_1.png}
+	\label{fig: nofilter}
+\end{subfigure}%
+\begin{subfigure} {.5\textwidth}
+	\centering 
+		\includegraphics[scale=0.5]{./digitvsvolt_ADC1_1.png}
+	\label{fig: filtered}
+\end{subfigure}
 \end{figure}
 
-
-I coefficienti così riscontrati ci permetteranno di fornire una buona stima dei valori centrali relativi alla misura in volt delle letture analogiche (digit). Il $\chi^2$ risulta essere sovrastimato in quanto il MCU non ci fornisce una risposta perfettamente lineare ai segnali in ingresso. Dalle specifiche di Teensy 3.2, sappiamo che lo scostamento dall’andamento lineare può essere quantificato col 7 $\%$ della lettura in digit. Quindi per stimare gli errori relativi ad una data tensione V, si è usata la legge:
-
-\begin{equation}
-{dV}_{\text{value}} =  \sqrt{{Var(m_i)} \cdot {value^2} + {Var(q_i)} + 2 \cdot {Cov(m_i, q_i)} \cdot {value} +({\frac{7}{100}} \cdot (m_i \cdot {value} + q_i))^2}
-\end{equation}
-
-ove value è il valore in digit ed i può essere 0 o 1 a seconda di quale canale si sta considerando. Tale scrittura tiene conto di tale scostamento, degli errori e della covarianza dei parametri stimati dal fit. 
-
+I coefficienti così riscontrati ci permetteranno di fornire una buona stima dei valori centrali relativi alla misura in volt delle letture analogiche (digit). Il $\chi^2$ risulta essere sovrastimato in quanto il MCU non ci fornisce una risposta perfettamente lineare ai segnali in ingresso. Dalle specifiche di Teensy 3.2, sappiamo che lo scostamento dall’andamento lineare può essere quantificato col 7 $\%$ della lettura in digit.\newline
+Per maggiori informazioni riguardo alle stime delle incertezze nelle conversioni si rimanda direttamente al \href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}{relativo script}.
 
 %================================
 %       Acquisizione dati
