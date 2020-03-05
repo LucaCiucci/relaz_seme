@@ -211,8 +211,8 @@ Variando la resistenza e conseguentemente la differenza di potenziale in
 ingresso, è stato possibile calcolare la media, la deviazione standard 
 campione e la deviazione standard dalla media relative a ciascuna tensione per 
 un gruppo di 10000 misure effettuate con \verb+Teensy+ (vedi 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib
-/teensy_calib.ino}{relativo programma}). Il centrale del potenziometro e la 
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo programma}).
+Il centrale del potenziometro e la 
 massa sono state, inoltre, collegate ad un multimetro digitale, così da avere 
 il rispettivo valore in Volt per ciascuna tensione valutata in unità 
 arbitrarie. Sono stati, quindi, associati degli errori a queste ultime misure  
@@ -268,8 +268,7 @@ specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall’andamento li
 può essere quantificato col $7 \%$ della lettura in digit.\newline
 Per maggiori informazioni riguardo alle stime delle incertezze nelle 
 conversioni si rimanda direttamente al 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni
-.py}{relativo script}.
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}{relativo script}.
 
 %================================
 %       Acquisizione dati
@@ -277,8 +276,7 @@ conversioni si rimanda direttamente al
 \subsection{Acquisizione dati}
 Per ciascun valore scelto della resistenza $R1$ è stata eseguita una presa 
 dati automatizzata secondo una 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_diffe
-renziale_definitivo/teensy_differenziale_definitivo.ino}{routine} programmata 
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}{routine} programmata 
 in \verb+Teensy+: il condensatore viene caricato ad una tensione prefissata;
 una volta raggiunto il valore prestabilito viene inviato il segnale su $T1$,
 si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per
@@ -571,8 +569,7 @@ L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
 della memoria per evitare bolle di allocazione, dunque è stato implementato
 in \verb'C++' per praticità e richiamato all’interno degli script, per dettagli si 
 rimanda ai 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_s
-rc}{sorgenti}.
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}.
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 (in nero) ed i dati scartati (in rosso). 
 E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
