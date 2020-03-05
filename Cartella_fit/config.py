@@ -3,7 +3,7 @@
 #import librerie #non capisco perchè non funziona senza
 from lib import *
 
-grafici_calibrazione = True
+grafici_calibrazione = False
 
 Nstep = 20
 
@@ -16,7 +16,7 @@ file2CName = "file2C.txt"
 file2PyName = "file2Py.txt"
 maxRatio = 3.0
 minV = 0.2
-filter_Nskip = 100#per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
+filter_Nskip = 1#per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
 outSigma = 2.0 #numero di sigma per eliminare gli outliers
 
 # abilita il disegno dei punti
@@ -26,13 +26,13 @@ plot_points = True
 plot_bad_points = False
 
 # abilita l'offset sulla funzione di fit
-offset_fit = True
+offset_fit = False
 
 # abilita le barre di errore sui grafici
 plot_errors = True
 
 # alpha per scatterplot (opacità)
-scatterAlpha = 0.1;
+scatterAlpha = 0.2;
 
 # abilita bande dei dati
 plot_sigma_zone = False
@@ -44,7 +44,7 @@ iterazioni_fit = 3;
 # file di dati (da modificare)#!!
 data_folder = "data/"
 data_files = [
-    "dati_220k.txt",
+    #"dati_220k.txt",
     "dati_22k.txt",
     "dati_2.2k.txt",
     "dati_220.txt",
@@ -56,7 +56,7 @@ Nruns = len(data_files) # numero di files (runs)
 
 # valori resistenze (da modificare)
 Rs = np.array([
-    216.8e3,#!! (se possiamo rimisurarle un attimo a lab  con l'attrezzo
+    #216.8e3,#!! (se possiamo rimisurarle un attimo a lab  con l'attrezzo
     21.74e3,#!!  apposta meglio, atrimenti va bene comunque)
     2.2021e3,
     216.22,
@@ -65,7 +65,7 @@ Rs = np.array([
     0.226
     ])
 dRs = np.array([
-    2.6e3,#!!
+    #2.6e3,#!!
     0.26e3,#!!
     0.4,
     0.07,

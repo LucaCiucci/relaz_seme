@@ -17,13 +17,13 @@ if plot_points:
     else:
         g1.errorbar(voltages, currents,
                     ls = '', c = 'k', marker = '.', alpha=scatterAlpha)
-
-if plot_errors:
-    g1.errorbar(voltages_bad, currents_bad, currentErrs_bad, voltageErrs_bad,
-                ls = '', c = 'red', marker = '.', alpha=scatterAlpha)
-else:
-    g1.errorbar(voltages_bad, currents_bad,
-                ls = '', c = 'k', marker = '.', alpha=scatterAlpha)
+if plot_bad_points:
+    if plot_errors:
+        g1.errorbar(voltages_bad, currents_bad, currentErrs_bad, voltageErrs_bad,
+                    ls = '', c = 'red', marker = '.', alpha=scatterAlpha)
+    else:
+        g1.errorbar(voltages_bad, currents_bad,
+                    ls = '', c = 'k', marker = '.', alpha=scatterAlpha)
 
 if plot_sigma_zone:
     xx = np.linspace(min(voltages), max(voltages), 1000)
@@ -88,13 +88,11 @@ for i in range(len(voltages)):
 
 g2.minorticks_on()
 g2.plot(bucket, bucket*0., c = 'red')
-if plot_points:
-    if plot_errors:
-        g2.errorbar(voltages, residui, dw, c = 'k', marker = '.',
-                    ls = '', alpha=scatterAlpha)
-    else:
-        g2.errorbar(voltages, residui, c = 'k', marker = '.',
-                    ls = '', alpha=scatterAlpha)
+
+g2.errorbar(voltages, residui / dw, c = 'k', marker = '.',
+            ls = '', alpha=scatterAlpha)
+#g2.set_ylim(-3, 3)
+
 if plot_sigma_zone:
     xx = np.linspace(min([min(voltages), min(voltages_bad)]),
                      max(voltages), 1000)
@@ -106,7 +104,7 @@ if plot_sigma_zone:
                     yy - syy - curr(xx, *popt), c = 'b',
                     alpha = sigma_zone_alpha)
 g2.set_xlabel("ddp [V]")
-g2.set_ylabel("Residui [A]")
+g2.set_ylabel("Residui normalizzati")
 g2.grid(c = "gray")
 g2.grid(b=True, which='major', c='#666666', ls='-')
 g2.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)

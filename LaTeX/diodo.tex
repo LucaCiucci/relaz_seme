@@ -316,22 +316,24 @@ valori negativi o nulli che si riscontrerebbero nell’argomento del logaritmo.
 è stata ricavata numericamente secondo il metodo delle tangenti (o di Newton). 
 Per una trattazione approfondita, si rimanda all'\nameref{app: B}.
 
+Da un controllo visivo dei dati si osserva che nei punti raccolti con la resistenza da 220k è presente del rumore molto maggiore delle inceretzze sulle misure. Queso è probabilmente dovuto all'influenza del circuito di lettura stesso sulle piccole correnti in gioco. Non potendo dunque attribuire degli errori significativi per questa serie, tali dati non sono stati utilizzati nella procedura di fit eseguita successivamente in quanto avrebbero avuto un peso sovrastimato in confronto agli altri dati, influenzando così i risultati finali.
 
 I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
 del grafico \ref{fig: sck_lin}.
 I parametri stimati dal fit risultano essere:
 \begin{align*}
-	R_{\text{diodo}} &= 47.549 \pm 0.018 \; \rm m\Omega \\
-	\eta V_T &= 46.3879 \pm 0.0065 \; \rm mV \\
-	I_0 &= (3.1024 \pm 0.0055) \cdot 10^{-12} \; \rm nA \\
-	offset &=\; - 0.9146\pm 0.0031\rm A\\
-	\chi^2/\text{ndof} &= 541310/276906 \\
+	R_{\text{diodo}} &= 46.112 \pm 0.007 \; \rm m\Omega \\
+	\eta V_T &= 47.5786 \pm 0.0033 \; \rm mV \\
+	I_0 &= 4.5180 \pm 0.0043 \; \rm nA \\
+	offset &=\; - 2.2043\pm 0.0073\rm A\\
+	\chi^2/\text{ndof} &= 72207/251066 \\
 	\text{abs\_sigma} &= \rm False
 \end{align*}
 
+\vspace{-0.5cm}
 \begin{figure}[H]
 	\centering 
- 		\includegraphics[scale=0.5]{./Figure_4_1_Nskip_100.png}
+ 		\includegraphics[scale=0.65]{./Figure_4_2_Nskip_100_NO_220k.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model}. E' 
 	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
 	\label{fig: sck_lin}}
@@ -342,8 +344,7 @@ I parametri stimati dal fit risultano essere:
 	\centering 
  		\includegraphics[scale=0.6]{./Figure_3_1_Nskip_10.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
-	scala semilogaritmica. E' stato rappresentato un punto ogni 10 per comodità di 
-	visualizzazione. \label{fig: sck_log}}
+	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità di visualizzazione. \label{fig: sck_log}}
 \end{figure}
 
 Per gli script si rimanda alla 
