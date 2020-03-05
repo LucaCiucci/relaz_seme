@@ -318,17 +318,38 @@ Per una trattazione approfondita, si rimanda all'\nameref{app: B}.
 
 Da un controllo visivo dei dati si osserva che nei punti raccolti con la resistenza da 220k è presente del rumore molto maggiore delle inceretzze sulle misure. Queso è probabilmente dovuto all'influenza del circuito di lettura stesso sulle piccole correnti in gioco. Non potendo dunque attribuire degli errori significativi per questa serie, tali dati non sono stati utilizzati nella procedura di fit eseguita successivamente in quanto avrebbero avuto un peso sovrastimato in confronto agli altri dati, influenzando così i risultati finali.
 
+In primo luogo, è stato effettuato un fit secondo le modalità descritte in 
+\nameref{app: B}, con offset assunto quale parametro libero. 
 I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
 del grafico \ref{fig: sck_lin}.
+I parametri stimati dal fit risultano essere:
+
+%%%CON OFFSET
+
+\begin{align*}
+	R_{\text{diodo}} &= 46.112 \pm 0.007 \; \rm m\Omega \\
+	\eta V_T &= 47.5786 \pm 0.0033 \; \rm mV \\
+	I_0 &= 4.5738 \pm 0.0041 \; \rm nA \\
+	offset &=\; - 2.2043\pm 0.0073\rm A\\
+	\chi^2/\text{ndof} &= 72207/251066 \\
+	\text{abs\_sigma} &= \rm False
+\end{align*}
+
+%%%SENZA OFFSET
+
+Dai risultati ottenuti, possiamo osservare che l'ofsset risulta essere
+approssimativamente nullo. Dunque è stato effettuato un fit in sua assenza.
+Il grafico in cui sono stati posti i dati e la funzione di fit in quest'ultimo caso
+non è stato riportato in quanto visivamente simile a \ref{fig: sck_lin}.
 I parametri stimati dal fit risultano essere:
 \begin{align*}
 	R_{\text{diodo}} &= 46.112 \pm 0.007 \; \rm m\Omega \\
 	\eta V_T &= 47.5786 \pm 0.0033 \; \rm mV \\
 	I_0 &= 4.5180 \pm 0.0043 \; \rm nA \\
-	offset &=\; - 2.2043\pm 0.0073\rm A\\
 	\chi^2/\text{ndof} &= 72207/251066 \\
 	\text{abs\_sigma} &= \rm False
 \end{align*}
+
 
 \vspace{-0.5cm}
 \begin{figure}[H]
@@ -343,9 +364,11 @@ I parametri stimati dal fit risultano essere:
 \begin{figure}[H]
 	\centering 
  		\includegraphics[scale=0.6]{./Figure_3_1_Nskip_10.png}
-	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
+	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} (con offset libero) in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità di visualizzazione. \label{fig: sck_log}}
 \end{figure}
+Il grafico in scala semilogaritmica riguardante la funzione di fit con offset nullo non \`e
+stato riportato in quanto visivamente simile a \ref{fig: sck_log}.
 
 Per gli script si rimanda alla 
 \href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}{cartella}
@@ -716,8 +739,9 @@ Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il
 fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie, inoltre, 
 risulta convergere molto rapidamente ai valori attesi e quindi sono 
 effettivamente sufficienti solo 20 iterazioni per una buona precisione.
-All’interno della funzione di fit, è stato infine introdotto un offset quale 
-parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC in 
+All'interno dello \href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/config.py}{script config.py},
+\`e stata fornita la possibilit\`a di scegliere se adottare un offset quale parametro
+libero. Tale opzione \`e stata introdotta per ovviare ad eventuali errori di zero dovuti agli assorbimenti di ADC in 
 \verb+Teensy 3.2+.
 
 %================================================================
