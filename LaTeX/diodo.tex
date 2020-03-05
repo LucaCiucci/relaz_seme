@@ -79,8 +79,8 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 L'alta resistività intrinseca al silicio, di cui è composta la giunzione
 bipolare, comporta la presenza di una sua componente resistiva: questa 
 risulta sempre meno trascurabile agli effetti del passaggio di corrente
-attraverso il diodo, all'aumentare della tensione ai suoi capi e della sua 
-temperatura. Per poter modellare la componente -ohmica- di un diodo
+attraverso il diodo, all'aumentare della tensione ai suoi capi.
+Per poter modellare la componente -ohmica- di un diodo
 percorso da correnti alte si propone un modello semplice di resistenza
 parassita in serie, in grado di descriverne gli effetti, verificandone 
 sperimentalmente la validità.
@@ -423,16 +423,16 @@ dove \[
 	G_{x_i} \coloneqq \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}}
 .\] 
-e $\eps > 0$ è piccolo a piacere. Scegliendo allora solo quelle misure $x$ per
+e $\eps > 0$ e $\eps \longrightarrow 0$. Scegliendo allora solo quelle misure $x$ per
 cui vale $\mid x - x_i \mid \leq \frac{\eps}{2}$, queste saranno in numero
-intorno a:
+tendente a:
 \[
 	N_i \coloneqq N_{\text{tot}} \frac{G_{x_i}}{\sum_j G_{x_j}} =
 		N_{\text{tot}} w_i
 .\] 
 che definisce implicitamente i pesi $w_i$ con cui si mediano le distribuzioni
 di probabilità gaussiane $G_{x_i}$.
-Allora, detto:
+Allora, posto:
 \[
 	G_{y_i} \coloneqq \frac{1}{\sigma_{y_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(\mu_y - y_i)^2}{\sigma_{y_i}^2}}}
@@ -485,12 +485,10 @@ Nella \eqref{eq: muy} prendiamo una media dei campionamenti intorno ad un'
 ascissa $x$ in esame, pesata sulla distanza che gli $x_i$ hanno da questa; 
 intuitivamente lo interpretiamo come se stessimo applicando un 
 \emph{blur a kernel gaussiano} ai punti acquisiti.
-Effettivamente quello che stiamo facendo non è molto diverso da un stima
-di densità di kernel monovariante, dove però nel nostro caso
-riscaliamo la stima in base al valore assunto da $y$.
+Effettivamente quello che stiamo facendo non è molto diverso da KDE monovariante, dove però scaliamo secondo il valore delle $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di $y$, pesata sulla distanza dai valori studiati. Dunque
-$\mu_y \pm \sigma_y$ ci dà una stima della distribuzione dei nostri dati.
+$\mu_y \pm \sigma_y$ ci dà una descrizione della distribuzione dei nostri dati.
 
 %================================
 %           Var(muy)
@@ -559,7 +557,7 @@ la misura di significatività che abbiamo sviluppato in \eqref{aln: varmuy}$:
 \var{\mu_y}$ di $A$ e di $B$. Perciò se $\var{\mu_y}$ di $A$ è maggiore di 
 $q\var{\mu_y}$ di $B$, con $q$ arbitrario (nell’esperienza è stato scelto
 $q = 3$), questo indica che i dati di $A$
-ci stanno dando meno informazioni rispetto a quelli di $B$. A questo punto
+ci stanno dando "poca" informazione rispetto a quelli di $B$. A questo punto
 è sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
 di set per eliminare i dati non significativi, che rendono meno
 immediata l'interpretazione il grafico. Questo è ben visibile in scala
@@ -592,7 +590,7 @@ tra due set successivi.
 \end{subfigure}
 	\caption{Grafici in scala semilogaritmica dei prima (sinistra) e dopo 
 (destra) del filtraggio dati. I dati scartati sono stati evidenziati in rosso. 
-Per praticità è stato rappresentato un centesiomo dei dati raccolti}
+Per praticità è stato rappresentato un centesimo dei dati raccolti}
 \end{figure}
 \begin{figure}[H]
 	\centering 
