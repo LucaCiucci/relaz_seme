@@ -78,52 +78,8 @@ int main(int argc, char** argv)
 
 	std::cout << "FINE!" << std::endl;
 
-	/*{
-		std::ofstream f("a.txt", std::ifstream::out);
-		for (double x = 0.2; x < 1.5; x += 0.001)
-		{
-			auto [my, sy, smy] = meanSigma(x, set[3]);
-			f << x << "    " << my << "    " << sy << "    " << smy << std::endl;
-		}
-	}
-
-	{
-		std::ofstream f("b.txt", std::ifstream::out);
-		for (double x = 0.2; x < 1.5; x += 0.001)
-		{
-			auto [my, sy, smy] = meanSigma(x, set[6]);
-			f << x << "    " << my << "    " << sy << "    " << smy << std::endl;
-		}
-	}*/
-
 	return 0;
 }
-
-
-
-
-/*
-
-
-std::ofstream outFile(fileNameOut, std::ifstream::out);
-	std::cout << set[6].size() << std::endl;
-	for (double x = 0; x < 1.5; x += 0.0001)
-	{
-		auto [my, sy, smy] = meanSigma(x, set[6]);
-
-		outFile << x << "    ";
-		outFile << my << "    ";
-		outFile << sy << "    ";
-		outFile << smy << std::endl;
-	}
-	return 0;
-
-
-*/
-
-
-
-
 
 
 
@@ -139,16 +95,6 @@ std::this_thread::sleep_for(std::chrono::seconds((int)distribution(generator)));
 std::cout << "fine" << std::endl;
 return 0;
 */
-
-/*
-......
-os.system("test_filtro.exe");
-aspetta?????
-rileggi file
-....
-
-*/
-
 
 
 

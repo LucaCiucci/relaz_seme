@@ -125,10 +125,7 @@ private:
 inline double sqr(double x) { return x * x; }
 
 // funzione gaussiana centrata in zero
-inline double gaussian(double x, double sx)
-{
-	return normFactor * exp(-sqr(x/sx) * 0.5) / sx;
-}
+inline double gaussian(double x, double sx) { return normFactor * exp(-sqr(x/sx) * 0.5) / sx; }
 
 // ritorna media, varianza y, marianza su media
 std::tuple<double, double, double> meanSigma(double x, const RunData& runData);
