@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  5 MAR 2020 02:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  5 MAR 2020 03:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1981,16 +1981,6 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 56.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <6> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 56.
-
-Underfull \hbox (badness 10000) in paragraph at lines 69--73
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 69--73
-
- []
-
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1999,9 +1989,9 @@ File: ./figs/./confronto_curve.png Graphic file (type png)
 <use ./figs/./confronto_curve.png>
 Package pdftex.def Info: ./figs/./confronto_curve.png  used on input line 109.
 (pdftex.def)             Requested size: 252.37978pt x 172.58183pt.
-[1
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figs/./confronto_curve.png>]
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 172.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2010,8 +2000,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2 <./figs/./confronto_curve.png>]
-<./figs/./gestione.png, id=106, 920.68968pt x 420.82219pt>
+<./figs/./gestione.png, id=98, 920.68968pt x 420.82219pt>
 File: ./figs/./gestione.png Graphic file (type png)
 <use ./figs/./gestione.png>
 Package pdftex.def Info: ./figs/./gestione.png  used on input line 184.
@@ -2021,42 +2010,39 @@ Overfull \hbox (5.09961pt too wide) in paragraph at lines 184--185
  [][] 
  []
 
-<./figs/./measure.png, id=107, 387.69844pt x 221.32687pt>
+<./figs/./measure.png, id=99, 387.69844pt x 221.32687pt>
 File: ./figs/./measure.png Graphic file (type png)
 <use ./figs/./measure.png>
 Package pdftex.def Info: ./figs/./measure.png  used on input line 189.
 (pdftex.def)             Requested size: 193.84874pt x 110.66315pt.
-[3 <./figs/./gestione.png> <./figs/./measure.png>]
-<./figs/./digitvsvolt_ADC0_1.png, id=116, 462.528pt x 346.896pt>
+[2] [3 <./figs/./gestione.png> <./figs/./measure.png>]
+<./figs/./digitvsvolt_ADC0_1.png, id=117, 462.528pt x 346.896pt>
 File: ./figs/./digitvsvolt_ADC0_1.png Graphic file (type png)
 <use ./figs/./digitvsvolt_ADC0_1.png>
-Package pdftex.def Info: ./figs/./digitvsvolt_ADC0_1.png  used on input line 254.
+Package pdftex.def Info: ./figs/./digitvsvolt_ADC0_1.png  used on input line 253.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 254--256
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 253--255
  [][] 
  []
 
-<./figs/./digitvsvolt_ADC1_1.png, id=118, 462.528pt x 346.896pt>
+<./figs/./digitvsvolt_ADC1_1.png, id=119, 462.528pt x 346.896pt>
 File: ./figs/./digitvsvolt_ADC1_1.png Graphic file (type png)
 <use ./figs/./digitvsvolt_ADC1_1.png>
-Package pdftex.def Info: ./figs/./digitvsvolt_ADC1_1.png  used on input line 259.
+Package pdftex.def Info: ./figs/./digitvsvolt_ADC1_1.png  used on input line 258.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 259--261
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 258--260
  [][] 
  []
 
 [4 <./figs/./digitvsvolt_ADC0_1.png> <./figs/./digitvsvolt_ADC1_1.png>]
-
-LaTeX Warning: Reference `fig: sck_lin' on page 5 undefined on input line 324.
-
-<./figs/./Figure_4_1_Nskip_100.png, id=136, 807.9786pt x 562.2606pt>
+<./figs/./Figure_4_1_Nskip_100.png, id=137, 807.9786pt x 562.2606pt>
 File: ./figs/./Figure_4_1_Nskip_100.png Graphic file (type png)
 <use ./figs/./Figure_4_1_Nskip_100.png>
-Package pdftex.def Info: ./figs/./Figure_4_1_Nskip_100.png  used on input line 337.
+Package pdftex.def Info: ./figs/./Figure_4_1_Nskip_100.png  used on input line 336.
 (pdftex.def)             Requested size: 403.98831pt x 281.12961pt.
-<./figs/./Figure_3_1_Nskip_10.png, id=139, 812.3148pt x 544.1931pt>
+<./figs/./Figure_3_1_Nskip_10.png, id=140, 812.3148pt x 544.1931pt>
 File: ./figs/./Figure_3_1_Nskip_10.png Graphic file (type png)
 <use ./figs/./Figure_3_1_Nskip_10.png>
 Package pdftex.def Info: ./figs/./Figure_3_1_Nskip_10.png  used on input line 345.
@@ -2168,28 +2154,25 @@ Package rerunfilecheck Info: File `diodo.out' has not changed.
 (rerunfilecheck)             Checksum: 8ACCC35EF572AD4F582C5B273F492DB6;900.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 730.
  ) 
 Here is how much of TeX's memory you used:
  57262 strings out of 492982
- 1351306 string characters out of 6134896
- 1657586 words of memory out of 5000000
- 59913 multiletter control sequences out of 15000+600000
- 653681 words of font info for 121 fonts, out of 8000000 for 9000
+ 1351312 string characters out of 6134896
+ 1656586 words of memory out of 5000000
+ 59914 multiletter control sequences out of 15000+600000
+ 650686 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,23n,119p,10381b,770s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (13 pages, 875491 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on diodo.pdf (13 pages, 855219 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
+ 324 PDF objects out of 1000 (max. 8388607)
+ 258 compressed objects within 3 object streams
  62 named destinations out of 1000 (max. 500000)
- 26315 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 25803 words of extra memory for PDF output out of 29859 (max. 10000000)
 
