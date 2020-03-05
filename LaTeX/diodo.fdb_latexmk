@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex diodo"] 1583347903 "diodo.aux" "diodo.bbl" "diodo" 1583349010
+["bibtex diodo"] 1583373371 "diodo.aux" "diodo.bbl" "diodo" 1583373479
   "./IEEEtrandoi.bst" 1577387200 60815 f4ed9ef17005d390213cd57d581f7b76 ""
-  "diodo.aux" 1583349010 8556 070b00e264ba1af46ca5e9b36b32b768 ""
+  "diodo.aux" 1583373478 8555 11bde03389f4a8a1d3d63e206d69cc44 ""
   "diodo.bcf" 0 -1 0 ""
   "refs.bib" 1583343164 2062 2ba00c8c52bc9f33e37e3d177f097c27 ""
   (generated)
   "diodo.blg"
   "diodo.bbl"
-["pdflatex"] 1583349008 "diodo.tex" "diodo.pdf" "diodo" 1583349010
+["pdflatex"] 1583373476 "diodo.tex" "diodo.pdf" "diodo" 1583373479
   "/etc/texmf/web2c/texmf.cnf" 1582144663 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -355,10 +355,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1582145087 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1582145123 4127590 ac0f214e9fc2dbf049abb784824b2965 ""
-  "diodo.aux" 1583349010 8556 070b00e264ba1af46ca5e9b36b32b768 ""
-  "diodo.bbl" 1583347903 1283 50fcbbfdc0fd6792b059a6839f7f2623 "bibtex diodo"
-  "diodo.out" 1583349010 900 8accc35ef572ad4f582c5b273f492db6 ""
-  "diodo.tex" 1583349007 34946 71119f94236e4a6dafcd11a3bcecf464 ""
+  "diodo.aux" 1583373478 8555 11bde03389f4a8a1d3d63e206d69cc44 ""
+  "diodo.bbl" 1583373372 1283 50fcbbfdc0fd6792b059a6839f7f2623 "bibtex diodo"
+  "diodo.out" 1583373478 900 8accc35ef572ad4f582c5b273f492db6 ""
+  "diodo.tex" 1583373474 35075 5edb4eb2ba0396c1cf28ce63bcb4673d ""
   "figs/./Figura1_appendiceB.png" 1583343164 43336 37544672beeff328ce89eb964ca8673a ""
   "figs/./Figura2_appendiceB.png" 1583343164 55330 3ca591f2ae6e49c9259bdb8674149d10 ""
   "figs/./Figura3_appendiceB.png" 1583343164 49041 1dd595d604dde1a87fc7d41f0eb07bda ""
@@ -375,8 +375,8 @@
   "figs/./varmuy.png" 1583100779 55360 f44cc5f16b023e19051d8356d5c70c1e ""
   "math.tex" 1582684313 7191 a853447727d6b7aafb91474511f2409a ""
   (generated)
+  "diodo.aux"
+  "diodo.out"
   "diodo.log"
   "diodo.pdf"
   "diodo.auxlock"
-  "diodo.aux"
-  "diodo.out"
