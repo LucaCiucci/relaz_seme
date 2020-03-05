@@ -356,22 +356,25 @@ i parametri fondamentali.
 %                          Conclusioni
 %================================================================
 \section{Conclusioni}
-L'andamento dei dati sperimentali non risulta essere ben descritto dalla legge
-\eqref{eq: model}. Ciò può essere spiegato sulla base della non linearità dei
-convertitori analogici digitali all'interno di \verb+Teensy 3.2+. Tale 
-condizione ha comportato degli errori difficilmente stimabili e presumibilmente
-correlati. Tuttavia si riscontrano delle analogie tra la funzione di fit ed i
-dati ottenuti. In particolare, dal grafico in scala lineare, si osserva che
-a correnti alte l'andamento risulta essere pressoch\`e lineare, in accordo con
-l'ipotesi sulla componente resistiva interna. Dal grafico in scala
-semilogaritmica, inoltre, osserviamo che i dati risultano possedere un
-andamento simile a quello caratteristico della curva di Shockley, ovvero
-approssimativamente rettilineo, per poi appiattirsi come un logaritmo al
-crescere della tensione.
+Sulla base dell'analisi previamente effettuata, possiamo osservare che il $\chi^2$ risulta essere
+minore rispetto a quello aspettato. Ciò \`e  parzialmente dovuto alla correlazione degli errori inerenti
+i dati rilevati all'interno dei due canali d'ingresso. In aggiunta, come si evince anche dalla zona di
+maggior concentrazione dei residui all'interno dell'omonimo grafico, il convertitore analogico-digitale
+del MCU \`e caratterizzato da una funzione di risposta non lineare. Tale fattore era stato tenuto in
+considerazione all'interno della calibrazione delle porte ADC0 e ADC1 mediante l'aggiunta in 
+quadratura di un errore di natura non statistica a quelli stimati attraverso il fit lineare. Tale
+operazione avrebbe portato, quindi, ad un'ulteriore diminuzione del $\chi^2$ all'interno del fit finale.
+Ulteriori osservazioni possono essere condotte riguardo alle evidenti analogie di carattere qualitativo
+fra la zona di maggior concentrazione dei punti e la funzione di best fit.
+In primo luogo, all'interno del grafico in scala lineare, a correnti alte i punti risultano essere disposti
+pressoch\`e linearmente, in accordo con l'ipotesi sulla componente resistiva interna. Nel grafico in scala
+semilogaritmica, inoltre, i dati risultano possedere un andamento simile a quello caratteristico della
+curva di Shockley, ovvero approssimativamente rettilineo per poi appiattirsi come un logaritmo al
+crescere della tensione. Dunque, possiamo asserire che l'andamento dei
+dati sperimentali risulta essere ben descritto dalla legge \eqref{eq: model}.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi 
 e che la modellizzazione proposta sia una buona approssimazione del diodo reale 
 nelle condizioni di lavoro considerate.
-
 %================================================================
 %                        Appendice A
 %================================================================
