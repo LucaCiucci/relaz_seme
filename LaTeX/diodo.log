@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  5 MAR 2020 03:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  6 MAR 2020 15:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1847,14 +1847,14 @@ Package caption Info: End \AtBeginDocument code.
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
-* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=455.24411pt
-* \textheight=674.33032pt
+* \textheight=702.78308pt
 * \oddsidemargin=-1.1381pt
 * \evensidemargin=-1.1381pt
-* \topmargin=-20.81178pt
+* \topmargin=-35.03816pt
 * \headheight=15.0pt
 * \headsep=18.90005pt
 * \topskip=10.0pt
@@ -2013,166 +2013,160 @@ Overfull \hbox (5.09961pt too wide) in paragraph at lines 184--185
 <./figs/./measure.png, id=99, 387.69844pt x 221.32687pt>
 File: ./figs/./measure.png Graphic file (type png)
 <use ./figs/./measure.png>
-Package pdftex.def Info: ./figs/./measure.png  used on input line 189.
+Package pdftex.def Info: ./figs/./measure.png  used on input line 190.
 (pdftex.def)             Requested size: 193.84874pt x 110.66315pt.
 [2] [3 <./figs/./gestione.png> <./figs/./measure.png>]
-<./figs/./digitvsvolt_ADC0_1.png, id=117, 462.528pt x 346.896pt>
+<./figs/./digitvsvolt_ADC0_1.png, id=116, 462.528pt x 346.896pt>
 File: ./figs/./digitvsvolt_ADC0_1.png Graphic file (type png)
 <use ./figs/./digitvsvolt_ADC0_1.png>
-Package pdftex.def Info: ./figs/./digitvsvolt_ADC0_1.png  used on input line 253.
+Package pdftex.def Info: ./figs/./digitvsvolt_ADC0_1.png  used on input line 254.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 253--255
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 254--256
  [][] 
  []
 
-<./figs/./digitvsvolt_ADC1_1.png, id=119, 462.528pt x 346.896pt>
+<./figs/./digitvsvolt_ADC1_1.png, id=118, 462.528pt x 346.896pt>
 File: ./figs/./digitvsvolt_ADC1_1.png Graphic file (type png)
 <use ./figs/./digitvsvolt_ADC1_1.png>
-Package pdftex.def Info: ./figs/./digitvsvolt_ADC1_1.png  used on input line 258.
+Package pdftex.def Info: ./figs/./digitvsvolt_ADC1_1.png  used on input line 259.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 258--260
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 259--261
  [][] 
  []
 
 [4 <./figs/./digitvsvolt_ADC0_1.png> <./figs/./digitvsvolt_ADC1_1.png>]
-<./figs/./Figure_4_1_Nskip_100.png, id=137, 807.9786pt x 562.2606pt>
-File: ./figs/./Figure_4_1_Nskip_100.png Graphic file (type png)
-<use ./figs/./Figure_4_1_Nskip_100.png>
-Package pdftex.def Info: ./figs/./Figure_4_1_Nskip_100.png  used on input line 336.
-(pdftex.def)             Requested size: 403.98831pt x 281.12961pt.
-<./figs/./Figure_3_1_Nskip_10.png, id=140, 812.3148pt x 544.1931pt>
-File: ./figs/./Figure_3_1_Nskip_10.png Graphic file (type png)
-<use ./figs/./Figure_3_1_Nskip_10.png>
-Package pdftex.def Info: ./figs/./Figure_3_1_Nskip_10.png  used on input line 345.
-(pdftex.def)             Requested size: 487.39264pt x 326.51837pt.
-
-Overfull \hbox (32.14853pt too wide) in paragraph at lines 345--348
- [][] 
- []
-
-[5 <./figs/./Figure_4_1_Nskip_100.png>] [6 <./figs/./Figure_3_1_Nskip_10.png>] [7]
+<./figs/diode_linear.png, id=137, 565.1514pt x 432.8973pt>
+File: ./figs/diode_linear.png Graphic file (type png)
+<use ./figs/diode_linear.png>
+Package pdftex.def Info: ./figs/diode_linear.png  used on input line 338.
+(pdftex.def)             Requested size: 395.60327pt x 303.02605pt.
+<./figs/diode_semilog.png, id=140, 565.1514pt x 406.8801pt>
+File: ./figs/diode_semilog.png Graphic file (type png)
+<use ./figs/diode_semilog.png>
+Package pdftex.def Info: ./figs/diode_semilog.png  used on input line 346.
+(pdftex.def)             Requested size: 395.60327pt x 284.81412pt.
+ [5] [6 <./figs/diode_linear.png> <./figs/diode_semilog.png>] [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 500.
+(hyperref)                removing `math shift' on input line 516.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 500.
+(hyperref)                removing `\left' on input line 516.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 500.
+(hyperref)                removing `\mu' on input line 516.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 500.
+(hyperref)                removing `subscript' on input line 516.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 500.
+(hyperref)                removing `\right' on input line 516.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 500.
+(hyperref)                removing `math shift' on input line 516.
 
-<./figs/./varmuy.png, id=168, 1387.584pt x 710.4141pt>
+<./figs/./varmuy.png, id=167, 1387.584pt x 710.4141pt>
 File: ./figs/./varmuy.png Graphic file (type png)
 <use ./figs/./varmuy.png>
-Package pdftex.def Info: ./figs/./varmuy.png  used on input line 518.
+Package pdftex.def Info: ./figs/./varmuy.png  used on input line 534.
 (pdftex.def)             Requested size: 444.03595pt x 227.33714pt.
-[8 <./figs/./varmuy.png>]
-<./figs/./nofilter.png, id=180, 462.528pt x 346.896pt>
+[8]
+<./figs/./nofilter.png, id=179, 462.528pt x 346.896pt>
 File: ./figs/./nofilter.png Graphic file (type png)
 <use ./figs/./nofilter.png>
-Package pdftex.def Info: ./figs/./nofilter.png  used on input line 585.
+Package pdftex.def Info: ./figs/./nofilter.png  used on input line 600.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 585--589
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 600--604
  [][] 
  []
 
-<./figs/./filtered.png, id=181, 462.528pt x 346.896pt>
+<./figs/./filtered.png, id=180, 462.528pt x 346.896pt>
 File: ./figs/./filtered.png Graphic file (type png)
 <use ./figs/./filtered.png>
-Package pdftex.def Info: ./figs/./filtered.png  used on input line 592.
+Package pdftex.def Info: ./figs/./filtered.png  used on input line 607.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 592--595
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 607--610
  [][] 
  []
 
-<./figs/./comparison.png, id=182, 1387.584pt x 710.4141pt>
+<./figs/./comparison.png, id=181, 1387.584pt x 710.4141pt>
 File: ./figs/./comparison.png Graphic file (type png)
 <use ./figs/./comparison.png>
-Package pdftex.def Info: ./figs/./comparison.png  used on input line 602.
+Package pdftex.def Info: ./figs/./comparison.png  used on input line 617.
 (pdftex.def)             Requested size: 444.03595pt x 227.33714pt.
-[9 <./figs/./nofilter.png> <./figs/./filtered.png>]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 621.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 636.
 
+[9 <./figs/./varmuy.png>] [10 <./figs/./nofilter.png> <./figs/./filtered.png> <./figs/./comparison.png>]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 630.
-
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 639.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 645.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 646.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 654.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 650.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 661.
 
-<./figs/./Figura1_appendiceB.png, id=193, 462.528pt x 346.896pt>
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 665.
+
+<./figs/./Figura1_appendiceB.png, id=201, 462.528pt x 346.896pt>
 File: ./figs/./Figura1_appendiceB.png Graphic file (type png)
 <use ./figs/./Figura1_appendiceB.png>
-Package pdftex.def Info: ./figs/./Figura1_appendiceB.png  used on input line 656.
+Package pdftex.def Info: ./figs/./Figura1_appendiceB.png  used on input line 671.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
-[10 <./figs/./comparison.png>]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 663.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 678.
 
-<./figs/./Figura2_appendiceB.png, id=207, 462.528pt x 346.896pt>
+[11 <./figs/./Figura1_appendiceB.png>]
+<./figs/./Figura2_appendiceB.png, id=215, 462.528pt x 346.896pt>
 File: ./figs/./Figura2_appendiceB.png Graphic file (type png)
 <use ./figs/./Figura2_appendiceB.png>
-Package pdftex.def Info: ./figs/./Figura2_appendiceB.png  used on input line 709.
+Package pdftex.def Info: ./figs/./Figura2_appendiceB.png  used on input line 724.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
-[11 <./figs/./Figura1_appendiceB.png>]
-<./figs/./Figura3_appendiceB.png, id=219, 462.528pt x 346.896pt>
+<./figs/./Figura3_appendiceB.png, id=216, 462.528pt x 346.896pt>
 File: ./figs/./Figura3_appendiceB.png Graphic file (type png)
 <use ./figs/./Figura3_appendiceB.png>
-Package pdftex.def Info: ./figs/./Figura3_appendiceB.png  used on input line 713.
+Package pdftex.def Info: ./figs/./Figura3_appendiceB.png  used on input line 728.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
- [12 <./figs/./Figura2_appendiceB.png> <./figs/./Figura3_appendiceB.png>] (./diodo.bbl) [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 730.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 730.
+ (./diodo.bbl [12 <./figs/./Figura2_appendiceB.png>]) [13 <./figs/./Figura3_appendiceB.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
  (./diodo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 730.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 730.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
 Package rerunfilecheck Info: File `diodo.out' has not changed.
 (rerunfilecheck)             Checksum: 8ACCC35EF572AD4F582C5B273F492DB6;900.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 730.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 745.
  ) 
 Here is how much of TeX's memory you used:
- 57262 strings out of 492982
- 1351312 string characters out of 6134896
- 1656586 words of memory out of 5000000
- 59914 multiletter control sequences out of 15000+600000
+ 57261 strings out of 492982
+ 1351223 string characters out of 6134896
+ 1658587 words of memory out of 5000000
+ 59913 multiletter control sequences out of 15000+600000
  650686 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,23n,119p,10381b,770s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,23n,119p,10381b,898s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (13 pages, 855219 bytes).
+Output written on diodo.pdf (13 pages, 875559 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
+ 325 PDF objects out of 1000 (max. 8388607)
+ 259 compressed objects within 3 object streams
  62 named destinations out of 1000 (max. 500000)
  25803 words of extra memory for PDF output out of 29859 (max. 10000000)
 

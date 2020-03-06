@@ -42,7 +42,7 @@ keepspaces=true,
 
 \input{./math}
 
-\geometry{a4paper, left=25mm, right=25mm, top=30mm, bottom=30mm}
+\geometry{a4paper, left=25mm, right=25mm, top=25mm, bottom=25mm}
 \title{Modellizzazione della resistenza di diodi a giunzione PN per alte 
 correnti di lavoro}
 \author{L.~Ciucci(\thanks{Dipartimento di Fisica E.~Fermi, Universit\`a di Pisa 
@@ -104,7 +104,7 @@ essere espressa secondo la legge:
 V_T \ln{\left(\frac{
 	I+I_0}{I_0}\right)} + RI
 \end{equation}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.25]{./confronto_curve.png}
  	\caption{confronto degli andamenti: la curva di Shockley (in rosso) e la 
@@ -139,7 +139,7 @@ permette la stima della corrente che attraversa il diodo. Ai fini di esplorare
 ampie zone 
 di lavoro del diodo, la resistenza è stata cambiata opportunamente scegliendo 
 tra le seguenti:
-\begin{table}[H]
+\begin{table}[!htbp]
     \begin{center}
 	\begin{tabular}{lll}
 	    \toprule
@@ -179,12 +179,13 @@ entrambi con una risoluzione reale di 12 bit. La lettura differenziale è
 fondamentale per acquisire coppie di dati per le tensioni ai capi del diodo
 e della resistenza.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.5]{./gestione.png}
  	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
 \end{figure}
-\begin{figure}[H]
+
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.5]{./measure.png}
  	\caption{Schema circuitale del sistema di lettura (verso 
@@ -246,7 +247,7 @@ relativi ad \verb+ADC0+ ed \verb+ADC1+ hanno conseguito i seguenti risultati:
 	\text{abs\_sigma} &= \rm False	&\text{abs\_sigma} &= \rm False
 \end{align*}
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
@@ -268,7 +269,8 @@ specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall’andamento li
 può essere quantificato col $7 \%$ della lettura in digit.\newline
 Per maggiori informazioni riguardo alle stime delle incertezze nelle 
 conversioni si rimanda direttamente al 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}{relativo script}.
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}
+{relativo script}.
 
 %================================
 %       Acquisizione dati
@@ -326,24 +328,22 @@ I parametri stimati dal fit risultano essere:
 	R_{\text{diodo}} &= 46.1118 \pm 0.0072 \; \rm m\Omega \\
 	\eta V_T &= 47.5786 \pm 0.0033 \; \rm mV \\
 	I_0 &= 4.5180 \pm 0.0043 \; \rm nA \\
-	offset &=\; - 2.2043\pm 0.0073\rm \mu A\\
+	\text{offset} &=\; - 2.2043\pm 0.0073\rm \mu A\\
 	\chi^2/\text{ndof} &= 72207/251066 \\
 	\text{abs\_sigma} &= \rm False
 \end{align*}
 
-\vspace{-0.5cm}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
- 		\includegraphics[scale=0.65]{./Figure_4_2_Nskip_100_NO_220k.png}
+	\includegraphics[scale=0.7]{diode_linear.png}%{./Figure_4_2_Nskip_100_NO_220k.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model}. E' 
 	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
 	\label{fig: sck_lin}}
 \end{figure}
 
-
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
- 		\includegraphics[scale=0.6]{./Figure_3_1_Nskip_10.png}
+	\includegraphics[scale=0.7]{diode_semilog.png}%{./Figure_3_1_Nskip_10.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità di visualizzazione. \label{fig: sck_log}}
 \end{figure}
@@ -357,31 +357,40 @@ i parametri fondamentali.
 %                          Conclusioni
 %================================================================
 \section{Conclusioni}
-Sulla base dell'analisi previamente effettuata, possiamo osservare che il $\chi^2$ risulta essere
-minore rispetto a quello aspettato. Ciò \`e  parzialmente dovuto alla correlazione degli errori inerenti
-i dati rilevati all'interno dei due canali d'ingresso. In aggiunta, come si evince anche dalla zona di
-maggior concentrazione dei residui all'interno dell'omonimo grafico, il convertitore analogico-digitale
-del MCU \`e caratterizzato da una funzione di risposta non lineare. Tale fattore era stato tenuto in
-considerazione all'interno della calibrazione delle porte ADC0 e ADC1 mediante l'aggiunta in 
-quadratura di un errore di natura non statistica a quelli stimati attraverso il fit lineare. Tale
-operazione avrebbe portato, quindi, ad un'ulteriore diminuzione del $\chi^2$ all'interno del fit finale.
-Ulteriori osservazioni possono essere condotte riguardo alle evidenti analogie di carattere qualitativo
-fra la zona di maggior concentrazione dei punti e la funzione di best fit.
-In primo luogo, all'interno del grafico in scala lineare, a correnti alte i punti risultano essere disposti
-pressoch\`e linearmente, in accordo con l'ipotesi sulla componente resistiva interna. Nel grafico in scala
-semilogaritmica, inoltre, i dati risultano possedere un andamento simile a quello caratteristico della
-curva di Shockley, ovvero approssimativamente rettilineo per poi appiattirsi come un logaritmo al
-crescere della tensione. Dunque, possiamo asserire che l'andamento dei
-dati sperimentali risulta essere in buon accordo con la legge \eqref{eq: model}.
+Sulla base dell'analisi previamente effettuata, possiamo osservare che il
+$\chi^2$ risulta essere minore rispetto al suo valore atteso. Ciò \`e
+parzialmente dovuto alla correlazione degli errori inerenti i dati rilevati
+all'interno dei due canali d'ingresso. In aggiunta, come si evince anche dalla
+zona di maggior concentrazione dei residui all'interno dell'omonimo grafico,
+il convertitore analogico-digitale del MCU \`e caratterizzato da una funzione
+di risposta non lineare. Tale fattore era stato tenuto in considerazione
+all'interno della calibrazione delle porte \verb+ADC0+ e \verb+ADC1+ mediante
+l'aggiunta in quadratura di un errore di natura non statistica a quelli stimati
+attraverso il fit lineare. Tale operazione avrebbe portato, quindi, ad
+un'ulteriore diminuzione del $\chi^2$ all'interno del fit finale.
+Ulteriori osservazioni possono essere condotte riguardo alle evidenti analogie
+di carattere qualitativo fra la zona di maggior concentrazione dei punti e la
+funzione di best fit.
+In primo luogo, all'interno del grafico in scala lineare, a correnti alte
+i punti risultano essere disposti pressoch\`e linearmente, in accordo con
+l'ipotesi sulla componente resistiva interna. Nel grafico in scala
+semilogaritmica, inoltre, i dati risultano possedere un andamento simile a
+quello caratteristico della curva di Shockley, ovvero approssimativamente
+rettilineo per poi appiattirsi come un logaritmo al crescere della tensione.
+Dunque, possiamo asserire che l'andamento dei dati sperimentali risulta essere
+in buon accordo con la legge \eqref{eq: model}.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi 
 e che la modellizzazione proposta sia una buona approssimazione del diodo reale 
-nelle condizioni di lavoro considerate. La modellizzazione proposta può risultare utile nelle simulazini
-numeriche di circuiti con diodi in regimi impulsati su alte correnti, dove sia richiesto un dettaglio sulle
-cadute di tensioni nei singoli componenti. Per tale scopo la legge \eqref{eq: model} \`e confermata
-essere una buona approssimazione del diodo reale entro i limiti sperimentali. Sebbene questo studio
-sia stato performato su un unico diodo 1N4007, il metodo proposto pu\`o essere esteso per qualunque
-altro tipo di diodo, eventualmente sostituendo il condensatore con un opportuno circuito stabilizzatore
-di corrente o di tensione.
+nelle condizioni di lavoro considerate. La modellizzazione proposta può
+risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
+impulsati su alte correnti, dove sia richiesto un dettaglio sulle cadute di
+tensione sui singoli componenti. Per tale scopo la legge \eqref{eq: model} \`e
+confermata essere una buona approssimazione del diodo reale entro i limiti
+sperimentali. Sebbene questo studio sia stato performato su un unico diodo
+1N4007, il metodo proposto pu\`o essere esteso per qualunque altro tipo di
+diodo, eventualmente sostituendo il condensatore con un opportuno circuito
+stabilizzatore di corrente o di tensione.
+
 %================================================================
 %                        Appendice A
 %================================================================
@@ -520,7 +529,7 @@ qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
 indicando assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
 $\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.32]{./varmuy.png}
  	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
@@ -584,7 +593,7 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
 tra due set successivi.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
@@ -603,7 +612,7 @@ tra due set successivi.
 (destra) del filtraggio dati. I dati scartati sono stati evidenziati in rosso. 
 Per praticità è stato rappresentato un centesimo dei dati raccolti}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.32]{./comparison.png}
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
@@ -645,7 +654,7 @@ relativamente breve. Per effettuare ciò, è necessaria la serie ricorsiva:
 x[0] = a \\ x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
 \end{cases}
 \end{equation}
-ove a è un generico valore appartenente al dominio di definizione. In pratica, 
+ove $a$ è un generico valore appartenente al dominio di definizione. In pratica, 
 per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
 punto alla funzione:
 \begin{equation}
@@ -657,7 +666,7 @@ x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
 \end{equation}
 E viene conseguentemente valutato il valore $f(x[i+1])$ ed il procedimento viene 
 ripetuto per un dato numero di iterazioni. 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.75]{./Figura1_appendiceB.png}
 	\caption{Visualizzazione grafica di cosa implica un’iterazione della 
@@ -710,11 +719,11 @@ computazionali. Verifichiamo graficamente che per dei generici valori della
 corrente  i due metodi danno risultati sostanzialmente equivalenti (adottiamo i 
 parametri stimati dal fit). I grafici relativi alla convergenza di $v$ e di $I$ 
 anche a seguito di sole 20 iterazioni:
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.75]{./Figura2_appendiceB.png}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[!htbp]
 	\centering 
  		\includegraphics[scale=0.75]{./Figura3_appendiceB.png}
 \end{figure}
