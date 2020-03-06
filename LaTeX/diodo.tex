@@ -139,7 +139,7 @@ permette la stima della corrente che attraversa il diodo. Ai fini di esplorare
 ampie zone 
 di lavoro del diodo, la resistenza è stata cambiata opportunamente scegliendo 
 tra le seguenti:
-\begin{table}[!htbp]
+\begin{table}[H]% la tabella deve stare per forza sotto "seguenti:" oopure bisgna camiare la frase
     \begin{center}
 	\begin{tabular}{lll}
 	    \toprule
@@ -179,13 +179,13 @@ entrambi con una risoluzione reale di 12 bit. La lettura differenziale è
 fondamentale per acquisire coppie di dati per le tensioni ai capi del diodo
 e della resistenza.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]% so che è brutto che lascia un po' di spazio bianco ma altrimenti lo metterebbe dentro acquisizione dati
 	\centering 
  		\includegraphics[scale=0.5]{./gestione.png}
  	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\centering 
  		\includegraphics[scale=0.5]{./measure.png}
  	\caption{Schema circuitale del sistema di lettura (verso 
@@ -247,7 +247,7 @@ relativi ad \verb+ADC0+ ed \verb+ADC1+ hanno conseguito i seguenti risultati:
 	\text{abs\_sigma} &= \rm False	&\text{abs\_sigma} &= \rm False
 \end{align*}
 
-\begin{figure}[!htb]
+\begin{figure}[H]% qui potremo fare qualcosa per assicurarci che le questi valori e le immagini vengano sempre tenute insieme, ma non lo so fare e non  importante
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
@@ -333,7 +333,7 @@ I parametri stimati dal fit risultano essere:
 	\text{abs\_sigma} &= \rm False
 \end{align*}
 
-\begin{figure}[!htbp]
+\begin{figure}[H]% questi due grafici sono più problematici, potrebbe tornare utile usare vspace negativo e ritagliare le figure manualmente se necessario
 	\centering 
 	\includegraphics[scale=0.7]{diode_linear.png}%{./Figure_4_2_Nskip_100_NO_220k.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model}. E' 
@@ -341,7 +341,7 @@ I parametri stimati dal fit risultano essere:
 	\label{fig: sck_lin}}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 	\centering 
 	\includegraphics[scale=0.7]{diode_semilog.png}%{./Figure_3_1_Nskip_10.png}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
@@ -593,7 +593,7 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
 tra due set successivi.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htbp]% per questi non ci dovrebbero essere problemi, basta che non vanno in B
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
@@ -719,7 +719,7 @@ computazionali. Verifichiamo graficamente che per dei generici valori della
 corrente  i due metodi danno risultati sostanzialmente equivalenti (adottiamo i 
 parametri stimati dal fit). I grafici relativi alla convergenza di $v$ e di $I$ 
 anche a seguito di sole 20 iterazioni:
-\begin{figure}[!htbp]
+\begin{figure}[!htbp]% questi vanno sistemati meglio perchè occupano una pagina da soli!!!
 	\centering 
  		\includegraphics[scale=0.75]{./Figura2_appendiceB.png}
 \end{figure}
