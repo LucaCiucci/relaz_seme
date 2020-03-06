@@ -4,11 +4,16 @@
 
 from filtro import *
 
+if tex:
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+    
 ##FIT
 print("\n GRAFICO:")
+plt.figure(1)
 gridsize = (3, 1)
 g1 = plt.subplot2grid(gridsize,(0,0),colspan = 1, rowspan = 2)
-g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2)
+g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2, sharex=g1)
 
 if plot_points:
     if plot_errors:
@@ -65,15 +70,21 @@ print("Rd = %f +- %f" %(a[2], da[2]))
 if offset_fit:
     print("offset = %g +- %g" %(a[3], da[3]))
 
-bucket = numpy.linspace(1./1000000, max(voltages)+0.01, 1000)
+bucket = numpy.linspace(1e-6, max(voltages)+0.01, 1000)
 ordinate = curr(bucket, *popt)
-g1.plot(bucket, ordinate, c = 'red')
+g1.plot(bucket, ordinate, c = 'red', zorder = 10)
 
 g1.minorticks_on()
+if tick:
+    g1.yaxis.set_major_locator(plt.MultipleLocator(1))
+    g1.yaxis.set_minor_locator(plt.MultipleLocator(0.2))
+    
+g1.tick_params(direction='in', length=5, width=1., top=True, right=True)
+g1.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 g1.set_title("Corrente vs tensione")
-g1.set_xlabel("ddp [V]")#vedi se devi cambiare ordine di grandezza
+g1.set_xlabel("ddp [V]", x=0.92)#vedi se devi cambiare ordine di grandezza
 g1.set_ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
-g1.grid(c = "gray")
+g1.grid(c = "gray", ls = '--')
 g1.grid(b=True, which='major', c='#666666', ls='-')
 g1.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
 currXlim = [min(voltages), max(voltages)+0.01]
@@ -87,7 +98,16 @@ for i in range(len(voltages)):
     residui[i] = currents[i] - curr(voltages[i], *popt)
 
 g2.minorticks_on()
-g2.plot(bucket, bucket*0., c = 'red')
+g2.tick_params(direction='in', length=5, width=1., top=True, right=True)
+g2.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+if tick:
+    g2.xaxis.set_major_locator(plt.MultipleLocator(0.1))
+    g2.xaxis.set_minor_locator(plt.MultipleLocator(2e-2))
+    g2.yaxis.set_major_locator(plt.MultipleLocator(2))
+    g2.yaxis.set_minor_locator(plt.MultipleLocator(0.5))
+    plt.tight_layout()
+    
+g2.axhline(0, c = 'red', alpha=0.7, zorder=10)
 
 g2.errorbar(voltages, residui / dw, c = 'k', marker = '.',
             ls = '', alpha=scatterAlpha)
@@ -103,23 +123,22 @@ if plot_sigma_zone:
     g2.fill_between(xx, yy + syy - curr(xx, *popt),
                     yy - syy - curr(xx, *popt), c = 'b',
                     alpha = sigma_zone_alpha)
-g2.set_xlabel("ddp [V]")
+g2.set_xlabel("ddp [V]", x=0.92)
 g2.set_ylabel("Residui normalizzati")
-g2.grid(c = "gray")
+g2.grid(c = "gray", ls = '--')
 g2.grid(b=True, which='major', c='#666666', ls='-')
 g2.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
 g2.set_xlim(currXlim[0], currXlim[1])
+
+
 chi_aspettato = len(voltages) - len(popt)
 chi = ((residui**2)/dw**2).sum()
 print("chi aspettato = %f" % chi_aspettato)
 print("chi calcolato = %f" %chi)
-plt.show()
 
 
 print("\n GRAFICO in carta semilogaritmica:")
-
-gridsize = (3, 1)
-
+plt.figure(2)
 bucket = numpy.linspace(0.2, max(voltages)+0.0001, 1000)
 ordinate = curr(bucket, *popt)
 
@@ -153,23 +172,32 @@ if plot_sigma_zone:
     plt.fill_between(xx, yy + syy, yy - syy,
                        c = 'b', alpha = sigma_zone_alpha)
 
-plt.plot(bucket, ordinate - p_offset, c = 'red')
-    
+plt.plot(bucket, ordinate - p_offset, c = 'red', zorder = 10)
 
-plt.minorticks_on()
-plt.title("Grafico in scala semilogaritmica")#da cambiare
-plt.xlabel("ddp [V]")#vedi se devi cambiare ordine di grandezza
-plt.ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
-plt.grid(c = "gray")
-plt.grid(b=True, which='major', c='#666666', ls='-')
-plt.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
+ax = plt.gca()
+ax.set_yscale('log')
+ax.minorticks_on()
+ax.tick_params(direction='in', length=5, width=1., top=True, right=True)
+ax.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+ax.set_title("Grafico in scala semilogaritmica")#da cambiare
+ax.set_xlabel("ddp [V]", x=0.92)#vedi se devi cambiare ordine di grandezza
+ax.set_ylabel("I [A]")#vedi se devi cambiare ordine di grandezza
+ax.grid(c = "gray")
+ax.grid(b=True, which='major', c='#666666', ls='-')
+ax.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
 if plot_bad_points:
     currXlim = [min([min(voltages), min(voltages_bad)]), max(voltages)+0.01]
 else:
     currXlim = [0.2, max(voltages)+0.01]
-plt.xlim(currXlim[0], currXlim[1])
+ax.set_xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents)-0.1, max(currents)+0.1]
 #plt.ylim(currYlim[0], currYlim[1])
-
-plt.semilogy()
+if tick:
+    ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
+    ax.xaxis.set_minor_locator(plt.MultipleLocator(2e-2))
+    ax.yaxis.set_major_locator(tic.LogLocator(numticks=16))
+    ax.yaxis.set_minor_locator(tic.LogLocator(subs=np.arange(2, 10)*.1,
+                                              numticks = 16))
+    ax.xaxis.set_minor_formatter(tic.NullFormatter())
+    plt.tight_layout()
 plt.show()
