@@ -419,8 +419,9 @@ Supponiamo di avere una serie di dati $(x, y)$ e assumiamo che siano
 indipendenti tra loro. Quest'ipotesi non è vera in generale, ma
 è tanto più lecita quanto più la correlazione tra le varianze delle misure su
 $x$ e $y$ è indipendente dai valori assunti dalle $x$ e $y$ stesse e quanto più
-sono numerosi i dati racchiusi entro una deviazione standard lungo $x$: in questo caso,
-infatti, la correlazione viene inclusa nella varianza lungo $y$.
+sono numerosi i dati racchiusi entro una deviazione standard lungo $x$ per 
+ciascun elemento: in questo caso, infatti, la correlazione viene inclusa nella
+varianza lungo $y$.
 Supponiamo inoltre che siano note a priori le $\sigma_x ^2 \coloneqq \var{x}$
 e che la loro distribuzione di probabilità sia normale (le distribuzioni
 delle componenti sono approssimativamente gaussiane per il convertitore
@@ -428,14 +429,14 @@ di \verb+Teensy+, perlomeno utilizzando la risoluzione a 12 bit) secondo una
 matrice
 di covarianza diagonale nella base $\left\{x, y\right\}$.
 In ogni modo, i nostri dati $x$ e $y$ risultano indipendenti e
-approssimativamente normali, dunque le assunzioni risultano giustificate. 
-Allora la densità di probabilità che un punto che abbia misurato $x$ si trovi
-a tale ascissa $x_i$ si ricava banalmente integrando lungo $y$ a $x$ fissata:
+approssimativamente normali. Dunque le assunzioni risultano giustificate. 
+Conseguentemente la densità di probabilità che un punto misurato in $x$ si trovi
+a tale ascissa $x_i$, si ricava integrando lungo $y$ a $x$ fissata:
 \[
 	\ud P = \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}} \ud x
 .\] 
-Dunque, ripetendo più volte la stessa misura, la probabilità
+Dunque, ripetendo più volte la stessa misura, si otterrà la probabilità:
 \[
 	P\left(\mid x - x_i \mid \leq \frac{\eps}{2} \right) = \eps G_{x_i} 
 .\]
@@ -515,8 +516,8 @@ $\mu_y \pm \sigma_y$ ci dà una descrizione della distribuzione dei nostri dati.
 %================================
 \subsection{$\var{\mu_y}$}
 Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio 
-$\mu_y$, $\var{\mu_y}$ ci dà un'idea dell’incertezza che attribuiamo alla
-miglior stima di $y$. Questo ci è utile per determinare la convergenza della
+$\mu_y$, $\var{\mu_y}$ dà un'idea dell’incertezza che attribuiamo alla
+miglior stima di $y$. Questo è utile per determinare la convergenza della
 stima in funzione dei dati acquisiti.
 Infatti: più la densità dei dati è grande rispetto alla deviazione standard
 $\sigma_x$, più la stima del valore centrale risulta precisa. Graficamente
