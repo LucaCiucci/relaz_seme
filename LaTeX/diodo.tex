@@ -519,16 +519,16 @@ Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio
 $\mu_y$, $\var{\mu_y}$ dà un'idea dell’incertezza che attribuiamo alla
 miglior stima di $y$. Questo è utile per determinare la convergenza della
 stima in funzione dei dati acquisiti.
-Infatti: più la densità dei dati è grande rispetto alla deviazione standard
-$\sigma_x$, più la stima del valore centrale risulta precisa. Graficamente
-la banda di confidenza è più ristretta dove si concentrano i dati, viceversa
+Infatti tanto più è elevata la densità dei dati rispetto alla deviazione standard
+$\sigma_x$, tanto più la stima del valore centrale risulta precisa. Graficamente
+la banda di confidenza è più ristretta dove si concentrano i dati. Viceversa
 tende ad allargarsi dove i dati sono sparsi, a distanze paragonabili a
 $\sigma_x$. Numericamente, si vede dalla seconda somma nell'espressione
 \eqref{aln: varmuy} che la stima del valore centrale è statisticamente
 significativa solo quando si media su un intervallo campionato con almeno
 qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
-indicando assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
-$\sim e^{x^2}$ indice della stessa insufficienza di dati al fine di stabilire
+indicando così assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
+$\sim e^{x^2}$, indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
 \begin{figure}[!htbp]
 	\centering 
@@ -541,7 +541,7 @@ Nel caso opposto, in cui i dati sono "densi" (in confronto alle $\sigma_x$)
 la seconda somma, per quanto computazionalmente intensiva, numericamente
 sembrerebbe piccola in confronto alla prima: in realtà non lo è, ma
 soprattutto questa non può essere trascurata, poiché è proprio la quantità
-che descrive la dipendenza dalla densità stessa, dunque la caratteristica
+che descrive la dipendenza dalla densità stessa e dunque la caratteristica
 convergenza/divergenza della precisione sulla stima centrale fornita.
 
 %================================
