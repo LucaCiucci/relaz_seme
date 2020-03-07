@@ -582,13 +582,13 @@ ci stanno dando "poca" informazione rispetto a quelli di $B$. A questo punto
 è sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
 di set per eliminare i dati non significativi, che rendono meno
 immediata l'interpretazione del grafico. Questo è ben visibile in scala
-logaritmica sulle $y$ dove i punti con grandi incertezze o varianze tendono
+logaritmica sulle $y$, dove i punti con grandi incertezze o varianze tendono
 a disperdersi rapidamente.
 L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
-della memoria per evitare bolle di allocazione, dunque è stato implementato
-in \verb'C++' per praticità e richiamato all’interno degli script, per dettagli si 
+della memoria per evitare bolle di allocazione. Dunque è stato implementato
+in \verb'C++' per praticità e richiamato all’interno degli script (per dettagli si 
 rimanda ai 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}.
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}).
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 (in nero) ed i dati scartati (in rosso). 
 E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
