@@ -404,20 +404,19 @@ All'interno dell'acquisione, sono stati raccolti un numero ingente di dati,
 suddivisibili in base alla resistenza adottata e dunque facenti riferimento
 a zone differenti della curva. A seguito della calibrazione, ci si è quindi
 posto il problema di effettuare l'eliminazione degli outliers in modo
-indipendente dalla scelta del modello per il fit. Le varie serie effettuate,
-inoltre, si sovrappongono in alcune zone del grafico. Dunque è stato
-necessario eliminare i dati che, non aggiungendo informazioni utili,
-andavano a "sporcare" il grafico.
+indipendente dalla scelta del modello per il fit. Le serie effettuate
+variando la resistenza, inoltre, si sovrappongono in alcune zone del
+grafico. Dunque è stato necessario eliminare i dati che, non aggiungendo
+informazioni utili, andavano a "sporcare" il grafico.
 Il sistema di filtraggio di dati implementato
-nell'eseguibile si compone di 2 fasi: la prima è l’eliminazione degli outliers, la
-seconda consiste nell'eliminazione dei dati non significativi.
-%sono arrivata qui
+nell'eseguibile si compone di 2 fasi: la prima consiste nell’eliminazione degli
+outliers, la seconda dei dati non significativi.
 %================================
 %         Procedimento
 %================================
 \subsection{Procedimento}
 Supponiamo di avere una serie di dati $(x, y)$ e assumiamo che siano
-indipendenti tra loro. Questo non sarà in generale vero, però quest'ipotesi
+indipendenti tra loro. Quest'ipotesi
 è tanto più lecita quanto più la correlazione tra le varianze delle misure su
 $x$ e $y$ è indipendente dai valori assunti dalle $x$ e $y$ stesse e, più
 sono numerosi i dati racchiusi entro una deviazione lungo $x$: in questo caso,
