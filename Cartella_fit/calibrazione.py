@@ -31,25 +31,30 @@ def legge_giusto_error(x, a, b, c, d,f):
 
 
 ##ADC0
+if tex:
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 
 if(grafici_calibrazione):
-    plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
-    plt.show()
+    plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
+    
 
 print("\n GRAFICO ADC0:")
 
 if(grafici_calibrazione):
+    fig0 = plt.figure(0)
     gridsize = (3, 1)
-    grafico1 = g1 = plt.subplot2grid(gridsize,(0,0),colspan = 1, rowspan = 2)
-    grafico2 = g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2)
-    g1.errorbar(x, y, dy, dx, linestyle = '', color = 'black', marker = '.')
+    g1 = plt.subplot2grid(gridsize,(0,0),colspan = 1, rowspan = 2)
+    g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2, sharex=g1)
+    g1.errorbar(x, y, dy, dx, ls = '', c = 'k', marker = 'o', ms=2.7 ,
+                elinewidth=1.5, capsize=2)
 init = [-1., 10.]
 popt, pcov = curve_fit(legge, x, y, init, dy, absolute_sigma = False)
 a1, a2 = popt
 da1, da2 = np.sqrt(pcov.diagonal())
 print("m = %f +- %f" %(a1, da1))
 print("intercetta = %f +- %f" %(a2, da2))
-dw = numpy.zeros(len(y))
+dw = np.zeros(len(y))
 for i in range(50):
     for i in range(len(y)):
         dw[i] = np.sqrt(dy[i]**2 + (a1*dx[i])**2)
@@ -59,45 +64,50 @@ for i in range(50):
 print("m = %.10f +- %.10f" %(a1, da1))
 print("intercetta = %.10f +- %.10f" %(a2, da2))
 
-bucket = numpy.linspace(0.01, max(x)+0.01, 1000)
+bucket = np.linspace(0.01, max(x)+50, 1000)
 ordinate = legge(bucket, *popt)
 if(grafici_calibrazione):
-    g1.plot(bucket, ordinate, color = 'red')
+    g1.plot(bucket, ordinate, c = 'r', lw=1.2)
 
 if(grafici_calibrazione):
-    g1.minorticks_on()
-    g1.set_title("Digit vs Volt (ADC0)")
+    g1.set_title("Digit vs Volt (\\texttt{ADC0})")
     #g1.set_xlabel("Letture digitali [digit]")
     g1.set_ylabel("Tensione [V]")
-    g1.grid(color = "gray")
-    g1.grid(b=True, which='major', color='#666666', linestyle='-')
-    g1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-    currXlim = [min(x)-0.01, max(x)+0.01]
+    g1.grid(c = "gray")
+    g1.grid(b=True, which='major', c='#666666', ls='-')
+    g1.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
+    currXlim = [min(x), max(x)+50]
     g1.set_xlim(currXlim[0], currXlim[1])
     currYlim = [min(y)-0.1, max(y)+0.1]
     g1.set_ylim(currYlim[0], currYlim[1])
+    g1.minorticks_on()
+    g1.tick_params(direction='in', length=5, width=1., top=True, right=True)
+    g1.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+    g1.xaxis.set_major_formatter(plt.NullFormatter())
+    g1.xaxis.set_minor_formatter(plt.NullFormatter())
+    fig0.tight_layout(h_pad=1)
 
-
-residui =  numpy.zeros(len(y))
-for i in range(len(y)):
-    residui[i] = y[i] - legge(x[i], *popt)
+residui =  y - legge(x, *popt)
+resnorm = residui/dw
 
 if(grafici_calibrazione):
-    g2.minorticks_on()
-    g2.plot(bucket, bucket*0., color = 'black')
-    g2.errorbar(x, residui, dw, color = 'black', marker = '.', linestyle = '')
-    g2.set_xlabel("Letture MCU [digit]")
-    g2.set_ylabel("Residui [V]")
-    g2.grid(color = "gray")
-    g2.grid(b=True, which='major', color='#666666', linestyle='-')
-    g2.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+    g2.axhline(0, c = 'k')
+    g2.errorbar(x, residui*1e3, dw*1e3, c = 'k', marker = '.', ls = '',
+                elinewidth=1.5, capsize=2)
+    g2.set_xlabel("Letture MCU [digit]", x = 0.85)
+    g2.set_ylabel("Residui [mV]")
+    g2.grid(c = "gray")
+    g2.grid(b=True, which='major', c='#666666', ls='-')
+    g2.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
     g2.set_xlim(currXlim[0], currXlim[1])
+    g2.minorticks_on()
+    g2.tick_params(direction='in', length=5, width=1., top=True, right=True)
+    g2.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 ndof = len(x) - len(popt)
 chi = ((residui**2)/dw**2).sum()
 print("chi atteso = %f" % ndof)
 print("test chi = %f" %chi)
-if(grafici_calibrazione):
-    plt.show()
+    
 
 ##PREVISIONE
 
@@ -108,26 +118,27 @@ dyvalue = np.sqrt(pcov[0][0] *value**2 + pcov[1][1] + 2*pcov[0][1]*value)
 print("yvalue = %f +- %f" %(yvalue, dyvalue))
 
 
-if(grafici_calibrazione):
-    plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
-    plt.plot(bucket, ordinate, color = 'red')
+if (grafici_previsione):
+    prev0 = plt.figure(2)
+    plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
+    plt.plot(bucket, ordinate, c = 'r')
     plt.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                   pcov[0][1]), color = 'black')
+                                   pcov[0][1]), c = 'k')
     plt.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                    pcov[0][1]), color = 'black')
-    plt.show()
+                                    pcov[0][1]), c = 'k')
+    
 
-    plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
-    plt.plot(bucket, ordinate, color = 'red')
+    plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
+    plt.plot(bucket, ordinate, c = 'r')
     plt.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                   pcov[0][1]), color = 'black')
+                                   pcov[0][1]), c = 'k')
     plt.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                    pcov[0][1]), color = 'black')
+                                    pcov[0][1]), c = 'k')
     plt.plot(bucket, leggesumerror_model(bucket, *popt, pcov[0][0],
                                          pcov[1][1], pcov[0][1]), c='g')
     plt.plot(bucket, leggedifferror_model(bucket, *popt, pcov[0][0],
                                           pcov[1][1], pcov[0][1]), c='g')
-    plt.show()
+    
 
 matrixADC0 = pcov
 parADC0 = popt
@@ -143,24 +154,21 @@ print("----------------------")
 x = t
 dx = dt
 
-if(grafici_calibrazione):
-    plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
-    plt.show()
-
 print("\n GRAFICO ADC1:")
-
+fig1 = plt.figure(1)
 if(grafici_calibrazione):
     gridsize = (3, 1)
-    grafico1 = g1 = plt.subplot2grid(gridsize,(0,0), colspan = 1, rowspan = 2)
-    grafico2 = g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2)
-    g1.errorbar(x, y, dy, dx, linestyle = '', color = 'black', marker = '.')
+    g1 = plt.subplot2grid(gridsize,(0,0), colspan = 1, rowspan = 2)
+    g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2, sharex=g1)
+    g1.errorbar(x, y, dy, dx, ls = '', c = 'k', marker = 'o', ms=2.7 ,
+                elinewidth=1.5, capsize=2)
 init = [-1., 10.]
 popt, pcov = curve_fit(legge, x, y, init, dy, absolute_sigma = False)
 a1, a2 = popt
 da1, da2 = np.sqrt(pcov.diagonal())
 print("m = %f +- %f" %(a1, da1))
 print("intercetta = %f +- %f" %(a2, da2))
-dw = numpy.zeros(len(y))
+dw = np.zeros(len(y))
 for i in range(50):
     for i in range(len(y)):
         dw[i] = np.sqrt(dy[i]**2 + (a1*dx[i])**2)
@@ -170,45 +178,49 @@ for i in range(50):
 print("m = %.10f +- %.10f" %(a1, da1))
 print("intercetta = %.10f +- %.10f" %(a2, da2))
 
-bucket = numpy.linspace(0.01, max(x)+0.01, 1000)
+bucket = np.linspace(0., max(x)+50, 1000)
 ordinate = legge(bucket, *popt)
 if(grafici_calibrazione):
-    g1.plot(bucket, ordinate, color = 'red')
-
-    g1.minorticks_on()
-    g1.set_title("Digit vs Volt (ADC1)")
+    g1.plot(bucket, ordinate, c = 'r', lw=1.2)
+    g1.set_title("Digit vs Volt (\\texttt{ADC1})")
     #g1.set_xlabel("digitized reading [digit]")
     g1.set_ylabel("Tensione [V]")
-    g1.grid(color = "gray")
-    g1.grid(b=True, which='major', color='#666666', linestyle='-')
-    g1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-    currXlim = [min(x)-0.01, max(x)+0.01]
+    g1.grid(c = "gray")
+    g1.grid(b=True, which='major', c='#666666', ls='-')
+    g1.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
+    currXlim = [min(x)+1, max(x)+50]
     g1.set_xlim(currXlim[0], currXlim[1])
     currYlim = [min(y)-0.1, max(y)+0.1]
     g1.set_ylim(currYlim[0], currYlim[1])
+    g1.minorticks_on()
+    g1.tick_params(direction='in', length=5, width=1., top=True, right=True)
+    g1.tick_params(which='minor', direction='in', width=1., top=True, right=True)
+    g1.xaxis.set_major_formatter(plt.NullFormatter())
+    g1.xaxis.set_minor_formatter(plt.NullFormatter())
+    fig1.tight_layout(h_pad=1)
 
 
-residui =  numpy.zeros(len(y))
-for i in range(len(y)):
-    residui[i] = y[i] - legge(x[i], *popt)
+residui =  y - legge(x, *popt)
+resnorm = residui/dw
 
 if(grafici_calibrazione):
-    g2.minorticks_on()
-    g2.plot(bucket, bucket*0., color = 'black')
-    g2.errorbar(x, residui, dw, color = 'black', marker = '.', linestyle = '')
-    g2.set_xlabel("Letture MCU [digit]")
-    g2.set_ylabel("Residui [V]")
-    g2.grid(color = "gray")
-    g2.grid(b=True, which='major', color='#666666', linestyle='-')
-    g2.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+    g2.plot(bucket, bucket*0., c = 'k')
+    g2.errorbar(x, residui*1e3, dw*1e3, c = 'k', marker = '.', ls = '',
+                elinewidth=1.5, capsize=2)
+    g2.set_xlabel("Letture MCU [digit]", x = 0.85)
+    g2.set_ylabel("Residui [mV]")
+    g2.grid(c = "gray")
+    g2.grid(b=True, which='major', c='#666666', ls='-')
+    g2.grid(b=True, which='minor', c='#999999', ls='-', alpha=0.2)
     g2.set_xlim(currXlim[0], currXlim[1])
+    g2.minorticks_on()
+    g2.tick_params(direction='in', length=5, width=1., top=True, right=True)
+    g2.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 ndof = len(x) - len(popt)
 chi = ((residui**2)/dw**2).sum()
 print("chi atteso = %f" % ndof)
 print("test chi = %f" %chi)
-if(grafici_calibrazione):
-    plt.show()
-
+  
 ##PREVISIONE
 
 value = 0.
@@ -218,18 +230,19 @@ dyvalue = np.sqrt(pcov[0][0] *value**2 + pcov[1][1] + 2*pcov[0][1]*value)
 print("yvalue = %f +- %f" %(yvalue, dyvalue))
 
 
-if(grafici_calibrazione):
-    plt.errorbar(x, y, dy, dx, marker = '.', linestyle = '')
-    plt.plot(bucket, ordinate, color = 'red')
+if (grafici_previsione):
+    prev1 = plt.figure(3)
+    plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
+    plt.plot(bucket, ordinate, c = 'r')
     plt.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                   pcov[0][1]), color = 'black')
+                                   pcov[0][1]), c = 'k')
     plt.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                    pcov[0][1]), color = 'black')
+                                    pcov[0][1]), c = 'k')
     plt.plot(bucket, leggesumerror_model(bucket, *popt, pcov[0][0],
                                          pcov[1][1], pcov[0][1]), c='g')
     plt.plot(bucket, leggedifferror_model(bucket, *popt, pcov[0][0],
                                           pcov[1][1], pcov[0][1]), c='g')
-    plt.show()
+    plt.show()    
 
 
 matrixADC1 = pcov

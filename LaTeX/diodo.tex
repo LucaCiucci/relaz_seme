@@ -85,7 +85,6 @@ percorso da correnti alte si propone un modello semplice di resistenza
 parassita in serie, in grado di descriverne gli effetti, verificandone 
 sperimentalmente la validità.
 
-
 %================================================================
 %                         Cenni teorici
 %================================================================
@@ -111,7 +110,6 @@ V_T \ln{\left(\frac{
 legge \eqref{eq: model} (in viola)}
 \end{figure}
 
-
 %================================================================
 %                Metodo e apparato sperimentale
 %================================================================
@@ -134,12 +132,10 @@ temperatura del semiconduttore inferiore a 0.5 K).
 L'apparato sperimentale è costituito da un circuito, realizzato su basetta 
 sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo 
 $D1$ e la resistenza $R1$. La misura della differenza di potenziale ai capi di 
-quest'ultima
-permette la stima della corrente che attraversa il diodo. Ai fini di esplorare 
-ampie zone 
-di lavoro del diodo, la resistenza è stata cambiata opportunamente scegliendo 
-tra le seguenti:
-\begin{table}[H]% la tabella deve stare per forza sotto "seguenti:" oopure bisgna camiare la frase
+quest'ultima permette la stima della corrente che attraversa il diodo. Per
+poter esplorare una larga banda di punti di lavoro del diodo, si è variata
+opportunamente la resistenza in serie al diodo, scegliendo tra le seguenti:
+\begin{table}[H]% la tabella deve stare per forza sotto "seguenti:"
     \begin{center}
 	\begin{tabular}{lll}
 	    \toprule
@@ -179,21 +175,20 @@ entrambi con una risoluzione reale di 12 bit. La lettura differenziale è
 fondamentale per acquisire coppie di dati per le tensioni ai capi del diodo
 e della resistenza.
 
-\begin{figure}[H]% so che è brutto che lascia un po' di spazio bianco ma altrimenti lo metterebbe dentro calibrazione
+\begin{figure}[!htb]
+	\centering 
+ 		\includegraphics[scale=0.5]{./measure.png}
+ 	\caption{Schema circuitale del sistema di lettura (verso\texttt{Teensy})
+	\label{sch:rdng}}
+\end{figure}
+
+\begin{figure}[h!t]% so che è brutto che lascia un po' di spazio bianco ma altrimenti lo metterebbe dentro calibrazione
 	\centering 
  		\includegraphics[scale=0.5]{./gestione.png}
  	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
 \end{figure}
 
-\begin{figure}[H]
-	\centering 
- 		\includegraphics[scale=0.5]{./measure.png}
- 	\caption{Schema circuitale del sistema di lettura (verso 
-	\texttt{Teensy})
-	\label{sch:rdng}}
-\end{figure}
-
-%================================
+%===============================
 %         Calibrazione
 %================================
 \subsection{Calibrazione}\label{sec: cal}
@@ -208,21 +203,20 @@ centrale di un potenziometro, a sua volta collegato ad un generatore di
 potenziale con tensione in ingresso pari a 3.3V . Gli altri due pin sono stati 
 invece collegati a massa.
 
-Variando la resistenza e conseguentemente la differenza di potenziale in 
-ingresso, è stato possibile calcolare la media, la deviazione standard 
-campione e la deviazione standard dalla media relative a ciascuna tensione per 
+Variando la resistenza e, conseguentemente, la differenza di potenziale in 
+ingresso, è stato possibile calcolare media, deviazione standard sul 
+campione e deviazione standard dalla media relative a ciascuna tensione per 
 un gruppo di 10000 misure effettuate con \verb+Teensy+ (vedi 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo programma}).
-Il centrale del potenziometro e la 
-massa sono state, inoltre, collegate ad un multimetro digitale, così da avere 
-il rispettivo valore in Volt per ciascuna tensione valutata in unità 
-arbitrarie. Sono stati, quindi, associati degli errori a queste ultime misure  
-tenendo presente le specifiche del multimetro.
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino }{relativo sketch}).
+Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un
+multimetro digitale, così da avere il rispettivo valore in Volt per ciascuna
+tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli
+errori a queste ultime misure tenendo presente le specifiche del multimetro.
 
 Dopodiché le misure relative a ciascuna coppia di boccole sono state poste 
-all’interno di un grafico con i dati raccolti da \verb+Teensy+ in ordinate e i 
-valori misurati col multimetro in ascisse. Dunque è stato effettuato un fit 
-lineare attraverso la legge:
+all’interno di un grafico con i dati raccolti da \verb+Teensy+ sulle ascisse
+e i valori misurati col multimetro in ordinate. Dunque è stato effettuato un
+fit lineare attraverso la legge:
 \begin{equation}
 y(x; m, q)  = m x + q
 \end{equation}
@@ -251,12 +245,12 @@ relativi ad \verb+ADC0+ ed \verb+ADC1+ hanno conseguito i seguenti risultati:
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
- 		\includegraphics[scale=0.5]{./digitvsvolt_ADC0_1.png}
+ 		\includegraphics[scale=0.5]{cal0.png}
 	\label{fig: nofilter}
 \end{subfigure}%
 \begin{subfigure} {.5\textwidth}
 	\centering 
-		\includegraphics[scale=0.5]{./digitvsvolt_ADC1_1.png}
+		\includegraphics[scale=0.5]{cal1.png}
 	\label{fig: filtered}
 \end{subfigure}
 \end{figure}
@@ -269,7 +263,7 @@ specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall’andamento li
 può essere quantificato col $7 \%$ della lettura in digit.\newline
 Per maggiori informazioni riguardo alle stime delle incertezze nelle 
 conversioni si rimanda direttamente al 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py }
 {relativo script}.
 
 %================================
@@ -278,18 +272,19 @@ conversioni si rimanda direttamente al
 \subsection{Acquisizione dati}
 Per ciascun valore scelto della resistenza $R1$ è stata eseguita una presa 
 dati automatizzata secondo una 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}{routine} programmata 
-in \verb+Teensy+: il condensatore viene caricato ad una tensione prefissata;
-una volta raggiunto il valore prestabilito viene inviato il segnale su $T1$,
-si avvia l'acquisizione sincronizzata e si attende un tempo 50 $\mu$s per
-permettere al MOS-FET di entrare in conduzione ($R2$ è stata scelta di 1k,
-dunque c'è un apprezzabile ritardo tra segnale e impulso) e scartare eventuali
-segnali spuri; a questo punto si inizia a memorizzare una serie da 100 coppie
-di letture -sincronizzate- (a meno di sfasamenti nell'ordine delle centinaia di 
-nanosecondi); si ferma l'impulso e si trasmettono i dati al computer; se la 
-tensione al punto \verb+OUT2+ ha raggiunto valori maggiori di 3.3V 
-l'acquisizione si ferma per non danneggiare \verb+Teensy+, altrimenti si
-ricomincia caricando il condensatore ad una tensione più alta.
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino }
+{routine} programmata in \verb+Teensy+: il condensatore viene caricato
+ad una tensione prefissata; una volta raggiunto il valore prestabilito
+viene inviato il segnale su $T1$, si avvia l'acquisizione sincronizzata
+e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in
+conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile ritardo
+tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto
+si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate-
+(a meno di sfasamenti nell'ordine delle centinaia di nanosecondi); si ferma
+l'impulso e si trasmettono i dati al computer; se la tensione al punto
+\verb+OUT2+ ha raggiunto valori maggiori di 3.3V l'acquisizione si ferma
+per non danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il
+condensatore ad una tensione più alta.
 
 %================================================================
 %                   Analisi dati e Risultati
@@ -307,18 +302,25 @@ permesso di stimare la rispettiva corrente di lavoro attraverso la legge di Ohm.
 Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
 dei punti meno significativi, assumendoli quali variabili indipendenti e di 
 natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app: 
-A}. E’ necessario sottolineare che, all’interno della stessa appendice, 
-$\sigma_x$ rappresenta la varianza delle letture e non gli errori associati ad 
-esse.
-Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici. 
+A}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
+$\sigma_x$ rappresenta la varianza delle letture e non le incertezze ad esse
+associate.
+Successivamente, è stato effettuato un fit dei minimi quadra. 
 Dunque avremo potuto pensare di adottare la legge \eqref{eq: model} 
 direttamente. Tuttavia ciò comporterebbe il fallimento del fit a causa dei 
-valori negativi o nulli che si riscontrerebbero nell’argomento del logaritmo. 
+valori negativi o nulli che si riscontrerebbero nell'argomento del logaritmo. 
 \`E stata quindi utilizzata la funzione inversa come modello di fit, la quale 
 è stata ricavata numericamente secondo il metodo delle tangenti (o di Newton). 
 Per una trattazione approfondita, si rimanda all'\nameref{app: B}.
 
-Da un controllo visivo dei dati si osserva che nei punti raccolti con la resistenza da 220k è presente del rumore molto maggiore delle inceretzze sulle misure. Queso è probabilmente dovuto all'influenza del circuito di lettura stesso sulle piccole correnti in gioco. Non potendo dunque attribuire degli errori significativi per questa serie, tali dati non sono stati utilizzati nella procedura di fit eseguita successivamente in quanto avrebbero avuto un peso sovrastimato in confronto agli altri dati, influenzando così i risultati finali.
+Da un controllo visivo dei dati si osserva che nei punti raccolti con la
+resistenza da 220k è presente del rumore molto maggiore delle incertezze sulle
+misure. Questo è probabilmente dovuto all'influenza del circuito di lettura
+stesso sulle piccole correnti in gioco. Non potendo dunque attribuire degli
+errori significativi per questa serie, tali dati non sono stati utilizzati
+nella procedura di fit eseguita successivamente in quanto avrebbero avuto un
+peso sovrastimato in confronto agli altri dati, influenzando così i risultati
+finali.
  
 I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
 del grafico \ref{fig: sck_lin}.
@@ -333,9 +335,9 @@ I parametri stimati dal fit risultano essere:
 	\text{abs\_sigma} &= \rm False
 \end{align*}
 
-\begin{figure}[H]% questi due grafici sono più problematici, potrebbe tornare utile usare vspace negativo e ritagliare le figure manualmente se necessario
+\begin{figure}[!h]% questi due grafici sono più problematici, potrebbe tornare utile usare vspace negativo e ritagliare le figure manualmente se necessario
 	\centering 
-	\includegraphics[scale=0.7]{diode_linear.png}%{./Figure_4_2_Nskip_100_NO_220k.png}
+		\includegraphics[scale=0.7]{100skip_linear}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model}. E' 
 	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
 	\label{fig: sck_lin}}
@@ -343,15 +345,17 @@ I parametri stimati dal fit risultano essere:
 
 \begin{figure}[H]
 	\centering 
-	\includegraphics[scale=0.7]{diode_semilog.png}%{./Figure_3_1_Nskip_10.png}
+		\includegraphics[scale=0.7]{10skip_semilog}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
-	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità di visualizzazione. \label{fig: sck_log}}
+	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
+	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
+	di visualizzazione. \label{fig: sck_log}}
 \end{figure}
 
 Per gli script si rimanda alla 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}{cartella}
-, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+ definisce 
-i parametri fondamentali.
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit }
+{cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+
+definisce i parametri fondamentali.
 
 %================================================================
 %                          Conclusioni
@@ -400,7 +404,7 @@ stabilizzatore di corrente o di tensione.
 %         Introduzione
 %================================
 \subsection{Introduzione}
-All'interno dell'acquisione, sono stati raccolti un numero ingente di dati,
+All'interno dell'acquisizione, sono stati raccolti un numero ingente di dati,
 suddivisibili in base alla resistenza adottata e dunque facenti riferimento
 a zone differenti della curva. A seguito della calibrazione, ci si è quindi
 posto il problema di effettuare l'eliminazione degli outliers in modo
@@ -409,7 +413,7 @@ variando la resistenza, inoltre, si sovrappongono in alcune zone del
 grafico. Dunque è stato necessario eliminare i dati che, non aggiungendo
 informazioni utili, andavano a "sporcare" il grafico.
 Il sistema di filtraggio di dati implementato
-nell'eseguibile si compone di 2 fasi: la prima consiste nell’eliminazione degli
+nell'eseguibile si compone di 2 fasi: la prima consiste nell'eliminazione degli
 outliers, la seconda dei dati non significativi.
 %================================
 %         Procedimento
@@ -459,12 +463,12 @@ Allora, posto:
 	e^{-\frac{1}{2}{\frac{(\mu_y - y_i)^2}{\sigma_{y_i}^2}}}
 .\] 
 Per il principio di massima verosimiglianza siamo quindi interessati a
-massimizzare la quantità:
+massimizzare la grandezza:
 \[
 	\like = \prod_{i=1}^{n} \prod_{j=1}^{N_i} G_{y_i} = 
 	\prod_{i=1}^{n} G_{y_i}^{N_i}
 .\] 
-Per la monotonia del logaritmo il problema equivale a massimizzare la quantità:
+Per la monotonia del logaritmo il problema equivale a massimizzare: 
 \[
 	\ln{\like} = \sum_{i=1}^{n}\ln{G_{y_i}}^{N_{\text{tot}}w_i} = 
 	\frac{N_{\text{tot}}} {\sum_{j=1}^{n} G_{x_j}} 
@@ -506,7 +510,8 @@ Nella \eqref{eq: muy} prendiamo una media dei campionamenti intorno ad un'
 ascissa $x$ in esame, pesata sulla distanza che gli $x_i$ hanno da questa; 
 intuitivamente lo interpretiamo come se stessimo applicando un 
 \emph{blur a kernel gaussiano} ai punti acquisiti.
-Effettivamente quello che stiamo facendo non è molto diverso da KDE monovariante, dove però scaliamo secondo il valore delle $y$.
+Effettivamente quello che stiamo facendo non è molto diverso da KDE monovariante,
+dove però scaliamo secondo il valore delle $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di $y$, pesata sulla distanza dai valori studiati. Dunque
 $\mu_y \pm \sigma_y$ ci dà una descrizione della distribuzione dei nostri dati.
@@ -516,23 +521,23 @@ $\mu_y \pm \sigma_y$ ci dà una descrizione della distribuzione dei nostri dati.
 %================================
 \subsection{$\var{\mu_y}$}
 Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio 
-$\mu_y$, $\var{\mu_y}$ dà un'idea dell’incertezza che attribuiamo alla
-miglior stima di $y$. Questo è utile per determinare la convergenza della
-stima in funzione dei dati acquisiti.
-Infatti tanto più è elevata la densità dei dati rispetto alla deviazione standard
-$\sigma_x$, tanto più la stima del valore centrale risulta precisa. Graficamente
-la banda di confidenza è più ristretta dove si concentrano i dati. Viceversa
-tende ad allargarsi dove i dati sono sparsi, a distanze paragonabili a
-$\sigma_x$. Numericamente, si vede dalla seconda somma nell'espressione
-\eqref{aln: varmuy} che la stima del valore centrale è statisticamente
-significativa solo quando si media su un intervallo campionato con almeno
-qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
+$\mu_y$, $\var{\mu_y}$ ci indica l’incertezza sulla miglior stima di $y$.
+Questo è utile per determinare la convergenza della stima in funzione dei dati
+acquisiti. Infatti tanto più è elevata la densità dei dati, rispetto alla
+deviazione standard $\sigma_x$, tanto più la stima del valore centrale risulta
+precisa.
+Graficamente la banda di confidenza è più ristretta dove si concentrano i dati.
+Viceversa, la stessa tende ad allargarsi dove i dati sono sparsi, i.e. a
+distanze paragonabili a $\sigma_x$. Numericamente, si vede dalla seconda somma
+nell'espressione \eqref{aln: varmuy} che la stima del valore centrale è
+statisticamente significativa solo quando si media su un intervallo campionato
+con almeno qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
 indicando così assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
 $\sim e^{x^2}$, indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
 	\centering 
- 		\includegraphics[scale=0.32]{./varmuy.png}
+ 		\includegraphics[scale=0.55]{./varmuy.png}
  	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
 	l'area in rosso indica il valore di $\var{\mu_y}$ al variare dei
 	dati (in blu) lungo $x$. \label{fig: varmuy}}
@@ -576,7 +581,7 @@ rappresentazione finale dei dati.\\
 Per capire se in un certo punto i dati di $A$ sono significativi, calcoliamo
 la misura di significatività che abbiamo sviluppato in \eqref{aln: varmuy}$:
 \var{\mu_y}$ di $A$ e di $B$. Perciò se $\var{\mu_y}$ di $A$ è maggiore di 
-$q\var{\mu_y}$ di $B$, con $q$ arbitrario (nell’esperienza è stato scelto
+$q\var{\mu_y}$ di $B$, con $q$ arbitrario (nell'esperienza è stato scelto
 $q = 3$), questo indica che i dati di $A$
 ci stanno dando "poca" informazione rispetto a quelli di $B$. A questo punto
 è sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
@@ -588,34 +593,32 @@ L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
 della memoria per evitare bolle di allocazione. Dunque è stato implementato
 in \verb'C++' per praticità e richiamato all’interno degli script (per dettagli si 
 rimanda ai 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}).
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src }{sorgenti}).
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
-(in nero) ed i dati scartati (in rosso). 
-E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
-tra due set successivi.
+(in nero) ed i dati scartati (in arancio). 
 
 \begin{figure}[!htbp]% per questi non ci dovrebbero essere problemi, basta che non vanno in B
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
  		\includegraphics[scale=0.5]{./nofilter.png}
-%	\caption{Grafico in scala semilogaritmica prima del filtraggio dati:
-%	si evidenziano in rosso i dati da scartare, in nero quello tenuti.}
-	\label{fig: nofilter}
+		\caption{\label{fig: nofilter}}	
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
 	\centering 
  		\includegraphics[scale=0.5]{./filtered.png}
-% 	\caption{Grafico in scala semilogaritmica dopo il filtraggio dati.}
-	\label{fig: filtered}
+ 	\caption{\label{fig: filtered}}
 \end{subfigure}
-	\caption{Grafici in scala semilogaritmica dei prima (sinistra) e dopo 
-(destra) del filtraggio dati. I dati scartati sono stati evidenziati in rosso. 
-Per praticità è stato rappresentato un centesimo dei dati raccolti}
+\caption{Grafici in scala semilogaritmica prima (\ref{fig: nofilter}) e dopo 
+(\ref{fig: filtered}) del filtraggio dati. I dati scartati sono stati
+evidenziati in arancio. Per praticità è stato rappresentato un centesimo
+dei dati raccolti}
 \end{figure}
-\begin{figure}[!htbp]
+E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
+tra due set successivi.
+\begin{figure}[!h]
 	\centering 
- 		\includegraphics[scale=0.32]{./comparison.png}
+ 		\includegraphics[scale=0.6]{./comparison.png}
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
 	dati consecutivi. \label{fig: comparison}}
 \end{figure}
@@ -636,7 +639,7 @@ la funzione inversa della legge \eqref{eq: model}.
 Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$ continua e 
 derivabile entro un intervallo di definizione connesso (con $f’(x)$ limitata e 
 diversa da $0$ per ciascuna $x$ appartenente al dominio) ed una $v$ tale che
-$f(v) = 0$. Sviluppando al prim’ordine f in un intorno di v, otterremo:
+$f(v) = 0$. Sviluppando al prim’ordine $f$ in un intorno di $v$, otterremo:
 \begin{equation}
 f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f{''}(X)} \cdot  {( x - v)^2} = 0
 \end{equation}
@@ -645,7 +648,7 @@ $risultasse prossimo a zero:
 \begin{equation}
 x \simeq v   -  {\frac {f(v)}{f’(v)}}
 \end{equation}
-L’unica limitazione nell’adottare tale scrittura è che necessitiamo di $v$ 
+L’unica limitazione nell'adottare tale scrittura è che necessitiamo di $v$ 
 molto vicino a $x$ incognito. Tuttavia, nel caso in cui la funzione $f$ risultasse 
 sufficientemente maneggevole, potremo partire da un valore generico del dominio 
 e riscontrare con buona approssimazione la radice in un tempo finito 
@@ -669,14 +672,14 @@ E viene conseguentemente valutato il valore $f(x[i+1])$ ed il procedimento viene
 ripetuto per un dato numero di iterazioni. 
 \begin{figure}[!htbp]
 	\centering 
- 		\includegraphics[scale=0.75]{./Figura1_appendiceB.png}
+ 		\includegraphics[scale=0.8]{tang.png}
 	\caption{Visualizzazione grafica di cosa implica un’iterazione della 
-serie ricorsiva (f(x) = $x^3$ in questo esempio)}
+	serie ricorsiva ($f(x) = x^3$ in questo esempio)\label{fig: tang}}
 \end{figure}
 Se la funzione è monotona e la serie converge ad un valore, tale sarà $v$, 
 essendo l’unico punto fisso della serie:
 \begin{equation}
- {a = a -  {\frac{f(a)}{f{’}(a)}}}\to{{f(a) = 0}\land{v = a}}
+ a = a -  \frac{f(a)}{f'(a)} \to f(a) = 0 \; \land \; v = a
 \end{equation}
 essendo $v$ l’unico punto in cui si annulla la funzione per definizione.
 Ritornando al diodo, esso può essere interpretato quale un diodo ideale ed una 
@@ -699,7 +702,7 @@ i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } -
 1) = I_0 \cdot (e^{\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} 
 - v}{R}
 \end{equation}
-Tale i dovrà necessariamente corrispondere alla corrente di lavoro in virtù 
+Tale $i$ dovrà necessariamente corrispondere alla corrente di lavoro in virtù 
 dell’equazione di Shockley. Dunque definendo la funzione $g(x)$ come segue:
 \begin{equation}\label{eq: invsck}
 g(x) = I_0 \cdot ( e^{\frac{x}{\eta V_T}} - 1)  - \frac {\Delta 
@@ -717,24 +720,25 @@ di lavoro del diodo per la suddetta $\Delta V_{\text{ingresso}}$.
 \`E immediato comprendere che fare un fit con questa legge risulta essere 
 equivalente a fare un fit con la legge \eqref{eq: model}, con minori complicazioni 
 computazionali. Verifichiamo graficamente che per dei generici valori della 
-corrente  i due metodi danno risultati sostanzialmente equivalenti (adottiamo i 
-parametri stimati dal fit). I grafici relativi alla convergenza di $v$ e di $I$ 
+corrente i due metodi danno risultati sostanzialmente equivalenti (adottiamo i 
+parametri stimati dal fit). I grafici relativi alla convergenza di $I$ e di $v$ 
 anche a seguito di sole 20 iterazioni:
-\begin{figure}[H]% questi vanno sistemati meglio perchè occupano una pagina da soli!!!
+\begin{figure}[!ht]% questi vanno sistemati meglio perchè occupano una pagina da soli!!!
 	\centering 
- 		\includegraphics[scale=0.75]{./Figura2_appendiceB.png}
+ 		\includegraphics[scale=0.7]{Iter.png}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[!hbtp]
 	\centering 
- 		\includegraphics[scale=0.75]{./Figura3_appendiceB.png}
+ 		\includegraphics[scale=0.7]{vter.png}
 \end{figure}
 
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
-fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie, inoltre, 
-risulta convergere molto rapidamente ai valori attesi e quindi sono 
+fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie,
+inoltre, risulta convergere molto rapidamente ai valori attesi e quindi sono 
 effettivamente sufficienti solo 20 iterazioni per una buona precisione.
-All’interno della funzione di fit, è stato infine introdotto un offset quale parametro
-libero per ovviare errori di zero dovuti agli assorbimenti di ADC in Teensy 3.2.
+All’interno della funzione di fit, è stato infine introdotto un offset quale
+parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
+in Teensy 3.2.
 
 
 %================================================================

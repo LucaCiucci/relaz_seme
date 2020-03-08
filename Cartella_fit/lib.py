@@ -9,6 +9,5 @@ import os # operazioni su file
 import shutil # operazioni su file
 from statistics import *
 from matplotlib import pyplot as plt
-from matplotlib import ticker as tic
 from scipy.stats import norm
 import time

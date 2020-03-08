@@ -5,6 +5,8 @@ from lib import *
 
 grafici_calibrazione = False
 
+grafici_previsione = False
+
 Nstep = 20
 
 # i dati filtrati sono messi in questa cartella temporanea
@@ -42,10 +44,10 @@ sigma_zone_alpha = 0.25
 iterazioni_fit = 3
 
 # LaTeX typesetting maths and descriptions
-tex = True
+tex = False
 
 # manually choose spacing between axis ticks
-tick = True 
+tick = False 
 
 # file di dati (da modificare)#!!
 data_folder = "data/"

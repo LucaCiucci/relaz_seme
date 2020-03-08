@@ -25,7 +25,7 @@ if plot_points:
 if plot_bad_points:
     if plot_errors:
         g1.errorbar(voltages_bad, currents_bad, currentErrs_bad, voltageErrs_bad,
-                    ls = '', c = 'r', marker = '.', alpha=scatterAlpha)
+                    ls = '', c = 'orange', marker = '.', alpha=scatterAlpha)
     else:
         g1.errorbar(voltages_bad, currents_bad,
                     ls = '', c = 'k', marker = '.', alpha=scatterAlpha)
@@ -53,7 +53,7 @@ print("Rd = %f +- %f" %(a[2], da[2]))
 if offset_fit:
     print("offset = %g +- %g" %(a[3], da[3]))
 
-dw = numpy.zeros(len(currentErrs))
+dw = np.zeros(len(currentErrs))
 for i in range(iterazioni_fit):
     for j in range(len(currentErrs)):
         dw[j] = np.sqrt(currentErrs[j]**2 +
@@ -70,7 +70,7 @@ print("Rd = %f +- %f" %(a[2], da[2]))
 if offset_fit:
     print("offset = %g +- %g" %(a[3], da[3]))
 
-bucket = numpy.linspace(1e-6, max(voltages)+0.01, 1000)
+bucket = np.linspace(1e-6, max(voltages)+0.01, 1000)
 ordinate = curr(bucket, *popt)
 g1.plot(bucket, ordinate, c = 'r', lw = 1, zorder = 10)
 
@@ -78,21 +78,22 @@ g1.minorticks_on()
 if tick:
     g1.yaxis.set_major_locator(plt.MultipleLocator(1))
     g1.yaxis.set_minor_locator(plt.MultipleLocator(0.2))
-    
+    g1.xaxis.set_major_formatter(plt.NullFormatter())
+    g1.xaxis.set_minor_formatter(plt.NullFormatter())
 g1.tick_params(direction='in', length=5, width=1., top=True, right=True)
 g1.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 # g1.set_title("Corrente vs tensione")
-g1.set_xlabel("d.d.p. [V]", x=0.9)#vedi se devi cambiare ordine di grandezza
+#g1.set_xlabel("d.d.p. [V]", x=0.9)#vedi se devi cambiare ordine di grandezza
 g1.set_ylabel("Intensità di Corrente $I$ [A]")#vedi se devi cambiare ordine di grandezza
-g1.grid(b=True, which='major', c='#666666', ls='--')
-g1.grid(b=True, which='minor', c='#999999', ls='--', alpha=0.2)
+g1.grid(b=True, which='major', c='#666666', ls='--', alpha = 0.7)
+#g1.grid(b=True, which='minor', c='#999999', ls='--', alpha=0.2)
 currXlim = [min(voltages), max(voltages)+0.01]
 g1.set_xlim(currXlim[0], currXlim[1])
 currYlim = [min(currents), max(currents)]
 #g1.set_ylim(currYlim[0], currYlim[1])
 
 
-residui =  numpy.zeros(len(voltages))
+residui =  np.zeros(len(voltages))
 for i in range(len(voltages)):
     residui[i] = currents[i] - curr(voltages[i], *popt)
 
@@ -104,7 +105,7 @@ if tick:
     g2.xaxis.set_minor_locator(plt.MultipleLocator(2e-2))
     g2.yaxis.set_major_locator(plt.MultipleLocator(2))
     g2.yaxis.set_minor_locator(plt.MultipleLocator(0.5))
-    plt.tight_layout()
+    plt.tight_layout(h_pad=1)
     
 g2.axhline(0, c = 'r', alpha=0.7, zorder=10)
 
@@ -124,8 +125,8 @@ if plot_sigma_zone:
                     alpha = sigma_zone_alpha)
 g2.set_xlabel("d.d.p. [V]", x=0.9)
 g2.set_ylabel("Residui normalizzati")
-g2.grid(b=True, which='major', c='#666666', ls='--')
-g2.grid(b=True, which='minor', c='#999999', ls='--', alpha=0.2)
+g2.grid(b=True, which='major', c='#666666', ls='--', alpha = 0.7)
+#g2.grid(b=True, which='minor', c='#999999', ls='--', alpha=0.2)
 g2.set_xlim(currXlim[0], currXlim[1])
 
 
@@ -137,7 +138,7 @@ print("chi calcolato = %f" %chi)
 
 print("\n GRAFICO in scala semilogaritmica:")
 plt.figure(2)
-bucket = numpy.linspace(0.2, max(voltages)+0.0001, 1000)
+bucket = np.linspace(0.2, max(voltages)+0.0001, 1000)
 ordinate = curr(bucket, *popt)
 
 if offset_fit:
@@ -156,7 +157,7 @@ if plot_points:
 if plot_bad_points:
     if plot_errors:
         plt.errorbar(voltages_bad, currents_bad - p_offset, currentErrs_bad,
-                       voltageErrs_bad, ls = '', c = 'r', marker = '.',
+                       voltageErrs_bad, ls = '', c = 'orange', marker = '.',
                        alpha=scatterAlpha)
     else:
         plt.errorbar(voltages_bad, currents_bad - p_offset,
@@ -192,9 +193,9 @@ currYlim = [min(currents)-0.1, max(currents)+0.1]
 if tick:
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
     ax.xaxis.set_minor_locator(plt.MultipleLocator(2e-2))
-    ax.yaxis.set_major_locator(tic.LogLocator(numticks=16))
-    ax.yaxis.set_minor_locator(tic.LogLocator(subs=np.arange(2, 10)*.1,
+    ax.yaxis.set_major_locator(plt.LogLocator(numticks=16))
+    ax.yaxis.set_minor_locator(plt.LogLocator(subs=np.arange(2, 10)*.1,
                                               numticks = 16))
-    ax.xaxis.set_minor_formatter(tic.NullFormatter())
+    ax.xaxis.set_minor_formatter(plt.NullFormatter())
     plt.tight_layout()
 plt.show()
