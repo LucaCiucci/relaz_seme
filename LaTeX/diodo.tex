@@ -538,9 +538,9 @@ con precisione significativa il valore di $\mu_y$.
 \begin{figure}[!htb]
 	\centering 
  		\includegraphics[scale=0.55]{./varmuy.png}
- 	\caption{La media $\mu_y$ è rappresentata dalla linea rossa, mentre
+ 	\caption{La media $\mu_y$ è rappresentata dalla linea blu, mentre
 	l'area in rosso indica il valore di $\var{\mu_y}$ al variare dei
-	dati (in blu) lungo $x$. \label{fig: varmuy}}
+	dati (in nero) lungo $x$. \label{fig: varmuy}}
 \end{figure}
 Nel caso opposto, in cui i dati sono "densi" (in confronto alle $\sigma_x$)
 la seconda somma, per quanto computazionalmente intensiva, numericamente
@@ -557,8 +557,8 @@ La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
 punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
 standard $\sigma_y$ (nel nostro caso è stato scelto $k = 2$, non critico,
 trovato dopo una serie di prove). A differenza del classico metodo basato
-sulla distanza della curva modello di best fit, non siamo influenzati da
-quest’ultimo. Questo risulta particolarmente utile in simili situazioni di
+sulla distanza dalla curva/modello di best fit, per il nostro criterio essa
+è ininfluente. Questo risulta particolarmente utile in simili situazioni di
 verifica del modello in quanto una selezione basata su un preliminare fit
 risulterebbe influenzata dalla scelta della funzione in questione e
 eliminerebbe tutti i dati che non risultano compatibili con essa.
@@ -618,7 +618,7 @@ E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
 tra due set successivi.
 \begin{figure}[!h]
 	\centering 
- 		\includegraphics[scale=0.6]{./comparison.png}
+ 		\includegraphics[scale=0.65]{comparison.png}
  	\caption{Confronto dei grafici delle $\var{\mu_y}$ su due set di
 	dati consecutivi. \label{fig: comparison}}
 \end{figure}
