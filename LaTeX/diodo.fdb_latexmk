@@ -1,5 +1,5 @@
 # Fdb version 3
-["bibtex diodo"] 1583634271 "diodo.aux" "diodo.bbl" "diodo" 1583635453
+["bibtex diodo"] 1583634271 "diodo.aux" "diodo.bbl" "diodo" 1583635656
   "./IEEEtrandoi.bst" 1577387200 60815 f4ed9ef17005d390213cd57d581f7b76 ""
   "diodo.aux" 1583635453 9296 362904d0802690997fc1342773d37211 ""
   "diodo.bcf" 0 -1 0 ""
@@ -7,7 +7,7 @@
   (generated)
   "diodo.blg"
   "diodo.bbl"
-["pdflatex"] 1583635451 "diodo.tex" "diodo.pdf" "diodo" 1583635453
+["pdflatex"] 1583635451 "diodo.tex" "diodo.pdf" "diodo" 1583635656
   "/etc/texmf/web2c/texmf.cnf" 1582144663 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -356,7 +356,7 @@
   "diodo.aux" 1583635453 9296 362904d0802690997fc1342773d37211 ""
   "diodo.bbl" 1583634271 1283 50fcbbfdc0fd6792b059a6839f7f2623 "bibtex diodo"
   "diodo.out" 1583635453 900 8accc35ef572ad4f582c5b273f492db6 ""
-  "diodo.tex" 1583635449 37481 358290e30fd24317d1941110c3db0e8f ""
+  "diodo.tex" 1583635655 37481 358290e30fd24317d1941110c3db0e8f ""
   "figs/./comparison.png" 1583635186 67108 7d651e55273b85f12284828b269665de ""
   "figs/./confronto_curve.png" 1583343164 63018 e782cf1c6fa9ce58c8f30760527af067 ""
   "figs/./filtered.png" 1583613767 122950 22140471d52386e83afe42c00f230c7c ""
@@ -373,8 +373,8 @@
   "figs/vter.png" 1583613767 53549 a0acef9ba4c32943d92decebde5bb316 ""
   "math.tex" 1582684313 7191 a853447727d6b7aafb91474511f2409a ""
   (generated)
-  "diodo.auxlock"
   "diodo.aux"
-  "diodo.log"
-  "diodo.out"
+  "diodo.auxlock"
   "diodo.pdf"
+  "diodo.out"
+  "diodo.log"
