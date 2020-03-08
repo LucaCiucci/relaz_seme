@@ -305,7 +305,7 @@ natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app:
 A}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
 $\sigma_x$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
-Successivamente, è stato effettuato un fit dei minimi quadra. 
+Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
 Dunque avremo potuto pensare di adottare la legge \eqref{eq: model} 
 direttamente. Tuttavia ciò comporterebbe il fallimento del fit a causa dei 
 valori negativi o nulli che si riscontrerebbero nell'argomento del logaritmo. 
@@ -463,7 +463,7 @@ Allora, posto:
 	e^{-\frac{1}{2}{\frac{(\mu_y - y_i)^2}{\sigma_{y_i}^2}}}
 .\] 
 Per il principio di massima verosimiglianza siamo quindi interessati a
-massimizzare la grandezza:
+massimizzare la quantità:% è una roba matematica, non è fisica
 \[
 	\like = \prod_{i=1}^{n} \prod_{j=1}^{N_i} G_{y_i} = 
 	\prod_{i=1}^{n} G_{y_i}^{N_i}
