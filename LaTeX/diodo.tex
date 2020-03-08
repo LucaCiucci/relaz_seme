@@ -83,7 +83,7 @@ attraverso il diodo, all'aumentare della tensione ai suoi capi.
 Per poter modellare la componente -ohmica- di un diodo
 percorso da correnti alte si propone un modello semplice di resistenza
 parassita in serie, in grado di descriverne gli effetti, verificandone 
-sperimentalmente la validità.
+sperimentalmente l'accordo.
 
 %================================================================
 %                         Cenni teorici
@@ -207,7 +207,7 @@ Variando la resistenza e, conseguentemente, la differenza di potenziale in
 ingresso, è stato possibile calcolare media, deviazione standard sul 
 campione e deviazione standard dalla media relative a ciascuna tensione per 
 un gruppo di 10000 misure effettuate con \verb+Teensy+ (vedi 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino }{relativo sketch}).
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo sketch}).
 Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un
 multimetro digitale, così da avere il rispettivo valore in Volt per ciascuna
 tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli
@@ -263,7 +263,7 @@ specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall’andamento li
 può essere quantificato col $7 \%$ della lettura in digit.\newline
 Per maggiori informazioni riguardo alle stime delle incertezze nelle 
 conversioni si rimanda direttamente al 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py }
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}
 {relativo script}.
 
 %================================
@@ -272,7 +272,7 @@ conversioni si rimanda direttamente al
 \subsection{Acquisizione dati}
 Per ciascun valore scelto della resistenza $R1$ è stata eseguita una presa 
 dati automatizzata secondo una 
-\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino }
+\href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}
 {routine} programmata in \verb+Teensy+: il condensatore viene caricato
 ad una tensione prefissata; una volta raggiunto il valore prestabilito
 viene inviato il segnale su $T1$, si avvia l'acquisizione sincronizzata
@@ -297,7 +297,7 @@ nelle opportune coppie corrente-tensione relative al diodo. Dunque i dati sono
 stati convertiti in tensione secondo le calibrazioni dei relativi canali (
 \verb+ADC0+ e \verb+ADC1+). Tale operazione è stata effettuata considerando
 opportunamente gli errori come descritto nel paragrafo \ref{sec: cal}.
-Successivamente, le tensioni relative ai capi della resistenza $R$ hanno
+Successivamente, le tensioni relative ai capi della resistenza $R1$ hanno
 permesso di stimare la rispettiva corrente di lavoro attraverso la legge di Ohm. 
 Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
 dei punti meno significativi, assumendoli quali variabili indipendenti e di 
@@ -305,7 +305,7 @@ natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app:
 A}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
 $\sigma_x$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
-Successivamente, è stato effettuato un fit dei minimi quadra. 
+Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
 Dunque avremo potuto pensare di adottare la legge \eqref{eq: model} 
 direttamente. Tuttavia ciò comporterebbe il fallimento del fit a causa dei 
 valori negativi o nulli che si riscontrerebbero nell'argomento del logaritmo. 
@@ -353,7 +353,7 @@ I parametri stimati dal fit risultano essere:
 \end{figure}
 
 Per gli script si rimanda alla 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit }
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}
 {cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+
 definisce i parametri fondamentali.
 
@@ -463,7 +463,7 @@ Allora, posto:
 	e^{-\frac{1}{2}{\frac{(\mu_y - y_i)^2}{\sigma_{y_i}^2}}}
 .\] 
 Per il principio di massima verosimiglianza siamo quindi interessati a
-massimizzare la grandezza:
+massimizzare la quantità:% è una roba matematica, non è fisica
 \[
 	\like = \prod_{i=1}^{n} \prod_{j=1}^{N_i} G_{y_i} = 
 	\prod_{i=1}^{n} G_{y_i}^{N_i}
@@ -593,7 +593,7 @@ L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
 della memoria per evitare bolle di allocazione. Dunque è stato implementato
 in \verb'C++' per praticità e richiamato all’interno degli script (per dettagli si 
 rimanda ai 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src }{sorgenti}).
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}).
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 (in nero) ed i dati scartati (in arancio). 
 
