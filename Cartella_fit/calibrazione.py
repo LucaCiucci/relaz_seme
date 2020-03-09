@@ -35,7 +35,7 @@ if tex:
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
 
-if not(grafici_calibrazione):
+if (grafici_calibrazione):
     plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
     
 
@@ -155,8 +155,9 @@ x = t
 dx = dt
 
 print("\n GRAFICO ADC1:")
-fig1 = plt.figure(1)
+
 if(grafici_calibrazione):
+    fig1 = plt.figure(1)
     gridsize = (3, 1)
     g1 = plt.subplot2grid(gridsize,(0,0), colspan = 1, rowspan = 2)
     g2 = plt.subplot2grid(gridsize,(2,0), colspan = 2, sharex=g1)
