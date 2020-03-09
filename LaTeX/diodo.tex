@@ -60,13 +60,12 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 %================================================================
 %\begin{mdframed}
 %\textbf{Riassunto:} --- Studiamo il comportamento di diodi in silicio PN,
-%esplorando la propria curva caratteristica $V - I$ al di fuori dei regimi di
-%lavoro ordinari, tramite campionamenti digitali dei segnali ai capi del
-%componente. Discutiamo la presenza di una componente resistiva del diodo e ne
+%esplorando un'ampia regione della propria curva caratteristica $V - I$,
+%tramite campionamenti digitali dei segnali ai capi del componente.
+%Discutiamo la presenza di una componente resistiva di un diodo reale e ne
 %misuriamo l'entità, al fine di arrivare ad un modello teorico in grado
-%giustificare eventuali deviazioni dal modello di Shockley, verso una risposta
-%-ohmica- dovuta alla resistenza della giunzione PN al passaggio di 
-%correnti.\\\\
+%giustificare eventuali deviazioni dalla legge di Shockley, verso una risposta
+%-ohmica- dovuta alla limitata conducibilità della giunzione PN.\\\\
 %PACS 01.40.-d – Education.\\
 %PACS 01.50.Pa – Laboratory experiments and apparatus.
 %\end{mdframed}
@@ -78,48 +77,49 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 \section{Introduzione}
 L'alta resistività intrinseca al silicio, di cui è composta la giunzione
 bipolare, comporta la presenza di una sua componente resistiva: questa 
-risulta sempre meno trascurabile agli effetti del passaggio di corrente
-attraverso il diodo, all'aumentare della tensione ai suoi capi.
-Per poter modellare la componente -ohmica- di un diodo
-percorso da correnti alte si propone un modello semplice di resistenza
-parassita in serie, in grado di descriverne gli effetti, verificandone 
-sperimentalmente l'accordo.
+risulta sempre meno trascurabile, all'aumentare della tensione ai suoi capi,
+agli effetti del passaggio di corrente attraverso il diodo.
+Per poter descrivere questa componente per un diodo percorso da correnti
+-alte- si propone un modello semplice, di resistenza parassita in serie,
+in grado di descriverne gli effetti, verificandone l'accordo con i dati
+sperimentali su un'ampia regione di punti di lavoro.
 
 %================================================================
 %                         Cenni teorici
 %================================================================
 \section{Cenni Teorici}
-Secondo le ipotesi, un diodo reale può essere schematizzato quale un resistore 
-ohmico ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che 
-attraversa tali elementi sia la medesima:
+Secondo le nostre ipotesi, un diodo reale può essere schematizzato come un
+resistore ohmico\footnote{Vista la simmetria della giunzione propriamente
+si considerano due resistori -equivalenti-, disposti ai lati del diodo ideale}
+ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che
+attraversa questi elementi del circuito sia la stessa:
 \begin{equation}
 	I = \frac{\Delta V_{\text{resistore}}}{R} =
 	I_0 \left( e^{\frac{\Delta V_{\text{diodo}}}{\eta V_t}} - 1\right)
 \end{equation}
-Dunque la relazione che lega la corrente e la tensione ai capi del diodo può 
+Dunque la relazione che lega la corrente alla tensione ai capi del diodo può 
 essere espressa secondo la legge:
 \begin{equation}\label{eq: model}
-	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} = \eta 
-V_T \ln{\left(\frac{
-	I+I_0}{I_0}\right)} + RI
+	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} =
+	\eta V_T \ln{\left(\frac{I+I_0}{I_0}\right)} + RI
 \end{equation}
-\begin{figure}[!htbp]
+\begin{figure}[!h]
 	\centering 
- 		\includegraphics[scale=0.25]{./confronto_curve.png}
+ 		\includegraphics[scale=0.24]{confronto_curve.png}
  	\caption{confronto degli andamenti: la curva di Shockley (in rosso) e la 
-legge \eqref{eq: model} (in viola)}
+	legge \eqref{eq: model} (in viola)}
 \end{figure}
 
 %================================================================
 %                Metodo e apparato sperimentale
 %================================================================
 \section{Metodo e apparato sperimentale}
-Il circuito sotto studio lavora con correnti relativamente alte. Onde evitare 
-sostanziali aumenti di temperatura nei componenti ed eventuali danni agli 
-stessi si imprimono correnti impulsate.
-La durata degli impulsi è inferiore ai 200 $\mu$s, che 
-corrisponde ad un'energia impressa inferiore a 1 mJ (dunque ad un aumento della 
-temperatura del semiconduttore inferiore a 0.5 K).
+Onde evitare sostanziali aumenti di temperatura e le conseguenti variazioni di
+resistenza nei componenti (oltre ad eventuali danni a questi stessi) si
+imprimono correnti impulsate sul circuito.
+La durata degli impulsi è inferiore ai 200 $\mu$s, che corrisponde ad
+un'energia impressa inferiore a 1 mJ (dunque ad un aumento della temperatura
+del semiconduttore inferiore a 0.5 K).
 %Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
 %al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
 %all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
@@ -130,11 +130,16 @@ temperatura del semiconduttore inferiore a 0.5 K).
 %================================
 \subsection{Apparato}
 L'apparato sperimentale è costituito da un circuito, realizzato su basetta 
-sperimentale, il cui scopo è generare correnti impulsate attraverso il diodo 
-$D1$ e la resistenza $R1$. La misura della differenza di potenziale ai capi di 
-quest'ultima permette la stima della corrente che attraversa il diodo. Per
-poter esplorare una larga banda di punti di lavoro del diodo, si è variata
-opportunamente la resistenza in serie al diodo, scegliendo tra le seguenti:
+sperimentale (\emph{breadboard}), il cui scopo è generare le correnti
+impulsate appena descritte attraverso il diodo $D1$ e la resistenza $R1$.
+La misura della differenza di potenziale agli estremi della $R_1$ permette
+di misurare indirettamente la corrente che circola sul diodo.
+% Per poter esplorare una larga banda di punti di lavoro del diodo,
+Per poter esplorare una larga banda di correnti di lavoro
+% Forse meglio una larga fascia di correnti, visto che il compito della
+% resistenza è proprio quello di limitare la corrente sul diodo?
+si è variata opportunamente la resistenza in serie al diodo, scegliendo tra
+le seguenti:
 \begin{table}[H]% la tabella deve stare per forza sotto "seguenti:"
     \begin{center}
 	\begin{tabular}{lll}
@@ -142,32 +147,36 @@ opportunamente la resistenza in serie al diodo, scegliendo tra le seguenti:
 	    $R1$ nom. [$\Omega$] & $R1$ mult. [$\Omega$] \\ 
 	    \midrule
 	    \midrule
-	    $0.22 \pm 3 \% $         & $0.226 \pm 0.008$ \\
-	    $2.2 \pm 5 \% $          & $2.212 \pm 0.008$ \\
-	    $22 \pm 5 \% $           & $21.86 \pm 0.010$ \\ 
-	    $220 \pm 5 \% $          & $216.22 \pm 0.07$ \\
-	    $2.2 k \pm 5 \% $        & $2202.1 \pm 0.4$ \\
-	    $22 k \pm 5 \% $         & ($21.7 \pm 0.3)10^3$ \\
-	    $0.22 M \pm 5 \% $        & ($217 \pm 3)10^3$ \\
+	    $0.22 \pm 3 \% $         	& $0.226 \pm 0.008$ \\
+	    $2.2 \pm 5 \% $          	& $2.212 \pm 0.008$ \\
+	    $22 \pm 5 \% $           	& $21.86 \pm 0.010$ \\ 
+		$220 \pm 5 \% $          	& $216.22 \pm 0.07$ \\
+	    $2.2\; \rm k \pm 5 \% $       & $2202.1 \pm 0.4$ \\
+	    $22\; \rm k \pm 5 \% $       & ($21.7 \pm 0.3)10^3$ \\
+	    $0.22\; \rm M \pm 5 \% $      & ($217 \pm 3)10^3$ \\
 	    \bottomrule
 	\end{tabular}
 	\caption{I valori delle resistenze poste in serie al diodo, riportate in
-		valore nominale e misurate con multimetri digitali. \label{tab:res}}
+		valore nominale e misurate con multimetro digitale a $6\; \frac{1}{2}$
+		cifre con il metodo dei 4-fili . \label{tab:res}}
     \end{center}
 \end{table}
-Nel circuito può essere individuata una parte che si occupa della carica e 
-scarica controllata del condensatore $C1$, il cui scopo è quello di fornire 
-una tensione che possa essere facilmente regolata e sufficientemente stabile 
-durante un impulso. Un'altra parte del circuito si occupa di collegare a 
-comando il condensatore alla serie $R1-D1$ attraverso un MOS-FET.\\
-Il circuito è alimentato da 2 tensioni fornite da un alimentatore stabilizzato 
-switching e da un Buck Boost Converter. Un segnale fornito su $T2$ provoca la 
-carica del condensatore mentre su $T3$ la sua scarica. Un segnale (invertito) 
-su $T1$ innesca l'impulso di corrente sul diodo.\\
+D'altra parte, per fornire una tensione regolabile e sufficientemente stabile
+durante un impulso, nel circuito si impiega il condensatore $C1$, la cui
+tensione, carica e scarica sono controllate dalla maglia destra del circuito.
+Nel circuito si distingue inoltre la maglia che si occupa di collegare, sotto
+istruzione di un microcontrollore, il condensatore alla serie $R1-D1$
+attraverso un MOS-FET.\\
+Il circuito è alimentato da 2 tensioni continue, fornite da un alimentatore
+stabilizzato switching e da un Buck Boost Converter, alle maglie di
+"carica/scarica" e di "switch" rispettivamente.
+Un segnale fornito su $T2$ provoca la carica del condensatore mentre su $T3$
+la sua scarica. Un segnale (invertito) su $T1$ innesca l'impulso di corrente
+sul diodo.\\
 La tensione di C$1$ è misurata attraverso un partitore di tensione collegato 
-ad \verb+OUT3+ ed alla scheda di controllo, mentre la tensione ai punti
-\verb+OUT1+ e \verb+OUT2+ è letta direttamente.\\
-Come MCU per la gestione dell'apparato è stata scelta la scheda 
+ad \verb+OUT3+ ed alla scheda di controllo, mentre la d.d.p. tra i punti
+\verb+OUT1+ e \verb+OUT2+ è misurata direttamente.\\
+Come MCU per la gestione dell'apparato si è scelta la scheda 
 \verb+Teensy 3.2+\cite{teensy}. Questa si occupa del controllo dei segnali e 
 delle letture analogiche. In particolare \verb+Teensy+ permette la lettura
 analogica sincronizzata differenziale veloce, essendo dotato di due ADC,
@@ -194,8 +203,8 @@ e della resistenza.
 \subsection{Calibrazione}\label{sec: cal}
 
 La calibrazione dei canali \verb+ADC0+ e \verb+ADC1+ è stata effettuata
-sulla base della lettura differenziale rispettivamente fra i pin \verb+A10+
-e \verb+A11+ e fra \verb+A12+ e \verb+A13+. E’ stata calibrata la lettura
+basandosi sulle letture differenziali, rispettivamente fra i pin \verb+A10+
+e \verb+A11+; fra \verb+A12+ e \verb+A13+. E’ stata calibrata la lettura
 di ciascuna delle due coppie separatamente.
 
 I pin volti alla lettura della tensione maggiore sono stati collegati al 
@@ -204,26 +213,27 @@ potenziale con tensione in ingresso pari a 3.3V . Gli altri due pin sono stati
 invece collegati a massa.
 
 Variando la resistenza e, conseguentemente, la differenza di potenziale in 
-ingresso, è stato possibile calcolare media, deviazione standard sul 
-campione e deviazione standard dalla media relative a ciascuna tensione per 
-un gruppo di 10000 misure effettuate con \verb+Teensy+ (vedi 
+ingresso, è stato possibile calcolare media, deviazione standard campione
+e deviazione standard della media relative a ciascuna tensione per 
+un gruppo di 10000 misure effettuate con \verb+Teensy+ (si veda il 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo sketch}).
 Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un
-multimetro digitale, così da avere il rispettivo valore in Volt per ciascuna
-tensione valutata in unità arbitrarie. Sono stati, quindi, associati degli
-errori a queste ultime misure tenendo presente le specifiche del multimetro.
+multimetro digitale, in modo da poter associare la tensione misurata in
+Volt alla corrispondente lettura digitalizzata dal MCU. Abbiamo assunto come
+incertezze sulle misure i valori dichiarati nelle specifiche del multimetro,
+mentre come errori sulle letture digitali abbiamo preso le deviazioni standard
+dalla media.
 
 Dopodiché le misure relative a ciascuna coppia di boccole sono state poste 
 all’interno di un grafico con i dati raccolti da \verb+Teensy+ sulle ascisse
-e i valori misurati col multimetro in ordinate. Dunque è stato effettuato un
+e i valori misurati col multimetro sulle ordinate. Dunque si è effettuato un
 fit lineare attraverso la legge:
 \begin{equation}
 y(x; m, q)  = m x + q
 \end{equation}
 
-ove $m$ e $q$ sono i parametri liberi. Come errori associati alle letture
-digitali sono state utilizzate le deviazioni standard dalla media. I fit
-relativi ad \verb+ADC0+ ed \verb+ADC1+ hanno conseguito i seguenti risultati:
+lasciando liberi entrambi i parametri $m$ e $q$. Riportiamo sotto i parametri
+di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
 \begin{align*}
 	&\qquad \texttt{ADC0}	&&\qquad  \texttt{ADC1} \\
 	m_0 &= 0.7968 \pm  0.0033  \; \mathrm{mV/digit} 
@@ -255,12 +265,12 @@ relativi ad \verb+ADC0+ ed \verb+ADC1+ hanno conseguito i seguenti risultati:
 \end{subfigure}
 \end{figure}
 
-I coefficienti così riscontrati ci permetteranno di fornire una buona stima 
-dei valori centrali relativi alla misura in volt delle letture analogiche 
+I coefficienti così ricavati ci permetteranno di fornire una buona stima 
+dei valori centrali relativi alla misura in Volt delle letture analogiche 
 (digit). Il $\chi^2$ risulta essere sovrastimato in quanto il MCU non ci 
 fornisce una risposta perfettamente lineare ai segnali in ingresso. Dalle 
-specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall’andamento lineare 
-può essere quantificato col $7 \%$ della lettura in digit.\newline
+specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall'andamento
+lineare può essere quantificato col $7 \%$ della lettura in digit.\\
 Per maggiori informazioni riguardo alle stime delle incertezze nelle 
 conversioni si rimanda direttamente al 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}
@@ -270,18 +280,18 @@ conversioni si rimanda direttamente al
 %       Acquisizione dati
 %================================
 \subsection{Acquisizione dati}
-Per ciascun valore scelto della resistenza $R1$ è stata eseguita una presa 
-dati automatizzata secondo una 
+Per ciascun valore scelto della resistenza $R1$ si è acquisita una presa 
+dati automatizzata tramite una 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}
 {routine} programmata in \verb+Teensy+: il condensatore viene caricato
-ad una tensione prefissata; una volta raggiunto il valore prestabilito
-viene inviato il segnale su $T1$, si avvia l'acquisizione sincronizzata
+ad una tensione fissata arbitrariamente; quando il MCU misura questo valore
+prestabilito, invia il segnale su $T1$ che avvia l'acquisizione sincronizzata
 e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in
 conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile ritardo
-tra segnale e impulso) e scartare eventuali segnali spuri; a questo punto
+tra segnale e impulso) e di scartare eventuali segnali spuri. A questo punto
 si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate-
-(a meno di sfasamenti nell'ordine delle centinaia di nanosecondi); si ferma
-l'impulso e si trasmettono i dati al computer; se la tensione al punto
+(a meno di sfasamenti nell'ordine delle centinaia di nanosecondi), si ferma
+l'impulso e si trasmettono i dati al computer. Se la tensione al punto
 \verb+OUT2+ ha raggiunto valori maggiori di 3.3V l'acquisizione si ferma
 per non danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il
 condensatore ad una tensione più alta.
@@ -290,62 +300,77 @@ condensatore ad una tensione più alta.
 %                   Analisi dati e Risultati
 %================================================================
 \section{Analisi dati e Risultati}
-L’intento della presente analisi è quello di verificare che i dati raccolti 
-siano in accordo con la legge \eqref{eq: model}. A tale riguardo, come 
-operazione preliminare è stato necessario convertire le letture analogiche 
-nelle opportune coppie corrente-tensione relative al diodo. Dunque i dati sono 
-stati convertiti in tensione secondo le calibrazioni dei relativi canali (
-\verb+ADC0+ e \verb+ADC1+). Tale operazione è stata effettuata considerando
-opportunamente gli errori come descritto nel paragrafo \ref{sec: cal}.
-Successivamente, le tensioni relative ai capi della resistenza $R1$ hanno
-permesso di stimare la rispettiva corrente di lavoro attraverso la legge di Ohm. 
+%L’intento della presente analisi è quello di verificare che i dati raccolti 
+%siano in accordo con la legge \eqref{eq: model}.
+% Forse è un po' forte già dire che l'intento è verificare, ancora non si sa
+Per poter condurre un'analisi sui dati raccolti è stato innanzitutto
+necessario convertire le letture digitalizzate nelle corrispondenti
+grandezze fisiche, le coppie tensione-corrente relative al diodo.
+Inizialmente si sono convertite le acquisizioni e le incertezze associate in
+d.d.p. tramite i fattori di conversione per entrambi gli ADC,
+determinati come descritto nel paragrafo \ref{sec: cal}.
+Dunque, dalla caduta di tensione ai capi della resistenza $R1$ possiamo
+determinare la corrente di lavoro del diodo grazie alla legge di Ohm. 
 Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
 dei punti meno significativi, assumendoli quali variabili indipendenti e di 
 natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app: 
 A}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
-$\sigma_x$ rappresenta la varianza delle letture e non le incertezze ad esse
+$\sigma_x^2$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
+
 Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
-Dunque avremo potuto pensare di adottare la legge \eqref{eq: model} 
-direttamente. Tuttavia ciò comporterebbe il fallimento del fit a causa dei 
-valori negativi o nulli che si riscontrerebbero nell'argomento del logaritmo. 
-\`E stata quindi utilizzata la funzione inversa come modello di fit, la quale 
-è stata ricavata numericamente secondo il metodo delle tangenti (o di Newton). 
+% non basta fit ai minimi quadrati ordinario?
+Per il procedimento si potrebbe pensare di adottare come modello la legge
+\eqref{eq: model} direttamente, tuttavia ciò comporterebbe il fallimento del
+fit a causa dei valori negativi o nulli che può assumere l'argomento del
+logaritmo. Si è scelto quindi di utilizzare la funzione inversa come modello
+per il fit, la quale è stata implementata numericamente secondo il metodo
+delle tangenti (o di Newton).
 Per una trattazione approfondita, si rimanda all'\nameref{app: B}.
 
-Da un controllo visivo dei dati si osserva che nei punti raccolti con la
-resistenza da 220k è presente del rumore molto maggiore delle incertezze sulle
-misure. Questo è probabilmente dovuto all'influenza del circuito di lettura
-stesso sulle piccole correnti in gioco. Non potendo dunque attribuire degli
-errori significativi per questa serie, tali dati non sono stati utilizzati
-nella procedura di fit eseguita successivamente in quanto avrebbero avuto un
-peso sovrastimato in confronto agli altri dati, influenzando così i risultati
-finali.
+Risulta evidente, osservando i punti campionati con la resistenza da
+$R1 = 220$ k$\Omega$, la presenza di un rumore di natura non statistica
+molto maggiore delle incertezze sulle misure. 
+Questo si deve probabilmente all'influenza del circuito di lettura
+stesso sulle piccole correnti in gioco, che avevamo supposto trascurabile
+nel nostro modello. Non potendo dunque attribuire degli errori significativi
+per questa presa dati, essa non è stata considerata nella procedura di
+fit eseguita successivamente, in quanto i relativi punti avrebbero avuto un
+peso sovrastimato in confronto agli altri, introducendo così un bias
+nei risultati finali.
  
-I dati raccolti con sovrapposta la funzione di fit sono stati posti all'interno 
-del grafico \ref{fig: sck_lin}.
-I parametri stimati dal fit risultano essere:
-
+Si riportano i valori ottimali dei parametri stimati dal fit e le relative
+covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
 \begin{align*}
-	R_{\text{diodo}} &= 46.1118 \pm 0.0072 \; \rm m\Omega \\
-	\eta V_T &= 47.5786 \pm 0.0033 \; \rm mV \\
-	I_0 &= 4.5180 \pm 0.0043 \; \rm nA \\
-	\text{offset} &=\; - 2.2043\pm 0.0073 \;  \mu A\\
+	R_{\text{diodo}} &= 46.1118 \pm 0.007\underline{2} \; \rm m\Omega \\
+	\eta V_T &= 47.5786 \pm 0.003\underline{3} \; \rm mV \\
+	I_0 &= 4.5180 \pm 0.004\underline{3} \; \rm nA \\
+	\text{offset} &=\; - 2.2043\pm 0.007\underline{3} \;  \mu A\\
+	\sigma_{I_0, \eta V_T} &= 0.97 \\
+	\sigma_{I_0, R_d} &= -0.62 \\
+	\sigma_{I_0, \text{ofst}} &= -0.49 \\
+	\sigma_{\eta V_T, R_d} &= -0.70 \\
+	\sigma_{\eta V_T, \text{ofst}} &= -0.43 \\
+	\sigma_{R_d, \text{ofst}} &= 0.22 \\
 	\chi^2/\text{ndof} &= 72207/251066 \\
 	\text{abs\_sigma} &= \rm False
 \end{align*}
 
+Infine si mostrano i dati acquisiti con sovrapposta la funzione di best-fit
+nei grafici in scala lineare \ref{fig: sck_lin} e semilogaritmica 
+\ref{fig: sck_log}
+
 \begin{figure}[!h]% questi due grafici sono più problematici, potrebbe tornare utile usare vspace negativo e ritagliare le figure manualmente se necessario
 	\centering 
 		\includegraphics[scale=0.7]{100skip_linear}
-	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model}. E' 
+	\caption{Dati acquisiti e funzione di best-fit \eqref{eq: model}. E' 
 	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
 	\label{fig: sck_lin}}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!ht]
 	\centering 
-		\includegraphics[scale=0.7]{10skip_semilog}
+		\includegraphics[scale=0.70]{10skip_semilog}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
 	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
@@ -357,43 +382,51 @@ Per gli script si rimanda alla
 {cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+
 definisce i parametri fondamentali.
 
+% Baldini e Fuso dicono sempre di specificare come si è implementato
+% il procedimento di fit (numerico/analitico,... con che algoritmo?
+% Levenberg-Marquardt, etc). Una volta avevo scritto una bozza su curve_fit e
+% Scipy, ma credo sia stata eliminata. O qua o in Appendice B forse dovremmo
+% almeno menzionarlo da qualche parte.
+
 %================================================================
 %                          Conclusioni
 %================================================================
 \section{Conclusioni}
-Sulla base dell'analisi previamente effettuata, possiamo osservare che il
-$\chi^2$ risulta essere minore rispetto al suo valore atteso. Ciò \`e
-parzialmente dovuto alla correlazione degli errori inerenti i dati rilevati
-all'interno dei due canali d'ingresso. In aggiunta, come si evince anche dalla
-zona di maggior concentrazione dei residui all'interno dell'omonimo grafico,
+Per prima cosa osserviamo dall'analisi appena effettuata, che il
+$\chi^2$ risulta minore rispetto al suo valore atteso. Ciò \`e
+parzialmente dovuto alla correlazione degli errori sulle misure eseguite
+dai due canali d'ingresso. In aggiunta, come si può notare dalla
+zona di maggior concentrazione dei punti nel grafico dei residui,
 il convertitore analogico-digitale del MCU \`e caratterizzato da una funzione
-di risposta non lineare. Tale fattore era stato tenuto in considerazione
+di risposta non lineare. Questo fattore era stato tenuto in considerazione
 all'interno della calibrazione delle porte \verb+ADC0+ e \verb+ADC1+ mediante
 l'aggiunta in quadratura di un errore di natura non statistica a quelli stimati
-attraverso il fit lineare. Tale operazione avrebbe portato, quindi, ad
+attraverso il fit lineare. Tale operazione ha portato, quindi, ad
 un'ulteriore diminuzione del $\chi^2$ all'interno del fit finale.
 Ulteriori osservazioni possono essere condotte riguardo alle evidenti analogie
-di carattere qualitativo fra la zona di maggior concentrazione dei punti e la
-funzione di best fit.
-In primo luogo, all'interno del grafico in scala lineare, a correnti alte
+di carattere qualitativo fra la zona di maggior concentrazione dei
+campionamenti e la funzione di best fit.
+In primo luogo: all'interno del grafico in scala lineare, a correnti alte,
 i punti risultano essere disposti pressoch\`e linearmente, in accordo con
-l'ipotesi sulla componente resistiva interna. Nel grafico in scala
-semilogaritmica, inoltre, i dati risultano possedere un andamento simile a
-quello caratteristico della curva di Shockley, ovvero approssimativamente
-rettilineo per poi appiattirsi come un logaritmo al crescere della tensione.
-Dunque, possiamo asserire che l'andamento dei dati sperimentali risulta essere
-in buon accordo con la legge \eqref{eq: model}.
+l'ipotesi di una componente resistiva interna al diodo. Analogamente, nel
+grafico in scala semilogaritmica, i dati assumono un andamento simile a quello
+caratteristico della curva di Shockley, ovvero approssimativamente
+rettilineo, per poi appiattirsi come un logaritmo al crescere della tensione.
+Dunque, possiamo concludere che il fit con il modello \eqref{eq: model} è un
+buon fit e, entro i limiti sperimentali, questo risulta in buon accordo con
+il comportamento di un diodo reale, per cui non abbiamo motivo di rigettarlo.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi 
 e che la modellizzazione proposta sia una buona approssimazione del diodo reale 
-nelle condizioni di lavoro considerate. La modellizzazione proposta può
-risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
-impulsati su alte correnti, dove sia richiesto un dettaglio sulle cadute di
-tensione sui singoli componenti. Per tale scopo la legge \eqref{eq: model} \`e
-confermata essere una buona approssimazione del diodo reale entro i limiti
-sperimentali. Sebbene questo studio sia stato performato su un unico diodo
-1N4007, il metodo proposto pu\`o essere esteso per qualunque altro tipo di
-diodo, eventualmente sostituendo il condensatore con un opportuno circuito
-stabilizzatore di corrente o di tensione.
+nelle condizioni di lavoro considerate. Questa modellizzazione, fra l'altro, 
+può risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
+impulsati su alte correnti, specialmente ove sia richiesto un dettaglio
+sulle cadute di tensione sui singoli componenti. 
+%Per tale scopo la legge \eqref{eq: model} \`e confermata essere una buona
+%approssimazione del diodo reale entro i limiti sperimentali.
+Sebbene questo studio sia concentrato su un unico diodo 1N4007, il metodo
+proposto pu\`o essere esteso per qualunque altro tipo di diodo, eventualmente
+sostituendo il condensatore con un opportuno circuito stabilizzatore di
+corrente o di tensione.
 
 %================================================================
 %                        Appendice A

@@ -10,17 +10,17 @@ if tex:
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
     
-# 2.2k
-x, my, sy, smy = np.loadtxt("a.txt", unpack=True)
-fig, ax = plt.subplots()
-ax.plot(x, my, color='b', label = r'$\mu_y \; (A)$')
-ax.fill_between(x, my+smy, my-smy, facecolor='b', alpha=0.5,
-                label = r'Var$(\mu_y) \; (A)$')
-
 #0.22k
 x, my, sy, smy = np.loadtxt("b.txt", unpack=True)
-ax.plot(x, my, color='r', label = r'$\mu_y \; (B)$')
+fig, ax = plt.subplots()
+ax.plot(x, my, color='r', label = r'$\mu_y \; (A)$')
 ax.fill_between(x, my+smy, my-smy, facecolor='r', alpha=0.5, 
+                label = r'Var$(\mu_y) \; (A)$')
+
+# 2.2k
+x, my, sy, smy = np.loadtxt("a.txt", unpack=True)
+ax.plot(x, my, color='b', label = r'$\mu_y \; (B)$')
+ax.fill_between(x, my+smy, my-smy, facecolor='b', alpha=0.5,
                 label = r'Var$(\mu_y) \; (B)$')
 
 if log:

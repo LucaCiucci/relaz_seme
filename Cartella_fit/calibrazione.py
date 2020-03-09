@@ -35,7 +35,7 @@ if tex:
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
 
-if(grafici_calibrazione):
+if not(grafici_calibrazione):
     plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
     
 
