@@ -78,13 +78,13 @@ plt.plot(bucket, f_prim(3.)*(bucket - 3.) + f(3.) , c = 'r',
 
 plt.title("Visualizzazione grafica relativa ad una singola iterazione")
 
-plt.errorbar(0., 0., marker = 'o', ls = '', c = 'k',
+plt.errorbar(0., 0., marker = 's', ls = '', c = 'k',
              label = r'$\left( v,\; f(v)\, \right)$')
 
-plt.errorbar(2., 0., marker = 'o', ls = '', c = 'blue',
+plt.errorbar(2., 0., marker = 'x', ls = '', c = 'b',
              label = r'$\left( x[i+1],\; 0\, \right)$')
 
-plt.errorbar(2., f(2.), marker ='o', ls = '', c = 'green',
+plt.errorbar(2., f(2.), marker ='o', ls = '', c = 'g',
              label = r'$\left( x[i+1],\; f(x[i+1])\, \right)$')
 
 retta = []
@@ -131,9 +131,9 @@ plt.ylabel(r"$I$ - corrente dalla serie [A]", size = 11)
 
 plt.errorbar(iteration, abs(l1 - I1), c = 'r', ls = '-', marker = 'o',
              label = 'valori ottenuti dalla serie (1 A)')
-plt.errorbar(iteration, abs(l2 - I2), c = 'k', ls = '-', marker = 'o',
+plt.errorbar(iteration, abs(l2 - I2), c = 'k', ls = '-', marker = 's',
              label = 'valori ottenuti dalla serie (5 A)')
-plt.errorbar(iteration, abs(l3 - I3), c = 'blue', ls = '-', marker = 'o',
+plt.errorbar(iteration, abs(l3 - I3), c = 'b', ls = '-', marker = 'X',
              label = 'valori ottenuti dalla serie (7 A)')
 plt.grid(c = "gray")
 plt.grid(b=True, which='major', c='#666666', ls='--')
@@ -170,9 +170,9 @@ l2, a2 = curr(voltage2)
 l3, a3 = curr(voltage3)
 plt.errorbar(iteration, a1 - variable1, c = 'r', ls = '-', marker = 'o',
              label = 'valori ottenuti dalla serie (5 A)')
-plt.errorbar(iteration, a2 - variable2, c = 'k', ls = '-', marker = 'o',
+plt.errorbar(iteration, a2 - variable2, c = 'k', ls = '-', marker = 's',
              label = 'valori ottenuti dalla serie (1 A)')
-plt.errorbar(iteration, a3 - variable3, c = 'blue', ls = '-', marker = 'o',
+plt.errorbar(iteration, a3 - variable3, c = 'b', ls = '-', marker = 'X',
              label = 'valori ottenuti dalla serie (7 A)')
 b = np.zeros(1000)
 ax=plt.gca()

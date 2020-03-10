@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  10 MAR 2020 01:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  10 MAR 2020 02:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1987,12 +1987,12 @@ Package microtype Info: Character `029' is missing
 <./figs/confronto_curve.png, id=69, 1009.52156pt x 690.32906pt>
 File: ./figs/confronto_curve.png Graphic file (type png)
 <use ./figs/confronto_curve.png>
-Package pdftex.def Info: ./figs/confronto_curve.png  used on input line 108.
-(pdftex.def)             Requested size: 242.29012pt x 165.68236pt.
+Package pdftex.def Info: ./figs/confronto_curve.png  used on input line 109.
+(pdftex.def)             Requested size: 232.18507pt x 158.77234pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figs/confronto_curve.png>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 177.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 178.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -2003,15 +2003,15 @@ Package microtype Info: Loading generic protrusion settings for font family
 <./figs/./measure.png, id=100, 387.69844pt x 221.32687pt>
 File: ./figs/./measure.png Graphic file (type png)
 <use ./figs/./measure.png>
-Package pdftex.def Info: ./figs/./measure.png  used on input line 189.
+Package pdftex.def Info: ./figs/./measure.png  used on input line 190.
 (pdftex.def)             Requested size: 193.84874pt x 110.66315pt.
 <./figs/./gestione.png, id=101, 920.68968pt x 420.82219pt>
 File: ./figs/./gestione.png Graphic file (type png)
 <use ./figs/./gestione.png>
-Package pdftex.def Info: ./figs/./gestione.png  used on input line 196.
+Package pdftex.def Info: ./figs/./gestione.png  used on input line 197.
 (pdftex.def)             Requested size: 460.34372pt x 210.41057pt.
 
-Overfull \hbox (5.09961pt too wide) in paragraph at lines 196--197
+Overfull \hbox (5.09961pt too wide) in paragraph at lines 197--198
  [][] 
  []
 
@@ -2019,20 +2019,20 @@ Overfull \hbox (5.09961pt too wide) in paragraph at lines 196--197
 <./figs/cal0.png, id=113, 462.528pt x 345.4506pt>
 File: ./figs/cal0.png Graphic file (type png)
 <use ./figs/cal0.png>
-Package pdftex.def Info: ./figs/cal0.png  used on input line 262.
+Package pdftex.def Info: ./figs/cal0.png  used on input line 263.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 262--264
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 263--265
  [][] 
  []
 
 <./figs/cal1.png, id=115, 462.528pt x 345.4506pt>
 File: ./figs/cal1.png Graphic file (type png)
 <use ./figs/cal1.png>
-Package pdftex.def Info: ./figs/cal1.png  used on input line 267.
+Package pdftex.def Info: ./figs/cal1.png  used on input line 268.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 267--269
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 268--270
  [][] 
  []
 
@@ -2040,12 +2040,12 @@ Overfull \hbox (3.64137pt too wide) in paragraph at lines 267--269
 <./figs/100skip_linear.png, id=139, 609.9588pt x 482.7636pt>
 File: ./figs/100skip_linear.png Graphic file (type png)
 <use ./figs/100skip_linear.png>
-Package pdftex.def Info: ./figs/100skip_linear.png  used on input line 369.
+Package pdftex.def Info: ./figs/100skip_linear.png  used on input line 370.
 (pdftex.def)             Requested size: 426.96826pt x 337.9322pt.
 <./figs/10skip_semilog.png, id=142, 627.3036pt x 391.7034pt>
 File: ./figs/10skip_semilog.png Graphic file (type png)
 <use ./figs/10skip_semilog.png>
-Package pdftex.def Info: ./figs/10skip_semilog.png  used on input line 377.
+Package pdftex.def Info: ./figs/10skip_semilog.png  used on input line 378.
 (pdftex.def)             Requested size: 439.10953pt x 274.1905pt.
  [5 <./figs/100skip_linear.png>] [6 <./figs/10skip_semilog.png>] [7]
 
@@ -2162,7 +2162,7 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (13 pages, 956916 bytes).
+Output written on diodo.pdf (13 pages, 957048 bytes).
 PDF statistics:
  330 PDF objects out of 1000 (max. 8388607)
  262 compressed objects within 3 object streams

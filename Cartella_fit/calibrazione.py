@@ -120,25 +120,23 @@ print("yvalue = %f +- %f" %(yvalue, dyvalue))
 
 if (grafici_previsione):
     prev0 = plt.figure(2)
+    plt.title("Previsione \\texttt{ADC0}")
     plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
-    plt.plot(bucket, ordinate, c = 'r')
+    plt.plot(bucket, ordinate, c = 'r', lw=1.2)
     plt.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                   pcov[0][1]), c = 'k')
+                                   pcov[0][1]), c = 'k', lw=1.2)
     plt.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                    pcov[0][1]), c = 'k')
-    
-
-    plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
-    plt.plot(bucket, ordinate, c = 'r')
-    plt.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                   pcov[0][1]), c = 'k')
-    plt.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                    pcov[0][1]), c = 'k')
+                                    pcov[0][1]), c = 'k', lw=1.2)
     plt.plot(bucket, leggesumerror_model(bucket, *popt, pcov[0][0],
-                                         pcov[1][1], pcov[0][1]), c='g')
+                                         pcov[1][1], pcov[0][1]), c='g', lw=1.2)
     plt.plot(bucket, leggedifferror_model(bucket, *popt, pcov[0][0],
-                                          pcov[1][1], pcov[0][1]), c='g')
-    
+                                          pcov[1][1], pcov[0][1]), c='g', lw=1.2)
+    plt.grid(color ='gray', ls = '--', alpha = 0.7)
+    plt.xlabel("Letture MCU [digit]", x = 0.85)
+    plt.ylabel("Tensione [V]")
+    plt.minorticks_on()
+    plt.tick_params(direction='in', length=5, width=1., top=True, right=True)
+    plt.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 
 matrixADC0 = pcov
 parADC0 = popt
@@ -234,17 +232,22 @@ print("yvalue = %f +- %f" %(yvalue, dyvalue))
 if (grafici_previsione):
     prev1 = plt.figure(3)
     plt.errorbar(x, y, dy, dx, marker = '.', ls = '')
-    plt.plot(bucket, ordinate, c = 'r')
+    plt.plot(bucket, ordinate, c = 'r', lw=1.2)
     plt.plot(bucket, leggesumerror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                   pcov[0][1]), c = 'k')
+                                   pcov[0][1]), c = 'k', lw=1.2)
     plt.plot(bucket, leggedifferror(bucket, *popt, pcov[0][0], pcov[1][1],
-                                    pcov[0][1]), c = 'k')
+                                    pcov[0][1]), c = 'k', lw=1.2)
     plt.plot(bucket, leggesumerror_model(bucket, *popt, pcov[0][0],
-                                         pcov[1][1], pcov[0][1]), c='g')
+                                         pcov[1][1], pcov[0][1]), c='g', lw=1.2)
     plt.plot(bucket, leggedifferror_model(bucket, *popt, pcov[0][0],
-                                          pcov[1][1], pcov[0][1]), c='g')
-    plt.show()    
-
+                                          pcov[1][1], pcov[0][1]), c='g', lw=1.2)
+    plt.grid(color ='gray', ls = '--', alpha = 0.7)
+    plt.title("Previsione \\texttt{ADC1}")
+    plt.xlabel("Letture MCU [digit]", x = 0.85)
+    plt.ylabel("Tensione [V]")
+    plt.minorticks_on()
+    plt.tick_params(direction='in', length=5, width=1., top=True, right=True)
+    plt.tick_params(which='minor', direction='in', width=1., top=True, right=True)
 
 matrixADC1 = pcov
 parADC1 = popt

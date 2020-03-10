@@ -18,7 +18,7 @@ file2CName = "file2C.txt"
 file2PyName = "file2Py.txt"
 maxRatio = 3.0
 minV = 0.2
-filter_Nskip = 10 #per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
+filter_Nskip = 1 #per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
 outSigma = 2.0 #numero di sigma per eliminare gli outliers
 
 # abilita il disegno dei punti
@@ -34,7 +34,7 @@ offset_fit = True
 plot_errors = True
 
 # alpha per scatterplot (opacità)
-scatterAlpha = 0.02
+scatterAlpha = 0.01
 
 # abilita bande dei dati
 plot_sigma_zone = False
