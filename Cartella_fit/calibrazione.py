@@ -50,6 +50,7 @@ if(grafici_calibrazione):
                 elinewidth=1.5, capsize=2)
 init = [-1., 10.]
 popt, pcov = curve_fit(legge, x, y, init, dy, absolute_sigma = False)
+# DIO BESTIA MA COME CAZZO LE CHIAMATE QUESTE VARIABILI
 a1, a2 = popt
 da1, da2 = np.sqrt(pcov.diagonal())
 print("m = %f +- %f" %(a1, da1))
@@ -63,6 +64,16 @@ for i in range(50):
     da1, da2 = np.sqrt(pcov.diagonal())
 print("m = %.10f +- %.10f" %(a1, da1))
 print("intercetta = %.10f +- %.10f" %(a2, da2))
+
+# Covarianza tra m0 e q0
+corr_m0q0 = pcov[0][1]/(da1*da2)
+corm = np.zeros((2,2))
+for i in range(len(popt)):
+    for j in range (len(popt)):
+        corm[i][j] = pcov[i][j]/pcov[i][i]
+    
+print('Covarianza normalizzata ADC0:', corr_m0q0)
+print('Matrice di correlazione:\n', corm)
 
 bucket = np.linspace(0.01, max(x)+50, 1000)
 ordinate = legge(bucket, *popt)
@@ -176,6 +187,16 @@ for i in range(50):
     da1, da2 = np.sqrt(pcov.diagonal())
 print("m = %.10f +- %.10f" %(a1, da1))
 print("intercetta = %.10f +- %.10f" %(a2, da2))
+
+# Covarianza tra m1 e q1
+corr_m1q1 = pcov[0][1]/(da1*da2)
+corm = np.zeros((2,2))
+for i in range(len(popt)):
+    for j in range(len(popt)):
+        corm[i][j] = pcov[i][j]/pcov[i][i]
+    
+print('Covarianza normalizzata ADC1:', corr_m1q1)
+print('Matrice di correlazione:\n', corm)
 
 bucket = np.linspace(0., max(x)+50, 1000)
 ordinate = legge(bucket, *popt)

@@ -58,36 +58,44 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 %================================================================
 %                            Riassunto
 %================================================================
-%\begin{mdframed}
-%\textbf{Riassunto:} --- Studiamo il comportamento di diodi in silicio PN,
-%esplorando un'ampia regione della propria curva caratteristica $V - I$,
-%tramite campionamenti digitali dei segnali ai capi del componente.
-%Discutiamo la presenza di una componente resistiva di un diodo reale e ne
-%misuriamo l'entità, al fine di arrivare ad un modello teorico in grado
-%giustificare eventuali deviazioni dalla legge di Shockley, verso una risposta
-%-ohmica- dovuta alla limitata conducibilità della giunzione PN.\\\\
-%PACS 01.40.-d – Education.\\
-%PACS 01.50.Pa – Laboratory experiments and apparatus.
-%\end{mdframed}
+\begin{mdframed}
+\textbf{Riassunto:} --- Si è studiato il comportamento di un diodo in silicio
+PN, ricostruendone sperimentalmente la curva caratteristica $V-I$, al fine di
+mettere in risalto la sua natura resistiva. A questo scopo è stata esplorata
+un'ampia zona della curva per alti valori di $I$ $(I\geq I_F)$, dove questa
+caratteristica è maggiormente apprezzabile. Proponiamo dunque un'estensione
+della legge di Shockley, tramite l'aggiunta di un termine resistivo, in grado
+di descrivere la componente -ohmica- della giunzione; il che equivale a
+modellare un diodo reale come un resistore in serie ad un diodo ideale.
+La nuova curva caratteristica prevede un andamento sempre più lineare di $I$
+al crescere di $V$ e questo risulta in accordo con l'andamento dei dati
+sperimentali, possibilmente esagerato dalla non-linearità di risposta
+del sistema di campionamento.
+\\\\
+PACS 01.40.-d – Education.\\
+PACS 01.50.Pa – Laboratory experiments and apparatus.
+\end{mdframed}
 
 
 %================================================================
 %                         Introduzione
 %================================================================
 \section{Introduzione}
-L'alta resistività intrinseca al silicio, di cui è composta la giunzione
-bipolare, comporta la presenza di una sua componente resistiva: questa 
-risulta sempre meno trascurabile, all'aumentare della tensione ai suoi capi,
-agli effetti del passaggio di corrente attraverso il diodo.
-Per poter descrivere questa componente per un diodo percorso da correnti
--alte- si propone un modello semplice, di resistenza parassita in serie,
-in grado di descriverne gli effetti, verificandone l'accordo con i dati
-sperimentali su un'ampia regione di punti di lavoro.
+La limitata conducibilità intrinseca al silicio, di cui è composta la
+giunzione bipolare, comporta la presenza di una sua componente resistiva:
+per effetti termico-dissipativi questa ha un effetto sempre meno
+trascurabile, all'aumentare della tensione ai suoi capi, sul passaggio di
+corrente attraverso il diodo.
+Per poter descrivere la parte resistiva di un diodo percorso da correnti
+di alta intensità\footnote{Nel nostro caso per un diodo 1N4007 la massima
+intensità di corrente continua $I_F = 1.0$ A nominali.} si propone
+un modello semplice, di resistenza parassita in serie, verificandone l'accordo
+con i risultati sperimentali su un'ampia regione di punti di lavoro.
 
 %================================================================
 %                         Cenni teorici
 %================================================================
-\section{Cenni Teorici}
+\subsection{Cenni Teorici}
 Secondo le nostre ipotesi, un diodo reale può essere schematizzato come un
 resistore ohmico\footnote{Vista la simmetria della giunzione, propriamente
 si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
@@ -104,9 +112,9 @@ essere espressa secondo la legge:
 	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} =
 	\eta V_T \ln{\left(\frac{I+I_0}{I_0}\right)} + RI
 \end{equation}
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering 
- 		\includegraphics[scale=0.23]{confronto_curve.png}
+ 		\includegraphics[scale=0.25]{confronto_curve.png}
  	\caption{confronto degli andamenti: la curva di Shockley (in rosso) e la 
 	legge \eqref{eq: model} (in viola)}
 \end{figure}
@@ -245,13 +253,13 @@ di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
 	& m_1  &= 0.7954 \pm 0.0026  \; \mathrm{mV/digit} \\
 	q_0 &= - 0.18 \pm 0.34  \; \mathrm{mV} 	
 	&q_1 &= 3.84  \pm 0.26  \; \mathrm{mV} \\
-	\var{m_0}  &= 1.1 \cdot 10^{-11}  \; \mathrm{V}^2 /\mathrm{digit}^2
-	&\var{m_1} &= 7.0 \cdot 10^{-12}  \; \mathrm{V}^2 /\mathrm{digit}^2 \\
-	\var{q_0} &=1.2 \cdot 10^{-7} \; \mathrm{V}^2
-	&\var{q_1} &= 6.8 \cdot 10^{-8} \; \mathrm{V}^2 \\
-	\cov{m_0} {q_0} &= - 1.6 \cdot 10^{-10} \; \mathrm{V}^2 /\mathrm{digit}
-        &\cov{m_1}{q_1} &= - 6.1 \cdot 10^{-11} \;
-	\mathrm{V}^2 /\mathrm{digit} \\
+	%\var{m_0}  &= 1.1 \cdot 10^{-11}  \; \mathrm{V}^2 /\mathrm{digit}^2
+	%&\var{m_1} &= 7.0 \cdot 10^{-12}  \; \mathrm{V}^2 /\mathrm{digit}^2 \\
+	%\var{q_0} &=1.2 \cdot 10^{-7} \; \mathrm{V}^2
+	%&\var{q_1} &= 6.8 \cdot 10^{-8} \; \mathrm{V}^2 \\
+	%\cov{m_0} {q_0} &= - 1.6 \cdot 10^{-10} \; \mathrm{V}^2 /\mathrm{digit}
+    %    &\cov{m_1}{q_1} &= - 6.1 \cdot 10^{-11} \;
+	\corr{m_0} {q_0} &= - 0.15      &\corr{m_1}{q_1} &= - 0.09 \\
 	\chi^2/\text{ndof} &= 145/15	&\chi^2/\text{ndof} &= 96/15 \\ 
 	\text{abs\_sigma} &= \rm False	&\text{abs\_sigma} &= \rm False
 \end{align*}
@@ -347,10 +355,10 @@ nei risultati finali.
 Si riportano i valori ottimali dei parametri stimati dal fit e le relative
 covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
 \begin{align*}
-	R_{\text{diodo}} &= 46.1118 \pm 0.007\underline{2} \; \rm m\Omega \\
-	\eta V_T &= 47.5786 \pm 0.003\underline{3} \; \rm mV \\
-	I_0 &= 4.5180 \pm 0.004\underline{3} \; \rm nA \\
-	\text{offset} &=\; - 2.2043\pm 0.007\underline{3} \;  \mu A\\
+	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \rm m\Omega \\
+	\eta V_T &= 47.579\iffalse 86 \fi \pm 0.003\iffalse 3 \fi \; \rm mV \\
+	I_0 &= 4.518\iffalse 0 \fi \pm 0.004\iffalse 3 \fi \; \rm nA \\
+	\text{offset} &=\; - 2.204\iffalse 3 \fi \pm 0.007 \iffalse 3 \fi \; \mu A\\
 	\sigma_{I_0, \eta V_T} &= 0.97 \\
 	\sigma_{I_0, R_d} &= -0.62 \\
 	\sigma_{I_0, \text{ofst}} &= -0.49 \\
@@ -360,14 +368,14 @@ covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
 	\chi^2/\text{ndof} &= 72207/251066 \\
 	\text{abs\_sigma} &= \rm False
 \end{align*}
-
 Infine si mostrano i dati acquisiti con sovrapposta la funzione di best-fit
-nei grafici in scala lineare \ref{fig: sck_lin} e semilogaritmica 
-\ref{fig: sck_log}
+nei grafici \ref{fig: sck_lin}, in scala lineare, e \ref{fig: sck_log}
+in scala semilogaritmica. 
 
-\begin{figure}[!h]% questi due grafici sono più problematici, potrebbe tornare utile usare vspace negativo e ritagliare le figure manualmente se necessario
+
+\begin{figure}[!h]
 	\centering 
-		\includegraphics[scale=0.7]{100skip_linear}
+		\includegraphics[scale=0.65]{100skip_linear}
 	\caption{Dati acquisiti e funzione di best-fit \eqref{eq: model}. E' 
 	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
 	\label{fig: sck_lin}}
@@ -375,7 +383,7 @@ nei grafici in scala lineare \ref{fig: sck_lin} e semilogaritmica
 
 \begin{figure}[!ht]
 	\centering 
-		\includegraphics[scale=0.70]{10skip_semilog}
+		\includegraphics[scale=0.65]{10skip_semilog}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
 	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
@@ -777,6 +785,15 @@ All’interno della funzione di fit, è stato infine introdotto un offset quale
 parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
 in Teensy 3.2.
 
+\subsection*{Nota sull'implementazione}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{Scipy}\cite{scipy}
+Per tutti i fit su campionamenti digitali di \verb+Teensy+ si è imposto
+$\rm{abs\_sigma} =$ False, in quanto la sorgente principale d'incertezza
+sulle misure risulta non statistica/non determinata.
+%per cui non sarebbe giustificato assumere come errore il valore convenzionale
+%$\sigma = \pm 1$ [digit] effettivamente si esegue un fit dei minimi quadrati.
 
 %================================================================
 %                            END

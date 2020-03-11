@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  10 MAR 2020 02:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  11 MAR 2020 20:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1981,18 +1981,26 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 56.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <6> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 56.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 62.
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--77
+
+ []
+
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
-<./figs/confronto_curve.png, id=69, 1009.52156pt x 690.32906pt>
+<./figs/confronto_curve.png, id=70, 1009.52156pt x 690.32906pt>
 File: ./figs/confronto_curve.png Graphic file (type png)
 <use ./figs/confronto_curve.png>
-Package pdftex.def Info: ./figs/confronto_curve.png  used on input line 109.
-(pdftex.def)             Requested size: 232.18507pt x 158.77234pt.
- [1
+Package pdftex.def Info: ./figs/confronto_curve.png  used on input line 117.
+(pdftex.def)             Requested size: 252.37978pt x 172.58183pt.
+[1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figs/confronto_curve.png>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 178.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 186.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -2000,172 +2008,183 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./figs/./measure.png, id=100, 387.69844pt x 221.32687pt>
+ [2 <./figs/confronto_curve.png>]
+<./figs/./measure.png, id=111, 387.69844pt x 221.32687pt>
 File: ./figs/./measure.png Graphic file (type png)
 <use ./figs/./measure.png>
-Package pdftex.def Info: ./figs/./measure.png  used on input line 190.
+Package pdftex.def Info: ./figs/./measure.png  used on input line 198.
 (pdftex.def)             Requested size: 193.84874pt x 110.66315pt.
-<./figs/./gestione.png, id=101, 920.68968pt x 420.82219pt>
+<./figs/./gestione.png, id=112, 920.68968pt x 420.82219pt>
 File: ./figs/./gestione.png Graphic file (type png)
 <use ./figs/./gestione.png>
-Package pdftex.def Info: ./figs/./gestione.png  used on input line 197.
+Package pdftex.def Info: ./figs/./gestione.png  used on input line 205.
 (pdftex.def)             Requested size: 460.34372pt x 210.41057pt.
 
-Overfull \hbox (5.09961pt too wide) in paragraph at lines 197--198
+Overfull \hbox (5.09961pt too wide) in paragraph at lines 205--206
  [][] 
  []
 
-[2 <./figs/./measure.png>]
-<./figs/cal0.png, id=113, 462.528pt x 345.4506pt>
+[3 <./figs/./measure.png> <./figs/./gestione.png>]
+<./figs/cal0.png, id=121, 462.528pt x 345.4506pt>
 File: ./figs/cal0.png Graphic file (type png)
 <use ./figs/cal0.png>
-Package pdftex.def Info: ./figs/cal0.png  used on input line 263.
+Package pdftex.def Info: ./figs/cal0.png  used on input line 271.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 263--265
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 271--273
  [][] 
  []
 
-<./figs/cal1.png, id=115, 462.528pt x 345.4506pt>
+<./figs/cal1.png, id=123, 462.528pt x 345.4506pt>
 File: ./figs/cal1.png Graphic file (type png)
 <use ./figs/cal1.png>
-Package pdftex.def Info: ./figs/cal1.png  used on input line 268.
+Package pdftex.def Info: ./figs/cal1.png  used on input line 276.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 268--270
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 276--278
  [][] 
  []
 
-[3 <./figs/./gestione.png>] [4 <./figs/cal0.png> <./figs/cal1.png>]
-<./figs/100skip_linear.png, id=139, 609.9588pt x 482.7636pt>
+[4 <./figs/cal0.png> <./figs/cal1.png>]
+<./figs/100skip_linear.png, id=141, 609.9588pt x 482.7636pt>
 File: ./figs/100skip_linear.png Graphic file (type png)
 <use ./figs/100skip_linear.png>
-Package pdftex.def Info: ./figs/100skip_linear.png  used on input line 370.
-(pdftex.def)             Requested size: 426.96826pt x 337.9322pt.
-<./figs/10skip_semilog.png, id=142, 627.3036pt x 391.7034pt>
+Package pdftex.def Info: ./figs/100skip_linear.png  used on input line 378.
+(pdftex.def)             Requested size: 396.46852pt x 313.7926pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./figs/10skip_semilog.png, id=144, 627.3036pt x 391.7034pt>
 File: ./figs/10skip_semilog.png Graphic file (type png)
 <use ./figs/10skip_semilog.png>
-Package pdftex.def Info: ./figs/10skip_semilog.png  used on input line 378.
-(pdftex.def)             Requested size: 439.10953pt x 274.1905pt.
- [5 <./figs/100skip_linear.png>] [6 <./figs/10skip_semilog.png>] [7]
+Package pdftex.def Info: ./figs/10skip_semilog.png  used on input line 386.
+(pdftex.def)             Requested size: 407.74251pt x 254.60419pt.
+[5] [6 <./figs/100skip_linear.png> <./figs/10skip_semilog.png>] [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 559.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 559.
+(hyperref)                removing `math shift' on input line 567.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 559.
+(hyperref)                removing `\left' on input line 567.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 559.
+(hyperref)                removing `\mu' on input line 567.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 559.
+(hyperref)                removing `subscript' on input line 567.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 559.
+(hyperref)                removing `\right' on input line 567.
 
-<./figs/./varmuy.png, id=169, 784.1295pt x 419.8887pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 567.
+
+<./figs/./varmuy.png, id=171, 784.1295pt x 419.8887pt>
 File: ./figs/./varmuy.png Graphic file (type png)
 <use ./figs/./varmuy.png>
-Package pdftex.def Info: ./figs/./varmuy.png  used on input line 577.
+Package pdftex.def Info: ./figs/./varmuy.png  used on input line 585.
 (pdftex.def)             Requested size: 431.27257pt x 230.9395pt.
 [8]
-<./figs/./nofilter.png, id=180, 462.528pt x 345.4506pt>
+<./figs/./nofilter.png, id=183, 462.528pt x 345.4506pt>
 File: ./figs/./nofilter.png Graphic file (type png)
 <use ./figs/./nofilter.png>
-Package pdftex.def Info: ./figs/./nofilter.png  used on input line 641.
+Package pdftex.def Info: ./figs/./nofilter.png  used on input line 649.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 641--642
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 649--650
  [][] 
  []
 
-<./figs/./filtered.png, id=181, 462.528pt x 345.4506pt>
+<./figs/./filtered.png, id=184, 462.528pt x 345.4506pt>
 File: ./figs/./filtered.png Graphic file (type png)
 <use ./figs/./filtered.png>
-Package pdftex.def Info: ./figs/./filtered.png  used on input line 646.
+Package pdftex.def Info: ./figs/./filtered.png  used on input line 654.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 646--647
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 654--655
  [][] 
  []
 
-<./figs/comparison.png, id=186, 651.8754pt x 352.6776pt>
+<./figs/comparison.png, id=189, 651.8754pt x 352.6776pt>
 File: ./figs/comparison.png Graphic file (type png)
 <use ./figs/comparison.png>
-Package pdftex.def Info: ./figs/comparison.png  used on input line 658.
+Package pdftex.def Info: ./figs/comparison.png  used on input line 666.
 (pdftex.def)             Requested size: 423.71397pt x 229.23772pt.
-[9 <./figs/./varmuy.png> <./figs/./nofilter.png> <./figs/./filtered.png>]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 677.
-
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 686.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 695.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 685.
+
+[9 <./figs/./varmuy.png>]
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 694.
+
+[10 <./figs/./nofilter.png> <./figs/./filtered.png> <./figs/comparison.png>]
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 703.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 702.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 710.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 706.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 714.
 
-<./figs/tang.png, id=199, 520.344pt x 356.2911pt>
+<./figs/tang.png, id=210, 520.344pt x 356.2911pt>
 File: ./figs/tang.png Graphic file (type png)
 <use ./figs/tang.png>
-Package pdftex.def Info: ./figs/tang.png  used on input line 712.
+Package pdftex.def Info: ./figs/tang.png  used on input line 720.
 (pdftex.def)             Requested size: 416.27576pt x 285.03326pt.
-[10 <./figs/comparison.png>]
-<./figs/Iter.png, id=213, 542.025pt x 363.5181pt>
+[11 <./figs/tang.png>]
+<./figs/Iter.png, id=224, 542.025pt x 363.5181pt>
 File: ./figs/Iter.png Graphic file (type png)
 <use ./figs/Iter.png>
-Package pdftex.def Info: ./figs/Iter.png  used on input line 765.
+Package pdftex.def Info: ./figs/Iter.png  used on input line 773.
 (pdftex.def)             Requested size: 379.4149pt x 254.46094pt.
-<./figs/vter.png, id=214, 540.5796pt x 363.5181pt>
+<./figs/vter.png, id=225, 540.5796pt x 363.5181pt>
 File: ./figs/vter.png Graphic file (type png)
 <use ./figs/vter.png>
-Package pdftex.def Info: ./figs/vter.png  used on input line 769.
+Package pdftex.def Info: ./figs/vter.png  used on input line 777.
 (pdftex.def)             Requested size: 378.40314pt x 254.46094pt.
- [11 <./figs/tang.png>] (./diodo.bbl [12 <./figs/Iter.png> <./figs/vter.png>]) [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 787.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 787.
+ (./diodo.bbl [12 <./figs/Iter.png>]) [13 <./figs/vter.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 804.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 804.
  (./diodo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 787.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 787.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 804.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 804.
 Package rerunfilecheck Info: File `diodo.out' has not changed.
-(rerunfilecheck)             Checksum: 8ACCC35EF572AD4F582C5B273F492DB6;900.
+(rerunfilecheck)             Checksum: BE18441AA118A416D3AE10280708DD56;914.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 787.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 804.
  ) 
 Here is how much of TeX's memory you used:
- 57268 strings out of 492982
- 1350923 string characters out of 6134896
- 1656586 words of memory out of 5000000
- 59919 multiletter control sequences out of 15000+600000
- 650686 words of font info for 120 fonts, out of 8000000 for 9000
+ 57278 strings out of 492982
+ 1351044 string characters out of 6134896
+ 1657587 words of memory out of 5000000
+ 59923 multiletter control sequences out of 15000+600000
+ 654897 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,23n,119p,10381b,898s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,23n,119p,10381b,763s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist, replaced by a fixed one
+
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (13 pages, 957048 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on diodo.pdf (13 pages, 985219 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 262 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 25803 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 338 PDF objects out of 1000 (max. 8388607)
+ 269 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 26315 words of extra memory for PDF output out of 29859 (max. 10000000)
 

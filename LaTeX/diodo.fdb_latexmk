@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex diodo"] 1583804181 "diodo.aux" "diodo.bbl" "diodo" 1583804248
+["bibtex diodo"] 1583954118 "diodo.aux" "diodo.bbl" "diodo" 1583954121
   "./IEEEtrandoi.bst" 1577387200 60815 f4ed9ef17005d390213cd57d581f7b76 ""
-  "diodo.aux" 1583804247 9432 50f205570c958d92f577986636e5217b ""
+  "diodo.aux" 1583954121 9486 ce29b7c16d82fc176c31e31af9c115eb ""
   "diodo.bcf" 0 -1 0 ""
-  "refs.bib" 1583343164 2062 2ba00c8c52bc9f33e37e3d177f097c27 ""
+  "refs.bib" 1583953077 2044 f700e2037a314e6ed7712898bef5d9af ""
   (generated)
   "diodo.bbl"
   "diodo.blg"
-["pdflatex"] 1583804245 "diodo.tex" "diodo.pdf" "diodo" 1583804248
+["pdflatex"] 1583954118 "diodo.tex" "diodo.pdf" "diodo" 1583954121
   "/etc/texmf/web2c/texmf.cnf" 1582144663 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -282,6 +282,7 @@
   "/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc" 1254938640 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc" 1254938640 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc" 1254938640 2327 9d6df24f9c4f7368395224341a95523a ""
+  "/usr/share/texmf/fonts/tfm/public/lm/ec-lmbx10.tfm" 1254938640 12076 b54175e02101bea1addf6b2d0197ed12 ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmcsc10.tfm" 1254938640 11276 116dd5bea6621ce4a1999f96d876084c ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmr10.tfm" 1254938640 12056 7e13df7fe4cbce21b072ba7c4f4deb6e ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmr12.tfm" 1254938640 12092 7b1546e2d096cfd5dcbd4049b0b1ec2e ""
@@ -323,6 +324,7 @@
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmtt12.tfm" 1254938640 1336 3f1d3798f35e35601b79a222d795ee97 ""
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmtt8.tfm" 1254938640 1348 e9ce72e654d76f23fb9e1b8842e0576a ""
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmtt9.tfm" 1254938640 1340 95bafc1340b1c519d1b4b4bcc33f5afc ""
+  "/usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb" 1254938640 121021 1bf809ce4a594679006bd72263eba59b ""
   "/usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb" 1254938640 116427 4a5b1ccaa7cce719091920a86b58608d ""
   "/usr/share/texmf/fonts/type1/public/lm/lmex10.pfb" 1254938640 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb" 1254938640 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
@@ -353,10 +355,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1582145087 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1582145123 4127590 ac0f214e9fc2dbf049abb784824b2965 ""
-  "diodo.aux" 1583804247 9432 50f205570c958d92f577986636e5217b ""
-  "diodo.bbl" 1583804181 1283 50fcbbfdc0fd6792b059a6839f7f2623 "bibtex diodo"
-  "diodo.out" 1583804247 900 8accc35ef572ad4f582c5b273f492db6 ""
-  "diodo.tex" 1583804244 39548 9be762112c7ca4df9e54230f104183b6 ""
+  "diodo.aux" 1583954121 9486 ce29b7c16d82fc176c31e31af9c115eb ""
+  "diodo.bbl" 1583954118 2004 f543debd16f8727c979e16325531e3ef "bibtex diodo"
+  "diodo.out" 1583954121 914 be18441aa118a416d3ae10280708dd56 ""
+  "diodo.tex" 1583953981 40621 0df495db6c215ea383968f26791aeced ""
   "figs/./filtered.png" 1583613767 122950 22140471d52386e83afe42c00f230c7c ""
   "figs/./gestione.png" 1583343164 32428 368fdb43ba4501cde48635b2394b6ed8 ""
   "figs/./measure.png" 1583343164 5537 b70dae15c2d9b26099da8d8a61d29300 ""
@@ -373,8 +375,8 @@
   "figs/vter.png" 1583613767 53549 a0acef9ba4c32943d92decebde5bb316 ""
   "math.tex" 1582684313 7191 a853447727d6b7aafb91474511f2409a ""
   (generated)
-  "diodo.aux"
+  "diodo.out"
+  "diodo.log"
   "diodo.pdf"
   "diodo.auxlock"
-  "diodo.log"
-  "diodo.out"
+  "diodo.aux"
