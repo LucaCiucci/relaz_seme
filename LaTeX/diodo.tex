@@ -1,45 +1,6 @@
 \documentclass{article}[a4paper, oneside, 11pt]
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{calc}
-\usepackage{amsmath, amssymb, amsthm, thmtools, amsfonts}
-\usepackage{mathtools}
-\usepackage[nochapters,pdfspacing]{classicthesis}
-%\usepackage{hyperref}% clashes with classicthesis
-\usepackage{cleveref}
-\usepackage[siunitx]{circuitikz}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{geometry}
-\usepackage{float}
-\usepackage{mdframed}
-\usepackage{xcolor}
-\usepackage{siunitx}
-\usepackage[italian]{babel}
-\usepackage{pgfplots}
-\usepackage{titling}
-\usepackage{listings}
-\usepackage{lmodern}
-\usepackage{url}
-\usepgfplotslibrary{external} 
-\tikzexternalize
 
-\pgfplotsset{compat=1.15}
-\lstset{
-language=Python,
-basicstyle=\ttfamily,
-columns=fullflexible,
-keepspaces=true,
-}
-\mdfsetup{linewidth=0.6pt}
-\graphicspath{{./figs/}}
-\makeatletter
-\def\input@path{{./figs/}}
-%or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
-\makeatother
-
+\input{./preamble}
 \input{./math}
 
 \geometry{a4paper, left=25mm, right=25mm, top=25mm, bottom=25mm}
@@ -268,13 +229,15 @@ di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
- 		\includegraphics[scale=0.5]{cal0.png}
-	\label{fig: nofilter}
+	\def\svgwidth{\columnwidth}
+		\includesvg{cal0}
+	\label{fig: cal0}
 \end{subfigure}%
 \begin{subfigure} {.5\textwidth}
 	\centering 
-		\includegraphics[scale=0.5]{cal1.png}
-	\label{fig: filtered}
+	\def\svgwidth{\columnwidth}
+		\includesvg{cal1}
+	\label{fig: cal1}
 \end{subfigure}
 \end{figure}
 
@@ -682,7 +645,7 @@ negativi o nulli che debitamente si riscontreranno all'interno del logaritmo.
 metodo di Newton\cite{tesi}. Esso ci consentirà di ricostruire numericamente 
 la funzione inversa della legge \eqref{eq: model}.\\
 Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$ continua e 
-derivabile entro un intervallo $[a,b]$ (con $f’(x)$ limitata e 
+derivabile entro un intervallo $[a,b]$ (con $f'(x)$ limitata e 
 diversa da $0$ per ciascuna $x \in [a,b]$) ed una $v$ tale che
 $f(v) = 0$. Sviluppando al prim'ordine $f$ intorno ad un generico punto $x_0$ , otterremo:
 \begin{equation}
@@ -690,13 +653,13 @@ f(x) \simeq f(x_0) + f{'}(x_0) \cdot {(x-x_0)}.
 \end{equation}
 Nel caso in cui si voglia trovare quella $x$ tale per cui $f(x) = 0$, si otterrebbe una prima approssimazione:
 \begin{equation}
-x \simeq x_0   -  {\frac {f(x_0)}{f’(x_0)}}
+x \simeq x_0   -  {\frac {f(x_0)}{f'(x_0)}}
 \end{equation}
 il che non ci dà molte informazioni sulla soluzione. Tuttavia è possibile iterare il procedimento, ottenendo una successione ricorsiva 
 \begin{equation}
 \begin{cases}
 x[0] = \alpha \in [a,b] \\ 
-x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
+x[N+1] = x[N] - \frac {f(x[N])} {f'(x[N])}
 \end{cases}
 \end{equation}
 che produce approssimazioni della radici sempre più accurate in un numero di passaggi relativamente breve.  
@@ -704,17 +667,18 @@ che produce approssimazioni della radici sempre più accurate in un numero di pa
 In pratica, per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
 punto alla funzione:
 \begin{equation}
-y = f(x[i]) + f’(x[i]) \cdot (x-x[i])
+y = f(x[i]) + f'(x[i]) \cdot (x-x[i])
 \end{equation}
  Dopodiché cerca il punto $x$ per il quale $y = 0$:
 \begin{equation}
-x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
+x = x[i+1] = x[i] - \frac{f(x[i])}{f'([i])}
 \end{equation}
 E viene conseguentemente valutato il valore $f(x[i+1])$ ed il procedimento viene 
 ripetuto per un dato numero di iterazioni. 
 \begin{figure}[!htbp]
 	\centering 
- 		\includegraphics[scale=0.8]{tang.png}
+	\def\svgwidth{\columnwidth}
+		\scalebox{0.9}{\includesvg{tang}}
 	\caption{Visualizzazione grafica di cosa implica un'iterazione della 
 	serie ricorsiva ($f(x) = x^3$ in questo esempio)\label{fig: tang}}
 \end{figure}
@@ -766,11 +730,12 @@ parametri stimati dal fit). I grafici relativi alla convergenza di $I$ e di $v$
 anche a seguito di sole 20 iterazioni:
 \begin{figure}[!ht]% questi vanno sistemati meglio perchè occupano una pagina da soli!!!
 	\centering 
- 		\includegraphics[scale=0.7]{Iter.png}
+	\def\svgwidth{\columnwidth}
+		\scalebox{0.9}{\includesvg{Iter}}
 \end{figure}
 \begin{figure}[!hbtp]
 	\centering 
- 		\includegraphics[scale=0.7]{vter.png}
+		\scalebox{0.9}{\includesvg{vter}}
 \end{figure}
 
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
