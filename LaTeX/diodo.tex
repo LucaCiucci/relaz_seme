@@ -712,53 +712,56 @@ all’interno del diodo può essere espressa attraverso la legge
 \eqref{eq: model}. Potremo, dunque, essere tentati ad adottare tale formula
 ai fini di un fit numerico. 
 Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori 
-negativi o nulli che debitamente si riscontreranno all'interno del logaritmo. 
-\`E stato dunque necessario adottare un algoritmo alternativo, basato sul 
+negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. 
+E’ stato dunque necessario adottare un algoritmo alternativo, basato sul 
 metodo di Newton\cite{tesi}. Esso ci consentirà di ricostruire numericamente 
-la funzione inversa della legge \eqref{eq: model}.\\
-Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$ continua e 
-derivabile entro un intervallo $[a,b]$ (con $f'(x)$ limitata e 
-diversa da $0$ per ciascuna $x \in [a,b]$) ed una $v$ tale che
-$f(v) = 0$. Sviluppando al prim'ordine $f$ intorno ad un generico punto $x_0$ , otterremo:
+la funzione inversa della legge \eqref{eq: model}.
+Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$ continua e di classe $C^{2}$
+entro un intervallo di definizione connesso (con $f’(x)$ limitata e 
+diversa da $0$ per ciascuna $x$ appartenente al dominio) ed una $v$ tale che
+$f(v) = 0$. Sviluppando al prim’ordine $f$ in un intorno di $v$, otterremo:
 \begin{equation}
-f(x) \simeq f(x_0) + f{'}(x_0) \cdot {(x-x_0)}.
+f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f{''}(X)} \cdot  {( x - v)^2} = 0
 \end{equation}
-Nel caso in cui si voglia trovare quella $x$ tale per cui $f(x) = 0$, si otterrebbe una prima approssimazione:
+ove $X$ è un numero reale compreso fra $v$ ed $x$. Nel caso in cui il $(x-v)^2 
+$risultasse prossimo a zero:
 \begin{equation}
-x \simeq x_0   -  {\frac {f(x_0)}{f'(x_0)}}
+x \simeq v   -  {\frac {f(v)}{f’(v)}}
 \end{equation}
-il che non ci dà molte informazioni sulla soluzione. Tuttavia è possibile iterare il procedimento, ottenendo una successione ricorsiva 
+L’unica limitazione nell'adottare tale scrittura è che necessitiamo di $v$ 
+molto vicino a $x$ incognito. Tuttavia, nel caso in cui la funzione $f$ risultasse 
+sufficientemente maneggevole, potremo partire da un valore generico del dominio 
+e riscontrare con buona approssimazione la radice in un tempo finito 
+relativamente breve. Per effettuare ciò, è necessaria la serie ricorsiva:
 \begin{equation}
 \begin{cases}
-x[0] = \alpha \in [a,b] \\ 
-x[N+1] = x[N] - \frac {f(x[N])} {f'(x[N])}
+x[0] = a \\ x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
 \end{cases}
 \end{equation}
-che produce approssimazioni della radici sempre più accurate in un numero di passaggi relativamente breve.  
-
-In pratica, per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
+ove $a$ è un generico valore appartenente al dominio di definizione. In pratica, 
+per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
 punto alla funzione:
 \begin{equation}
-y = f(x[i]) + f'(x[i]) \cdot (x-x[i])
+y = f(x[i]) + f’(x[i]) \cdot (x-x[i])
 \end{equation}
  Dopodiché cerca il punto $x$ per il quale $y = 0$:
 \begin{equation}
-x = x[i+1] = x[i] - \frac{f(x[i])}{f'([i])}
+x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
 \end{equation}
 E viene conseguentemente valutato il valore $f(x[i+1])$ ed il procedimento viene 
 ripetuto per un dato numero di iterazioni. 
 \begin{figure}[!htbp]
 	\centering 
-	\def\svgwidth{\columnwidth}
-		\scalebox{0.9}{\includesvg{tang}}
-	\caption{Visualizzazione grafica di cosa implica un'iterazione della 
+ 		\includegraphics[scale=0.8]{tang.png}
+	\caption{Visualizzazione grafica di cosa implica un’iterazione della 
 	serie ricorsiva ($f(x) = x^3$ in questo esempio)\label{fig: tang}}
 \end{figure}
-L'unica accortezza da prendere sta nello scegliere un intervallo che contenga un solo zero di $f$ (ovvero quello che si vuole determinare), che, sia questo $\bar{x}$, è anche l'unico punto fisso della successione:
+Se la funzione è monotona e la serie converge ad un valore, tale sarà $v$, 
+essendo l’unico punto fisso della serie:
 \begin{equation}
- \bar{x} = \bar{x} -  \frac{f(\bar{x})}{f'(\bar{x})} \Rightarrow \bar{x}=\bar{x}.
+ a = a -  \frac{f(a)}{f'(a)} \to f(a) = 0 \; \land \; v = a
 \end{equation}
-
+essendo $v$ l’unico punto in cui si annulla la funzione per definizione.
 Ritornando al diodo, esso può essere interpretato quale un diodo ideale ed una 
 resistenza in serie, collegati ad un generatore di differenza di potenziale. 
 Quindi, per la legge delle maglie:
@@ -766,13 +769,13 @@ Quindi, per la legge delle maglie:
 \Delta V_{\text{ingresso}} = \Delta V_{\text{diodo}} + \Delta 
 V_{\text{resistenza}} = \Delta V_{\text{diodo}} + R \cdot I
 \end{equation}
-ove $I$ è la corrente che scorre all'interno del diodo in quel determinato 
+ove $I$ è la corrente che scorre all’interno del diodo in quel determinato 
 istante. Notoriamente, tale scrittura si può porre nella seguente forma ai 
 fini di definire la retta di carico del diodo:
 \begin{equation}
 \Delta V_{\text{diodo}} = \Delta V_{\text{ingresso}} - R \cdot I
 \end{equation}
-Il punto di intersezione di tale retta con l'equazione di Shockley per il 
+Il punto di intersezione di tale retta con l’equazione di Shockley per il 
 diodo rappresenta il punto di lavoro $(v, i)$ del diodo:
 \begin{equation}
 i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } - 
@@ -780,7 +783,7 @@ i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } -
 - v}{R}
 \end{equation}
 Tale $i$ dovrà necessariamente corrispondere alla corrente di lavoro in virtù 
-dell'equazione di Shockley. Dunque definendo la funzione $g(x)$ come segue:
+dell’equazione di Shockley. Dunque definendo la funzione $g(x)$ come segue:
 \begin{equation}\label{eq: invsck}
 g(x) = I_0 \cdot ( e^{\frac{x}{\eta V_T}} - 1)  - \frac {\Delta 
 V_{\text{ingresso}} - x}{R}
@@ -790,7 +793,7 @@ ed individuare così la corrente di lavoro.
 Dunque si potrà effettuare un fit della corrente in funzione della tensione ai 
 capi del diodo reale attraverso una legge che per un determinato valore della 
 tensione ($\Delta V_{\text{ingresso}}$) ed un dato numero di iterazioni (ne 
-sono sufficienti poche nel nostro caso ai fini di ottenere un'approssimazione 
+sono sufficienti poche nel nostro caso ai fini di ottenere un’approssimazione 
 adeguata), riesce ad individuare la radice $v$ nelle modalità previamente 
 descritte. Attraverso la stessa, sarà quindi possibile individuare la corrente 
 di lavoro del diodo per la suddetta $\Delta V_{\text{ingresso}}$. 
@@ -800,16 +803,15 @@ computazionali. Verifichiamo graficamente che per dei generici valori della
 corrente i due metodi danno risultati sostanzialmente equivalenti (adottiamo i 
 parametri stimati dal fit). I grafici relativi alla convergenza di $I$ e di $v$ 
 anche a seguito di sole 20 iterazioni:
-\begin{figure}[!ht]% questi vanno sistemati meglio perchè occupano una pagina da soli!!!
+\begin{figure}[H]
 	\centering 
 	\def\svgwidth{\columnwidth}
-		\scalebox{0.9}{\includesvg{Iter}}
+		\scalebox{0.75}{\includesvg{Iter}}
 \end{figure}
-\begin{figure}[!hbtp]
+\begin{figure}[H]
 	\centering 
-		\scalebox{0.9}{\includesvg{vter}}
+		\scalebox{0.75}{\includesvg{vter}}
 \end{figure}
-
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
 fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie,
 inoltre, risulta convergere molto rapidamente ai valori attesi e quindi sono 
