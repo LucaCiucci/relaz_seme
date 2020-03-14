@@ -130,6 +130,8 @@ le seguenti:
 		valore nominale e misurate con multimetro digitale. \label{tab:res}}
     \end{center}
 \end{table}
+Peruna descrizione del metodo di misurazione delle resistenze si rimanda a
+\nameref{app: A}.
 D'altra parte, per fornire una tensione regolabile e sufficientemente stabile
 durante un impulso, nel circuito si impiega il condensatore $C1$, la cui
 tensione, carica e scarica sono controllate dalla maglia destra del circuito.
@@ -289,7 +291,7 @@ determinare la corrente di lavoro del diodo grazie alla legge di Ohm.
 Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
 dei punti meno significativi, assumendoli quali variabili indipendenti e di 
 natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app: 
-A}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
+B}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
 $\sigma_x^2$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
 
@@ -301,7 +303,7 @@ fit a causa dei valori negativi o nulli che può assumere l'argomento del
 logaritmo. Si è scelto quindi di utilizzare la funzione inversa come modello
 per il fit, la quale è stata implementata numericamente secondo il metodo
 delle tangenti (o di Newton).
-Per una trattazione approfondita, si rimanda all'\nameref{app: B}.
+Per una trattazione approfondita, si rimanda all'\nameref{app: C}.
 
 Risulta evidente, osservando i punti campionati con la resistenza da
 $R1 = 220$ k$\Omega$, la presenza di un rumore di natura non statistica
@@ -406,7 +408,78 @@ corrente o di tensione.
 %================================================================
 %                        Appendice A
 %================================================================
-\section{Appendice A: Filtraggio Dati}\label{app: A}
+\section{Appendice A: Misurazione delle reristenze $R1$}\label{app: A}
+
+All’interno delle misurazioni delle resistenze, sono stati adottati dei resistori
+contrassegnati da valori nominali che spaziano da 0.22 a 220 $k\Omega$.
+Dunque il multimetro digitale non possiede una sensibilità sufficiente ai fini
+della stima delle resistenze più basse.\\  
+In primo luogo, queste ultime sono state misurate attraverso un metodo basato
+sull’uso di un alimentatore regolabile DC ($\Delta V_{\text{max}} = 30 V$;
+$I_{\text{max}} = 5 A$). La strategia consiste nel fare scorrere una corrente
+continua entro un resistore. La stessa deve essere scelta ponendo attenzione
+che la potenza dissipata ($P =R \cdot I^{2}$) non superi la potenza nominale
+del resistore onde evitare danneggiamenti del componente per effetto termico.
+Nel contempo, la corrente \footnote{La corrente è stata misurata col multimetro,
+nonostante il fatto che l’abbiamo scelta a priori, ai fini di ottenere una maggiore precisione}
+e la differenza di potenziale ai capi del resistore vengono misurati attraverso
+due multimetri digitali. Dunque attraverso la legge di Ohm è stato possibile la
+stima delle resistenze in esame, riportate nella tabella sottostante con i relativi errori:
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{lll}
+     \toprule
+     $R1$ nom. [$\Omega$] & $R1$ [$\Omega$] \\
+     \midrule
+     \midrule
+     $0.22 \pm 3 \% $     & $0.22 \pm 0.01 $ \\
+     $2.2 \pm 5 \% $     & $2.19 \pm 0.03 $ \\
+     $22 \pm 5 \% $     & $21.6 \pm 0.2 $ \\
+        $220 \pm 5 \% $     & $210.6 \pm 0.8 $ \\
+     $2.2\; \rm k \pm 5 \% $ & $2140 \pm 23$ \\
+     \bottomrule
+    \end{tabular}
+    \caption{I valori delle resistenze poste in serie al diodo, riportate in
+        valore nominale e misurate con il primo metodo. \label{tab:res}}
+\end{center}
+\end{table}
+
+Successivamente, è stato adottato un approccio differente. Ai fini di effettuare le medesime
+misure, è stato adottato il metodo della misura a quattro terminali (4T), attraverso un ohmetro
+specifico. Ai valori misurati sono stati sottratte le letture effettuate in assenza del resistore.
+In tal modo, sono stati cancellati gli errori dovuti alle resistenze intrinseche dei fili. Nella
+presente tabella sono riportati i risultati conseguiti:
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{lll}
+     \toprule
+     $R1$ nom. [$\Omega$] & $R1$ [$\Omega$] \\
+     \midrule
+     \midrule
+     $0.22 \pm 3 \% $     & $0.226 \pm 0.008$ \\
+     $2.2 \pm 5 \% $     & $2.212 \pm 0.008$ \\
+     $22 \pm 5 \% $     & $21.86 \pm 0.010$ \\
+        $220 \pm 5 \% $     & $216.22 \pm 0.07$ \\
+     $2.2\; \rm k \pm 5 \% $ & $2202.1 \pm 0.4$ \\
+     \bottomrule
+    \end{tabular}
+    \caption{I valori delle resistenze poste in serie al diodo, riportate in
+        valore nominale e misurate con la seconda strategia. \label{tab:res}}
+\end{center}
+\end{table}
+
+Entrambi i metodi forniscono stime valide delle resistenze adottate. Dunque all’interno
+delle analisi successive, sono state adottate le misure conseguite a seguito della
+seconda strategia, caratterizzate da maggiore precisione.\\
+Le resistenze da 22 $k\Omega$ e 220 $k\Omega$ sono state invece misurate con l’uso
+diretto di un multimetro digitale.
+
+%================================================================
+%                        Appendice B
+%================================================================
+\section{Appendice B: Filtraggio Dati}\label{app: B}
 %================================
 %         Introduzione
 %================================
@@ -631,9 +704,9 @@ tra due set successivi.
 \end{figure}
 
 %================================================================
-%                        Appendice B
+%                        Appendice C
 %================================================================
-\section{Appendice B: Metodo di fit}\label{app: B}
+\section{Appendice C: Metodo di fit}\label{app: C}
 La differenza di potenziale $\Delta$V in funzione della corrente $I$ che scorre 
 all’interno del diodo può essere espressa attraverso la legge
 \eqref{eq: model}. Potremo, dunque, essere tentati ad adottare tale formula
