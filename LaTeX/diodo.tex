@@ -90,6 +90,10 @@ eventuali danni a questi stessi, si imprimono correnti impulsate sul circuito.
 La durata degli impulsi è inferiore ai 200 $\si{\us}$, che corrisponde ad
 un'energia impressa inferiore a 1 $\si{\milli\J}$ (dunque ad un aumento
 della temperatura del semiconduttore inferiore a 0.5 $\si{\K}$).
+%Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
+%al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
+%all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
+%brevi, limitando dunque il trasferimento di energia sui componenti.
 
 %================================
 %           Apparato
@@ -123,6 +127,7 @@ le seguenti:
 		valore nominale e misurate con multimetro digitale. \label{tab:res}}
     \end{center}
 \end{table}
+
 Per una descrizione del metodo di misurazione delle resistenze si rimanda 
 all'\nameref{app: A}.
 D'altra parte, per fornire una tensione regolabile e sufficientemente stabile
@@ -133,7 +138,7 @@ istruzione di un microcontrollore, il condensatore alla serie $R1-D1$
 attraverso un MOS-FET.\\
 Il circuito è alimentato da 2 tensioni continue, fornite da un alimentatore
 stabilizzato switching e da un Buck Boost Converter.
-%,alle maglie di "carica/scarica" e di "switch" rispettivamente
+%,alle maglie di "switch" e di "carica/scarica" rispettivamente
 Un segnale fornito su $T2$ provoca la carica del condensatore mentre su $T3$
 la sua scarica. Un segnale (invertito) su $T1$ innesca l'impulso di corrente
 sul diodo.\\
@@ -173,7 +178,7 @@ di ciascuna delle due coppie separatamente.
 
 I pin volti alla lettura della tensione maggiore sono stati collegati al 
 centrale di un potenziometro, a sua volta collegato ad un generatore di 
-potenziale con tensione in ingresso pari a $3.3\si{V}$ . Gli altri due pin
+potenziale con tensione in ingresso pari a $3.3\si{\V}$. Gli altri due pin
 sono stati invece collegati a massa.
 
 Variando la resistenza e, conseguentemente, la differenza di potenziale in 
@@ -299,7 +304,7 @@ delle tangenti (o di Newton).
 Per una trattazione approfondita, si rimanda all'\nameref{app: C}.
 
 Risulta evidente, osservando i punti campionati con la resistenza da
-$R1 = 220$ $\si{\kohm}$, la presenza di un rumore di natura non statistica
+$R1 = 220 \; \si{\kohm}$, la presenza di un rumore di natura non statistica
 molto maggiore delle incertezze sulle misure. 
 Questo si deve probabilmente all'influenza del circuito di lettura
 stesso sulle piccole correnti in gioco, che avevamo supposto trascurabile
@@ -348,8 +353,8 @@ definisce i parametri fondamentali.
 		\includegraphics[width=16cm, height= 9.9cm]{10skip_semilog}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
-	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
-	di visualizzazione. \label{fig: sck_log}}
+	i dati della serie $220\si{\kohm}$. E' stato disegnato un punto ogni 10
+	per comodità di visualizzazione. \label{fig: sck_log}}
 \end{figure}
 
 % Baldini e Fuso dicono sempre di specificare come si è implementato
@@ -424,7 +429,7 @@ in esame, riportate nella tabella sottostante:
 	\begin{center}
 		\begin{tabular}{lll}
 		\toprule
-		$R1$ nom. [$\si{\ohm}$] & $R1$ Vcc [$\si{\ohm}$] \\
+		$R1$ nom. [$\si{\ohm}$] & $R1$ (DC) [$\si{\ohm}$] \\
 		\midrule
 		\midrule
 		$0.22 \pm 3 \% $     & $0.22 \pm 0.01 $ \\
@@ -452,7 +457,7 @@ da banco:
 	\begin{center}
 		\begin{tabular}{lll}
 		\toprule
-		$R1$ nom. [$\si{\ohm}$] & $R1$ mult. [$\si{\ohm}$] \\
+		$R1$ nom. [$\si{\ohm}$] & $R1$ (4T) [$\si{\ohm}$] \\
 		\midrule
 		\midrule
 		$0.22 \pm 3 \% $     & $0.226 \pm 0.008$ \\
