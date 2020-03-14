@@ -22,16 +22,16 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 \begin{mdframed}
 \textbf{Riassunto:} --- Si è studiato il comportamento di un diodo in silicio
 PN, ricostruendone sperimentalmente la curva caratteristica $V-I$, al fine di
-mettere in risalto la sua natura resistiva. A questo scopo è stata esplorata
-un'ampia zona della curva per alti valori di $I$ $(I\geq I_F)$, dove questa
-caratteristica è maggiormente apprezzabile. Proponiamo dunque un'estensione
-della legge di Shockley, tramite l'aggiunta di un termine resistivo, in grado
-di descrivere la componente -ohmica- della giunzione; il che equivale a
-modellare un diodo reale come un resistore in serie ad un diodo ideale.
+mettere in risalto la sua componente resistiva. A questo scopo è stata
+esplorata un'ampia zona della curva, in particolar modo per alti valori di
+$I$, dove questa caratteristica è maggiormente apprezzabile. Proponiamo dunque
+un'estensione della legge di Shockley, tramite l'aggiunta di un termine
+resistivo, in grado di descrivere l'elemento -ohmico- della giunzione.
+%;il che equivale a modellare un diodo reale come un resistore in serie
+%ad un diodo ideale.
 La nuova curva caratteristica prevede un andamento sempre più lineare di $I$
 al crescere di $V$ e questo risulta in accordo con l'andamento dei dati
-sperimentali, possibilmente esagerato dalla non-linearità di risposta
-del sistema di campionamento.
+sperimentali.
 \\\\
 PACS 01.40.-d – Education.\\
 PACS 01.50.Pa – Laboratory experiments and apparatus.
@@ -48,19 +48,19 @@ per effetti termico-dissipativi questa ha un effetto sempre meno
 trascurabile, all'aumentare della tensione ai suoi capi, sul passaggio di
 corrente attraverso il diodo.
 Per poter descrivere la parte resistiva di un diodo percorso da correnti
-di alta intensità\footnote{Nel nostro caso per un diodo 1N4007 la massima
-intensità di corrente continua $I_F = 1.0$ A nominali.} si propone
-un modello semplice, di resistenza parassita in serie, verificandone l'accordo
-con i risultati sperimentali su un'ampia regione di punti di lavoro.
+di alta intensità %\footnote{Nel nostro caso per un diodo 1N4007 la massima
+%intensità di corrente continua $I_F = 1.0$ A nominali.}
+si propone un modello semplice, di resistenza parassita in serie, verificandone
+l'accordo con i risultati sperimentali su un'ampia regione di punti di lavoro.
 
 %================================================================
 %                         Cenni teorici
 %================================================================
-\subsection{Cenni Teorici}
+\section{Cenni Teorici}
 Secondo le nostre ipotesi, un diodo reale può essere schematizzato come un
-resistore ohmico\footnote{Vista la simmetria della giunzione, propriamente
-si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
-la cui resistenza non è indipendente dalle condizioni di operazione.}
+resistore ohmico%\footnote{Vista la simmetria della giunzione, propriamente
+%si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
+%la cui resistenza non è indipendente dalle condizioni di operazione.}
 ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che
 attraversa questi elementi del circuito sia la stessa:
 \begin{equation}
@@ -84,9 +84,9 @@ essere espressa secondo la legge:
 %                Metodo e apparato sperimentale
 %================================================================
 \section{Metodo e apparato sperimentale}
-Onde evitare sostanziali aumenti di temperatura e le conseguenti variazioni di
-resistenza nei componenti (oltre ad eventuali danni a questi stessi) si
-imprimono correnti impulsate sul circuito.
+Onde evitare sostanziali aumenti di temperatura, oltre ad eventuali danni
+a questi stessi, si imprimono correnti impulsate sul circuito. 
+%e le conseguenti variazioni di resistenza nei componenti 
 La durata degli impulsi è inferiore ai 200 $\mu$s, che corrisponde ad
 un'energia impressa inferiore a 1 mJ (dunque ad un aumento della temperatura
 del semiconduttore inferiore a 0.5 K).
@@ -103,7 +103,7 @@ L'apparato sperimentale è costituito da un circuito, realizzato su basetta
 sperimentale (\emph{breadboard}), il cui scopo è generare le correnti
 impulsate appena descritte attraverso il diodo $D1$ e la resistenza $R1$.
 La misura della differenza di potenziale agli estremi della $R_1$ permette
-di misurare indirettamente la corrente che circola sul diodo.
+di stimare la corrente che circola sul diodo.
 % Per poter esplorare una larga banda di punti di lavoro del diodo,
 Per poter esplorare una larga banda di correnti di lavoro
 % Forse meglio una larga fascia di correnti, visto che il compito della
@@ -127,8 +127,7 @@ le seguenti:
 	    \bottomrule
 	\end{tabular}
 	\caption{I valori delle resistenze poste in serie al diodo, riportate in
-		valore nominale e misurate con multimetro digitale a $6\; \frac{1}{2}$
-		cifre con il metodo dei 4-fili . \label{tab:res}}
+		valore nominale e misurate con multimetro digitale. \label{tab:res}}
     \end{center}
 \end{table}
 D'altra parte, per fornire una tensione regolabile e sufficientemente stabile
@@ -138,8 +137,8 @@ Nel circuito si distingue inoltre la maglia che si occupa di collegare, sotto
 istruzione di un microcontrollore, il condensatore alla serie $R1-D1$
 attraverso un MOS-FET.\\
 Il circuito è alimentato da 2 tensioni continue, fornite da un alimentatore
-stabilizzato switching e da un Buck Boost Converter, alle maglie di
-"carica/scarica" e di "switch" rispettivamente.
+stabilizzato switching e da un Buck Boost Converter.
+%,alle maglie di "carica/scarica" e di "switch" rispettivamente
 Un segnale fornito su $T2$ provoca la carica del condensatore mentre su $T3$
 la sua scarica. Un segnale (invertito) su $T1$ innesca l'impulso di corrente
 sul diodo.\\
@@ -260,7 +259,7 @@ Per ciascun valore scelto della resistenza $R1$ si è acquisita una presa
 dati automatizzata tramite una 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}
 {routine} programmata in \verb+Teensy+: il condensatore viene caricato
-ad una tensione fissata arbitrariamente; quando il MCU misura questo valore
+ad una tensione prefissata; quando il MCU misura questo valore
 prestabilito, invia il segnale su $T1$ che avvia l'acquisizione sincronizzata
 e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in
 conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile ritardo
@@ -296,7 +295,7 @@ associate.
 
 Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
 % non basta fit ai minimi quadrati ordinario?
-Per il procedimento si potrebbe pensare di adottare come modello la legge
+Per il procedimento avremmo potuto pensare di adottare come modello la legge
 \eqref{eq: model} direttamente, tuttavia ciò comporterebbe il fallimento del
 fit a causa dei valori negativi o nulli che può assumere l'argomento del
 logaritmo. Si è scelto quindi di utilizzare la funzione inversa come modello
@@ -335,28 +334,28 @@ Infine si mostrano i dati acquisiti con sovrapposta la funzione di best-fit
 nei grafici \ref{fig: sck_lin}, in scala lineare, e \ref{fig: sck_log}
 in scala semilogaritmica. 
 
+Per gli script si rimanda alla 
+\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}
+{cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+
+definisce i parametri fondamentali.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centering 
-		\includegraphics[scale=0.65]{100skip_linear}
+		\includegraphics[width=16cm, height= 11cm]
+		{100skip_linear}
 	\caption{Dati acquisiti e funzione di best-fit \eqref{eq: model}. E' 
 	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
 	\label{fig: sck_lin}}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!htp]
 	\centering 
-		\includegraphics[scale=0.65]{10skip_semilog}
+		\includegraphics[width=16cm, height= 9.9cm]{10skip_semilog}
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
 	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
 	di visualizzazione. \label{fig: sck_log}}
 \end{figure}
-
-Per gli script si rimanda alla 
-\href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}
-{cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+
-definisce i parametri fondamentali.
 
 % Baldini e Fuso dicono sempre di specificare come si è implementato
 % il procedimento di fit (numerico/analitico,... con che algoritmo?

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex diodo"] 1584060066 "diodo.aux" "diodo.bbl" "diodo" 1584060070
+["bibtex diodo"] 1584150607 "diodo.aux" "diodo.bbl" "diodo" 1584150646
   "./IEEEtrandoi.bst" 1577387200 60815 f4ed9ef17005d390213cd57d581f7b76 ""
-  "diodo.aux" 1584060069 9422 fc5bb70b9792ade0609a847c9d53c9b8 ""
+  "diodo.aux" 1584150645 9280 fc8175fcb4265e52c7afe77e12433d90 ""
   "diodo.bcf" 0 -1 0 ""
   "refs.bib" 1583953077 2044 f700e2037a314e6ed7712898bef5d9af ""
   (generated)
-  "diodo.blg"
   "diodo.bbl"
-["pdflatex"] 1584060066 "diodo.tex" "diodo.pdf" "diodo" 1584060070
+  "diodo.blg"
+["pdflatex"] 1584150643 "diodo.tex" "diodo.pdf" "diodo" 1584150646
   "/etc/texmf/web2c/texmf.cnf" 1582144663 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -355,10 +355,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1582145087 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1582145123 4127590 ac0f214e9fc2dbf049abb784824b2965 ""
-  "diodo.aux" 1584060069 9422 fc5bb70b9792ade0609a847c9d53c9b8 ""
-  "diodo.bbl" 1584060066 2004 f543debd16f8727c979e16325531e3ef "bibtex diodo"
-  "diodo.out" 1584060069 914 be18441aa118a416d3ae10280708dd56 ""
-  "diodo.tex" 1584060062 39514 a1943485e6ebb992a72ca89476fdd8a5 ""
+  "diodo.aux" 1584150645 9280 fc8175fcb4265e52c7afe77e12433d90 ""
+  "diodo.bbl" 1584150607 2004 f543debd16f8727c979e16325531e3ef "bibtex diodo"
+  "diodo.out" 1584150645 900 8accc35ef572ad4f582c5b273f492db6 ""
+  "diodo.tex" 1584150641 39395 87c3cb5b4cded66ae7992dbfc3da4079 ""
   "figs/./filtered.png" 1583613767 122950 22140471d52386e83afe42c00f230c7c ""
   "figs/./gestione.png" 1583343164 32428 368fdb43ba4501cde48635b2394b6ed8 ""
   "figs/./measure.png" 1583343164 5537 b70dae15c2d9b26099da8d8a61d29300 ""
@@ -379,10 +379,10 @@
   "figs/vter.pdf" 1584057900 60291 0f173a83110a2d697eae828646d48204 ""
   "figs/vter.pdf_tex" 1584057900 2047 f0dd5dc37a46f2f69e2be37a8744660c ""
   "math.tex" 1584044210 6879 a8c59ff39f0ec844ec329dce90eab358 ""
-  "preamble.tex" 1584058040 1686 1e845e50c1d527224bab291239d725c0 ""
+  "preamble.tex" 1584060144 1622 b55bb8517e4e921181ba946422563faf ""
   (generated)
   "diodo.out"
-  "diodo.aux"
+  "diodo.pdf"
   "diodo.auxlock"
   "diodo.log"
-  "diodo.pdf"
+  "diodo.aux"
