@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  14 MAR 2020 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.19)  14 MAR 2020 20:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2181,46 +2181,58 @@ File: ./figs/comparison.png Graphic file (type png)
 <use ./figs/comparison.png>
 Package pdftex.def Info: ./figs/comparison.png  used on input line 705.
 (pdftex.def)             Requested size: 423.71397pt x 229.23772pt.
-[11 <./figs/./nofilter.png> <./figs/./filtered.png> <./figs/comparison.png>] (./figs/tang.pdf_tex
-<./figs/tang.pdf, id=1368, page=1, 462.52798pt x 345.4506pt>
-File: ./figs/tang.pdf Graphic file (type pdf)
-<use ./figs/tang.pdf, page 1>
-Package pdftex.def Info: ./figs/tang.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 455.24411pt x 340.02574pt.
-) [12 <./figs/tang.pdf>] (./figs/Iter.pdf_tex
-<./figs/Iter.pdf, id=1588, page=1, 462.52798pt x 345.4506pt>
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 724.
+
+[11 <./figs/./nofilter.png> <./figs/./filtered.png> <./figs/comparison.png>]
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 733.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 742.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 749.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 753.
+
+<./figs/tang.png, id=1368, 520.344pt x 356.2911pt>
+File: ./figs/tang.png Graphic file (type png)
+<use ./figs/tang.png>
+Package pdftex.def Info: ./figs/tang.png  used on input line 759.
+(pdftex.def)             Requested size: 416.27576pt x 285.03326pt.
+(./figs/Iter.pdf_tex
+<./figs/Iter.pdf, id=1370, page=1, 462.52798pt x 345.4506pt>
 File: ./figs/Iter.pdf Graphic file (type pdf)
 <use ./figs/Iter.pdf, page 1>
 Package pdftex.def Info: ./figs/Iter.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 455.24411pt x 340.02574pt.
 ) (./figs/vter.pdf_tex
-<./figs/vter.pdf, id=1589, page=1, 462.52798pt x 345.4506pt>
+<./figs/vter.pdf, id=1371, page=1, 462.52798pt x 345.4506pt>
 File: ./figs/vter.pdf Graphic file (type pdf)
 <use ./figs/vter.pdf, page 1>
 Package pdftex.def Info: ./figs/vter.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 462.52798pt x 345.46556pt.
-) (./diodo.bbl [13] [14 <./figs/Iter.pdf> <./figs/vter.pdf
-
-pdfTeX warning: pdflatex (file ./figs/vter.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]) [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 841.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 841.
+) [12] [13 <./figs/tang.png> <./figs/Iter.pdf>] (./diodo.bbl) [14 <./figs/vter.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 843.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 843.
  (./diodo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 841.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 841.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 843.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 843.
 Package rerunfilecheck Info: File `diodo.out' has not changed.
 (rerunfilecheck)             Checksum: 924157E1DBAC8B9FD03EF87BF3F1CED1;980.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 841.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 843.
  ) 
 Here is how much of TeX's memory you used:
- 57537 strings out of 492982
- 1356790 string characters out of 6134896
+ 57531 strings out of 492982
+ 1356654 string characters out of 6134896
  1657611 words of memory out of 5000000
- 60159 multiletter control sequences out of 15000+600000
+ 60156 multiletter control sequences out of 15000+600000
  727835 words of font info for 196 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,23n,119p,10400b,1079s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2229,10 +2241,10 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (15 pages, 1194839 bytes).
+Output written on diodo.pdf (14 pages, 1154435 bytes).
 PDF statistics:
- 1927 PDF objects out of 2073 (max. 8388607)
- 1331 compressed objects within 14 object streams
- 69 named destinations out of 1000 (max. 500000)
+ 1716 PDF objects out of 1728 (max. 8388607)
+ 1191 compressed objects within 12 object streams
+ 68 named destinations out of 1000 (max. 500000)
  44755 words of extra memory for PDF output out of 51595 (max. 10000000)
 

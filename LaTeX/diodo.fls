@@ -683,11 +683,9 @@ INPUT ./figs/./filtered.png
 INPUT ./figs/comparison.png
 INPUT ./figs/comparison.png
 INPUT ./figs/comparison.png
-INPUT ./figs/tang.pdf_tex
-INPUT ./figs/tang.pdf_tex
-INPUT ./figs/tang.pdf
-INPUT ./figs/tang.pdf
-INPUT ./figs/tang.pdf
+INPUT ./figs/tang.png
+INPUT ./figs/tang.png
+INPUT ./figs/tang.png
 INPUT ./figs/Iter.pdf_tex
 INPUT ./figs/Iter.pdf_tex
 INPUT ./figs/Iter.pdf
