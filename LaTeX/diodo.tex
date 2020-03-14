@@ -405,6 +405,43 @@ proposto pu\`o essere esteso per qualunque altro tipo di diodo, eventualmente
 sostituendo il condensatore con un opportuno circuito stabilizzatore di
 corrente o di tensione.
 
+\section{Conclusione proposta da Serena e Luca}
+Sulla base dell'analisi previamente effettuata, possiamo osservare che il
+$\chi^2$ risulta essere minore rispetto al suo valore atteso. Ciò \`e
+parzialmente dovuto alla correlazione degli errori inerenti i dati rilevati
+all'interno dei due canali d'ingresso. In aggiunta, come si evince anche dalla
+zona di maggior concentrazione dei residui all'interno dell'omonimo grafico,
+il convertitore analogico-digitale del MCU \`e caratterizzato da una funzione
+di risposta non lineare. Questo fattore era stato tenuto in considerazione
+all'interno della calibrazione delle porte \verb+ADC0+ e \verb+ADC1+ mediante
+l'aggiunta in quadratura di un errore di natura non statistica a quelli stimati
+attraverso il fit lineare. Tale operazione ha portato, quindi, ad
+un'ulteriore diminuzione del $\chi^2$ all'interno del fit finale.
+Ulteriori osservazioni possono essere condotte riguardo alle evidenti analogie
+di carattere qualitativo fra la zona di maggior concentrazione dei
+campionamenti e la funzione di best fit.
+In primo luogo, all'interno del grafico in scala lineare, a correnti alte,
+i punti risultano essere disposti pressoch\`e linearmente, in accordo con
+l'ipotesi di una componente resistiva interna al diodo. Analogamente, nel
+grafico in scala semilogaritmica, i dati assumono un andamento simile a quello
+caratteristico della curva di Shockley, ovvero approssimativamente
+rettilineo, per poi appiattirsi come un logaritmo al crescere della tensione.
+Dunque, possiamo asserire che l'andamento dei dati sperimentali risulta essere
+in buon accordo con la legge \eqref{eq: model}, per cui non abbiamo motivo di rigettarlo.
+Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi 
+e che la modellizzazione proposta sia una buona approssimazione del diodo reale 
+nelle condizioni di lavoro considerate. Questa modellizzazione, fra l'altro, 
+può risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
+impulsati su alte correnti, dove sia richiesto un dettaglio
+sulle cadute di tensione sui singoli componenti. 
+%Per tale scopo la legge \eqref{eq: model} \`e confermata essere una buona
+%approssimazione del diodo reale entro i limiti sperimentali.
+Sebbene questo studio sia concentrato su un unico diodo 1N4007, il metodo
+proposto pu\`o essere esteso per qualunque altro tipo di diodo, eventualmente
+sostituendo il condensatore con un opportuno circuito stabilizzatore di
+corrente o di tensione.
+
+
 %================================================================
 %                        Appendice A
 %================================================================
@@ -814,7 +851,7 @@ anche a seguito di sole 20 iterazioni:
 \end{figure}
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
 fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie,
-inoltre, risulta convergere molto rapidamente ai valori attesi e quindi sono 
+inoltre, risulta convergere molto9m rapidamente ai valori attesi e quindi sono 
 effettivamente sufficienti solo 20 iterazioni per una buona precisione.
 All’interno della funzione di fit, è stato infine introdotto un offset quale
 parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
