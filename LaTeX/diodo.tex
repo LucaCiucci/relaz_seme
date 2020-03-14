@@ -58,7 +58,7 @@ l'accordo con i risultati sperimentali su un'ampia regione di punti di lavoro.
 %================================================================
 \section{Cenni Teorici}
 Secondo le nostre ipotesi, un diodo reale può essere schematizzato come un
-resistore ohmico%\footnote{Vista la simmetria della giunzione, propriamente
+resistore ohmico %\footnote{Vista la simmetria della giunzione, propriamente
 %si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
 %la cui resistenza non è indipendente dalle condizioni di operazione.}
 ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che
@@ -317,18 +317,18 @@ nei risultati finali.
 Si riportano i valori ottimali dei parametri stimati dal fit e le relative
 covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
 \begin{align*}
-	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \rm m\Omega \\
-	\eta V_T &= 47.579\iffalse 86 \fi \pm 0.003\iffalse 3 \fi \; \rm mV \\
-	I_0 &= 4.518\iffalse 0 \fi \pm 0.004\iffalse 3 \fi \; \rm nA \\
-	\text{offset} &=\; - 2.204\iffalse 3 \fi \pm 0.007 \iffalse 3 \fi \; \mu A\\
-	\sigma_{I_0, \eta V_T} &= 0.97 \\
-	\sigma_{I_0, R_d} &= -0.62 \\
-	\sigma_{I_0, \text{ofst}} &= -0.49 \\
-	\sigma_{\eta V_T, R_d} &= -0.70 \\
-	\sigma_{\eta V_T, \text{ofst}} &= -0.43 \\
-	\sigma_{R_d, \text{ofst}} &= 0.22 \\
-	\chi^2/\text{ndof} &= 72207/251066 \\
+	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \rm m\Omega 
+	&\sigma_{I_0, \eta V_T} &= 0.97  \\
+	\eta V_T &= 47.579\iffalse 86 \fi \pm 0.003\iffalse 3 \fi \; \rm mV 	
+	&\sigma_{I_0, R_d} &= -0.62 \\
+	I_0 &= 4.518\iffalse 0 \fi \pm 0.004\iffalse 3 \fi \; \rm nA
+	&\sigma_{I_0, \text{ofst}} &= -0.49 \\
+	\text{offset} &=\; - 2.204\iffalse 3 \fi \pm 0.007 \iffalse 3 \fi \; \mu A
+	&\sigma_{\eta V_T, R_d} &= -0.70  \\ 
+	\chi^2/\text{ndof} &= 72207/251066
+	&\sigma_{\eta V_T, \text{ofst}} &= -0.43\\
 	\text{abs\_sigma} &= \rm False
+	&\sigma_{R_d, \text{ofst}} &= 0.22
 \end{align*}
 Infine si mostrano i dati acquisiti con sovrapposta la funzione di best-fit
 nei grafici \ref{fig: sck_lin}, in scala lineare, e \ref{fig: sck_log}
