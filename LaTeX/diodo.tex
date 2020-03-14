@@ -1,45 +1,6 @@
 \documentclass{article}[a4paper, oneside, 11pt]
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{calc}
-\usepackage{amsmath, amssymb, amsthm, thmtools, amsfonts}
-\usepackage{mathtools}
-\usepackage[nochapters,pdfspacing]{classicthesis}
-%\usepackage{hyperref}% clashes with classicthesis
-\usepackage{cleveref}
-\usepackage[siunitx]{circuitikz}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{geometry}
-\usepackage{float}
-\usepackage{mdframed}
-\usepackage{xcolor}
-\usepackage{siunitx}
-\usepackage[italian]{babel}
-\usepackage{pgfplots}
-\usepackage{titling}
-\usepackage{listings}
-\usepackage{lmodern}
-\usepackage{url}
-\usepgfplotslibrary{external} 
-\tikzexternalize
 
-\pgfplotsset{compat=1.15}
-\lstset{
-language=Python,
-basicstyle=\ttfamily,
-columns=fullflexible,
-keepspaces=true,
-}
-\mdfsetup{linewidth=0.6pt}
-\graphicspath{{./figs/}}
-\makeatletter
-\def\input@path{{./figs/}}
-%or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
-\makeatother
-
+\input{./preamble}
 \input{./math}
 
 \geometry{a4paper, left=25mm, right=25mm, top=25mm, bottom=25mm}
@@ -58,40 +19,48 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 %================================================================
 %                            Riassunto
 %================================================================
-%\begin{mdframed}
-%\textbf{Riassunto:} --- Studiamo il comportamento di diodi in silicio PN,
-%esplorando un'ampia regione della propria curva caratteristica $V - I$,
-%tramite campionamenti digitali dei segnali ai capi del componente.
-%Discutiamo la presenza di una componente resistiva di un diodo reale e ne
-%misuriamo l'entità, al fine di arrivare ad un modello teorico in grado
-%giustificare eventuali deviazioni dalla legge di Shockley, verso una risposta
-%-ohmica- dovuta alla limitata conducibilità della giunzione PN.\\\\
-%PACS 01.40.-d – Education.\\
-%PACS 01.50.Pa – Laboratory experiments and apparatus.
-%\end{mdframed}
+\begin{mdframed}
+\textbf{Riassunto:} --- Si è studiato il comportamento di un diodo in silicio
+PN, ricostruendone sperimentalmente la curva caratteristica $V-I$, al fine di
+mettere in risalto la sua componente resistiva. A questo scopo è stata
+esplorata un'ampia zona della curva, in particolar modo per alti valori di
+$I$, dove questa caratteristica è maggiormente apprezzabile. Proponiamo dunque
+un'estensione della legge di Shockley, tramite l'aggiunta di un termine
+resistivo, in grado di descrivere l'elemento -ohmico- della giunzione.
+%;il che equivale a modellare un diodo reale come un resistore in serie
+%ad un diodo ideale.
+La nuova curva caratteristica prevede un andamento sempre più lineare di $I$
+al crescere di $V$ e questo risulta in accordo con l'andamento dei dati
+sperimentali.
+\\\\
+PACS 01.40.-d – Education.\\
+PACS 01.50.Pa – Laboratory experiments and apparatus.
+\end{mdframed}
 
 
 %================================================================
 %                         Introduzione
 %================================================================
 \section{Introduzione}
-L'alta resistività intrinseca al silicio, di cui è composta la giunzione
-bipolare, comporta la presenza di una sua componente resistiva: questa 
-risulta sempre meno trascurabile, all'aumentare della tensione ai suoi capi,
-agli effetti del passaggio di corrente attraverso il diodo.
-Per poter descrivere questa componente per un diodo percorso da correnti
--alte- si propone un modello semplice, di resistenza parassita in serie,
-in grado di descriverne gli effetti, verificandone l'accordo con i dati
-sperimentali su un'ampia regione di punti di lavoro.
+La limitata conducibilità intrinseca al silicio, di cui è composta la
+giunzione bipolare, comporta la presenza di una sua componente resistiva:
+per effetti termico-dissipativi questa ha un effetto sempre meno
+trascurabile, all'aumentare della tensione ai suoi capi, sul passaggio di
+corrente attraverso il diodo.
+Per poter descrivere la parte resistiva di un diodo percorso da correnti
+di alta intensità %\footnote{Nel nostro caso per un diodo 1N4007 la massima
+%intensità di corrente continua $I_F = 1.0$ A nominali.}
+si propone un modello semplice, di resistenza parassita in serie, verificandone
+l'accordo con i risultati sperimentali su un'ampia regione di punti di lavoro.
 
 %================================================================
 %                         Cenni teorici
 %================================================================
 \section{Cenni Teorici}
 Secondo le nostre ipotesi, un diodo reale può essere schematizzato come un
-resistore ohmico\footnote{Vista la simmetria della giunzione, propriamente
-si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
-la cui resistenza non è indipendente dalle condizioni di operazione.}
+resistore ohmico %\footnote{Vista la simmetria della giunzione, propriamente
+%si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
+%la cui resistenza non è indipendente dalle condizioni di operazione.}
 ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che
 attraversa questi elementi del circuito sia la stessa:
 \begin{equation}
@@ -104,9 +73,9 @@ essere espressa secondo la legge:
 	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} =
 	\eta V_T \ln{\left(\frac{I+I_0}{I_0}\right)} + RI
 \end{equation}
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering 
- 		\includegraphics[scale=0.23]{confronto_curve.png}
+ 		\includegraphics[scale=0.25]{confronto_curve.png}
  	\caption{confronto degli andamenti: la curva di Shockley (in rosso) e la 
 	legge \eqref{eq: model} (in viola)}
 \end{figure}
@@ -115,9 +84,9 @@ essere espressa secondo la legge:
 %                Metodo e apparato sperimentale
 %================================================================
 \section{Metodo e apparato sperimentale}
-Onde evitare sostanziali aumenti di temperatura e le conseguenti variazioni di
-resistenza nei componenti (oltre ad eventuali danni a questi stessi) si
-imprimono correnti impulsate sul circuito.
+Onde evitare sostanziali aumenti di temperatura, oltre ad eventuali danni
+a questi stessi, si imprimono correnti impulsate sul circuito. 
+%e le conseguenti variazioni di resistenza nei componenti 
 La durata degli impulsi è inferiore ai 200 $\mu$s, che corrisponde ad
 un'energia impressa inferiore a 1 mJ (dunque ad un aumento della temperatura
 del semiconduttore inferiore a 0.5 K).
@@ -134,7 +103,7 @@ L'apparato sperimentale è costituito da un circuito, realizzato su basetta
 sperimentale (\emph{breadboard}), il cui scopo è generare le correnti
 impulsate appena descritte attraverso il diodo $D1$ e la resistenza $R1$.
 La misura della differenza di potenziale agli estremi della $R_1$ permette
-di misurare indirettamente la corrente che circola sul diodo.
+di stimare la corrente che circola sul diodo.
 % Per poter esplorare una larga banda di punti di lavoro del diodo,
 Per poter esplorare una larga banda di correnti di lavoro
 % Forse meglio una larga fascia di correnti, visto che il compito della
@@ -158,10 +127,11 @@ le seguenti:
 	    \bottomrule
 	\end{tabular}
 	\caption{I valori delle resistenze poste in serie al diodo, riportate in
-		valore nominale e misurate con multimetro digitale a $6\; \frac{1}{2}$
-		cifre con il metodo dei 4-fili . \label{tab:res}}
+		valore nominale e misurate con multimetro digitale. \label{tab:res}}
     \end{center}
 \end{table}
+Peruna descrizione del metodo di misurazione delle resistenze si rimanda a
+\nameref{app: A}.
 D'altra parte, per fornire una tensione regolabile e sufficientemente stabile
 durante un impulso, nel circuito si impiega il condensatore $C1$, la cui
 tensione, carica e scarica sono controllate dalla maglia destra del circuito.
@@ -169,8 +139,8 @@ Nel circuito si distingue inoltre la maglia che si occupa di collegare, sotto
 istruzione di un microcontrollore, il condensatore alla serie $R1-D1$
 attraverso un MOS-FET.\\
 Il circuito è alimentato da 2 tensioni continue, fornite da un alimentatore
-stabilizzato switching e da un Buck Boost Converter, alle maglie di
-"carica/scarica" e di "switch" rispettivamente.
+stabilizzato switching e da un Buck Boost Converter.
+%,alle maglie di "carica/scarica" e di "switch" rispettivamente
 Un segnale fornito su $T2$ provoca la carica del condensatore mentre su $T3$
 la sua scarica. Un segnale (invertito) su $T1$ innesca l'impulso di corrente
 sul diodo.\\
@@ -245,13 +215,13 @@ di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
 	& m_1  &= 0.7954 \pm 0.0026  \; \mathrm{mV/digit} \\
 	q_0 &= - 0.18 \pm 0.34  \; \mathrm{mV} 	
 	&q_1 &= 3.84  \pm 0.26  \; \mathrm{mV} \\
-	\var{m_0}  &= 1.1 \cdot 10^{-11}  \; \mathrm{V}^2 /\mathrm{digit}^2
-	&\var{m_1} &= 7.0 \cdot 10^{-12}  \; \mathrm{V}^2 /\mathrm{digit}^2 \\
-	\var{q_0} &=1.2 \cdot 10^{-7} \; \mathrm{V}^2
-	&\var{q_1} &= 6.8 \cdot 10^{-8} \; \mathrm{V}^2 \\
-	\cov{m_0} {q_0} &= - 1.6 \cdot 10^{-10} \; \mathrm{V}^2 /\mathrm{digit}
-        &\cov{m_1}{q_1} &= - 6.1 \cdot 10^{-11} \;
-	\mathrm{V}^2 /\mathrm{digit} \\
+	%\var{m_0}  &= 1.1 \cdot 10^{-11}  \; \mathrm{V}^2 /\mathrm{digit}^2
+	%&\var{m_1} &= 7.0 \cdot 10^{-12}  \; \mathrm{V}^2 /\mathrm{digit}^2 \\
+	%\var{q_0} &=1.2 \cdot 10^{-7} \; \mathrm{V}^2
+	%&\var{q_1} &= 6.8 \cdot 10^{-8} \; \mathrm{V}^2 \\
+	%\cov{m_0} {q_0} &= - 1.6 \cdot 10^{-10} \; \mathrm{V}^2 /\mathrm{digit}
+    %    &\cov{m_1}{q_1} &= - 6.1 \cdot 10^{-11} \;
+	\corr{m_0} {q_0} &= - 0.15      &\corr{m_1}{q_1} &= - 0.09 \\
 	\chi^2/\text{ndof} &= 145/15	&\chi^2/\text{ndof} &= 96/15 \\ 
 	\text{abs\_sigma} &= \rm False	&\text{abs\_sigma} &= \rm False
 \end{align*}
@@ -260,13 +230,15 @@ di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
- 		\includegraphics[scale=0.5]{cal0.png}
-	\label{fig: nofilter}
+	\def\svgwidth{\columnwidth}
+		\includesvg{cal0}
+	\label{fig: cal0}
 \end{subfigure}%
 \begin{subfigure} {.5\textwidth}
 	\centering 
-		\includegraphics[scale=0.5]{cal1.png}
-	\label{fig: filtered}
+	\def\svgwidth{\columnwidth}
+		\includesvg{cal1}
+	\label{fig: cal1}
 \end{subfigure}
 \end{figure}
 
@@ -289,7 +261,7 @@ Per ciascun valore scelto della resistenza $R1$ si è acquisita una presa
 dati automatizzata tramite una 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}
 {routine} programmata in \verb+Teensy+: il condensatore viene caricato
-ad una tensione fissata arbitrariamente; quando il MCU misura questo valore
+ad una tensione prefissata; quando il MCU misura questo valore
 prestabilito, invia il segnale su $T1$ che avvia l'acquisizione sincronizzata
 e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in
 conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile ritardo
@@ -319,19 +291,19 @@ determinare la corrente di lavoro del diodo grazie alla legge di Ohm.
 Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
 dei punti meno significativi, assumendoli quali variabili indipendenti e di 
 natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app: 
-A}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
+B}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
 $\sigma_x^2$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
 
 Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
 % non basta fit ai minimi quadrati ordinario?
-Per il procedimento si potrebbe pensare di adottare come modello la legge
+Per il procedimento avremmo potuto pensare di adottare come modello la legge
 \eqref{eq: model} direttamente, tuttavia ciò comporterebbe il fallimento del
 fit a causa dei valori negativi o nulli che può assumere l'argomento del
 logaritmo. Si è scelto quindi di utilizzare la funzione inversa come modello
 per il fit, la quale è stata implementata numericamente secondo il metodo
 delle tangenti (o di Newton).
-Per una trattazione approfondita, si rimanda all'\nameref{app: B}.
+Per una trattazione approfondita, si rimanda all'\nameref{app: C}.
 
 Risulta evidente, osservando i punti campionati con la resistenza da
 $R1 = 220$ k$\Omega$, la presenza di un rumore di natura non statistica
@@ -347,45 +319,45 @@ nei risultati finali.
 Si riportano i valori ottimali dei parametri stimati dal fit e le relative
 covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
 \begin{align*}
-	R_{\text{diodo}} &= 46.1118 \pm 0.007\underline{2} \; \rm m\Omega \\
-	\eta V_T &= 47.5786 \pm 0.003\underline{3} \; \rm mV \\
-	I_0 &= 4.5180 \pm 0.004\underline{3} \; \rm nA \\
-	\text{offset} &=\; - 2.2043\pm 0.007\underline{3} \;  \mu A\\
-	\sigma_{I_0, \eta V_T} &= 0.97 \\
-	\sigma_{I_0, R_d} &= -0.62 \\
-	\sigma_{I_0, \text{ofst}} &= -0.49 \\
-	\sigma_{\eta V_T, R_d} &= -0.70 \\
-	\sigma_{\eta V_T, \text{ofst}} &= -0.43 \\
-	\sigma_{R_d, \text{ofst}} &= 0.22 \\
-	\chi^2/\text{ndof} &= 72207/251066 \\
+	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \rm m\Omega 
+	&\sigma_{I_0, \eta V_T} &= 0.97  \\
+	\eta V_T &= 47.579\iffalse 86 \fi \pm 0.003\iffalse 3 \fi \; \rm mV 	
+	&\sigma_{I_0, R_d} &= -0.62 \\
+	I_0 &= 4.518\iffalse 0 \fi \pm 0.004\iffalse 3 \fi \; \rm nA
+	&\sigma_{I_0, \text{ofst}} &= -0.49 \\
+	\text{offset} &=\; - 2.204\iffalse 3 \fi \pm 0.007 \iffalse 3 \fi \; \mu A
+	&\sigma_{\eta V_T, R_d} &= -0.70  \\ 
+	\chi^2/\text{ndof} &= 72207/251066
+	&\sigma_{\eta V_T, \text{ofst}} &= -0.43\\
 	\text{abs\_sigma} &= \rm False
+	&\sigma_{R_d, \text{ofst}} &= 0.22
 \end{align*}
-
 Infine si mostrano i dati acquisiti con sovrapposta la funzione di best-fit
-nei grafici in scala lineare \ref{fig: sck_lin} e semilogaritmica 
-\ref{fig: sck_log}
-
-\begin{figure}[!h]% questi due grafici sono più problematici, potrebbe tornare utile usare vspace negativo e ritagliare le figure manualmente se necessario
-	\centering 
-		\includegraphics[scale=0.7]{100skip_linear}
-	\caption{Dati acquisiti e funzione di best-fit \eqref{eq: model}. E' 
-	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
-	\label{fig: sck_lin}}
-\end{figure}
-
-\begin{figure}[!ht]
-	\centering 
-		\includegraphics[scale=0.70]{10skip_semilog}
-	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
-	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
-	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
-	di visualizzazione. \label{fig: sck_log}}
-\end{figure}
+nei grafici \ref{fig: sck_lin}, in scala lineare, e \ref{fig: sck_log}
+in scala semilogaritmica. 
 
 Per gli script si rimanda alla 
 \href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit}
 {cartella}, dove \verb+run.py+ esegue la corretta sequenza e \verb+config.py+
 definisce i parametri fondamentali.
+
+\begin{figure}[H]
+	\centering 
+		\includegraphics[width=16cm, height= 11cm]
+		{100skip_linear}
+	\caption{Dati acquisiti e funzione di best-fit \eqref{eq: model}. E' 
+	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
+	\label{fig: sck_lin}}
+\end{figure}
+
+\begin{figure}[!htp]
+	\centering 
+		\includegraphics[width=16cm, height= 9.9cm]{10skip_semilog}
+	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
+	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
+	i dati della serie 220k. E' stato disegnato un punto ogni 10 per comodità
+	di visualizzazione. \label{fig: sck_log}}
+\end{figure}
 
 % Baldini e Fuso dicono sempre di specificare come si è implementato
 % il procedimento di fit (numerico/analitico,... con che algoritmo?
@@ -436,7 +408,78 @@ corrente o di tensione.
 %================================================================
 %                        Appendice A
 %================================================================
-\section{Appendice A: Filtraggio Dati}\label{app: A}
+\section{Appendice A: Misurazione delle reristenze $R1$}\label{app: A}
+
+All’interno delle misurazioni delle resistenze, sono stati adottati dei resistori
+contrassegnati da valori nominali che spaziano da 0.22 a 220 $k\Omega$.
+Dunque il multimetro digitale non possiede una sensibilità sufficiente ai fini
+della stima delle resistenze più basse.\\  
+In primo luogo, queste ultime sono state misurate attraverso un metodo basato
+sull’uso di un alimentatore regolabile DC ($\Delta V_{\text{max}} = 30 V$;
+$I_{\text{max}} = 5 A$). La strategia consiste nel fare scorrere una corrente
+continua entro un resistore. La stessa deve essere scelta ponendo attenzione
+che la potenza dissipata ($P =R \cdot I^{2}$) non superi la potenza nominale
+del resistore onde evitare danneggiamenti del componente per effetto termico.
+Nel contempo, la corrente \footnote{La corrente è stata misurata col multimetro,
+nonostante il fatto che l’abbiamo scelta a priori, ai fini di ottenere una maggiore precisione}
+e la differenza di potenziale ai capi del resistore vengono misurati attraverso
+due multimetri digitali. Dunque attraverso la legge di Ohm è stato possibile la
+stima delle resistenze in esame, riportate nella tabella sottostante con i relativi errori:
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{lll}
+     \toprule
+     $R1$ nom. [$\Omega$] & $R1$ [$\Omega$] \\
+     \midrule
+     \midrule
+     $0.22 \pm 3 \% $     & $0.22 \pm 0.01 $ \\
+     $2.2 \pm 5 \% $     & $2.19 \pm 0.03 $ \\
+     $22 \pm 5 \% $     & $21.6 \pm 0.2 $ \\
+        $220 \pm 5 \% $     & $210.6 \pm 0.8 $ \\
+     $2.2\; \rm k \pm 5 \% $ & $2140 \pm 23$ \\
+     \bottomrule
+    \end{tabular}
+    \caption{I valori delle resistenze poste in serie al diodo, riportate in
+        valore nominale e misurate con il primo metodo. \label{tab:res}}
+\end{center}
+\end{table}
+
+Successivamente, è stato adottato un approccio differente. Ai fini di effettuare le medesime
+misure, è stato adottato il metodo della misura a quattro terminali (4T), attraverso un ohmetro
+specifico. Ai valori misurati sono stati sottratte le letture effettuate in assenza del resistore.
+In tal modo, sono stati cancellati gli errori dovuti alle resistenze intrinseche dei fili. Nella
+presente tabella sono riportati i risultati conseguiti:
+
+\begin{table}[H]
+\begin{center}
+    \begin{tabular}{lll}
+     \toprule
+     $R1$ nom. [$\Omega$] & $R1$ [$\Omega$] \\
+     \midrule
+     \midrule
+     $0.22 \pm 3 \% $     & $0.226 \pm 0.008$ \\
+     $2.2 \pm 5 \% $     & $2.212 \pm 0.008$ \\
+     $22 \pm 5 \% $     & $21.86 \pm 0.010$ \\
+        $220 \pm 5 \% $     & $216.22 \pm 0.07$ \\
+     $2.2\; \rm k \pm 5 \% $ & $2202.1 \pm 0.4$ \\
+     \bottomrule
+    \end{tabular}
+    \caption{I valori delle resistenze poste in serie al diodo, riportate in
+        valore nominale e misurate con la seconda strategia. \label{tab:res}}
+\end{center}
+\end{table}
+
+Entrambi i metodi forniscono stime valide delle resistenze adottate. Dunque all’interno
+delle analisi successive, sono state adottate le misure conseguite a seguito della
+seconda strategia, caratterizzate da maggiore precisione.\\
+Le resistenze da 22 $k\Omega$ e 220 $k\Omega$ sono state invece misurate con l’uso
+diretto di un multimetro digitale.
+
+%================================================================
+%                        Appendice B
+%================================================================
+\section{Appendice B: Filtraggio Dati}\label{app: B}
 %================================
 %         Introduzione
 %================================
@@ -651,7 +694,7 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 evidenziati in arancio. Per praticità è stato rappresentato un centesimo
 dei dati raccolti}
 \end{figure}
-E’ infine mostrato il confronto dei grafici delle $\var{\mu_y}$
+\`E infine mostrato il confronto dei grafici delle $\var{\mu_y}$
 tra due set successivi.
 \begin{figure}[!h]
 	\centering 
@@ -661,64 +704,61 @@ tra due set successivi.
 \end{figure}
 
 %================================================================
-%                        Appendice B
+%                        Appendice C
 %================================================================
-\section{Appendice B: Metodo di fit}\label{app: B}
+\section{Appendice C: Metodo di fit}\label{app: C}
 La differenza di potenziale $\Delta$V in funzione della corrente $I$ che scorre 
 all’interno del diodo può essere espressa attraverso la legge
 \eqref{eq: model}. Potremo, dunque, essere tentati ad adottare tale formula
 ai fini di un fit numerico. 
 Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori 
-negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. 
-E’ stato dunque necessario adottare un algoritmo alternativo, basato sul 
+negativi o nulli che debitamente si riscontreranno all'interno del logaritmo. 
+\`E stato dunque necessario adottare un algoritmo alternativo, basato sul 
 metodo di Newton\cite{tesi}. Esso ci consentirà di ricostruire numericamente 
-la funzione inversa della legge \eqref{eq: model}.
+la funzione inversa della legge \eqref{eq: model}.\\
 Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$ continua e 
-derivabile entro un intervallo di definizione connesso (con $f’(x)$ limitata e 
-diversa da $0$ per ciascuna $x$ appartenente al dominio) ed una $v$ tale che
-$f(v) = 0$. Sviluppando al prim’ordine $f$ in un intorno di $v$, otterremo:
+derivabile entro un intervallo $[a,b]$ (con $f'(x)$ limitata e 
+diversa da $0$ per ciascuna $x \in [a,b]$) ed una $v$ tale che
+$f(v) = 0$. Sviluppando al prim'ordine $f$ intorno ad un generico punto $x_0$ , otterremo:
 \begin{equation}
-f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f{''}(X)} \cdot  {( x - v)^2} = 0
+f(x) \simeq f(x_0) + f{'}(x_0) \cdot {(x-x_0)}.
 \end{equation}
-ove $X$ è un numero reale compreso fra $v$ ed $x$. Nel caso in cui il $(x-v)^2 
-$risultasse prossimo a zero:
+Nel caso in cui si voglia trovare quella $x$ tale per cui $f(x) = 0$, si otterrebbe una prima approssimazione:
 \begin{equation}
-x \simeq v   -  {\frac {f(v)}{f’(v)}}
+x \simeq x_0   -  {\frac {f(x_0)}{f'(x_0)}}
 \end{equation}
-L’unica limitazione nell'adottare tale scrittura è che necessitiamo di $v$ 
-molto vicino a $x$ incognito. Tuttavia, nel caso in cui la funzione $f$ risultasse 
-sufficientemente maneggevole, potremo partire da un valore generico del dominio 
-e riscontrare con buona approssimazione la radice in un tempo finito 
-relativamente breve. Per effettuare ciò, è necessaria la serie ricorsiva:
+il che non ci dà molte informazioni sulla soluzione. Tuttavia è possibile iterare il procedimento, ottenendo una successione ricorsiva 
 \begin{equation}
 \begin{cases}
-x[0] = a \\ x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
+x[0] = \alpha \in [a,b] \\ 
+x[N+1] = x[N] - \frac {f(x[N])} {f'(x[N])}
 \end{cases}
 \end{equation}
-ove $a$ è un generico valore appartenente al dominio di definizione. In pratica, 
-per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
+che produce approssimazioni della radici sempre più accurate in un numero di passaggi relativamente breve.  
+
+In pratica, per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
 punto alla funzione:
 \begin{equation}
-y = f(x[i]) + f’(x[i]) \cdot (x-x[i])
+y = f(x[i]) + f'(x[i]) \cdot (x-x[i])
 \end{equation}
  Dopodiché cerca il punto $x$ per il quale $y = 0$:
 \begin{equation}
-x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
+x = x[i+1] = x[i] - \frac{f(x[i])}{f'([i])}
 \end{equation}
 E viene conseguentemente valutato il valore $f(x[i+1])$ ed il procedimento viene 
 ripetuto per un dato numero di iterazioni. 
 \begin{figure}[!htbp]
 	\centering 
- 		\includegraphics[scale=0.8]{tang.png}
-	\caption{Visualizzazione grafica di cosa implica un’iterazione della 
+	\def\svgwidth{\columnwidth}
+		\scalebox{0.9}{\includesvg{tang}}
+	\caption{Visualizzazione grafica di cosa implica un'iterazione della 
 	serie ricorsiva ($f(x) = x^3$ in questo esempio)\label{fig: tang}}
 \end{figure}
-Se la funzione è monotona e la serie converge ad un valore, tale sarà $v$, 
-essendo l’unico punto fisso della serie:
+L'unica accortezza da prendere sta nello scegliere un intervallo che contenga un solo zero di $f$ (ovvero quello che si vuole determinare), che, sia questo $\bar{x}$, è anche l'unico punto fisso della successione:
 \begin{equation}
- a = a -  \frac{f(a)}{f'(a)} \to f(a) = 0 \; \land \; v = a
+ \bar{x} = \bar{x} -  \frac{f(\bar{x})}{f'(\bar{x})} \Rightarrow \bar{x}=\bar{x}.
 \end{equation}
-essendo $v$ l’unico punto in cui si annulla la funzione per definizione.
+
 Ritornando al diodo, esso può essere interpretato quale un diodo ideale ed una 
 resistenza in serie, collegati ad un generatore di differenza di potenziale. 
 Quindi, per la legge delle maglie:
@@ -726,13 +766,13 @@ Quindi, per la legge delle maglie:
 \Delta V_{\text{ingresso}} = \Delta V_{\text{diodo}} + \Delta 
 V_{\text{resistenza}} = \Delta V_{\text{diodo}} + R \cdot I
 \end{equation}
-ove $I$ è la corrente che scorre all’interno del diodo in quel determinato 
+ove $I$ è la corrente che scorre all'interno del diodo in quel determinato 
 istante. Notoriamente, tale scrittura si può porre nella seguente forma ai 
 fini di definire la retta di carico del diodo:
 \begin{equation}
 \Delta V_{\text{diodo}} = \Delta V_{\text{ingresso}} - R \cdot I
 \end{equation}
-Il punto di intersezione di tale retta con l’equazione di Shockley per il 
+Il punto di intersezione di tale retta con l'equazione di Shockley per il 
 diodo rappresenta il punto di lavoro $(v, i)$ del diodo:
 \begin{equation}
 i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } - 
@@ -740,7 +780,7 @@ i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } -
 - v}{R}
 \end{equation}
 Tale $i$ dovrà necessariamente corrispondere alla corrente di lavoro in virtù 
-dell’equazione di Shockley. Dunque definendo la funzione $g(x)$ come segue:
+dell'equazione di Shockley. Dunque definendo la funzione $g(x)$ come segue:
 \begin{equation}\label{eq: invsck}
 g(x) = I_0 \cdot ( e^{\frac{x}{\eta V_T}} - 1)  - \frac {\Delta 
 V_{\text{ingresso}} - x}{R}
@@ -750,7 +790,7 @@ ed individuare così la corrente di lavoro.
 Dunque si potrà effettuare un fit della corrente in funzione della tensione ai 
 capi del diodo reale attraverso una legge che per un determinato valore della 
 tensione ($\Delta V_{\text{ingresso}}$) ed un dato numero di iterazioni (ne 
-sono sufficienti poche nel nostro caso ai fini di ottenere un’approssimazione 
+sono sufficienti poche nel nostro caso ai fini di ottenere un'approssimazione 
 adeguata), riesce ad individuare la radice $v$ nelle modalità previamente 
 descritte. Attraverso la stessa, sarà quindi possibile individuare la corrente 
 di lavoro del diodo per la suddetta $\Delta V_{\text{ingresso}}$. 
@@ -762,11 +802,12 @@ parametri stimati dal fit). I grafici relativi alla convergenza di $I$ e di $v$
 anche a seguito di sole 20 iterazioni:
 \begin{figure}[!ht]% questi vanno sistemati meglio perchè occupano una pagina da soli!!!
 	\centering 
- 		\includegraphics[scale=0.7]{Iter.png}
+	\def\svgwidth{\columnwidth}
+		\scalebox{0.9}{\includesvg{Iter}}
 \end{figure}
 \begin{figure}[!hbtp]
 	\centering 
- 		\includegraphics[scale=0.7]{vter.png}
+		\scalebox{0.9}{\includesvg{vter}}
 \end{figure}
 
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
@@ -777,6 +818,15 @@ All’interno della funzione di fit, è stato infine introdotto un offset quale
 parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
 in Teensy 3.2.
 
+\subsection*{Nota sull'implementazione}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{Scipy}\cite{scipy}
+Per tutti i fit su campionamenti digitali di \verb+Teensy+ si è imposto
+$\rm{abs\_sigma} =$ False, in quanto la sorgente principale d'incertezza
+sulle misure risulta non statistica/non determinata.
+%per cui non sarebbe giustificato assumere come errore il valore convenzionale
+%$\sigma = \pm 1$ [digit] effettivamente si esegue un fit dei minimi quadrati.
 
 %================================================================
 %                            END
