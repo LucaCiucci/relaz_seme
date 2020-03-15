@@ -18,7 +18,7 @@ file2CName = "file2C.txt"
 file2PyName = "file2Py.txt"
 maxRatio = 3.0
 minV = 0.2
-filter_Nskip = 1 #per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
+filter_Nskip = 1000 #per le prove è utile velocizzare saltando dei dati (mettere a 1 per il run completo)
 outSigma = 2.0 #numero di sigma per eliminare gli outliers
 
 # abilita il disegno dei punti
