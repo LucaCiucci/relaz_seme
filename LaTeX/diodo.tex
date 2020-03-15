@@ -20,16 +20,16 @@ B.~Tomelleri(\protect\footnotemark[1] )}
 %                            Riassunto
 %================================================================
 \begin{mdframed}
-\textbf{Riassunto:} --- Si è studiato il comportamento di un diodo in silicio
+\textbf{Riassunto:} --- Si \`e studiato il comportamento di un diodo in silicio
 PN, ricostruendone sperimentalmente la curva caratteristica $V-I$, al fine di
-mettere in risalto la sua componente resistiva. A questo scopo è stata
+mettere in risalto la sua componente resistiva. A questo scopo \`e stata
 esplorata un'ampia zona della curva, in particolar modo per alti valori di
-$I$, dove questa caratteristica è maggiormente apprezzabile. Proponiamo dunque
+$I$, dove questa caratteristica \`e maggiormente apprezzabile. Proponiamo dunque
 un'estensione della legge di Shockley, tramite l'aggiunta di un termine
 resistivo, in grado di descrivere l'elemento -ohmico- della giunzione.
 %;il che equivale a modellare un diodo reale come un resistore in serie
 %ad un diodo ideale.
-La nuova curva caratteristica prevede un andamento sempre più lineare di $I$
+La nuova curva caratteristica prevede un andamento sempre pi\`u lineare di $I$
 al crescere di $V$ e questo risulta in accordo con l'andamento dei dati
 sperimentali.
 \\\\
@@ -42,14 +42,14 @@ PACS 01.50.Pa – Laboratory experiments and apparatus.
 %                         Introduzione
 %================================================================
 \section{Introduzione}
-La limitata conducibilità intrinseca al silicio, di cui è composta la
+La limitata conducibilit\`a intrinseca al silicio, di cui \`e composta la
 giunzione bipolare, comporta la presenza di una sua componente resistiva:
 per effetti termico-dissipativi questa ha un effetto sempre meno
 trascurabile, all'aumentare della tensione ai suoi capi, sul passaggio di
 corrente attraverso il diodo.
 Per poter descrivere la parte resistiva di un diodo percorso da correnti
-di alta intensità %\footnote{Nel nostro caso per un diodo 1N4007 la massima
-%intensità di corrente continua $I_F = 1.0$ A nominali.}
+di alta intensit\`a %\footnote{Nel nostro caso per un diodo 1N4007 la massima
+%intensit\`a di corrente continua $I_F = 1.0$ A nominali.}
 si propone un modello semplice, di resistenza parassita in serie, verificandone
 l'accordo con i risultati sperimentali su un'ampia regione di punti di lavoro.
 
@@ -57,17 +57,17 @@ l'accordo con i risultati sperimentali su un'ampia regione di punti di lavoro.
 %                         Cenni teorici
 %================================================================
 \section{Cenni Teorici}
-Secondo le nostre ipotesi, un diodo reale può essere schematizzato come un
+Secondo le nostre ipotesi, un diodo reale pu\`o essere schematizzato come un
 resistore ohmico %\footnote{Vista la simmetria della giunzione, propriamente
 %si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
-%la cui resistenza non è indipendente dalle condizioni di operazione.}
+%la cui resistenza non \`e indipendente dalle condizioni di operazione.}
 ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che
 attraversa questi elementi del circuito sia la stessa:
 \begin{equation}
 	I = \frac{\Delta V_{\text{resistore}}}{R} =
 	I_0 \left( e^{\frac{\Delta V_{\text{diodo}}}{\eta V_t}} - 1\right)
 \end{equation}
-Dunque la relazione che lega la corrente alla tensione ai capi del diodo può 
+Dunque la relazione che lega la corrente alla tensione ai capi del diodo pu\`o 
 essere espressa secondo la legge:
 \begin{equation}\label{eq: model}
 	\Delta V = \Delta V_{\text{diodo}} + \Delta V_{\text{resistore}} =
@@ -87,7 +87,7 @@ essere espressa secondo la legge:
 Onde evitare sostanziali aumenti di temperatura dei componenti, oltre ad
 eventuali danni a questi stessi, si imprimono correnti impulsate sul circuito. 
 %e le conseguenti variazioni di resistenza nei componenti 
-La durata degli impulsi è inferiore ai 200 $\si{\us}$, che corrisponde ad
+La durata degli impulsi \`e inferiore ai 200 $\si{\us}$, che corrisponde ad
 un'energia impressa inferiore a 1 $\si{\milli\J}$ (dunque ad un aumento
 della temperatura del semiconduttore inferiore a 0.5 $\si{\K}$).
 %Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
@@ -99,13 +99,13 @@ della temperatura del semiconduttore inferiore a 0.5 $\si{\K}$).
 %           Apparato
 %================================
 \subsection{Apparato}
-L'apparato sperimentale è costituito da un circuito, realizzato su basetta 
-sperimentale (\emph{breadboard}), il cui scopo è generare le correnti
+L'apparato sperimentale \`e costituito da un circuito, realizzato su basetta 
+sperimentale (\emph{breadboard}), il cui scopo \`e generare le correnti
 impulsate appena descritte attraverso il diodo $D1$ e la resistenza $R1$.
 La misura della differenza di potenziale agli estremi della $R_1$ permette
 di stimare la corrente che circola sul diodo.
 Per poter esplorare una larga banda di correnti di lavoro
-si è variata opportunamente la resistenza in serie al diodo, scegliendo tra
+si \`e variata opportunamente la resistenza in serie al diodo, scegliendo tra
 le seguenti:
 \begin{table}[H]% la tabella deve stare per forza sotto "seguenti:"
     \begin{center}
@@ -136,20 +136,20 @@ tensione, carica e scarica sono controllate dalla maglia destra del circuito.
 Nel circuito si distingue inoltre la maglia che si occupa di collegare, sotto
 istruzione di un microcontrollore, il condensatore alla serie $R1-D1$
 attraverso un MOS-FET.\\
-Il circuito è alimentato da 2 tensioni continue, fornite da un alimentatore
+Il circuito \`e alimentato da 2 tensioni continue, fornite da un alimentatore
 stabilizzato switching e da un Buck Boost Converter.
 %,alle maglie di "switch" e di "carica/scarica" rispettivamente
 Un segnale fornito su $T2$ provoca la carica del condensatore mentre su $T3$
 la sua scarica. Un segnale (invertito) su $T1$ innesca l'impulso di corrente
 sul diodo.\\
-La tensione di C$1$ è misurata attraverso un partitore di tensione collegato 
+La tensione di C$1$ \`e misurata attraverso un partitore di tensione collegato 
 ad \verb+OUT3+ ed alla scheda di controllo, mentre la d.d.p. tra i punti
-\verb+OUT1+ e \verb+OUT2+ è misurata direttamente.\\
-Come MCU per la gestione dell'apparato si è scelta la scheda 
+\verb+OUT1+ e \verb+OUT2+ \`e misurata direttamente.\\
+Come MCU per la gestione dell'apparato si \`e scelta la scheda 
 \verb+Teensy 3.2+\cite{teensy}. Questa si occupa del controllo dei segnali e 
 delle letture analogiche. In particolare \verb+Teensy+ permette la lettura
 analogica sincronizzata differenziale veloce, essendo dotato di due ADC,
-entrambi con una risoluzione reale di 12 bit. La lettura differenziale è
+entrambi con una risoluzione reale di 12 bit. La lettura differenziale \`e
 fondamentale per acquisire coppie di dati per le tensioni ai capi del diodo
 e della resistenza.
 
@@ -160,7 +160,8 @@ e della resistenza.
 	\label{sch:rdng}}
 \end{figure}
 
-\begin{figure}[h!t]% so che è brutto che lascia un po' di spazio bianco ma altrimenti lo metterebbe dentro calibrazione
+\begin{figure}[h!t]% so che \`e brutto che lascia un po' di spazio bianco
+				   %ma altrimenti lo metterebbe dentro calibrazione
 	\centering 
  		\includegraphics[scale=0.5]{./gestione.png}
  	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
@@ -171,7 +172,7 @@ e della resistenza.
 %================================
 \subsection{Calibrazione}\label{sec: cal}
 
-La calibrazione dei canali \verb+ADC0+ e \verb+ADC1+ è stata effettuata
+La calibrazione dei canali \verb+ADC0+ e \verb+ADC1+ \`e stata effettuata
 basandosi sulle letture differenziali, rispettivamente fra i pin \verb+A10+
 e \verb+A11+; fra \verb+A12+ e \verb+A13+. E’ stata calibrata la lettura
 di ciascuna delle due coppie separatamente.
@@ -182,7 +183,7 @@ potenziale con tensione in ingresso pari a $3.3\si{\V}$. Gli altri due pin
 sono stati invece collegati a massa.
 
 Variando la resistenza e, conseguentemente, la differenza di potenziale in 
-ingresso, è stato possibile calcolare media, deviazione standard campione
+ingresso, \`e stato possibile calcolare media, deviazione standard campione
 e deviazione standard dalla media relative a ciascuna tensione per 
 un gruppo di 10000 misure effettuate con \verb+Teensy+ (si veda il 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo sketch}).
@@ -193,9 +194,9 @@ incertezze sulle misure i valori dichiarati nelle specifiche del multimetro,
 mentre come errori sulle letture digitali abbiamo preso le deviazioni standard
 dalla media.
 
-Dopodiché le misure relative a ciascuna coppia di boccole sono state poste 
+Dopodich\'e le misure relative a ciascuna coppia di boccole sono state poste 
 all’interno di un grafico con i dati raccolti da \verb+Teensy+ sulle ascisse
-e i valori misurati col multimetro sulle ordinate. Dunque si è effettuato un
+e i valori misurati col multimetro sulle ordinate. Dunque si \`e effettuato un
 fit lineare attraverso la legge:
 \begin{equation}
 y(x; m, q)  = m x + q
@@ -204,9 +205,9 @@ y(x; m, q)  = m x + q
 lasciando liberi entrambi i parametri $m$ e $q$. Riportiamo sotto le miglior
 stime dei parametri determinati dai fit relativi ad \verb+ADC0+ ed \verb+ADC1+ 
 e le rispettive covarianze:
-% Forse le varianze sono superflue? Il lettore le può ottenere semplicemente
+% Forse le varianze sono superflue? Il lettore le pu\`o ottenere semplicemente
 % quadrando le incertezze sui parametri.
-% Solitamente le covarianze si riportano normalizzate, così risultano poco
+% Solitamente le covarianze si riportano normalizzate, cos\`i risultano poco
 % immediate come indice di correlazione fra i parametri.
 \begin{align*}
 	&\qquad \texttt{ADC0}	&&\qquad  \texttt{ADC1} \\
@@ -241,12 +242,12 @@ e le rispettive covarianze:
 \end{subfigure}
 \end{figure}
 
-I coefficienti così ricavati ci permetteranno di fornire una buona stima 
+I coefficienti cos\`i ricavati ci permetteranno di fornire una buona stima 
 dei valori centrali relativi alla misura in Volt delle letture analogiche 
 (digit). Il $\chi^2$ risulta essere sovrastimato in quanto il MCU non ci 
 fornisce una risposta perfettamente lineare ai segnali in ingresso. Dalle 
 specifiche di \verb+Teensy 3.2+, sappiamo che lo scostamento dall'andamento
-lineare può essere quantificato col $7 \%$ della lettura in digit.\\
+lineare pu\`o essere quantificato col $7 \%$ della lettura in digit.\\
 Per maggiori informazioni riguardo alle stime delle incertezze nelle 
 conversioni si rimanda direttamente al 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/Cartella_fit/funzioni.py}
@@ -256,30 +257,30 @@ conversioni si rimanda direttamente al
 %       Acquisizione dati
 %================================
 \subsection{Acquisizione dati}
-Per ciascun valore scelto della resistenza $R1$ si è acquisita una presa 
+Per ciascun valore scelto della resistenza $R1$ si \`e acquisita una presa 
 dati automatizzata tramite una 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}
 {routine} programmata in \verb+Teensy+: il condensatore viene caricato ad una
 tensione prefissata; quando il MCU misura questo valore prestabilito,
-invia il segnale su $T1$ che avvia l'acquisizione sincronizzata
-e si attende un tempo 50 $\si{\us}$ per permettere al MOS-FET di entrare in
-conduzione ($R2$ è stata scelta di $1 \si{\kohm}$, dunque c'è un apprezzabile
-ritardo tra segnale e impulso) e di scartare eventuali segnali spuri.
+invia il segnale su $T1$ che avvia l'acquisizione sincronizzata e si attende
+un tempo 50 $\si{\us}$ per permettere al MOS-FET di entrare in conduzione
+($R2$ \`e stata scelta di $1 \si{\kohm}$, dunque c'\`e un apprezzabile ritardo
+tra segnale e impulso) e di scartare eventuali segnali spuri.
 A questo punto si inizia a memorizzare una serie da 100 coppie di letture
 -sincronizzate- (a meno di sfasamenti nell'ordine delle centinaia di
 nanosecondi), si ferma l'impulso e si trasmettono i dati al computer.
 Se la tensione al punto \verb+OUT2+ ha raggiunto valori maggiori di $3.3\si{\V}$
 l'acquisizione si ferma per non danneggiare \verb+Teensy+, altrimenti si
-ricomincia caricando il condensatore ad una tensione più alta.
+ricomincia caricando il condensatore ad una tensione pi\`u alta.
 
 %================================================================
 %                   Analisi dati e Risultati
 %================================================================
 \section{Analisi dati e Risultati}
-%L’intento della presente analisi è quello di verificare che i dati raccolti 
+%L’intento della presente analisi \`e quello di verificare che i dati raccolti 
 %siano in accordo con la legge \eqref{eq: model}.
-% Forse è un po' forte già dire che l'intento è verificare, ancora non si sa
-Per poter condurre un'analisi sui dati raccolti è stato innanzitutto
+% Forse \`e un po' forte gi\`a dire che l'intento \`e verificare, ancora non si sa
+Per poter condurre un'analisi sui dati raccolti \`e stato innanzitutto
 necessario convertire le letture digitalizzate nelle corrispondenti
 grandezze fisiche, le coppie tensione-corrente relative al diodo.
 Inizialmente si sono convertite le acquisizioni e le incertezze associate in
@@ -287,19 +288,19 @@ d.d.p. tramite i fattori di conversione per entrambi gli ADC,
 determinati come descritto nel paragrafo \ref{sec: cal}.
 Dunque, dalla caduta di tensione ai capi della resistenza $R1$ possiamo
 determinare la corrente di lavoro del diodo grazie alla legge di Ohm. 
-Si è quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
+Si \`e quindi effettuato un filtraggio volto all'eliminazione degli outliers e 
 dei punti meno significativi, assumendoli quali variabili indipendenti e di 
 natura gaussiana. Per una discussione dettagliata si rimanda all'\nameref{app: 
 B}. E’ opportuno sottolineare che, all’interno della stessa appendice, 
 $\sigma_x^2$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
 
-Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
+Successivamente, \`e stato effettuato un fit ai minimi degli scarti quadratici.
 Per il procedimento avremmo potuto pensare di adottare come modello la legge
-\eqref{eq: model} direttamente, tuttavia ciò comporterebbe il fallimento del
-fit a causa dei valori negativi o nulli che può assumere l'argomento del
-logaritmo. Si è scelto quindi di utilizzare la funzione inversa come modello
-per il fit, la quale è stata implementata numericamente secondo il metodo
+\eqref{eq: model} direttamente, tuttavia ci\`o comporterebbe il fallimento del
+fit a causa dei valori negativi o nulli che pu\`o assumere l'argomento del
+logaritmo. Si \`e scelto quindi di utilizzare la funzione inversa come modello
+per il fit, la quale \`e stata implementata numericamente secondo il metodo
 delle tangenti (o di Newton).
 Per una trattazione approfondita, si rimanda all'\nameref{app: C}.
 
@@ -309,9 +310,9 @@ molto maggiore delle incertezze sulle misure.
 Questo si deve probabilmente all'influenza del circuito di lettura
 stesso sulle piccole correnti in gioco, che avevamo supposto trascurabile
 nel nostro modello. Non potendo dunque attribuire degli errori significativi
-per questa presa dati, essa non è stata considerata nella procedura di
+per questa presa dati, essa non \`e stata considerata nella procedura di
 fit eseguita successivamente, in quanto i relativi punti avrebbero avuto un
-peso sovrastimato in confronto agli altri, introducendo così un bias
+peso sovrastimato in confronto agli altri, introducendo cos\`i un bias
 nei risultati finali.
  
 Si riportano i valori ottimali dei parametri stimati dal fit e le relative
@@ -344,7 +345,7 @@ definisce i parametri fondamentali.
 		\includegraphics[width=16cm, height= 11cm]
 		{100skip_linear}
 	\caption{Dati acquisiti e funzione di best-fit \eqref{eq: model}. E' 
-	stato rappresentato un punto ogni 100 per comodità di visualizzazione.
+	stato rappresentato un punto ogni 100 per comodit\`a di visualizzazione.
 	\label{fig: sck_lin}}
 \end{figure}
 
@@ -354,10 +355,10 @@ definisce i parametri fondamentali.
 	\caption{Dati acquisiti e funzione di best fit \eqref{eq: model} in 
 	scala semilogaritmica. A scopo illustrativo sono stati rappresentati anche
 	i dati della serie $220\si{\kohm}$. E' stato disegnato un punto ogni 10
-	per comodità di visualizzazione. \label{fig: sck_log}}
+	per comodit\`a di visualizzazione. \label{fig: sck_log}}
 \end{figure}
 
-% Baldini e Fuso dicono sempre di specificare come si è implementato
+% Baldini e Fuso dicono sempre di specificare come si \`e implementato
 % il procedimento di fit (numerico/analitico,... con che algoritmo?
 % Levenberg-Marquardt, etc). Una volta avevo scritto una bozza su curve_fit e
 % Scipy, ma credo sia stata eliminata. O qua o in Appendice B forse dovremmo
@@ -368,7 +369,7 @@ definisce i parametri fondamentali.
 %================================================================
 \section{Conclusioni}
 Sulla base dell'analisi precedentemente effettuata, possiamo osservare che il
-$\chi^2$ risulta minore rispetto al suo valore atteso. Ciò \`e parzialmente
+$\chi^2$ risulta minore rispetto al suo valore atteso. Ci\`o \`e parzialmente
 dovuto alla correlazione delle incertezze associate ai dati rilevati
 all'interno dei due canali d'ingresso. In aggiunta, come si deduce anche dalla
 zona di maggior concentrazione dei punti nel grafico dei residui,
@@ -393,7 +394,7 @@ rigettarlo.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi 
 e che la modellizzazione proposta sia una buona approssimazione del diodo reale 
 nelle condizioni di lavoro considerate. Questa modellizzazione, fra l'altro, 
-può risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
+pu\`o risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
 impulsati su alte correnti, dove sia richiesto un dettaglio
 sulle cadute di tensione sui singoli componenti. 
 %Per tale scopo la legge \eqref{eq: model} \`e confermata essere una buona
@@ -410,19 +411,19 @@ corrente o di tensione.
 
 All’interno della misurazione delle resistenze, sono stati adottati dei
 resistori contrassegnati da valori nominali che spaziano da 0.22 $\si{\ohm}$
-a 220 $\si{\kohm}$. Dunque un multimetro digitale non dispone di una sensibilità
-sufficiente ai fini della stima delle resistenze più basse.\\  
+a 220 $\si{\kohm}$. Dunque un multimetro digitale non dispone di una sensibilit\`a
+sufficiente ai fini della stima delle resistenze pi\`u basse.\\  
 In primo luogo, queste ultime sono state misurate attraverso un metodo basato
 sull'uso di un alimentatore regolabile DC ($\Delta V_{\text{max}} = 30
 \si{\V}$; $I_{\text{max}} = 5 \si{\A}$). La strategia consiste nel far
 scorrere una corrente continua dentro alla $R1$, in modo tale che la potenza
 dissipata ($P = R1 \cdot I^2$) non superi la potenza nominale del resistore,
 onde evitare danni al componente per effetto termico.
-A questo punto la corrente\footnote{Pur avendola fissata a priori, si è misurata
+A questo punto la corrente\footnote{Pur avendola fissata a priori, si \`e misurata
 la corrente con un multimetro per conoscerne il valore con maggior precisione}
 e la differenza di potenziale ai capi del resistore vengono misurate
 contemporaneamente attraverso due multimetri digitali. 
-Dunque, attraverso la legge di Ohm, è stato possibile la stima delle resistenze
+Dunque, attraverso la legge di Ohm, \`e stato possibile la stima delle resistenze
 in esame, riportate nella tabella sottostante: 
 
 \begin{table}[H]
@@ -472,10 +473,10 @@ da banco:
 	\end{center}
 \end{table}
 
-Entrambi i metodi forniscono stime valide delle resistenze usate, però,
+Entrambi i metodi forniscono stime valide delle resistenze usate, per\`o 
 all'interno delle analisi successive, abbiamo preferito le misure ottenute
-con il secondo, perché determinate con maggior precisione.\\
-Le resistenze più alte, da 22 $\si{\kohm}$ e 220 $\si{\kohm}$ sono state
+con il secondo, perch\'e determinate con maggior precisione.\\
+Le resistenze pi\`u alte, da 22 $\si{\kohm}$ e 220 $\si{\kohm}$ sono state
 invece misurate direttamente con un multimetro digitale.
 
 %================================================================
@@ -486,13 +487,13 @@ invece misurate direttamente con un multimetro digitale.
 %         Introduzione
 %================================
 \subsection{Introduzione}
-All'interno dell'acquisizione \`e stata raccolta un'ingente quantità di dati,
+All'interno dell'acquisizione \`e stata raccolta un'ingente quantit\`a di dati,
 suddivisibili in base alla resistenza scelta e dunque facenti riferimento
-a zone differenti della curva. A seguito della calibrazione, ci si è quindi
+a zone differenti della curva. A seguito della calibrazione, ci si \`e quindi
 posto il problema di effettuare l'eliminazione degli outliers in modo
 indipendente dalla scelta del modello per il fit. Le serie effettuate
 variando la resistenza, inoltre, si sovrappongono in alcune zone del
-grafico. Dunque è stato necessario eliminare i dati che, non aggiungendo
+grafico. Dunque \`e stato necessario eliminare i dati che, non aggiungendo
 informazioni utili, andavano a "sporcare" il grafico. Il sistema di filtraggio
 di dati implementato nell'eseguibile si compone di 2 fasi:
 la prima consiste nell'eliminazione degli outliers, la seconda dei dati non
@@ -502,27 +503,27 @@ significativi.
 %================================
 \subsection{Procedimento}
 Supponiamo di avere una serie di dati $(x, y)$ e assumiamo che siano
-indipendenti tra loro. Quest'ipotesi non è vera in generale, ma
-è tanto più lecita quanto più la correlazione tra le varianze delle misure su
-$x$ e $y$ è indipendente dai valori assunti dalle $x$ e $y$ stesse e quanto più
-sono numerosi i dati racchiusi entro una deviazione standard lungo $x$ per 
-ciascun elemento: in questo caso, infatti, la correlazione viene inclusa nella
-varianza lungo $y$.
+indipendenti tra loro. Quest'ipotesi non \`e vera in generale, ma
+\`e tanto pi\`u lecita quanto pi\`u la correlazione tra le varianze delle
+misure su $x$ e $y$ \`e indipendente dai valori assunti dalle $x$ e $y$ stesse
+e quanto pi\`u sono numerosi i dati racchiusi entro una deviazione standard
+lungo $x$ per ciascun elemento: in questo caso, infatti, la correlazione
+viene inclusa nella varianza lungo $y$.
 Supponiamo inoltre che siano note a priori le $\sigma_x ^2 \coloneqq \var{x}$
-e che la loro distribuzione di probabilità sia normale (le distribuzioni
+e che la loro distribuzione di probabilit\`a sia normale (le distribuzioni
 delle componenti sono approssimativamente gaussiane per il convertitore
 di \verb+Teensy+, perlomeno utilizzando la risoluzione a 12 bit) secondo una 
 matrice
 di covarianza diagonale nella base $\left\{x, y\right\}$.
 In ogni modo, i nostri dati $x$ e $y$ risultano indipendenti e
 approssimativamente normali. Dunque le assunzioni risultano giustificate. 
-Conseguentemente la densità di probabilità che un punto misurato in $x$ si trovi
+Conseguentemente la densit\`a di probabilit\`a che un punto misurato in $x$ si trovi
 a tale ascissa $x_i$, si ricava integrando lungo $y$ a $x$ fissata:
 \[
 	\ud P = \frac{1}{\sigma_{x_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(x - x_i)^2}{\sigma_{x_i}^2}}} \ud x
 .\] 
-Dunque, ripetendo più volte la stessa misura, si otterrà la probabilità:
+Dunque, ripetendo pi\`u volte la stessa misura, si otterr\`a la probabilit\`a:
 \[
 	P\left(\mid x - x_i \mid \leq \frac{\eps}{2} \right) = \eps G_{x_i} 
 .\]
@@ -538,14 +539,14 @@ tendente a:
 		N_{\text{tot}} w_i
 .\] 
 che definisce implicitamente i pesi $w_i$ con cui si mediano le distribuzioni
-di probabilità gaussiane $G_{x_i}$.
+di probabilit\`a gaussiane $G_{x_i}$.
 Allora, posto:
 \[
 	G_{y_i} \coloneqq \frac{1}{\sigma_{y_i} \sqrt{2\pi}}
 	e^{-\frac{1}{2}{\frac{(\mu_y - y_i)^2}{\sigma_{y_i}^2}}}
 .\] 
 Per il principio di massima verosimiglianza siamo quindi interessati a
-massimizzare la quantità:% è una roba matematica, non è fisica
+massimizzare la quantit\`a:
 \[
 	\like = \prod_{i=1}^{n} \prod_{j=1}^{N_i} G_{y_i} = 
 	\prod_{i=1}^{n} G_{y_i}^{N_i}
@@ -561,18 +562,18 @@ Per cui, a meno di costanti risulta:
 	\ln{\like} - \text{const.} \propto \sum_{i=1}^{n} -G_{x_i} \ln{\sigma_y}
 	- \frac{1}{2} G_{x_i} \left( \frac{y_i - \mu_y}{\sigma_y} \right)^2
 \end{equation}
-Imponendo la condizione di stazionarietà rispetto a $\mu_y$ si ottiene dunque:
+Imponendo la condizione di stazionariet\`a rispetto a $\mu_y$ si ottiene dunque:
 \begin{equation}\label{eq: muy}
 	\mu_y = \sum_{i=1}^{n} y_i w_i 
 \end{equation} 
 Una volta sostituito in \eqref{eq: likeconst} quanto appena trovato per $\mu_y$
-e imponendo la stessa condizione di stazionarietà rispetto a $\sigma_y$ si ha:
+e imponendo la stessa condizione di stazionariet\`a rispetto a $\sigma_y$ si ha:
 \begin{equation}\label{eq: sigmay}
 	\sigma_y^2 = \sum_{i=1}^{n} (y_i - \mu_y)^2 w_i
 \end{equation}
-Infine è possibile ricavare la varianza di $\mu_y$ dalla definizione di valore
-di aspettazione, riconducendola più volte a integrali di gaussiane di altezze
-e ampiezze diverse:
+Infine \`e possibile ricavare la varianza di $\mu_y$ dalla definizione di
+valore di aspettazione, riconducendola pi\`u volte a integrali di gaussiane
+di altezze e ampiezze diverse:
 \begin{align} \label{aln: varmuy}
 %	\var{\mu_y} &= \sum_{i=1}^{n} w_i^2 \sigma_y^2 + 
 %	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
@@ -592,11 +593,11 @@ Nella \eqref{eq: muy} prendiamo una media dei campionamenti intorno ad un'
 ascissa $x$ in esame, pesata sulla distanza che gli $x_i$ hanno da questa; 
 intuitivamente lo interpretiamo come se stessimo applicando un 
 \emph{blur a kernel gaussiano} ai punti acquisiti.
-Effettivamente quello che stiamo facendo non è molto diverso da KDE monovariante,
-dove però scaliamo secondo il valore delle $y$.
+Effettivamente quello che stiamo facendo non \`e molto diverso da KDE monovariante,
+dove per\`o scaliamo secondo il valore delle $y$.
 Lo stesso ragionamento vale per $\sigma_y^2$, si ha una stima della varianza
 dei dati la variare di $y$, pesata sulla distanza dai valori studiati. Dunque
-$\mu_y \pm \sigma_y$ ci dà una descrizione della distribuzione dei nostri dati.
+$\mu_y \pm \sigma_y$ ci d\`a una descrizione della distribuzione dei nostri dati.
 
 %================================
 %           Var(muy)
@@ -604,43 +605,45 @@ $\mu_y \pm \sigma_y$ ci dà una descrizione della distribuzione dei nostri dati.
 \subsection{$\var{\mu_y}$}
 Mentre $\sigma_y$ rappresenta la distribuzione dei dati intorno al valor medio 
 $\mu_y$, $\var{\mu_y}$ ci indica l’incertezza sulla miglior stima di $y$.
-Questo è utile per determinare la convergenza della stima in funzione dei dati
-acquisiti. Infatti tanto più è elevata la densità dei dati, rispetto alla
-deviazione standard $\sigma_x$, tanto più la stima del valore centrale risulta
-precisa.
-Graficamente la banda di confidenza è più ristretta dove si concentrano i dati.
+Questo \`e utile per determinare la convergenza della stima in funzione dei
+dati acquisiti. Infatti tanto pi\`u \`e elevata la densit\`a dei dati,
+rispetto alla deviazione standard $\sigma_x$, tanto pi\`u la stima del valore
+centrale risulta precisa.
+Graficamente la banda di confidenza \`e pi\`u ristretta dove si concentrano
+i dati.
 Viceversa, la stessa tende ad allargarsi dove i dati sono sparsi, i.e. a
 distanze paragonabili a $\sigma_x$. Numericamente, si vede dalla seconda somma
-nell'espressione \eqref{aln: varmuy} che la stima del valore centrale è
+nell'espressione \eqref{aln: varmuy} che la stima del valore centrale \`e
 statisticamente significativa solo quando si media su un intervallo campionato
 con almeno qualche punto ogni deviazione $\sigma_x$: altrimenti $\sigma_y \to 0$
-indicando così assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
+indicando cos\`i assenza di dati, mentre $\var{\mu_y}$ tende a $+\infty$ come
 $\sim e^{x^2}$, indice della stessa insufficienza di dati al fine di stabilire
 con precisione significativa il valore di $\mu_y$.
 \begin{figure}[!htb]
 	\centering 
  		\includegraphics[scale=0.55]{./varmuy.png}
- 	\caption{La media $\mu_y$ è rappresentata dalla linea blu, mentre
+ 	\caption{La media $\mu_y$ \`e rappresentata dalla linea blu, mentre
 	l'area in rosso indica il valore di $\var{\mu_y}$ al variare dei
 	dati (in nero) lungo $x$. \label{fig: varmuy}}
 \end{figure}
 Nel caso opposto, in cui i dati sono "densi" (in confronto alle $\sigma_x$)
 la seconda somma, per quanto computazionalmente intensiva, numericamente
-sembrerebbe piccola in confronto alla prima: in realtà non lo è, ma
-soprattutto questa non può essere trascurata, poiché è proprio la quantità
-che descrive la dipendenza dalla densità stessa e dunque la caratteristica
-convergenza/divergenza della precisione sulla stima centrale fornita.
+sembrerebbe piccola in confronto alla prima: in realt\`a non lo \`e, ma
+soprattutto questa non pu\`o essere trascurata, poich\'e \`e proprio la
+quantit\`a che descrive la dipendenza dalla densit\`a stessa e dunque la
+caratteristica convergenza/divergenza della precisione sulla stima centrale
+fornita.
 
 %================================
 %        Filtro outliers
 %================================
 \subsection{Filtro outliers}
-La parte più semplice nel filtraggio dati consiste nello scartare tutti quei
-punti che distano da $\mu_y$ più di una soglia arbitraria $k$ di deviazioni
-standard $\sigma_y$ (nel nostro caso è stato scelto $k = 2$, non critico,
+La parte pi\`u semplice nel filtraggio dati consiste nello scartare tutti quei
+punti che distano da $\mu_y$ pi\`u di una soglia arbitraria $k$ di deviazioni
+standard $\sigma_y$ (nel nostro caso \`e stato scelto $k = 2$, non critico,
 trovato dopo una serie di prove). A differenza del classico metodo basato
 sulla distanza dalla curva/modello di best fit, per il nostro criterio essa
-è ininfluente. Questo risulta particolarmente utile in simili situazioni di
+\`e ininfluente. Questo risulta particolarmente utile in simili situazioni di
 verifica del modello in quanto una selezione basata su un preliminare fit
 risulterebbe influenzata dalla scelta della funzione in questione e
 eliminerebbe tutti i dati che non risultano compatibili con essa.
@@ -651,29 +654,30 @@ eliminerebbe tutti i dati che non risultano compatibili con essa.
 %================================
 \subsection{Filtro dati non significativi}
 Supponiamo di avere 2 set di dati fatti con diverse resistenze, il primo $(A)$
-con una resistenza bassa, il secondo $(B)$ con una alta: Il primo set esplorerà
-la regione ad alta corrente, mentre il secondo la regione di basse correnti.
+con una resistenza bassa, il secondo $(B)$ con una alta: Il primo set
+esplorer\`a la regione ad alta corrente, mentre il secondo la regione di basse
+correnti.
 In generale i dati del primo si sovrapporranno anche nelle zone basse esplorate
-dal secondo, però senza aggiungere sostanziali informazioni rispetto a quanto
+dal secondo, per\`o senza aggiungere sostanziali informazioni rispetto a quanto
 farebbe il secondo.
-%Il nostro obiettivo è dunque eliminare questi dati meno significativi.
+%Il nostro obiettivo \`e dunque eliminare questi dati meno significativi.
 Esponiamo dunque il criterio sviluppato per ridurre l'influenza di questi
 punti meno significativi sulla ricerca dei parametri di best-fit e sulla
 rappresentazione finale dei dati.\\
 Per capire se in un certo punto i dati di $A$ sono significativi, calcoliamo
-la misura di significatività che abbiamo sviluppato in \eqref{aln: varmuy}$:
-\var{\mu_y}$ di $A$ e di $B$. Perciò se $\var{\mu_y}$ di $A$ è maggiore di 
-$q\var{\mu_y}$ di $B$, con $q$ arbitrario (nell'esperienza è stato scelto
+la misura di significativit\`a che abbiamo sviluppato in \eqref{aln: varmuy}$:
+\var{\mu_y}$ di $A$ e di $B$. Perci\`o se $\var{\mu_y}$ di $A$ \`e maggiore di 
+$q\var{\mu_y}$ di $B$, con $q$ arbitrario (nell'esperienza \`e stato scelto
 $q = 3$), questo indica che i dati di $A$
 ci stanno dando "poca" informazione rispetto a quelli di $B$. A questo punto
-è sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
+\`e sufficiente controllare tutti i punti scorrendo su tutte le combinazioni
 di set per eliminare i dati non significativi, che rendono meno
-immediata l'interpretazione del grafico. Questo è ben visibile in scala
+immediata l'interpretazione del grafico. Questo \`e ben visibile in scala
 logaritmica sulle $y$, dove i punti con grandi incertezze o varianze tendono
 a disperdersi rapidamente.
-L’algoritmo è computazionalmente intensivo e richiede una corretta gestione
-della memoria per evitare bolle di allocazione. Dunque è stato implementato
-in \verb'C++' per praticità e richiamato all’interno degli script (per dettagli si 
+L’algoritmo \`e computazionalmente intensivo e richiede una corretta gestione
+della memoria per evitare bolle di allocazione. Dunque \`e stato implementato
+in \verb'C++' per praticit\`a e richiamato all’interno degli script (per dettagli si 
 rimanda ai 
 \href{https://github.com/LucaCiucci/relaz_seme/tree/master/Cartella_fit/filter_src}{sorgenti}).
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
@@ -693,7 +697,7 @@ Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 \end{subfigure}
 \caption{Grafici in scala semilogaritmica prima (\ref{fig: nofilter}) e dopo 
 (\ref{fig: filtered}) del filtraggio dati. I dati scartati sono stati
-evidenziati in arancio. Per praticità è stato rappresentato un centesimo
+evidenziati in arancio. Per praticit\`a \`e stato rappresentato un centesimo
 dei dati raccolti}
 \end{figure}
 \`E infine mostrato il confronto dei grafici delle $\var{\mu_y}$
@@ -710,44 +714,44 @@ tra due set successivi.
 %================================================================
 \section{Appendice C: Metodo di fit}\label{app: C}
 La differenza di potenziale $\Delta$V in funzione della corrente $I$ che scorre 
-all’interno del diodo può essere espressa attraverso la legge
+all’interno del diodo pu\`o essere espressa attraverso la legge
 \eqref{eq: model}. Potremo, dunque, essere tentati di adottare questa formula
 ai fini di un fit numerico. 
 Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori 
 negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. 
 E’ stato dunque necessario adottare un algoritmo alternativo, basato sul 
-metodo di Newton\cite{tesi}. Esso ci consentirà di ricostruire numericamente 
+metodo di Newton\cite{tesi}. Esso ci consentir\`a di ricostruire numericamente 
 la funzione inversa della legge \eqref{eq: model}.
 Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$
-appartenente alla classe di continuità $C^{2}$
+appartenente alla classe di continuit\`a $C^{2}$
 entro un intervallo di definizione connesso (con $f’(x)$ limitata e 
 diversa da $0$ per ciascuna $x$ appartenente al dominio) ed una $v$ tale che
 $f(v) = 0$. Sviluppando al prim’ordine $f$ in un intorno di $v$, otterremo:
 \begin{equation}
 f(x) = f(v) + f{'}(v) + {\frac{1}{2}} {f{''}(X)} \cdot  {( x - v)^2} = 0
 \end{equation}
-ove $X$ è un numero reale compreso fra $v$ ed $x$. Nel caso in cui il $(x-v)^2 
+ove $X$ \`e un numero reale compreso fra $v$ ed $x$. Nel caso in cui il $(x-v)^2 
 $risultasse prossimo a zero:
 \begin{equation}
 x \simeq v   -  {\frac {f(v)}{f’(v)}}
 \end{equation}
-L’unica limitazione nell'adottare tale scrittura è che necessitiamo di $v$ 
+L’unica limitazione nell'adottare tale scrittura \`e che necessitiamo di $v$ 
 molto vicino a $x$ incognito. Tuttavia, nel caso in cui la funzione $f$ risultasse 
 sufficientemente maneggevole, potremo partire da un valore generico del dominio 
 e riscontrare con buona approssimazione la radice in un tempo finito 
-relativamente breve. Per effettuare ciò, è necessaria la serie ricorsiva:
+relativamente breve. Per effettuare ci\`o  \`e necessaria la serie ricorsiva:
 \begin{equation}
 \begin{cases}
 x[0] = a \\ x[N+1] = x[N] - \frac {f(x[N])} {f’(x[N])}
 \end{cases}
 \end{equation}
-ove $a$ è un generico valore appartenente al dominio di definizione. In pratica, 
+ove $a$ \`e un generico valore appartenente al dominio di definizione. In pratica, 
 per ogni iterazione tale serie valuta $f(x[i])$ e cerca la retta tangente in tale 
 punto alla funzione:
 \begin{equation}
 y = f(x[i]) + f’(x[i]) \cdot (x-x[i])
 \end{equation}
- Dopodiché cerca il punto $x$ per il quale $y = 0$:
+Dopodich\'e cerca il punto $x$ per il quale $y = 0$:
 \begin{equation}
 x = x[i+1] = x[i] - \frac{f(x[i])}{f’([i])}
 \end{equation}
@@ -759,21 +763,21 @@ ripetuto per un dato numero di iterazioni.
 	\caption{Visualizzazione grafica di cosa implica un’iterazione della 
 	serie ricorsiva ($f(x) = x^3$ in questo esempio)\label{fig: tang}}
 \end{figure}
-Se la funzione è monotona e la serie converge ad un valore, tale sarà $v$, 
+Se la funzione \`e monotona e la serie converge ad un valore, tale sar\`a $v$, 
 essendo l’unico punto fisso della serie:
 \begin{equation}
  a = a -  \frac{f(a)}{f'(a)} \to f(a) = 0 \; \land \; v = a
 \end{equation}
 essendo $v$ l’unico punto in cui si annulla la funzione per definizione.
-Ritornando al diodo, esso può essere interpretato quale un diodo ideale ed una 
+Ritornando al diodo, esso pu\`o essere interpretato quale un diodo ideale ed una 
 resistenza in serie, collegati ad un generatore di differenza di potenziale. 
 Quindi, per la legge delle maglie:
 \begin{equation}
 \Delta V_{\text{ingresso}} = \Delta V_{\text{diodo}} + \Delta 
 V_{\text{resistenza}} = \Delta V_{\text{diodo}} + R \cdot I
 \end{equation}
-ove $I$ è la corrente che scorre all’interno del diodo in quel determinato 
-istante. Notoriamente, tale scrittura si può porre nella seguente forma ai 
+ove $I$ \`e la corrente che scorre all’interno del diodo in quel determinato 
+istante. Notoriamente, tale scrittura si pu\`o porre nella seguente forma ai 
 fini di definire la retta di carico del diodo:
 \begin{equation}
 \Delta V_{\text{diodo}} = \Delta V_{\text{ingresso}} - R \cdot I
@@ -785,20 +789,21 @@ i = I_0 \cdot ( e^{\frac {\Delta V_{\text{ingresso}} - R \cdot i}{\eta V_T} } -
 1) = I_0 \cdot (e^{\frac{v} {\eta V_T}} -1) =  \frac{\Delta V_{\text{ingresso}} 
 - v}{R}
 \end{equation}
-Tale $i$ dovrà necessariamente corrispondere alla corrente di lavoro in virtù 
-dell’equazione di Shockley. Dunque definendo la funzione $g(x)$ come segue:
+Tale $i$ dovr\`a necessariamente corrispondere alla corrente di lavoro in
+virt\`u dell’equazione di Shockley. Dunque definendo la funzione $g(x)$
+come segue:
 \begin{equation}\label{eq: invsck}
 g(x) = I_0 \cdot ( e^{\frac{x}{\eta V_T}} - 1)  - \frac {\Delta 
 V_{\text{ingresso}} - x}{R}
 \end{equation}
-è possibile adottare il metodo di Newton al fine di riscontrare la radice $v$
-ed individuare così la corrente di lavoro. 
-Dunque si potrà effettuare un fit della corrente in funzione della tensione ai 
+\`e possibile adottare il metodo di Newton al fine di riscontrare la radice $v$
+ed individuare cos\`i la corrente di lavoro. 
+Dunque si potr\`a effettuare un fit della corrente in funzione della tensione ai 
 capi del diodo reale attraverso una legge che per un determinato valore della 
 tensione ($\Delta V_{\text{ingresso}}$) ed un dato numero di iterazioni (ne 
 sono sufficienti poche nel nostro caso ai fini di ottenere un’approssimazione 
-adeguata), riesce ad individuare la radice $v$ nelle modalità previamente 
-descritte. Attraverso la stessa, sarà quindi possibile individuare la corrente 
+adeguata), riesce ad individuare la radice $v$ nelle modalit\`a previamente 
+descritte. Attraverso la stessa, sar\`a quindi possibile individuare la corrente 
 di lavoro del diodo per la suddetta $\Delta V_{\text{ingresso}}$. 
 \`E immediato comprendere che fare un fit con questa legge risulta essere 
 equivalente a fare un fit con la legge \eqref{eq: model}, con minori complicazioni 
@@ -819,7 +824,7 @@ Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il
 fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie,
 inoltre risulta convergere molto rapidamente ai valori attesi e quindi sono 
 effettivamente sufficienti solo 20 iterazioni per una buona precisione.
-All’interno della funzione di fit, è stato infine introdotto un offset quale
+All’interno della funzione di fit, \`e stato infine introdotto un offset quale
 parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
 in \verb+Teensy 3.2+.
 
@@ -827,7 +832,7 @@ in \verb+Teensy 3.2+.
 Per determinare i parametri ottimali e le rispettive covarianze si \`e
 implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
 mediante la funzione \emph{curve\_fit} della libreria \texttt{Scipy}\cite{scipy}
-Per tutti i fit su campionamenti digitali di \verb+Teensy+ si è imposto
+Per tutti i fit su campionamenti digitali di \verb+Teensy+ si \`e imposto
 $\rm{abs\_sigma} =$ False, in quanto la sorgente principale d'incertezza
 sulle misure risulta non statistica/non determinata.
 % TODO: Qui si potrebbero trattare la determinazione degli intervalli di
