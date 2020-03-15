@@ -1,1 +1,0 @@
-#R[ohm]	dR[ohm]	Vmin[V]	dVmin[V]	Vmax[V]	dVmax[V]
