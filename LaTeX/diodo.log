@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.19)  15 MAR 2020 02:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.19)  15 MAR 2020 11:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1423,23 +1423,23 @@ LaTeX Warning: Label `tab:res@cref' multiply defined.
 )
 \openout1 = `diodo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 16
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 15
 .
  (c:/texlive/2019/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1466,14 +1466,14 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 16.
+LaTeX Info: Redefining \microtypecontext on input line 15.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 16.
+LaTeX Info: Redefining \showhyphens on input line 15.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1488,7 +1488,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box80
-Package hyperref Info: Link coloring ON on input line 16.
+Package hyperref Info: Link coloring ON on input line 15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1501,9 +1501,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count370
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
 
 (./diodo.out) (./diodo.out)
 \@outlinefile=\write4
@@ -1551,63 +1551,63 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \it@ocap on input line 16.
-LaTeX Info: Redefining \it@ccap on input line 16.
+LaTeX Info: Redefining \it@ocap on input line 15.
+LaTeX Info: Redefining \it@ccap on input line 15.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.16} (current compat level: 1.15).
 
 \c@lstlisting=\count371
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-6.
+5.
 (c:/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-6.
+5.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-16.
+15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-16.
+15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 16.
+(Font)              <10> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.6> on input line 16.
+(Font)              <7.6> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 16.
+(Font)              <6> on input line 15.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 16.
+(Font)              scaled to size 10.42007pt on input line 15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 16.
+(Font)              scaled to size 7.91925pt on input line 15.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 16.
+(Font)              scaled to size 6.25204pt on input line 15.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 16.
+(Font)              scaled to size 10.42007pt on input line 15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 16.
+(Font)              scaled to size 7.91925pt on input line 15.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 16.
+(Font)              scaled to size 6.25204pt on input line 15.
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-16.
+15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
@@ -1617,7 +1617,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-16.
+15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1627,7 +1627,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-16.
+15.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1637,46 +1637,46 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 17.
+(Font)              <12> on input line 16.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 17.
+(Font)              <9> on input line 16.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 17.
+(Font)              <7> on input line 16.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 17.
+(Font)              scaled to size 12.50409pt on input line 16.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 17.
+(Font)              scaled to size 9.37807pt on input line 16.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 17.
+(Font)              scaled to size 7.29405pt on input line 16.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 17.
+(Font)              scaled to size 12.50409pt on input line 16.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 17.
+(Font)              scaled to size 9.37807pt on input line 16.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 17.
+(Font)              scaled to size 7.29405pt on input line 16.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-7.
+6.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 17.
+(Font)              <8> on input line 16.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 17.
+(Font)              <5> on input line 16.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 17.
+(Font)              scaled to size 8.33606pt on input line 16.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 17.
+(Font)              scaled to size 5.21004pt on input line 16.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 17.
+(Font)              scaled to size 8.33606pt on input line 16.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 17.
+(Font)              scaled to size 5.21004pt on input line 16.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 23.
+(mdframed)              on input line 22.
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--38
+Underfull \hbox (badness 10000) in paragraph at lines 22--35
 
  []
 
@@ -1686,13 +1686,13 @@ Package microtype Info: Character `029' is missing
 <./figs/confronto_curve.png, id=71, 1009.52156pt x 690.32906pt>
 File: ./figs/confronto_curve.png Graphic file (type png)
 <use ./figs/confronto_curve.png>
-Package pdftex.def Info: ./figs/confronto_curve.png  used on input line 78.
+Package pdftex.def Info: ./figs/confronto_curve.png  used on input line 71.
 (pdftex.def)             Requested size: 252.37978pt x 172.58183pt.
 [1
 
 {c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-46.
+35.
 
 (c:/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1701,22 +1701,18 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-
-LaTeX Warning: Citation `teensy' on page 2 undefined on input line 149.
-
-<./figs/./measure.png, id=102, 387.69844pt x 221.32687pt>
+<./figs/./measure.png, id=103, 387.69844pt x 221.32687pt>
 File: ./figs/./measure.png Graphic file (type png)
 <use ./figs/./measure.png>
-Package pdftex.def Info: ./figs/./measure.png  used on input line 158.
+Package pdftex.def Info: ./figs/./measure.png  used on input line 147.
 (pdftex.def)             Requested size: 193.84874pt x 110.66315pt.
-<./figs/./gestione.png, id=103, 920.68968pt x 420.82219pt>
+<./figs/./gestione.png, id=104, 920.68968pt x 420.82219pt>
 File: ./figs/./gestione.png Graphic file (type png)
 <use ./figs/./gestione.png>
-Package pdftex.def Info: ./figs/./gestione.png  used on input line 165.
+Package pdftex.def Info: ./figs/./gestione.png  used on input line 154.
 (pdftex.def)             Requested size: 460.34372pt x 210.41057pt.
 
-Overfull \hbox (5.09961pt too wide) in paragraph at lines 165--166
+Overfull \hbox (5.09961pt too wide) in paragraph at lines 154--155
  [][] 
  []
 
@@ -1725,13 +1721,13 @@ Package microtype Info: Character `029' is missing
 (microtype)             Ignoring protrusion settings for this character.
 [2 <./figs/confronto_curve.png>] [3 <./figs/./measure.png> <./figs/./gestione.p
 ng>] (./figs/cal0.pdf_tex
-<./figs/cal0.pdf, id=122, page=1, 462.52798pt x 346.78929pt>
+<./figs/cal0.pdf, id=124, page=1, 462.52798pt x 346.78929pt>
 File: ./figs/cal0.pdf Graphic file (type pdf)
 <use ./figs/cal0.pdf, page 1>
 Package pdftex.def Info: ./figs/cal0.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 227.62206pt x 170.66376pt.
 ) (./figs/cal1.pdf_tex
-<./figs/cal1.pdf, id=123, page=1, 462.52798pt x 346.78929pt>
+<./figs/cal1.pdf, id=125, page=1, 462.52798pt x 346.78929pt>
 File: ./figs/cal1.pdf Graphic file (type pdf)
 <use ./figs/cal1.pdf, page 1>
 Package pdftex.def Info: ./figs/cal1.pdf , page1 used on input line 56.
@@ -1741,157 +1737,143 @@ Package pdftex.def Info: ./figs/cal1.pdf , page1 used on input line 56.
 pdfTeX warning: pdflatex.exe (file ./figs/cal1.pdf): PDF inclusion: multiple pd
 fs with page group included in a single page
 >]
-<./figs/100skip_linear.png, id=1290, 609.9588pt x 482.7636pt>
+<./figs/100skip_linear.png, id=1292, 609.9588pt x 482.7636pt>
 File: ./figs/100skip_linear.png Graphic file (type png)
 <use ./figs/100skip_linear.png>
-Package pdftex.def Info: ./figs/100skip_linear.png  used on input line 345.
+Package pdftex.def Info: ./figs/100skip_linear.png  used on input line 321.
 (pdftex.def)             Requested size: 455.25287pt x 312.98232pt.
-<./figs/10skip_semilog.png, id=1294, 627.3036pt x 391.7034pt>
+ [5]
+<./figs/10skip_semilog.png, id=1303, 627.3036pt x 391.7034pt>
 File: ./figs/10skip_semilog.png Graphic file (type png)
 <use ./figs/10skip_semilog.png>
-Package pdftex.def Info: ./figs/10skip_semilog.png  used on input line 353.
+Package pdftex.def Info: ./figs/10skip_semilog.png  used on input line 329.
 (pdftex.def)             Requested size: 455.25726pt x 281.69151pt.
- [5 <./figs/100skip_linear.png>]
+ [6 <./figs/100skip_linear.png> <./figs/10skip_semilog.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 409.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 409.
-
-[6 <./figs/10skip_semilog.png>] [7] [8]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 604.
+(hyperref)                removing `math shift' on input line 377.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 604.
+(hyperref)                removing `math shift' on input line 377.
+
+[7] [8]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 565.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 604.
+(hyperref)                removing `\left' on input line 565.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 604.
+(hyperref)                removing `\mu' on input line 565.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 604.
+(hyperref)                removing `subscript' on input line 565.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 604.
+(hyperref)                removing `\right' on input line 565.
 
-<./figs/./varmuy.png, id=1331, 784.1295pt x 419.8887pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 565.
+
+<./figs/./varmuy.png, id=1330, 784.1295pt x 419.8887pt>
 File: ./figs/./varmuy.png Graphic file (type png)
 <use ./figs/./varmuy.png>
-Package pdftex.def Info: ./figs/./varmuy.png  used on input line 622.
+Package pdftex.def Info: ./figs/./varmuy.png  used on input line 584.
 (pdftex.def)             Requested size: 431.27257pt x 230.9395pt.
-[9 <./figs/./varmuy.png>]
-<./figs/./nofilter.png, id=1343, 462.528pt x 345.4506pt>
+[9]
+<./figs/./nofilter.png, id=1341, 462.528pt x 345.4506pt>
 File: ./figs/./nofilter.png Graphic file (type png)
 <use ./figs/./nofilter.png>
-Package pdftex.def Info: ./figs/./nofilter.png  used on input line 686.
+Package pdftex.def Info: ./figs/./nofilter.png  used on input line 648.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 686--687
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 648--649
  [][] 
  []
 
-<./figs/./filtered.png, id=1344, 462.528pt x 345.4506pt>
+<./figs/./filtered.png, id=1342, 462.528pt x 345.4506pt>
 File: ./figs/./filtered.png Graphic file (type png)
 <use ./figs/./filtered.png>
-Package pdftex.def Info: ./figs/./filtered.png  used on input line 691.
+Package pdftex.def Info: ./figs/./filtered.png  used on input line 653.
 (pdftex.def)             Requested size: 231.26343pt x 172.72487pt.
 
-Overfull \hbox (3.64137pt too wide) in paragraph at lines 691--692
+Overfull \hbox (3.64137pt too wide) in paragraph at lines 653--654
  [][] 
  []
 
-<./figs/comparison.png, id=1349, 651.8754pt x 352.6776pt>
+[10 <./figs/./varmuy.png>]
+<./figs/comparison.png, id=1355, 651.8754pt x 352.6776pt>
 File: ./figs/comparison.png Graphic file (type png)
 <use ./figs/comparison.png>
-Package pdftex.def Info: ./figs/comparison.png  used on input line 703.
+Package pdftex.def Info: ./figs/comparison.png  used on input line 665.
 (pdftex.def)             Requested size: 423.71397pt x 229.23772pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 685.
+
+[11 <./figs/./nofilter.png> <./figs/./filtered.png> <./figs/comparison.png>]
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 694.
 
 
-LaTeX Warning: Citation `tesi' on page 10 undefined on input line 719.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 703.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 723.
-
-[10 <./figs/./nofilter.png> <./figs/./filtered.png>]
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 732.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 710.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 741.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 714.
 
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 748.
-
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 752.
-
-<./figs/tang.png, id=1359, 520.344pt x 356.2911pt>
+<./figs/tang.png, id=1369, 520.344pt x 356.2911pt>
 File: ./figs/tang.png Graphic file (type png)
 <use ./figs/tang.png>
-Package pdftex.def Info: ./figs/tang.png  used on input line 758.
+Package pdftex.def Info: ./figs/tang.png  used on input line 720.
 (pdftex.def)             Requested size: 416.27576pt x 285.03326pt.
-[11 <./figs/comparison.png>] (./figs/Iter.pdf_tex
-<./figs/Iter.pdf, id=1373, page=1, 462.52798pt x 345.4506pt>
+[12 <./figs/tang.png>] (./figs/Iter.pdf_tex
+<./figs/Iter.pdf, id=1385, page=1, 462.52798pt x 345.4506pt>
 File: ./figs/Iter.pdf Graphic file (type pdf)
 <use ./figs/Iter.pdf, page 1>
 Package pdftex.def Info: ./figs/Iter.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 455.24411pt x 340.02574pt.
 ) (./figs/vter.pdf_tex
-<./figs/vter.pdf, id=1374, page=1, 462.52798pt x 345.4506pt>
+<./figs/vter.pdf, id=1386, page=1, 462.52798pt x 345.4506pt>
 File: ./figs/vter.pdf Graphic file (type pdf)
 <use ./figs/vter.pdf, page 1>
 Package pdftex.def Info: ./figs/vter.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 462.52798pt x 345.46556pt.
-)
-[12 <./figs/tang.png>]
-
-LaTeX Warning: Citation `scipy' on page 13 undefined on input line 829.
-
-(./diodo.bbl [13 <./figs/Iter.pdf> <./figs/vter.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figs/vter.pdf): PDF inclusion: multiple pd
-fs with page group included in a single page
->]) [14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 846.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 846.
- (./diodo.aux
-
-Package mparhack Warning: Marginpars may have changed.
-(mparhack)                Rerun to get them right.
-
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 846.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 846.
-Package rerunfilecheck Info: File `diodo.out' has not changed.
-(rerunfilecheck)             Checksum: 69087A616672C8EA8F59DCFAA47DDFE6;975.
+) [13 <./figs/Iter.pdf>] (./diodo.bbl) [14 <./figs/vter.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 803.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 803.
+ (./diodo.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 803.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 803.
 
 
-LaTeX Warning: There were undefined references.
+Package rerunfilecheck Warning: File `diodo.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
+Package rerunfilecheck Info: Checksums for `diodo.out':
+(rerunfilecheck)             Before: 69087A616672C8EA8F59DCFAA47DDFE6;975
+(rerunfilecheck)             After:  ECD98342603A2DDA2A27CB7D1DB1064A;1050.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 846.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 803.
  ) 
 Here is how much of TeX's memory you used:
- 54694 strings out of 481239
- 1342183 string characters out of 5921778
- 2059956 words of memory out of 5000000
- 68811 multiletter control sequences out of 15000+600000
- 745517 words of font info for 292 fonts, out of 8000000 for 9000
+ 54838 strings out of 481239
+ 1345177 string characters out of 5921778
+ 2059957 words of memory out of 5000000
+ 68919 multiletter control sequences out of 15000+600000
+ 768968 words of font info for 323 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,23n,121p,956b,1142s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2019/tex
@@ -1918,10 +1900,10 @@ ve/2019/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/texlive/2019/texmf-dist/
 fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/
 lm/lmtt10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt9.pfb><c:/t
 exlive/2019/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on diodo.pdf (14 pages, 1199210 bytes).
+Output written on diodo.pdf (14 pages, 1199348 bytes).
 PDF statistics:
- 1726 PDF objects out of 1728 (max. 8388607)
- 1197 compressed objects within 12 object streams
- 66 named destinations out of 1000 (max. 500000)
- 80083 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 1733 PDF objects out of 2073 (max. 8388607)
+ 1203 compressed objects within 13 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 96979 words of extra memory for PDF output out of 106986 (max. 10000000)
 
