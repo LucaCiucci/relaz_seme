@@ -4,8 +4,7 @@
 \input{math}
 
 \geometry{a4paper, left=25mm, right=25mm, top=25mm, bottom=25mm}
-\title{Modellizzazione della resistenza di diodi a giunzione PN per alte 
-correnti di lavoro}
+\title{Modellizzazione della resistenza interna di diodi a giunzione PN}
 \author{L.~Ciucci(\thanks{Dipartimento di Fisica E.~Fermi, Universit\`a di Pisa 
 - Pisa, Italy} )~\and S.~Bruzzesi(\protect\footnotemark[1] )~\and 
 M.~Romagnoli(\protect\footnotemark[1] )~\and 
@@ -113,7 +112,7 @@ le seguenti:
 	    \bottomrule
 	\end{tabular}
 	\caption{I valori delle resistenze poste in serie al diodo, riportate in
-		valore nominale e misurate con multimetro digitale. \label{tab:res}}
+		valore nominale e misurate con multimetro digitale. \label{tab: res}}
     \end{center}
 \end{table}
 
@@ -205,19 +204,17 @@ e le rispettive covarianze:
 \end{align*}
 
 \begin{figure}[H]
-\centering
-\begin{subfigure}{.5\textwidth}
-	\centering 
-	\def\svgwidth{\columnwidth}
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\def\svgwidth{\columnwidth}
 		\includesvg{cal0}
 	\label{fig: cal0}
-\end{subfigure}
-\begin{subfigure} {.5\textwidth}
-	\centering 
-	\def\svgwidth{\columnwidth}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\def\svgwidth{\columnwidth}
 		\includesvg{cal1}
 	\label{fig: cal1}
-\end{subfigure}
+	\end{subfigure}
 \end{figure}
 
 I coefficienti cos\`i ricavati ci permetteranno di fornire una buona stima 
@@ -408,7 +405,7 @@ in esame, riportate nella tabella sottostante:
 		\bottomrule
     	\end{tabular}
     \caption{I valori delle resistenze poste in serie al diodo, riportate in
-        	valore nominale e misurate con il primo metodo. \label{tab:res}}
+        	valore nominale e misurate con il primo metodo. \label{tab: res_DC}}
 	\end{center}
 \end{table}
 
@@ -435,7 +432,8 @@ da banco:
 		\bottomrule
     	\end{tabular}
     \caption{I valori delle resistenze poste in serie al diodo, riportate in
-       		 valore nominale e misurate con la seconda strategia. \label{tab:res}}
+       		 valore nominale e misurate con la seconda strategia. 
+			 \label{tab: res_4T}}
 	\end{center}
 \end{table}
 
