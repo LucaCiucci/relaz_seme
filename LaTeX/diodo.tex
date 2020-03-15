@@ -11,7 +11,6 @@ correnti di lavoro}
 M.~Romagnoli(\protect\footnotemark[1] )~\and 
 M.~Alighieri(\protect\footnotemark[1] )~\and 
 B.~Tomelleri(\protect\footnotemark[1] )}
-%\date{2020/11/01}
 
 \begin{document}
 \maketitle
@@ -27,8 +26,6 @@ esplorata un'ampia zona della curva, in particolar modo per alti valori di
 $I$, dove questa caratteristica \`e maggiormente apprezzabile. Proponiamo dunque
 un'estensione della legge di Shockley, tramite l'aggiunta di un termine
 resistivo, in grado di descrivere l'elemento -ohmico- della giunzione.
-%;il che equivale a modellare un diodo reale come un resistore in serie
-%ad un diodo ideale.
 La nuova curva caratteristica prevede un andamento sempre pi\`u lineare di $I$
 al crescere di $V$ e questo risulta in accordo con l'andamento dei dati
 sperimentali.
@@ -48,21 +45,17 @@ per effetti termico-dissipativi questa ha un effetto sempre meno
 trascurabile, all'aumentare della tensione ai suoi capi, sul passaggio di
 corrente attraverso il diodo.
 Per poter descrivere la parte resistiva di un diodo percorso da correnti
-di alta intensit\`a %\footnote{Nel nostro caso per un diodo 1N4007 la massima
-%intensit\`a di corrente continua $I_F = 1.0$ A nominali.}
-si propone un modello semplice, di resistenza parassita in serie, verificandone
-l'accordo con i risultati sperimentali su un'ampia regione di punti di lavoro.
+di alta intensit\`a si propone un modello semplice, di resistenza parassita
+in serie, verificandone l'accordo con i risultati sperimentali su un'ampia
+regione di punti di lavoro.
 
 %================================================================
 %                         Cenni teorici
 %================================================================
 \section{Cenni Teorici}
 Secondo le nostre ipotesi, un diodo reale pu\`o essere schematizzato come un
-resistore ohmico %\footnote{Vista la simmetria della giunzione, propriamente
-%si considerano due resistori -equivalenti- disposti ai lati del diodo ideale,
-%la cui resistenza non \`e indipendente dalle condizioni di operazione.}
-ed un diodo ideale in serie. Pertanto ci aspettiamo che la corrente che
-attraversa questi elementi del circuito sia la stessa:
+resistore ohmico ed un diodo ideale in serie. Pertanto ci aspettiamo che la
+corrente che attraversa questi elementi del circuito sia la stessa:
 \begin{equation}
 	I = \frac{\Delta V_{\text{resistore}}}{R} =
 	I_0 \left( e^{\frac{\Delta V_{\text{diodo}}}{\eta V_t}} - 1\right)
@@ -90,10 +83,6 @@ eventuali danni a questi stessi, si imprimono correnti impulsate sul circuito.
 La durata degli impulsi \`e inferiore ai 200 $\si{\us}$, che corrisponde ad
 un'energia impressa inferiore a 1 $\si{\milli\J}$ (dunque ad un aumento
 della temperatura del semiconduttore inferiore a 0.5 $\si{\K}$).
-%Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
-%al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
-%all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
-%brevi, limitando dunque il trasferimento di energia sui componenti.
 
 %================================
 %           Apparato
@@ -107,7 +96,7 @@ di stimare la corrente che circola sul diodo.
 Per poter esplorare una larga banda di correnti di lavoro
 si \`e variata opportunamente la resistenza in serie al diodo, scegliendo tra
 le seguenti:
-\begin{table}[H]% la tabella deve stare per forza sotto "seguenti:"
+\begin{table}[H]
     \begin{center}
 	\begin{tabular}{lll}
 	    \toprule
@@ -160,8 +149,7 @@ e della resistenza.
 	\label{sch:rdng}}
 \end{figure}
 
-\begin{figure}[h!t]% so che \`e brutto che lascia un po' di spazio bianco
-				   %ma altrimenti lo metterebbe dentro calibrazione
+\begin{figure}[h!t]
 	\centering 
  		\includegraphics[scale=0.5]{./gestione.png}
  	\caption{Circuito globale per la gestione del diodo \label{sch:gest}}
@@ -205,35 +193,25 @@ y(x; m, q)  = m x + q
 lasciando liberi entrambi i parametri $m$ e $q$. Riportiamo sotto le miglior
 stime dei parametri determinati dai fit relativi ad \verb+ADC0+ ed \verb+ADC1+ 
 e le rispettive covarianze:
-% Forse le varianze sono superflue? Il lettore le pu\`o ottenere semplicemente
-% quadrando le incertezze sui parametri.
-% Solitamente le covarianze si riportano normalizzate, cos\`i risultano poco
-% immediate come indice di correlazione fra i parametri.
 \begin{align*}
 	&\qquad \texttt{ADC0}	&&\qquad  \texttt{ADC1} \\
 	m_0 &= 0.7968 \pm  0.0033  \; \mathrm{mV/digit} 
 	& m_1  &= 0.7954 \pm 0.0026  \; \mathrm{mV/digit} \\
 	q_0 &= - 0.18 \pm 0.34  \; \si{\mV} 	
 	&q_1 &= 3.84  \pm 0.26  \; \si{\mV} \\
-	%\var{m_0}  &= 1.1 \cdot 10^{-11}  \; \mathrm{V}^2 /\mathrm{digit}^2
-	%&\var{m_1} &= 7.0 \cdot 10^{-12}  \; \mathrm{V}^2 /\mathrm{digit}^2 \\
-	%\var{q_0} &=1.2 \cdot 10^{-7} \; \mathrm{V}^2
-	%&\var{q_1} &= 6.8 \cdot 10^{-8} \; \mathrm{V}^2 \\
-	%\cov{m_0} {q_0} &= - 1.6 \cdot 10^{-10} \; \mathrm{V}^2 /\mathrm{digit}
-    %    &\cov{m_1}{q_1} &= - 6.1 \cdot 10^{-11} \;
 	\corr{m_0} {q_0} &= - 0.15      &\corr{m_1}{q_1} &= - 0.09 \\
 	\chi^2/\text{ndof} &= 145/15	&\chi^2/\text{ndof} &= 96/15 \\ 
 	\text{abs\_sigma} &= \rm False	&\text{abs\_sigma} &= \rm False
 \end{align*}
 
-\begin{figure}[H]% qui potremo fare qualcosa per assicurarci che le questi valori e le immagini vengano sempre tenute insieme, ma non lo so fare e non  importante
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
 	\def\svgwidth{\columnwidth}
 		\includesvg{cal0}
 	\label{fig: cal0}
-\end{subfigure}%
+\end{subfigure}
 \begin{subfigure} {.5\textwidth}
 	\centering 
 	\def\svgwidth{\columnwidth}
@@ -277,9 +255,6 @@ ricomincia caricando il condensatore ad una tensione pi\`u alta.
 %                   Analisi dati e Risultati
 %================================================================
 \section{Analisi dati e Risultati}
-%L’intento della presente analisi \`e quello di verificare che i dati raccolti 
-%siano in accordo con la legge \eqref{eq: model}.
-% Forse \`e un po' forte gi\`a dire che l'intento \`e verificare, ancora non si sa
 Per poter condurre un'analisi sui dati raccolti \`e stato innanzitutto
 necessario convertire le letture digitalizzate nelle corrispondenti
 grandezze fisiche, le coppie tensione-corrente relative al diodo.
@@ -316,7 +291,7 @@ peso sovrastimato in confronto agli altri, introducendo cos\`i un bias
 nei risultati finali.
  
 Si riportano i valori ottimali dei parametri stimati dal fit e le relative
-covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
+covarianze: 
 \begin{align*}
 	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \si{\mohm} 
 	&\sigma_{I_0, \eta V_T} &= 0.97  \\
@@ -358,12 +333,6 @@ definisce i parametri fondamentali.
 	per comodit\`a di visualizzazione. \label{fig: sck_log}}
 \end{figure}
 
-% Baldini e Fuso dicono sempre di specificare come si \`e implementato
-% il procedimento di fit (numerico/analitico,... con che algoritmo?
-% Levenberg-Marquardt, etc). Una volta avevo scritto una bozza su curve_fit e
-% Scipy, ma credo sia stata eliminata. O qua o in Appendice B forse dovremmo
-% almeno menzionarlo da qualche parte.
-
 %================================================================
 %                          Conclusioni
 %================================================================
@@ -397,8 +366,6 @@ nelle condizioni di lavoro considerate. Questa modellizzazione, fra l'altro,
 pu\`o risultare utile nelle simulazioni numeriche di circuiti con diodi in regimi
 impulsati su alte correnti, dove sia richiesto un dettaglio
 sulle cadute di tensione sui singoli componenti. 
-%Per tale scopo la legge \eqref{eq: model} \`e confermata essere una buona
-%approssimazione del diodo reale entro i limiti sperimentali.
 Sebbene questo studio sia concentrato su un unico diodo 1N4007, il metodo
 proposto pu\`o essere esteso per qualunque altro tipo di diodo, eventualmente
 sostituendo il condensatore con un opportuno circuito stabilizzatore di
@@ -419,10 +386,10 @@ sull'uso di un alimentatore regolabile DC ($\Delta V_{\text{max}} = 30
 scorrere una corrente continua dentro alla $R1$, in modo tale che la potenza
 dissipata ($P = R1 \cdot I^2$) non superi la potenza nominale del resistore,
 onde evitare danni al componente per effetto termico.
-A questo punto la corrente\footnote{Pur avendola fissata a priori, si \`e misurata
-la corrente con un multimetro per conoscerne il valore con maggior precisione}
-e la differenza di potenziale ai capi del resistore vengono misurate
-contemporaneamente attraverso due multimetri digitali. 
+Contemporaneamente la corrente\footnote{Pur avendola fissata a priori, si \`e 
+misurata la corrente con un multimetro per conoscerne il valore con maggior
+precisione} e la differenza di potenziale ai capi del resistore vengono misurate
+attraverso due distinti multimetri digitali. 
 Dunque, attraverso la legge di Ohm, \`e stato possibile la stima delle resistenze
 in esame, riportate nella tabella sottostante: 
 
@@ -450,7 +417,6 @@ quello della misura a quattro terminali (4T) con un ohmmetro da banco.
 Per compensare le sovrastime dovute alle resistenze intrinseche ai
 collegamenti (in serie al resistore) ai valori misurati sono stati sottratti
 quelli letti in assenza del resistore.
-% Mi sembrava ripetitivo. fili --> collegamenti per considerare anche i reofori
 Nella seguente tabella sono riportate le misure effettuate con il multimetro
 da banco:
 
@@ -473,7 +439,7 @@ da banco:
 	\end{center}
 \end{table}
 
-Entrambi i metodi forniscono stime valide delle resistenze usate, per\`o 
+Entrambi i metodi forniscono stime valide delle resistenze usate. Tuttavia
 all'interno delle analisi successive, abbiamo preferito le misure ottenute
 con il secondo, perch\'e determinate con maggior precisione.\\
 Le resistenze pi\`u alte, da 22 $\si{\kohm}$ e 220 $\si{\kohm}$ sono state
@@ -575,14 +541,8 @@ Infine \`e possibile ricavare la varianza di $\mu_y$ dalla definizione di
 valore di aspettazione, riconducendola pi\`u volte a integrali di gaussiane
 di altezze e ampiezze diverse:
 \begin{align} \label{aln: varmuy}
-%	\var{\mu_y} &= \sum_{i=1}^{n} w_i^2 \sigma_y^2 + 
-%	\left(\frac{y_i}{\sum_{j=1}^{n} w_j}  \right)^2 \frac{
-%	\frac{e^{-\frac{(x-x_i)^2}{3 \sigma_x^2}}} {\sigma_x \sqrt{6 \pi} } +
-%	\frac{e^{-3\frac{(x-x_i)^2}{4 \sigma_x^2}}} {\sigma_x \sqrt{\pi} } +
-%	\frac{e^{-\frac{(x-x_i)^2}{\sigma_x^2}}} {\sigma_x \sqrt{2 \pi}}
-%	} {\sqrt{2 \pi}} =\\ 
 	\var{\mu_y} &= \sum_{i=1}^{n} w_i^2 \sigma_y^2 + 
-	\left(\frac{y_i}{\sum_{j=1}^{n} w_j} \right)^2 \frac{
+	\left(\frac{y_i}{\sum_{j=1}^{n} G_{x_j}} \right)^2 \frac{
 	e^{-\frac{(x-x_i)^2}{3 \sigma_{x_i}^2}} +  
 	\sqrt{3} \left( e^{-\frac{(x-x_i)^2}{\sigma_{x_i}^2}} -
 	\sqrt{2} e^{-3 \frac{(x-x_i)^2}{4 \sigma_{x_i}^2}} \right)
@@ -647,7 +607,6 @@ sulla distanza dalla curva/modello di best fit, per il nostro criterio essa
 verifica del modello in quanto una selezione basata su un preliminare fit
 risulterebbe influenzata dalla scelta della funzione in questione e
 eliminerebbe tutti i dati che non risultano compatibili con essa.
-%indipendentemente dal modello di fit vale $|y_i - \mu_y| \geq k\sigma_y$.
 
 %================================
 %  Filtro dati non significativi
@@ -660,7 +619,6 @@ correnti.
 In generale i dati del primo si sovrapporranno anche nelle zone basse esplorate
 dal secondo, per\`o senza aggiungere sostanziali informazioni rispetto a quanto
 farebbe il secondo.
-%Il nostro obiettivo \`e dunque eliminare questi dati meno significativi.
 Esponiamo dunque il criterio sviluppato per ridurre l'influenza di questi
 punti meno significativi sulla ricerca dei parametri di best-fit e sulla
 rappresentazione finale dei dati.\\
@@ -683,7 +641,7 @@ rimanda ai
 Nelle figure di esempio sono mostrati i dati selezionati dall’algoritmo
 (in nero) ed i dati scartati (in arancio). 
 
-\begin{figure}[!htbp]% per questi non ci dovrebbero essere problemi, basta che non vanno in B
+\begin{figure}[!htbp]
 \centering
 \begin{subfigure}{.5\textwidth}
 	\centering 
@@ -822,25 +780,19 @@ anche a seguito di sole 20 iterazioni:
 \end{figure}
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
 fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie,
-inoltre risulta convergere molto rapidamente ai valori attesi e quindi sono 
+inoltre, risulta convergere molto rapidamente ai valori attesi e quindi sono 
 effettivamente sufficienti solo 20 iterazioni per una buona precisione.
 All’interno della funzione di fit, \`e stato infine introdotto un offset quale
 parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
 in \verb+Teensy 3.2+.
 
-\subsection*{Nota sull'implementazione}
+\subsection{Nota sull'implementazione}
 Per determinare i parametri ottimali e le rispettive covarianze si \`e
 implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
 mediante la funzione \emph{curve\_fit} della libreria \texttt{Scipy}\cite{scipy}
 Per tutti i fit su campionamenti digitali di \verb+Teensy+ si \`e imposto
 $\rm{abs\_sigma} =$ False, in quanto la sorgente principale d'incertezza
 sulle misure risulta non statistica/non determinata.
-% TODO: Qui si potrebbero trattare la determinazione degli intervalli di
-% confidenza e il F-test. 
-
-%per cui non sarebbe giustificato assumere come errore il valore convenzionale
-%$\sigma = \pm 1$ [digit] come se  effettivamente stessimo eseguendo un fit
-%dei minimi quadrati.
 
 %================================================================
 %                            END
