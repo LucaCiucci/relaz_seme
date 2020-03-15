@@ -290,7 +290,6 @@ $\sigma_x^2$ rappresenta la varianza delle letture e non le incertezze ad esse
 associate.
 
 Successivamente, è stato effettuato un fit ai minimi degli scarti quadratici.
-% non basta fit ai minimi quadrati ordinario?
 Per il procedimento avremmo potuto pensare di adottare come modello la legge
 \eqref{eq: model} direttamente, tuttavia ciò comporterebbe il fallimento del
 fit a causa dei valori negativi o nulli che può assumere l'argomento del
@@ -826,8 +825,12 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{Scipy}\cite{scipy}
 Per tutti i fit su campionamenti digitali di \verb+Teensy+ si è imposto
 $\rm{abs\_sigma} =$ False, in quanto la sorgente principale d'incertezza
 sulle misure risulta non statistica/non determinata.
+% TODO: Qui si potrebbero trattare la determinazione degli intervalli di
+% confidenza e il F-test. 
+
 %per cui non sarebbe giustificato assumere come errore il valore convenzionale
-%$\sigma = \pm 1$ [digit] effettivamente si esegue un fit dei minimi quadrati.
+%$\sigma = \pm 1$ [digit] come se  effettivamente stessimo eseguendo un fit
+%dei minimi quadrati.
 
 %================================================================
 %                            END
