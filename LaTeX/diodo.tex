@@ -1,7 +1,7 @@
 \documentclass{article}[a4paper, oneside, 11pt]
 
-\input{./preamble}
-\input{./math}
+\input{preamble}
+\input{math}
 
 \geometry{a4paper, left=25mm, right=25mm, top=25mm, bottom=25mm}
 \title{Modellizzazione della resistenza di diodi a giunzione PN per alte 
@@ -84,16 +84,12 @@ essere espressa secondo la legge:
 %                Metodo e apparato sperimentale
 %================================================================
 \section{Metodo e apparato sperimentale}
-Onde evitare sostanziali aumenti di temperatura, oltre ad eventuali danni
-a questi stessi, si imprimono correnti impulsate sul circuito. 
+Onde evitare sostanziali aumenti di temperatura dei componenti, oltre ad
+eventuali danni a questi stessi, si imprimono correnti impulsate sul circuito. 
 %e le conseguenti variazioni di resistenza nei componenti 
-La durata degli impulsi è inferiore ai 200 $\mu$s, che corrisponde ad
-un'energia impressa inferiore a 1 mJ (dunque ad un aumento della temperatura
-del semiconduttore inferiore a 0.5 K).
-%Dovendo lavorare con correnti relativamente alte per il circuito sotto studio,
-%al fine di minimizzare effetti termici-dissipativi secondari ed evitare danni
-%all'apparato, si imprimono sui componenti correnti pulsate o di durate molto
-%brevi, limitando dunque il trasferimento di energia sui componenti.
+La durata degli impulsi è inferiore ai 200 $\si{\us}$, che corrisponde ad
+un'energia impressa inferiore a 1 $\si{\milli\J}$ (dunque ad un aumento
+della temperatura del semiconduttore inferiore a 0.5 $\si{\K}$).
 
 %================================
 %           Apparato
@@ -104,34 +100,31 @@ sperimentale (\emph{breadboard}), il cui scopo è generare le correnti
 impulsate appena descritte attraverso il diodo $D1$ e la resistenza $R1$.
 La misura della differenza di potenziale agli estremi della $R_1$ permette
 di stimare la corrente che circola sul diodo.
-% Per poter esplorare una larga banda di punti di lavoro del diodo,
 Per poter esplorare una larga banda di correnti di lavoro
-% Forse meglio una larga fascia di correnti, visto che il compito della
-% resistenza è proprio quello di limitare la corrente sul diodo?
 si è variata opportunamente la resistenza in serie al diodo, scegliendo tra
 le seguenti:
 \begin{table}[H]% la tabella deve stare per forza sotto "seguenti:"
     \begin{center}
 	\begin{tabular}{lll}
 	    \toprule
-	    $R1$ nom. [$\Omega$] & $R1$ mult. [$\Omega$] \\ 
+		$R1$ nom. [$\si{\ohm}$] & $R1$ mis. [$\si{\ohm}$] \\ 
 	    \midrule
 	    \midrule
 	    $0.22 \pm 3 \% $         	& $0.226 \pm 0.008$ \\
 	    $2.2 \pm 5 \% $          	& $2.212 \pm 0.008$ \\
 	    $22 \pm 5 \% $           	& $21.86 \pm 0.010$ \\ 
 		$220 \pm 5 \% $          	& $216.22 \pm 0.07$ \\
-	    $2.2\; \rm k \pm 5 \% $       & $2202.1 \pm 0.4$ \\
-	    $22\; \rm k \pm 5 \% $       & ($21.7 \pm 0.3)10^3$ \\
-	    $0.22\; \rm M \pm 5 \% $      & ($217 \pm 3)10^3$ \\
+		$2.2\; \si{k} \pm 5 \% $       & $2202.1 \pm 0.4$ \\
+		$22\; \si{k} \pm 5 \% $       & ($21.7 \pm 0.3)10^3$ \\
+		$0.22\; \si{M} \pm 5 \% $      & ($217 \pm 3)10^3$ \\
 	    \bottomrule
 	\end{tabular}
 	\caption{I valori delle resistenze poste in serie al diodo, riportate in
 		valore nominale e misurate con multimetro digitale. \label{tab:res}}
     \end{center}
 \end{table}
-Peruna descrizione del metodo di misurazione delle resistenze si rimanda a
-\nameref{app: A}.
+Per una descrizione del metodo di misurazione delle resistenze si rimanda 
+all'\nameref{app: A}.
 D'altra parte, per fornire una tensione regolabile e sufficientemente stabile
 durante un impulso, nel circuito si impiega il condensatore $C1$, la cui
 tensione, carica e scarica sono controllate dalla maglia destra del circuito.
@@ -180,12 +173,12 @@ di ciascuna delle due coppie separatamente.
 
 I pin volti alla lettura della tensione maggiore sono stati collegati al 
 centrale di un potenziometro, a sua volta collegato ad un generatore di 
-potenziale con tensione in ingresso pari a 3.3V . Gli altri due pin sono stati 
-invece collegati a massa.
+potenziale con tensione in ingresso pari a $3.3\si{V}$ . Gli altri due pin
+sono stati invece collegati a massa.
 
 Variando la resistenza e, conseguentemente, la differenza di potenziale in 
 ingresso, è stato possibile calcolare media, deviazione standard campione
-e deviazione standard della media relative a ciascuna tensione per 
+e deviazione standard dalla media relative a ciascuna tensione per 
 un gruppo di 10000 misure effettuate con \verb+Teensy+ (si veda il 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_calib/teensy_calib.ino}{relativo sketch}).
 Il centrale del potenziometro e la massa sono state, inoltre, collegate ad un
@@ -203,8 +196,9 @@ fit lineare attraverso la legge:
 y(x; m, q)  = m x + q
 \end{equation}
 
-lasciando liberi entrambi i parametri $m$ e $q$. Riportiamo sotto i parametri
-di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
+lasciando liberi entrambi i parametri $m$ e $q$. Riportiamo sotto le miglior
+stime dei parametri determinati dai fit relativi ad \verb+ADC0+ ed \verb+ADC1+ 
+e le rispettive covarianze:
 % Forse le varianze sono superflue? Il lettore le può ottenere semplicemente
 % quadrando le incertezze sui parametri.
 % Solitamente le covarianze si riportano normalizzate, così risultano poco
@@ -213,8 +207,8 @@ di best-fit relativi ad \verb+ADC0+ ed \verb+ADC1+ e le rispettive covarianze:
 	&\qquad \texttt{ADC0}	&&\qquad  \texttt{ADC1} \\
 	m_0 &= 0.7968 \pm  0.0033  \; \mathrm{mV/digit} 
 	& m_1  &= 0.7954 \pm 0.0026  \; \mathrm{mV/digit} \\
-	q_0 &= - 0.18 \pm 0.34  \; \mathrm{mV} 	
-	&q_1 &= 3.84  \pm 0.26  \; \mathrm{mV} \\
+	q_0 &= - 0.18 \pm 0.34  \; \si{\mV} 	
+	&q_1 &= 3.84  \pm 0.26  \; \si{\mV} \\
 	%\var{m_0}  &= 1.1 \cdot 10^{-11}  \; \mathrm{V}^2 /\mathrm{digit}^2
 	%&\var{m_1} &= 7.0 \cdot 10^{-12}  \; \mathrm{V}^2 /\mathrm{digit}^2 \\
 	%\var{q_0} &=1.2 \cdot 10^{-7} \; \mathrm{V}^2
@@ -260,18 +254,18 @@ conversioni si rimanda direttamente al
 Per ciascun valore scelto della resistenza $R1$ si è acquisita una presa 
 dati automatizzata tramite una 
 \href{https://github.com/LucaCiucci/relaz_seme/blob/master/sketches/teensy_differenziale_definitivo/teensy_differenziale_definitivo.ino}
-{routine} programmata in \verb+Teensy+: il condensatore viene caricato
-ad una tensione prefissata; quando il MCU misura questo valore
-prestabilito, invia il segnale su $T1$ che avvia l'acquisizione sincronizzata
-e si attende un tempo 50 $\mu$s per permettere al MOS-FET di entrare in
-conduzione ($R2$ è stata scelta di 1k, dunque c'è un apprezzabile ritardo
-tra segnale e impulso) e di scartare eventuali segnali spuri. A questo punto
-si inizia a memorizzare una serie da 100 coppie di letture -sincronizzate-
-(a meno di sfasamenti nell'ordine delle centinaia di nanosecondi), si ferma
-l'impulso e si trasmettono i dati al computer. Se la tensione al punto
-\verb+OUT2+ ha raggiunto valori maggiori di 3.3V l'acquisizione si ferma
-per non danneggiare \verb+Teensy+, altrimenti si ricomincia caricando il
-condensatore ad una tensione più alta.
+{routine} programmata in \verb+Teensy+: il condensatore viene caricato ad una
+tensione prefissata; quando il MCU misura questo valore prestabilito,
+invia il segnale su $T1$ che avvia l'acquisizione sincronizzata
+e si attende un tempo 50 $\si{\us}$ per permettere al MOS-FET di entrare in
+conduzione ($R2$ è stata scelta di $1 \si{\kohm}$, dunque c'è un apprezzabile
+ritardo tra segnale e impulso) e di scartare eventuali segnali spuri.
+A questo punto si inizia a memorizzare una serie da 100 coppie di letture
+-sincronizzate- (a meno di sfasamenti nell'ordine delle centinaia di
+nanosecondi), si ferma l'impulso e si trasmettono i dati al computer.
+Se la tensione al punto \verb+OUT2+ ha raggiunto valori maggiori di $3.3\si{\V}$
+l'acquisizione si ferma per non danneggiare \verb+Teensy+, altrimenti si
+ricomincia caricando il condensatore ad una tensione più alta.
 
 %================================================================
 %                   Analisi dati e Risultati
@@ -306,7 +300,7 @@ delle tangenti (o di Newton).
 Per una trattazione approfondita, si rimanda all'\nameref{app: C}.
 
 Risulta evidente, osservando i punti campionati con la resistenza da
-$R1 = 220$ k$\Omega$, la presenza di un rumore di natura non statistica
+$R1 = 220$ $\si{\kohm}$, la presenza di un rumore di natura non statistica
 molto maggiore delle incertezze sulle misure. 
 Questo si deve probabilmente all'influenza del circuito di lettura
 stesso sulle piccole correnti in gioco, che avevamo supposto trascurabile
@@ -319,13 +313,13 @@ nei risultati finali.
 Si riportano i valori ottimali dei parametri stimati dal fit e le relative
 covarianze: % Forse troppe cifre significative 0.2, 0.3 sono rumore rispetto a 7
 \begin{align*}
-	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \rm m\Omega 
+	R_{\text{diodo}} &= 46.112\iffalse 18 \fi \pm 0.007\iffalse 2 \fi \; \si{\mohm} 
 	&\sigma_{I_0, \eta V_T} &= 0.97  \\
-	\eta V_T &= 47.579\iffalse 86 \fi \pm 0.003\iffalse 3 \fi \; \rm mV 	
+	\eta V_T &= 47.579\iffalse 86 \fi \pm 0.003\iffalse 3 \fi \; \si{\mV} 	
 	&\sigma_{I_0, R_d} &= -0.62 \\
-	I_0 &= 4.518\iffalse 0 \fi \pm 0.004\iffalse 3 \fi \; \rm nA
+	I_0 &= 4.518\iffalse 0 \fi \pm 0.004\iffalse 3 \fi \; \si{\nA}
 	&\sigma_{I_0, \text{ofst}} &= -0.49 \\
-	\text{offset} &=\; - 2.204\iffalse 3 \fi \pm 0.007 \iffalse 3 \fi \; \mu A
+	\text{offset} &=\; - 2.204\iffalse 3 \fi \pm 0.007 \iffalse 3 \fi \; \si{\uA}
 	&\sigma_{\eta V_T, R_d} &= -0.70  \\ 
 	\chi^2/\text{ndof} &= 72207/251066
 	&\sigma_{\eta V_T, \text{ofst}} &= -0.43\\
@@ -370,8 +364,8 @@ definisce i parametri fondamentali.
 %================================================================
 \section{Conclusioni}
 Sulla base dell'analisi precedentemente effettuata, possiamo osservare che il
-$\chi^2$ risulta essere minore rispetto al suo valore atteso. Ciò \`e
-parzialmente dovuto alla correlazione degli errori inerenti ai dati rilevati
+$\chi^2$ risulta minore rispetto al suo valore atteso. Ciò \`e parzialmente
+dovuto alla correlazione delle incertezze associate ai dati rilevati
 all'interno dei due canali d'ingresso. In aggiunta, come si deduce anche dalla
 zona di maggior concentrazione dei punti nel grafico dei residui,
 il convertitore analogico-digitale del MCU \`e caratterizzato da una funzione
@@ -387,10 +381,11 @@ In primo luogo, all'interno del grafico in scala lineare, a correnti alte,
 i punti risultano essere disposti pressoch\`e linearmente, in accordo con
 l'ipotesi di una componente resistiva interna al diodo. Analogamente, nel
 grafico in scala semilogaritmica, i dati assumono un andamento simile a quello
-caratteristico della curva di Shockley, ovvero approssimativamente
-rettilineo, per poi appiattirsi come un logaritmo al crescere della tensione.
+previsto dalla legge di Shockley, ovvero approssimativamente rettilineo, per
+poi appiattirsi come un logaritmo al crescere della tensione.
 Dunque, possiamo affermare che l'andamento dei dati sperimentali risulta essere
-in accordo con la legge \eqref{eq: model}, per cui non abbiamo motivo di rigettarlo.
+in accordo con il modello \eqref{eq: model}, per cui non abbiamo motivo di
+rigettarlo.
 Pertanto potremo aspettarci che i parametri stimati dal fit siano significativi 
 e che la modellizzazione proposta sia una buona approssimazione del diodo reale 
 nelle condizioni di lavoro considerate. Questa modellizzazione, fra l'altro, 
@@ -404,77 +399,80 @@ proposto pu\`o essere esteso per qualunque altro tipo di diodo, eventualmente
 sostituendo il condensatore con un opportuno circuito stabilizzatore di
 corrente o di tensione.
 
-
 %================================================================
 %                        Appendice A
 %================================================================
-\section{Appendice A: Misurazione delle reristenze $R1$}\label{app: A}
+\section{Appendice A: Misura delle resistenze $R1$}\label{app: A}
 
-All’interno delle misurazioni delle resistenze, sono stati adottati dei resistori
-contrassegnati da valori nominali che spaziano da 0.22 $\Omega$ a 220 $k\Omega$.
-Dunque il multimetro digitale non possiede una sensibilità sufficiente ai fini
-della stima delle resistenze più basse.\\  
+All’interno della misurazione delle resistenze, sono stati adottati dei
+resistori contrassegnati da valori nominali che spaziano da 0.22 $\si{\ohm}$
+a 220 $\si{\kohm}$. Dunque un multimetro digitale non dispone di una sensibilità
+sufficiente ai fini della stima delle resistenze più basse.\\  
 In primo luogo, queste ultime sono state misurate attraverso un metodo basato
-sull’uso di un alimentatore regolabile DC ($\Delta V_{\text{max}} = 30 V$;
-$I_{\text{max}} = 5 A$). La strategia consiste nel fare scorrere una corrente
-continua entro un resistore. La stessa deve essere scelta ponendo attenzione
-che la potenza dissipata ($P =R \cdot I^{2}$) non superi la potenza nominale
-del resistore onde evitare danneggiamenti del componente per effetto termico.
-Nel contempo, la corrente \footnote{La corrente è stata misurata col multimetro,
-nonostante il fatto che l’abbiamo scelta a priori, ai fini di ottenere una maggiore precisione}
-e la differenza di potenziale ai capi del resistore vengono misurati attraverso
-due multimetri digitali. Dunque attraverso la legge di Ohm è stato possibile la
-stima delle resistenze in esame, riportate nella tabella sottostante con i relativi errori:
+sull'uso di un alimentatore regolabile DC ($\Delta V_{\text{max}} = 30
+\si{\V}$; $I_{\text{max}} = 5 \si{\A}$). La strategia consiste nel far
+scorrere una corrente continua dentro alla $R1$, in modo tale che la potenza
+dissipata ($P = R1 \cdot I^2$) non superi la potenza nominale del resistore,
+onde evitare danni al componente per effetto termico.
+A questo punto la corrente\footnote{Pur avendola fissata a priori, si è misurata
+la corrente con un multimetro per conoscerne il valore con maggior precisione}
+e la differenza di potenziale ai capi del resistore vengono misurate
+contemporaneamente attraverso due multimetri digitali. 
+Dunque, attraverso la legge di Ohm, è stato possibile la stima delle resistenze
+in esame, riportate nella tabella sottostante: 
 
 \begin{table}[H]
-\begin{center}
-    \begin{tabular}{lll}
-     \toprule
-     $R1$ nom. [$\Omega$] & $R1$ [$\Omega$] \\
-     \midrule
-     \midrule
-     $0.22 \pm 3 \% $     & $0.22 \pm 0.01 $ \\
-     $2.2 \pm 5 \% $     & $2.19 \pm 0.03 $ \\
-     $22 \pm 5 \% $     & $21.6 \pm 0.2 $ \\
-        $220 \pm 5 \% $     & $210.6 \pm 0.8 $ \\
-     $2.2\; \rm k \pm 5 \% $ & $2140 \pm 23$ \\
-     \bottomrule
-    \end{tabular}
+	\begin{center}
+		\begin{tabular}{lll}
+		\toprule
+		$R1$ nom. [$\si{\ohm}$] & $R1$ Vcc [$\si{\ohm}$] \\
+		\midrule
+		\midrule
+		$0.22 \pm 3 \% $     & $0.22 \pm 0.01 $ \\
+		$2.2 \pm 5 \% $     & $2.19 \pm 0.03 $ \\
+		$22 \pm 5 \% $     & $21.6 \pm 0.2 $ \\
+		$220 \pm 5 \% $     & $210.6 \pm 0.8 $ \\
+		$2.2\; \si{k} \pm 5 \% $ & $2140 \pm 23$ \\
+		\bottomrule
+    	\end{tabular}
     \caption{I valori delle resistenze poste in serie al diodo, riportate in
-        valore nominale e misurate con il primo metodo. \label{tab:res}}
-\end{center}
+        	valore nominale e misurate con il primo metodo. \label{tab:res}}
+	\end{center}
 \end{table}
 
-Successivamente, è stato adottato un approccio differente. Ai fini di effettuare le medesime
-misure, è stato adottato il metodo della misura a quattro terminali (4T), attraverso un ohmetro
-specifico. Ai valori misurati sono stati sottratte le letture effettuate in assenza del resistore.
-In tal modo, sono stati cancellati gli errori dovuti alle resistenze intrinseche dei fili. Nella
-presente tabella sono riportati i risultati conseguiti:
+Abbiamo dunque ripetuto queste stesse misure adottando un secondo approccio,
+quello della misura a quattro terminali (4T) con un ohmmetro da banco.
+Per compensare le sovrastime dovute alle resistenze intrinseche ai
+collegamenti (in serie al resistore) ai valori misurati sono stati sottratti
+quelli letti in assenza del resistore.
+% Mi sembrava ripetitivo. fili --> collegamenti per considerare anche i reofori
+Nella seguente tabella sono riportate le misure effettuate con il multimetro
+da banco:
 
 \begin{table}[H]
-\begin{center}
-    \begin{tabular}{lll}
-     \toprule
-     $R1$ nom. [$\Omega$] & $R1$ [$\Omega$] \\
-     \midrule
-     \midrule
-     $0.22 \pm 3 \% $     & $0.226 \pm 0.008$ \\
-     $2.2 \pm 5 \% $     & $2.212 \pm 0.008$ \\
-     $22 \pm 5 \% $     & $21.86 \pm 0.010$ \\
-        $220 \pm 5 \% $     & $216.22 \pm 0.07$ \\
-     $2.2\; \rm k \pm 5 \% $ & $2202.1 \pm 0.4$ \\
-     \bottomrule
-    \end{tabular}
+	\begin{center}
+		\begin{tabular}{lll}
+		\toprule
+		$R1$ nom. [$\si{\ohm}$] & $R1$ mult. [$\si{\ohm}$] \\
+		\midrule
+		\midrule
+		$0.22 \pm 3 \% $     & $0.226 \pm 0.008$ \\
+		$2.2 \pm 5 \% $     & $2.212 \pm 0.008$ \\
+		$22 \pm 5 \% $     & $21.86 \pm 0.010$ \\
+		$220 \pm 5 \% $     & $216.22 \pm 0.07$ \\
+		$2.2\; \si{k} \pm 5 \% $ & $2202.1 \pm 0.4$ \\
+		\bottomrule
+    	\end{tabular}
     \caption{I valori delle resistenze poste in serie al diodo, riportate in
-        valore nominale e misurate con la seconda strategia. \label{tab:res}}
-\end{center}
+       		 valore nominale e misurate con la seconda strategia. \label{tab:res}}
+	\end{center}
 \end{table}
 
-Entrambi i metodi forniscono stime valide delle resistenze adottate. Dunque all’interno
-delle analisi successive, sono state adottate le misure conseguite a seguito della
-seconda strategia, caratterizzate da maggiore precisione.\\
-Le resistenze da 22 $k\Omega$ e 220 $k\Omega$ sono state invece misurate con l’uso
-diretto di un multimetro digitale.
+Entrambi i metodi forniscono stime valide delle resistenze usate, però,
+all'interno delle analisi successive, abbiamo preferito le misure ottenute
+con il secondo, perché determinate con maggior precisione.\\
+Le resistenze più alte, da 22 $\si{\kohm}$ e 220 $\si{\kohm}$ sono state
+invece misurate direttamente con un multimetro digitale.
 
 %================================================================
 %                        Appendice B
@@ -484,17 +482,17 @@ diretto di un multimetro digitale.
 %         Introduzione
 %================================
 \subsection{Introduzione}
-All'interno dell'acquisizione, sono stati raccolti un numero ingente di dati,
-suddivisibili in base alla resistenza adottata e dunque facenti riferimento
+All'interno dell'acquisizione \`e stata raccolta un'ingente quantità di dati,
+suddivisibili in base alla resistenza scelta e dunque facenti riferimento
 a zone differenti della curva. A seguito della calibrazione, ci si è quindi
 posto il problema di effettuare l'eliminazione degli outliers in modo
 indipendente dalla scelta del modello per il fit. Le serie effettuate
 variando la resistenza, inoltre, si sovrappongono in alcune zone del
 grafico. Dunque è stato necessario eliminare i dati che, non aggiungendo
-informazioni utili, andavano a "sporcare" il grafico.
-Il sistema di filtraggio di dati implementato
-nell'eseguibile si compone di 2 fasi: la prima consiste nell'eliminazione degli
-outliers, la seconda dei dati non significativi.
+informazioni utili, andavano a "sporcare" il grafico. Il sistema di filtraggio
+di dati implementato nell'eseguibile si compone di 2 fasi:
+la prima consiste nell'eliminazione degli outliers, la seconda dei dati non
+significativi.
 %================================
 %         Procedimento
 %================================
@@ -709,14 +707,15 @@ tra due set successivi.
 \section{Appendice C: Metodo di fit}\label{app: C}
 La differenza di potenziale $\Delta$V in funzione della corrente $I$ che scorre 
 all’interno del diodo può essere espressa attraverso la legge
-\eqref{eq: model}. Potremo, dunque, essere tentati ad adottare tale formula
+\eqref{eq: model}. Potremo, dunque, essere tentati di adottare questa formula
 ai fini di un fit numerico. 
 Tuttavia tale operazione provocherebbe il fallimento del fit a causa dei valori 
 negativi o nulli che debitamente si riscontreranno all’interno del logaritmo. 
 E’ stato dunque necessario adottare un algoritmo alternativo, basato sul 
 metodo di Newton\cite{tesi}. Esso ci consentirà di ricostruire numericamente 
 la funzione inversa della legge \eqref{eq: model}.
-Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$ continua e di classe $C^{2}$
+Illustriamo in breve il metodo di Newton. Sia data una funzione $f(x)$
+appartenente alla classe di continuità $C^{2}$
 entro un intervallo di definizione connesso (con $f’(x)$ limitata e 
 diversa da $0$ per ciascuna $x$ appartenente al dominio) ed una $v$ tale che
 $f(v) = 0$. Sviluppando al prim’ordine $f$ in un intorno di $v$, otterremo:
@@ -814,11 +813,11 @@ anche a seguito di sole 20 iterazioni:
 \end{figure}
 Tali grafici evidenziano che, come era da aspettarsi, la legge adottata per il 
 fit risulta essere l’inversa numerica della legge \eqref{eq: model}. La serie,
-inoltre, risulta convergere molto9m rapidamente ai valori attesi e quindi sono 
+inoltre risulta convergere molto rapidamente ai valori attesi e quindi sono 
 effettivamente sufficienti solo 20 iterazioni per una buona precisione.
 All’interno della funzione di fit, è stato infine introdotto un offset quale
 parametro libero per ovviare errori di zero dovuti agli assorbimenti di ADC
-in Teensy 3.2.
+in \verb+Teensy 3.2+.
 
 \subsection*{Nota sull'implementazione}
 Per determinare i parametri ottimali e le rispettive covarianze si \`e
