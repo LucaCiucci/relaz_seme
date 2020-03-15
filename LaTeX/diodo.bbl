@@ -23,8 +23,8 @@
 
 \bibitem{teensy}
 \BIBentryALTinterwordspacing
-o.~Paul~Stoffregen. Teensy 3.2 development board. Sherwood, Oregon, USA.
-  [Online]. Available: \url{https://www.pjrc.com/teensy/teensy31.html}
+P.~Stoffregen \emph{et~al.} Teensy 3.2 development board. Sherwood, Oregon,
+  USA. [Online]. Available: \url{https://www.pjrc.com/teensy/teensy31.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{tesi}
