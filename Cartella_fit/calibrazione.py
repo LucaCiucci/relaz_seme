@@ -50,7 +50,6 @@ if(grafici_calibrazione):
                 elinewidth=1.5, capsize=2)
 init = [-1., 10.]
 popt, pcov = curve_fit(legge, x, y, init, dy, absolute_sigma = False)
-# DIO BESTIA MA COME CAZZO LE CHIAMATE QUESTE VARIABILI
 a1, a2 = popt
 da1, da2 = np.sqrt(pcov.diagonal())
 print("m = %f +- %f" %(a1, da1))
